@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_082025) do
+ActiveRecord::Schema.define(version: 2020_03_23_094508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,6 +143,10 @@ ActiveRecord::Schema.define(version: 2020_03_23_082025) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.datetime "deleted_at"
+    t.string "image_content_file_name"
+    t.string "image_content_content_type"
+    t.bigint "image_content_file_size"
+    t.datetime "image_content_updated_at"
     t.index ["deleted_at"], name: "index_news_on_deleted_at"
     t.index ["slug"], name: "index_news_on_slug", unique: true
     t.index ["user_id"], name: "index_news_on_user_id"
