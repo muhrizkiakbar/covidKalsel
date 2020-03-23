@@ -11,6 +11,7 @@ libpng-dev \
 nodejs \
 yarn \
 telnetd \
+&& apt-get install imagemagick -y \
 && gem install bundler
 
 # Create a directory for your app

@@ -5,26 +5,35 @@ class CovDiedsController < ApplicationController
   # GET /cov_dieds.json
   def index
     @cov_dieds = CovDied.all
+
+    authorize @cov_dieds
   end
 
   # GET /cov_dieds/1
   # GET /cov_dieds/1.json
   def show
+    authorize @cov_dieds
   end
 
   # GET /cov_dieds/new
   def new
     @cov_died = CovDied.new
+    authorize @cov_dieds
   end
 
   # GET /cov_dieds/1/edit
   def edit
+    authorize @cov_dieds
   end
 
   # POST /cov_dieds
   # POST /cov_dieds.json
   def create
     @cov_died = CovDied.new(cov_died_params)
+
+    @city = City.find(@cov_died.city)
+    @city.cov_died_count += @cov_died.amount
+    @city.save
 
     respond_to do |format|
       if @cov_died.save
@@ -54,6 +63,13 @@ class CovDiedsController < ApplicationController
   # DELETE /cov_dieds/1
   # DELETE /cov_dieds/1.json
   def destroy
+
+    authorize @cov_dieds
+    
+    @city = City.find(@cov_died.city)
+    @city.cov_died_count -= @cov_died.amount
+    @city.save
+
     @cov_died.destroy
     respond_to do |format|
       format.html { redirect_to cov_dieds_url, notice: 'Cov died was successfully destroyed.' }
