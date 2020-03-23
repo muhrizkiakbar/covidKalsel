@@ -31,6 +31,7 @@ gem 'kaminari'
 gem 'devise'
 gem 'paperclip'
 gem 'friendly_id', '~> 5.2.4'
+gem "pundit"
 
 
 # Use ActiveStorage variant
