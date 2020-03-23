@@ -5,20 +5,28 @@ class CovPdpsController < ApplicationController
   # GET /cov_pdps.json
   def index
     @cov_pdps = CovPdp.all
+
+    authorize @cov_pdps
   end
 
   # GET /cov_pdps/1
   # GET /cov_pdps/1.json
   def show
+
+    authorize @cov_pdp
   end
 
   # GET /cov_pdps/new
   def new
     @cov_pdp = CovPdp.new
+
+    authorize @cov_pdp
   end
 
   # GET /cov_pdps/1/edit
   def edit
+
+    authorize @cov_pdp
   end
 
   # POST /cov_pdps
@@ -59,6 +67,8 @@ class CovPdpsController < ApplicationController
   # DELETE /cov_pdps/1.json
   def destroy
 
+    authorize @cov_pdp
+    
     @city = City.find(@cov_positive.city)
     @city.cov_positive_count -= @cov_positive.amount
     @city.save

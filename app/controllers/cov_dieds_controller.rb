@@ -5,20 +5,25 @@ class CovDiedsController < ApplicationController
   # GET /cov_dieds.json
   def index
     @cov_dieds = CovDied.all
+
+    authorize @cov_dieds
   end
 
   # GET /cov_dieds/1
   # GET /cov_dieds/1.json
   def show
+    authorize @cov_dieds
   end
 
   # GET /cov_dieds/new
   def new
     @cov_died = CovDied.new
+    authorize @cov_dieds
   end
 
   # GET /cov_dieds/1/edit
   def edit
+    authorize @cov_dieds
   end
 
   # POST /cov_dieds
@@ -59,6 +64,8 @@ class CovDiedsController < ApplicationController
   # DELETE /cov_dieds/1.json
   def destroy
 
+    authorize @cov_dieds
+    
     @city = City.find(@cov_died.city)
     @city.cov_died_count -= @cov_died.amount
     @city.save

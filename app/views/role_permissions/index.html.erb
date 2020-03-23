@@ -10,9 +10,9 @@
 
   <table>
     <tbody>
-      <% @permissions.group_by(&:resource).each do |resource_of| %>
+      <% @permissions.group_by(&:resource).each do |resource_of,value| %>
         <tr>
-          <th colspan="7" style="text-align:left"> Resource : <%= resource_of.resource %></th>
+          <th colspan="7" style="text-align:left"> Resource : <%= resource_of %></th>
         </tr>
         <tr>
           <th>#</th>
@@ -21,7 +21,7 @@
           <th>Page</th>
           <th>Description</th>
         </tr>
-        <% @permissions.where('resource = ?',resource_of.resource).each do |resource_of_permission| %>
+        <% @permissions.where('resource = ?',resource_of).each do |resource_of_permission| %>
           <tr>
             <% if RolePermission.check_status(@role.id,resource_of_permission.id) %>
               <td> <%= check_box("permissions", resource_of_permission.id, {checked: true}) %></td>

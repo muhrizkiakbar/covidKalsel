@@ -20,7 +20,7 @@ class Permission < ApplicationRecord
   friendly_id :slug_candidates, use: :slugged
   acts_as_paranoid
 
-  validates :name,:resource,:action,:description,:page,:path , presence: true
+  validates :name,:resource,:action,:description,:path , presence: true
 
 
   #relasi antar table

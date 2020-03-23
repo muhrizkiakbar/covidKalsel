@@ -32,6 +32,7 @@ gem 'devise'
 gem 'paperclip'
 gem 'friendly_id', '~> 5.2.4'
 gem "pundit"
+gem 'rest-client'
 
 
 # Use ActiveStorage variant

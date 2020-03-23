@@ -4,21 +4,26 @@ class InformationController < ApplicationController
   # GET /information
   # GET /information.json
   def index
-    @information = Information.all
+    @informations = Information.all
+    authorize @informations
   end
 
   # GET /information/1
   # GET /information/1.json
   def show
+    authorize @information
   end
 
   # GET /information/new
   def new
     @information = Information.new
+    authorize @information
   end
 
   # GET /information/1/edit
   def edit
+
+    authorize @information
   end
 
   # POST /information
@@ -54,6 +59,7 @@ class InformationController < ApplicationController
   # DELETE /information/1
   # DELETE /information/1.json
   def destroy
+    authorize @information
     @information.destroy
     respond_to do |format|
       format.html { redirect_to information_index_url, notice: 'Information was successfully destroyed.' }
