@@ -64,7 +64,7 @@ class CovDiedsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cov_died
-      @cov_died = CovDied.find(params[:id])
+      @cov_died = CovDied.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
