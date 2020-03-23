@@ -1,18 +1,26 @@
 Rails.application.routes.draw do
-  resources :news
-  resources :cov_dieds
-  resources :cov_pdps
-  resources :cov_odps
-  resources :cov_recovereds
-  resources :cov_negatives
-  resources :cov_positives
-  resources :hospitals
-  resources :cities
-  resources :permissions
-  
-  resources :roles do
-    resources :role_permissions
+
+  namespace :backoffice do
+
+    resources :news
+    resources :cov_dieds
+    resources :cov_pdps
+    resources :cov_odps
+    resources :cov_recovereds
+    resources :cov_negatives
+    resources :cov_positives
+    resources :hospitals
+    resources :cities
+    resources :permissions
+    
+    resources :roles do
+      resources :role_permissions, only: [:index, :update]
+    end
+    scope "/management" do
+      resources :users
+    end
   end
+
   devise_for :users
 
   root 'public#home'
