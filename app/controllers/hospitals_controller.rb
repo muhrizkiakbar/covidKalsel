@@ -5,20 +5,27 @@ class HospitalsController < ApplicationController
   # GET /hospitals.json
   def index
     @hospitals = Hospital.all
+    authorize @hospitals
   end
 
   # GET /hospitals/1
   # GET /hospitals/1.json
   def show
+
+    authorize @hospital
   end
 
   # GET /hospitals/new
   def new
     @hospital = Hospital.new
+
+    authorize @hospital
   end
 
   # GET /hospitals/1/edit
   def edit
+
+    authorize @hospital
   end
 
   # POST /hospitals
@@ -54,6 +61,8 @@ class HospitalsController < ApplicationController
   # DELETE /hospitals/1
   # DELETE /hospitals/1.json
   def destroy
+
+    authorize @hospital
     @hospital.destroy
     respond_to do |format|
       format.html { redirect_to hospitals_url, notice: 'Hospital was successfully destroyed.' }
