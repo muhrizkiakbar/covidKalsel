@@ -64,7 +64,7 @@ class CovOdpsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cov_odp
-      @cov_odp = CovOdp.find(params[:id])
+      @cov_odp = CovOdp.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
