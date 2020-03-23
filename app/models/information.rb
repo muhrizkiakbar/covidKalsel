@@ -1,17 +1,4 @@
-# == Schema Information
-#
-# Table name: news
-#
-#  id         :bigint           not null, primary key
-#  user_id    :bigint
-#  tittle     :string
-#  content    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  slug       :string
-#  deleted_at :datetime
-#
-class New < ApplicationRecord
+class Information < ApplicationRecord
   belongs_to :user
 
   extend FriendlyId
@@ -24,5 +11,4 @@ class New < ApplicationRecord
 
   has_attached_file :image_content, styles: { medium: "1080x720>", thumb: "108x72>" }
   validates_attachment_content_type :image_content, content_type: /\Aimage\/.*\z/
-
 end

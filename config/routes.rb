@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  namespace :backoffice do
+  scope "/backoffice" do
 
-    resources :news
+    resources :information
     resources :cov_dieds
     resources :cov_pdps
     resources :cov_odps
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :permissions
     
     resources :roles do
-      resources :role_permissions, only: [:index, :update]
+      resources :role_permissions
     end
     scope "/management" do
       resources :users

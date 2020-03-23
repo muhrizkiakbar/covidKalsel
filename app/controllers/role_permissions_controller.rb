@@ -4,8 +4,13 @@ class RolePermissionsController < ApplicationController
   # GET /role_permissions
   # GET /role_permissions.json
   def index
+    p "=" * 100
+    # p params[:role_id]
     @role = Role.friendly.find(params[:role_id])
-    @role_permissions = RolePermission.where('role_id','=',@role)
+    # @role_permissions = RolePermission.where('role_id','=',@role)
+    @role_permissions = @role.role_permissions
+    
+    p @role_permissions
     @permissions=Permission.all
 
     @role_permission = RolePermission.new
