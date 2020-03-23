@@ -1,0 +1,2 @@
+module CovNegativesHelper
+end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city: one
+  amount: 1
+  dateTime: 2020-03-23 06:28:29
+
+two:
+  city: two
+  amount: 1
+  dateTime: 2020-03-23 06:28:29

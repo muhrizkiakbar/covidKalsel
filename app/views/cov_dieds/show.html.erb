@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>City:</strong>
+  <%= @cov_died.city %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @cov_died.amount %>
+</p>
+
+<p>
+  <strong>Datetime:</strong>
+  <%= @cov_died.dateTime %>
+</p>
+
+<%= link_to 'Edit', edit_cov_died_path(@cov_died) %> |
+<%= link_to 'Back', cov_dieds_path %>
