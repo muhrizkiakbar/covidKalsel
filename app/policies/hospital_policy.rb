@@ -16,7 +16,7 @@ class HospitalPolicy < ApplicationPolicy
     end
 
     def update?
-        check_access("hospital","update")
+        check_access("hospital","edit")
     end
 
     def destroy?

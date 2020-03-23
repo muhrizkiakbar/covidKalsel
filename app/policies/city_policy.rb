@@ -16,7 +16,7 @@ class CityPolicy < ApplicationPolicy
     end
 
     def update?
-        check_access("city","update")
+        check_access("city","edit")
     end
 
     def destroy?

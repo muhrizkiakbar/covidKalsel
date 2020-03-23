@@ -16,7 +16,7 @@ class CovPositivePolicy < ApplicationPolicy
     end
 
     def update?
-        check_access("cov_positive","update")
+        check_access("cov_positive","edit")
     end
 
     def destroy?

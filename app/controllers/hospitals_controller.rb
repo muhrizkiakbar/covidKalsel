@@ -4,7 +4,7 @@ class HospitalsController < ApplicationController
   # GET /hospitals
   # GET /hospitals.json
   def index
-    @hospitals = Hospital.all
+    @hospitals = Hospital.all.page(params[:page])
     authorize @hospitals
   end
 

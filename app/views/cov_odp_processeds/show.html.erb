@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>City:</strong>
+  <%= @cov_odp_processed.city %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @cov_odp_processed.amount %>
+</p>
+
+<p>
+  <strong>Datetime:</strong>
+  <%= @cov_odp_processed.dateTime %>
+</p>
+
+<%= link_to 'Edit', edit_cov_odp_processed_path(@cov_odp_processed) %> |
+<%= link_to 'Back', cov_odp_processeds_path %>

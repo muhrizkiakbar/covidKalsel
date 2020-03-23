@@ -16,7 +16,7 @@ class InformationPolicy < ApplicationPolicy
     end
 
     def update?
-        check_access("information","update")
+        check_access("information","edit")
     end
 
     def destroy?

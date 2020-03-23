@@ -15,7 +15,7 @@
   <tbody>
     <% @cov_positives.each do |cov_positive| %>
       <tr>
-        <td><%= cov_positive.city %></td>
+        <td><%= cov_positive.city.name %></td>
         <td><%= cov_positive.amount %></td>
         <td><%= cov_positive.dateTime %></td>
         <td><%= link_to 'Show', cov_positive %></td>
@@ -27,5 +27,7 @@
 </table>
 
 <br>
+
+<%= paginate @cov_positives %>
 
 <%= link_to 'New Cov Positive', new_cov_positive_path %>

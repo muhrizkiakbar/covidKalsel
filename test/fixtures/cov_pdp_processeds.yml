@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: cov_pdp_processeds
+#
+#  id         :bigint           not null, primary key
+#  city_id    :bigint
+#  amount     :integer
+#  dateTime   :datetime
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  slug       :string
+#  deleted_at :datetime
+#
+
+one:
+  city: one
+  amount: 1
+  dateTime: 2020-03-23 16:26:59
+
+two:
+  city: two
+  amount: 1
+  dateTime: 2020-03-23 16:26:59

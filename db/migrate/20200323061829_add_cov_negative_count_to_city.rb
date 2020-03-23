@@ -1,5 +1,5 @@
 class AddCovNegativeCountToCity < ActiveRecord::Migration[5.2]
   def change
-    add_column :cities, :cov_negative_count, :integer, default: 0
+    add_column :cities, :cov_negative_count, :integer, null: false, default: 0
   end
 end

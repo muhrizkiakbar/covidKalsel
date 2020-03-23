@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_115212) do
+ActiveRecord::Schema.define(version: 2020_03_23_162921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2020_03_23_115212) do
     t.integer "cov_pdp_count"
     t.string "slug"
     t.datetime "deleted_at"
+    t.integer "cov_odp_processed_count"
+    t.integer "cov_pdp_processed_count"
     t.index ["deleted_at"], name: "index_cities_on_deleted_at"
     t.index ["slug"], name: "index_cities_on_slug", unique: true
   end
@@ -58,6 +60,19 @@ ActiveRecord::Schema.define(version: 2020_03_23_115212) do
     t.index ["slug"], name: "index_cov_negatives_on_slug", unique: true
   end
 
+  create_table "cov_odp_processeds", force: :cascade do |t|
+    t.bigint "city_id"
+    t.integer "amount"
+    t.datetime "dateTime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.datetime "deleted_at"
+    t.index ["city_id"], name: "index_cov_odp_processeds_on_city_id"
+    t.index ["deleted_at"], name: "index_cov_odp_processeds_on_deleted_at"
+    t.index ["slug"], name: "index_cov_odp_processeds_on_slug", unique: true
+  end
+
   create_table "cov_odps", force: :cascade do |t|
     t.bigint "city_id"
     t.integer "amount"
@@ -69,6 +84,19 @@ ActiveRecord::Schema.define(version: 2020_03_23_115212) do
     t.index ["city_id"], name: "index_cov_odps_on_city_id"
     t.index ["deleted_at"], name: "index_cov_odps_on_deleted_at"
     t.index ["slug"], name: "index_cov_odps_on_slug", unique: true
+  end
+
+  create_table "cov_pdp_processeds", force: :cascade do |t|
+    t.bigint "city_id"
+    t.integer "amount"
+    t.datetime "dateTime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.datetime "deleted_at"
+    t.index ["city_id"], name: "index_cov_pdp_processeds_on_city_id"
+    t.index ["deleted_at"], name: "index_cov_pdp_processeds_on_deleted_at"
+    t.index ["slug"], name: "index_cov_pdp_processeds_on_slug", unique: true
   end
 
   create_table "cov_pdps", force: :cascade do |t|
@@ -226,7 +254,9 @@ ActiveRecord::Schema.define(version: 2020_03_23_115212) do
 
   add_foreign_key "cov_dieds", "cities"
   add_foreign_key "cov_negatives", "cities"
+  add_foreign_key "cov_odp_processeds", "cities"
   add_foreign_key "cov_odps", "cities"
+  add_foreign_key "cov_pdp_processeds", "cities"
   add_foreign_key "cov_pdps", "cities"
   add_foreign_key "cov_positives", "cities"
   add_foreign_key "cov_recovereds", "cities"

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cov Pdp Processeds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Amount</th>
+      <th>Datetime</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cov_pdp_processeds.each do |cov_pdp_processed| %>
+      <tr>
+        <td><%= cov_pdp_processed.city %></td>
+        <td><%= cov_pdp_processed.amount %></td>
+        <td><%= cov_pdp_processed.dateTime %></td>
+        <td><%= link_to 'Show', cov_pdp_processed %></td>
+        <td><%= link_to 'Edit', edit_cov_pdp_processed_path(cov_pdp_processed) %></td>
+        <td><%= link_to 'Destroy', cov_pdp_processed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= paginate @cov_pdp_processeds %>
+
+<%= link_to 'New Cov Pdp Processed', new_cov_pdp_processed_path %>

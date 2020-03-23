@@ -16,7 +16,7 @@ class RolePolicy < ApplicationPolicy
     end
 
     def update?
-        check_access("role","update")
+        check_access("role","edit")
     end
 
     def destroy?

@@ -4,7 +4,7 @@ class CovRecoveredsController < ApplicationController
   # GET /cov_recovereds
   # GET /cov_recovereds.json
   def index
-    @cov_recovereds = CovRecovered.all
+    @cov_recovereds = CovRecovered.all.page(params[:page])
 
     authorize @cov_recovereds
   end
@@ -33,10 +33,12 @@ class CovRecoveredsController < ApplicationController
   # POST /cov_recovereds.json
   def create
     @cov_recovered = CovRecovered.new(cov_recovered_params)
+    @cov_recovered.city = City.friendly.find(params[:cov_recovered][:city_id])
 
 
-    @city = City.find(@cov_recovered.city)
+    @city = City.find(@cov_recovered.city.id)
     @city.cov_recovered_count += @cov_recovered.amount
+    @city.cov_positive_count -= @cov_recovered.amount
     @city.save
 
     respond_to do |format|
@@ -53,8 +55,23 @@ class CovRecoveredsController < ApplicationController
   # PATCH/PUT /cov_recovereds/1
   # PATCH/PUT /cov_recovereds/1.json
   def update
+
+    @cov_recovered.city = City.friendly.find(params[:cov_recovered][:city_id])
+    
     respond_to do |format|
+
+      @city = City.find(@cov_recovered.city.id)
+      @city.cov_recovered_count -= @cov_recovered.amount
+      @city.cov_positive_count += @cov_recovered.amount
+      @city.save
+
       if @cov_recovered.update(cov_recovered_params)
+
+        @city = City.find(@cov_recovered.city.id)
+        @city.cov_recovered_count += @cov_recovered.amount
+        @city.cov_positive_count -= @cov_recovered.amount
+        @city.save
+
         format.html { redirect_to @cov_recovered, notice: 'Cov recovered was successfully updated.' }
         format.json { render :show, status: :ok, location: @cov_recovered }
       else
@@ -70,8 +87,9 @@ class CovRecoveredsController < ApplicationController
 
     authorize @cov_recovered
     
-    @city = City.find(@cov_recovered.city)
+    @city = City.find(@cov_recovered.city.id)
     @city.cov_recovered_count -= @cov_recovered.amount
+    @city.cov_positive_count += @cov_recovered.amount
     @city.save
 
     @cov_recovered.destroy

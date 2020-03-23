@@ -16,7 +16,7 @@ class CovDiedPolicy < ApplicationPolicy
     end
 
     def update?
-        check_access("cov_died","update")
+        check_access("cov_died","edit")
     end
 
     def destroy?

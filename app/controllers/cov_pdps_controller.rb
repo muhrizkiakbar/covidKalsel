@@ -4,7 +4,7 @@ class CovPdpsController < ApplicationController
   # GET /cov_pdps
   # GET /cov_pdps.json
   def index
-    @cov_pdps = CovPdp.all
+    @cov_pdps = CovPdp.all.page(params[:page])
 
     authorize @cov_pdps
   end
@@ -33,8 +33,9 @@ class CovPdpsController < ApplicationController
   # POST /cov_pdps.json
   def create
     @cov_pdp = CovPdp.new(cov_pdp_params)
+    @cov_pdp.city = City.friendly.find(params[:cov_pdp][:city_id])
 
-    @city = City.find(@cov_pdp.city)
+    @city = City.find(@cov_pdp.city.id)
     @city.cov_pdp_count += @cov_pdp.amount
     @city.save
 
@@ -52,8 +53,21 @@ class CovPdpsController < ApplicationController
   # PATCH/PUT /cov_pdps/1
   # PATCH/PUT /cov_pdps/1.json
   def update
+
+    @city = City.find(@cov_pdp.city.id)
+    @city.cov_pdp_count -= @cov_pdp.amount
+    @city.save
+
+
+    @cov_pdp.city = City.friendly.find(params[:cov_pdp][:city_id])
+    
     respond_to do |format|
       if @cov_pdp.update(cov_pdp_params)
+
+        @city = City.find(@cov_pdp.city.id)
+        @city.cov_pdp_count += @cov_pdp.amount
+        @city.save
+
         format.html { redirect_to @cov_pdp, notice: 'Cov pdp was successfully updated.' }
         format.json { render :show, status: :ok, location: @cov_pdp }
       else
@@ -69,7 +83,7 @@ class CovPdpsController < ApplicationController
 
     authorize @cov_pdp
     
-    @city = City.find(@cov_positive.city)
+    @city = City.find(@cov_positive.city.id)
     @city.cov_positive_count -= @cov_positive.amount
     @city.save
 

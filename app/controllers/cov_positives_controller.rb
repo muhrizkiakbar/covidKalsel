@@ -4,7 +4,7 @@ class CovPositivesController < ApplicationController
   # GET /cov_positives
   # GET /cov_positives.json
   def index
-    @cov_positives = CovPositive.all
+    @cov_positives = CovPositive.all.page(params[:page])
 
     authorize @cov_positives
   end
@@ -32,9 +32,15 @@ class CovPositivesController < ApplicationController
   def create
     @cov_positive = CovPositive.new(cov_positive_params)
 
-    @city = City.find(@cov_positive.city)
+    p "=" * 100
+
+    @cov_positive.city = City.friendly.find(params[:cov_positive][:city_id])
+
+
+    @city = City.friendly.find(params[:cov_positive][:city_id])
     @city.cov_positive_count += @cov_positive.amount
     @city.save
+
 
     respond_to do |format|
       if @cov_positive.save
@@ -50,8 +56,19 @@ class CovPositivesController < ApplicationController
   # PATCH/PUT /cov_positives/1
   # PATCH/PUT /cov_positives/1.json
   def update
+
+    @city = City.friendly.find(params[:cov_positive][:city_id])
+    @city.cov_positive_count -= @cov_positive.amount
+    @city.save
+
+    @cov_positive.city = City.friendly.find(params[:cov_positive][:city_id])
+
     respond_to do |format|
       if @cov_positive.update(cov_positive_params)
+
+        @city = City.friendly.find(params[:cov_positive][:city_id])
+        @city.cov_positive_count += @cov_positive.amount
+        @city.save
         format.html { redirect_to @cov_positive, notice: 'Cov positive was successfully updated.' }
         format.json { render :show, status: :ok, location: @cov_positive }
       else
@@ -67,7 +84,7 @@ class CovPositivesController < ApplicationController
 
     authorize @cov_positive
     
-    @city = City.find(@cov_positive.city)
+    @city = City.find(@cov_positive.city.id)
     @city.cov_positive_count -= @cov_positive.amount
     @city.save
 
@@ -86,6 +103,6 @@ class CovPositivesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cov_positive_params
-      params.require(:cov_positive).permit(:city_id, :amount, :dateTime)
+      params.require(:cov_positive).permit(:amount, :dateTime)
     end
 end

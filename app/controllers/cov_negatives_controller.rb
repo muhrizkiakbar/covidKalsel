@@ -4,7 +4,7 @@ class CovNegativesController < ApplicationController
   # GET /cov_negatives
   # GET /cov_negatives.json
   def index
-    @cov_negatives = CovNegative.all
+    @cov_negatives = CovNegative.all.page(params[:page])
 
     authorize @cov_negatives
   end
@@ -33,8 +33,9 @@ class CovNegativesController < ApplicationController
   # POST /cov_negatives.json
   def create
     @cov_negative = CovNegative.new(cov_negative_params)
+    @cov_negative.city = City.friendly.find(params[:cov_negative][:city_id])
 
-    @city = City.find(@cov_negative.city)
+    @city = City.friendly.find(params[:cov_negative][:city_id])
     @city.cov_negative_count += @cov_negative.amount
     @city.save
 
@@ -52,8 +53,18 @@ class CovNegativesController < ApplicationController
   # PATCH/PUT /cov_negatives/1
   # PATCH/PUT /cov_negatives/1.json
   def update
+
+    @city = City.find(@cov_negative.city.id)
+    @city.cov_negative_count -= @cov_negative.amount
+    @city.save
+
     respond_to do |format|
       if @cov_negative.update(cov_negative_params)
+
+        @city = City.find(@cov_negative.city.id)
+        @city.cov_negative_count += @cov_negative.amount
+        @city.save
+        
         format.html { redirect_to @cov_negative, notice: 'Cov negative was successfully updated.' }
         format.json { render :show, status: :ok, location: @cov_negative }
       else
@@ -69,7 +80,7 @@ class CovNegativesController < ApplicationController
 
     authorize @cov_negative
     
-    @city = City.find(@cov_negative.city)
+    @city = City.find(@cov_negative.city.id)
     @city.cov_negative_count -= @cov_negative.amount
     @city.save
 

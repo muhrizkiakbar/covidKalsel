@@ -4,7 +4,7 @@ class CovDiedsController < ApplicationController
   # GET /cov_dieds
   # GET /cov_dieds.json
   def index
-    @cov_dieds = CovDied.all
+    @cov_dieds = CovDied.all.page(params[:page])
 
     authorize @cov_dieds
   end
@@ -12,27 +12,33 @@ class CovDiedsController < ApplicationController
   # GET /cov_dieds/1
   # GET /cov_dieds/1.json
   def show
-    authorize @cov_dieds
+    authorize @cov_died
   end
 
   # GET /cov_dieds/new
   def new
     @cov_died = CovDied.new
-    authorize @cov_dieds
+    authorize @cov_died
   end
 
   # GET /cov_dieds/1/edit
   def edit
-    authorize @cov_dieds
+    authorize @cov_died
   end
 
   # POST /cov_dieds
   # POST /cov_dieds.json
   def create
-    @cov_died = CovDied.new(cov_died_params)
 
-    @city = City.find(@cov_died.city)
+
+    @cov_died = CovDied.new(cov_died_params)
+    @cov_died.city = City.friendly.find(params[:cov_died][:city_id])
+
+    
+
+    @city = City.find(@cov_died.city.id)
     @city.cov_died_count += @cov_died.amount
+    @city.cov_positive_count -= @cov_died.amount
     @city.save
 
     respond_to do |format|
@@ -49,8 +55,22 @@ class CovDiedsController < ApplicationController
   # PATCH/PUT /cov_dieds/1
   # PATCH/PUT /cov_dieds/1.json
   def update
+    @city = City.find(@cov_died.city.id)
+    @city.cov_died_count -= @cov_died.amount
+    @city.cov_positive_count += @cov_died.amount
+    @city.save
+
+
+    @cov_died.city = City.friendly.find(params[:cov_died][:city_id])
+
     respond_to do |format|
       if @cov_died.update(cov_died_params)
+
+        @city = City.find(@cov_died.city)
+        @city.cov_died_count += @cov_died.amount
+        @city.cov_positive_count -= @cov_died.amount
+        @city.save
+        
         format.html { redirect_to @cov_died, notice: 'Cov died was successfully updated.' }
         format.json { render :show, status: :ok, location: @cov_died }
       else
@@ -64,10 +84,11 @@ class CovDiedsController < ApplicationController
   # DELETE /cov_dieds/1.json
   def destroy
 
-    authorize @cov_dieds
+    authorize @cov_died
     
-    @city = City.find(@cov_died.city)
+    @city = City.find(@cov_died.city.id)
     @city.cov_died_count -= @cov_died.amount
+    @city.cov_positive_count += @cov_died.amount
     @city.save
 
     @cov_died.destroy
@@ -85,6 +106,6 @@ class CovDiedsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cov_died_params
-      params.require(:cov_died).permit(:city_id, :amount, :dateTime)
+      params.require(:cov_died).permit(:amount, :dateTime)
     end
 end

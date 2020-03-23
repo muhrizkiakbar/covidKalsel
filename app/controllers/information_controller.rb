@@ -29,8 +29,10 @@ class InformationController < ApplicationController
   # POST /information
   # POST /information.json
   def create
+    p "=========="
+    p current_user
     @information = Information.new(information_params)
-
+    @information.user = current_user
     respond_to do |format|
       if @information.save
         format.html { redirect_to @information, notice: 'Information was successfully created.' }
@@ -45,6 +47,7 @@ class InformationController < ApplicationController
   # PATCH/PUT /information/1
   # PATCH/PUT /information/1.json
   def update
+    @information.image_content.destroy
     respond_to do |format|
       if @information.update(information_params)
         format.html { redirect_to @information, notice: 'Information was successfully updated.' }
@@ -60,6 +63,8 @@ class InformationController < ApplicationController
   # DELETE /information/1.json
   def destroy
     authorize @information
+
+    @information.image_content.destroy
     @information.destroy
     respond_to do |format|
       format.html { redirect_to information_index_url, notice: 'Information was successfully destroyed.' }
@@ -70,11 +75,11 @@ class InformationController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_information
-      @information = Information.find(params[:id])
+      @information = Information.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def information_params
-      params.require(:information).permit(:user_id, :tittle, :content)
+      params.require(:information).permit(:tittle,:image_content, :content)
     end
 end

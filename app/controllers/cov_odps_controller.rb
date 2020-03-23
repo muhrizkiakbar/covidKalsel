@@ -4,7 +4,7 @@ class CovOdpsController < ApplicationController
   # GET /cov_odps
   # GET /cov_odps.json
   def index
-    @cov_odps = CovOdp.all
+    @cov_odps = CovOdp.all.page(params[:page])
 
     authorize @cov_odps
   end
@@ -30,9 +30,10 @@ class CovOdpsController < ApplicationController
   # POST /cov_odps.json
   def create
     @cov_odp = CovOdp.new(cov_odp_params)
+    @cov_odp.city = City.friendly.find(params[:cov_odp][:city_id])
 
 
-    @city = City.find(@cov_odp.city)
+    @city = City.find(@cov_odp.city.id)
     @city.cov_odp_count += @cov_odp.amount
     @city.save
 
@@ -50,8 +51,18 @@ class CovOdpsController < ApplicationController
   # PATCH/PUT /cov_odps/1
   # PATCH/PUT /cov_odps/1.json
   def update
+
+    @city = City.find(@cov_odp.city.id)
+    @city.cov_odp_count -= @cov_odp.amount
+    @city.save
+
     respond_to do |format|
       if @cov_odp.update(cov_odp_params)
+
+        @city = City.find(@cov_odp.city.id)
+        @city.cov_odp_count += @cov_odp.amount
+        @city.save
+        
         format.html { redirect_to @cov_odp, notice: 'Cov odp was successfully updated.' }
         format.json { render :show, status: :ok, location: @cov_odp }
       else
@@ -67,7 +78,7 @@ class CovOdpsController < ApplicationController
 
     authorize @cov_odp
     
-    @city = City.find(@cov_odp.city)
+    @city = City.find(@cov_odp.city.id)
     @city.cov_odp_count -= @cov_odp.amount
     @city.save
 

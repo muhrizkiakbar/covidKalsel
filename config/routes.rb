@@ -3,12 +3,17 @@ Rails.application.routes.draw do
   scope "/backoffice" do
 
     resources :information
+    
     resources :cov_dieds
     resources :cov_pdps
     resources :cov_odps
     resources :cov_recovereds
     resources :cov_negatives
     resources :cov_positives
+
+    resources :cov_pdp_processeds
+    resources :cov_odp_processeds
+
     resources :hospitals
     resources :cities
     resources :permissions

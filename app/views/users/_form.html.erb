@@ -26,7 +26,7 @@
   </div>
 
   <div class="form-group mb-3">
-    <%= form.select(:role_id ,Role.all.collect{|u| [u.name_role, u.slug]},{prompt: "Role", disabled: true}, id: '', class:"form-control select2", 'data-toggle': "select", 'title': "Simple select", 'data-live-search': "true", 'data-live-search-placeholder': "Search ...", required: true) %>
+    <%= form.select(:role_id ,Role.all.collect{|u| [u.name, u.slug]},{prompt: "Role", disabled: true}, id: '', class:"form-control select2", 'data-toggle': "select", 'title': "Simple select", 'data-live-search': "true", 'data-live-search-placeholder': "Search ...", required: true) %>
   </div>
 
   <div class="form-group mb-3">

@@ -16,7 +16,7 @@ class CovPdpPolicy < ApplicationPolicy
     end
 
     def update?
-        check_access("cov_pdp","update")
+        check_access("cov_pdp","edit")
     end
 
     def destroy?

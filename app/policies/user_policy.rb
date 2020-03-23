@@ -16,7 +16,7 @@ class UserPolicy < ApplicationPolicy
     end
 
     def update?
-        check_access("user","update")
+        check_access("user","edit")
     end
 
     def destroy?

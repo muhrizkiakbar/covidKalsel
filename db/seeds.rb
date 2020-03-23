@@ -171,6 +171,47 @@ permissions =[
         page: false, #ini akan bisa di akses di menu atau tidak
         path: 'cov_odp_path' #path di rails route
     },
+    # ====================================================================
+    {
+        name: 'CoV Odp Processed', #Penamaan gasan permission nya
+        resource: 'cov_odp_processed', #nama file di model harus sama
+        action: 'index', #nama function di controller
+        description: 'Management CoV Odp Processed', #gasan penjelasan aja
+        page: true, #ini akan bisa di akses di menu atau tidak
+        path: 'cov_odp_processeds_path' #path di rails route
+    },
+    {
+        name: 'New CoV Odp Processed', #Penamaan gasan permission nya
+        resource: 'cov_odp_processed', #nama file di model harus sama
+        action: 'new', #nama function di controller
+        description: 'Add CoV Odp Processed', #gasan penjelasan aja
+        page: false, #ini akan bisa di akses di menu atau tidak
+        path: 'new_cov_odp_processed_path' #path di rails route
+    },
+    {
+        name: 'Update CoV Odp Processed', #Penamaan gasan permission nya
+        resource: 'cov_odp_processed', #nama file di model harus sama
+        action: 'edit', #nama function di controller
+        description: 'Change CoV Odp Processed', #gasan penjelasan aja
+        page: false, #ini akan bisa di akses di menu atau tidak
+        path: 'edit_cov_odp_processed_path' #path di rails route
+    },
+    {
+        name: 'Show CoV Odp Processed', #Penamaan gasan permission nya
+        resource: 'cov_odp_processed', #nama file di model harus sama
+        action: 'show', #nama function di controller
+        description: 'Show CoV Odp Processed', #gasan penjelasan aja
+        page: false, #ini akan bisa di akses di menu atau tidak
+        path: 'cov_odp_processed_path' #path di rails route
+    },
+    {
+        name: 'Remove CoV Odp Processed', #Penamaan gasan permission nya
+        resource: 'cov_odp_processed', #nama file di model harus sama
+        action: 'destroy', #nama function di controller
+        description: 'Remove CoV Odp Processed', #gasan penjelasan aja
+        page: false, #ini akan bisa di akses di menu atau tidak
+        path: 'cov_odp_processed_path' #path di rails route
+    },
     # ======================================================================
     {
         name: 'CoV Pdp', #Penamaan gasan permission nya
@@ -212,8 +253,48 @@ permissions =[
         page: false, #ini akan bisa di akses di menu atau tidak
         path: 'cov_pdp_path' #path di rails route
     },
+    # ======================================================================
+    {
+        name: 'CoV Pdp Processed', #Penamaan gasan permission nya
+        resource: 'cov_pdp_processed', #nama file di model harus sama
+        action: 'index', #nama function di controller
+        description: 'Management CoV Pdp Processed', #gasan penjelasan aja
+        page: true, #ini akan bisa di akses di menu atau tidak
+        path: 'cov_pdp_processeds_path' #path di rails route
+    },
+    {
+        name: 'New CoV Pdp Processed', #Penamaan gasan permission nya
+        resource: 'cov_pdp_processed', #nama file di model harus sama
+        action: 'new', #nama function di controller
+        description: 'Add CoV Pdp Processed', #gasan penjelasan aja
+        page: false, #ini akan bisa di akses di menu atau tidak
+        path: 'new_cov_pdp_processed_path' #path di rails route
+    },
+    {
+        name: 'Update CoV Pdp Processed', #Penamaan gasan permission nya
+        resource: 'cov_pdp_processed', #nama file di model harus sama
+        action: 'edit', #nama function di controller
+        description: 'Change CoV Pdp Processed', #gasan penjelasan aja
+        page: false, #ini akan bisa di akses di menu atau tidak
+        path: 'edit_cov_pdp_processed_path' #path di rails route
+    },
+    {
+        name: 'Show CoV Pdp Processed', #Penamaan gasan permission nya
+        resource: 'cov_pdp_processed', #nama file di model harus sama
+        action: 'show', #nama function di controller
+        description: 'Show CoV Pdp Processed', #gasan penjelasan aja
+        page: false, #ini akan bisa di akses di menu atau tidak
+        path: 'cov_pdp_processed_path' #path di rails route
+    },
+    {
+        name: 'Remove CoV Pdp Processed', #Penamaan gasan permission nya
+        resource: 'cov_pdp_processed', #nama file di model harus sama
+        action: 'destroy', #nama function di controller
+        description: 'Remove CoV Pdp Processed', #gasan penjelasan aja
+        page: false, #ini akan bisa di akses di menu atau tidak
+        path: 'cov_pdp_processed_path' #path di rails route
+    },
     # =======================================================================
-
     {
         name: 'CoV Positive', #Penamaan gasan permission nya
         resource: 'cov_positive', #nama file di model harus sama
@@ -521,11 +602,18 @@ responsecity = RestClient.get(cityurl)
 
 jsonresponsecity = JSON.parse(responsecity)["kabupatens"]
 
-
 jsonresponsecity.each do |city|
     addcity = City.new
     addcity.name= city["nama"]
     addcity.call_center = "123"
+    addcity.cov_positive_count = 0
+    addcity.cov_negative_count = 0
+    addcity.cov_recovered_count = 0
+    addcity.cov_died_count = 0
+    addcity.cov_odp_count = 0
+    addcity.cov_pdp_count = 0
+    addcity.cov_odp_processed_count = 0
+    addcity.cov_pdp_processed_count = 0
     addcity.save
     idcityapi = city["id"]
 
