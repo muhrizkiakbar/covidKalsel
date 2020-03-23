@@ -5,26 +5,36 @@ class CovPositivesController < ApplicationController
   # GET /cov_positives.json
   def index
     @cov_positives = CovPositive.all
+
+    authorize @cov_positives
   end
 
   # GET /cov_positives/1
   # GET /cov_positives/1.json
   def show
+
+    authorize @cov_positive
   end
 
   # GET /cov_positives/new
   def new
     @cov_positive = CovPositive.new
+    authorize @cov_positive
   end
 
   # GET /cov_positives/1/edit
   def edit
+    authorize @cov_positive
   end
 
   # POST /cov_positives
   # POST /cov_positives.json
   def create
     @cov_positive = CovPositive.new(cov_positive_params)
+
+    @city = City.find(@cov_positive.city)
+    @city.cov_positive_count += @cov_positive.amount
+    @city.save
 
     respond_to do |format|
       if @cov_positive.save
@@ -54,6 +64,13 @@ class CovPositivesController < ApplicationController
   # DELETE /cov_positives/1
   # DELETE /cov_positives/1.json
   def destroy
+
+    authorize @cov_positive
+    
+    @city = City.find(@cov_positive.city)
+    @city.cov_positive_count -= @cov_positive.amount
+    @city.save
+
     @cov_positive.destroy
     respond_to do |format|
       format.html { redirect_to cov_positives_url, notice: 'Cov positive was successfully destroyed.' }
