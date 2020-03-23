@@ -1,0 +1,85 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Role Permissions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @role_permissions.each do |role_permission| %>
+      <tr>
+        <td><%= link_to 'Show', role_permission %></td>
+        <td><%= link_to 'Edit', edit_role_permission_path(role_permission) %></td>
+        <td><%= link_to 'Destroy', role_permission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Role Permission', new_role_permission_path %>
+
+<p id="notice"><%= notice %></p>
+<% if @role_permissions.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@role_permissions.errors.count, "error") %> prohibited this access_role from being saved:</h2>
+
+      <ul>
+      <% @role_permissions.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<h1>Role Name</h1>
+<p><%= @role.name %></p>
+
+<%= form_for [@role,@role_permission] do |form| %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+  <table>
+    <tbody>
+      <% @permissions.group(:resource).each do |resource_of| %>
+        <tr>
+          <th colspan="7" style="text-align:left"> Resource : <%= resource_of.resource %></th>
+        </tr>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Action</th>
+          <th>Page</th>
+          <th>Description</th>
+        </tr>
+        <% @permissions.where('resource = ?',resource_of.resource).each do |resource_of_permission| %>
+          <tr>
+            <% if RolePermission.check_status(@role.id,resource_of_permission.id) %>
+              <td> <%= check_box("permissions", resource_of_permission.id, {checked: true}) %></td>
+            <% else %>
+              <td> <%= check_box("permissions", resource_of_permission.id, {checked: false}) %></td>
+            <% end %>  
+            <td><%= resource_of_permission.name %></td>
+            <td><%= resource_of_permission.action %></td>
+            <td><%= resource_of_permission.page %></td>
+            <td><%= resource_of_permission.description %></td>
+          </tr>
+        <% end %>
+
+            
+          
+
+      <% end %>
+    </tbody>
+  </table>
+
+<% end %>
+<br>
+
+
