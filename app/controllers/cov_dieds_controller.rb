@@ -26,6 +26,10 @@ class CovDiedsController < ApplicationController
   def create
     @cov_died = CovDied.new(cov_died_params)
 
+    @city = City.find(@cov_died.city)
+    @city.cov_died_count += @cov_died.amount
+    @city.save
+
     respond_to do |format|
       if @cov_died.save
         format.html { redirect_to @cov_died, notice: 'Cov died was successfully created.' }
@@ -54,6 +58,11 @@ class CovDiedsController < ApplicationController
   # DELETE /cov_dieds/1
   # DELETE /cov_dieds/1.json
   def destroy
+
+    @city = City.find(@cov_died.city)
+    @city.cov_died_count -= @cov_died.amount
+    @city.save
+
     @cov_died.destroy
     respond_to do |format|
       format.html { redirect_to cov_dieds_url, notice: 'Cov died was successfully destroyed.' }

@@ -26,6 +26,11 @@ class CovOdpsController < ApplicationController
   def create
     @cov_odp = CovOdp.new(cov_odp_params)
 
+
+    @city = City.find(@cov_odp.city)
+    @city.cov_odp_count += @cov_odp.amount
+    @city.save
+
     respond_to do |format|
       if @cov_odp.save
         format.html { redirect_to @cov_odp, notice: 'Cov odp was successfully created.' }
@@ -54,6 +59,11 @@ class CovOdpsController < ApplicationController
   # DELETE /cov_odps/1
   # DELETE /cov_odps/1.json
   def destroy
+
+    @city = City.find(@cov_odp.city)
+    @city.cov_odp_count -= @cov_odp.amount
+    @city.save
+
     @cov_odp.destroy
     respond_to do |format|
       format.html { redirect_to cov_odps_url, notice: 'Cov odp was successfully destroyed.' }

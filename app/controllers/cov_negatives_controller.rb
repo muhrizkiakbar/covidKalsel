@@ -26,6 +26,10 @@ class CovNegativesController < ApplicationController
   def create
     @cov_negative = CovNegative.new(cov_negative_params)
 
+    @city = City.find(@cov_negative.city)
+    @city.cov_negative_count += @cov_negative.amount
+    @city.save
+
     respond_to do |format|
       if @cov_negative.save
         format.html { redirect_to @cov_negative, notice: 'Cov negative was successfully created.' }
@@ -54,6 +58,11 @@ class CovNegativesController < ApplicationController
   # DELETE /cov_negatives/1
   # DELETE /cov_negatives/1.json
   def destroy
+
+    @city = City.find(@cov_negative.city)
+    @city.cov_negative_count -= @cov_negative.amount
+    @city.save
+
     @cov_negative.destroy
     respond_to do |format|
       format.html { redirect_to cov_negatives_url, notice: 'Cov negative was successfully destroyed.' }

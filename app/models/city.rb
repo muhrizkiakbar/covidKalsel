@@ -18,6 +18,15 @@
 #
 class City < ApplicationRecord
 
+    
+    has_many :cov_positives
+    has_many :cov_negatives
+    has_many :cov_recovereds
+    has_many :cov_dieds
+    has_many :cov_odps
+    has_many :cov_pdps
+
+    has_many :hospitals
 
     acts_as_paranoid
     
