@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: cov_dieds
+#
+#  id         :bigint           not null, primary key
+#  city_id    :bigint
+#  amount     :integer
+#  dateTime   :datetime
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  slug       :string
+#  deleted_at :datetime
+#
 class CovDied < ApplicationRecord
   belongs_to :city
   extend FriendlyId
@@ -5,7 +18,6 @@ class CovDied < ApplicationRecord
 
   acts_as_paranoid
 
-  # Paperclip.interpolates :slug do |attachment, style|
-  #     attachment.instance.slug
-  # end
+  validates :amount,:dateTime, presence: true
+  validates :amount, numericality: { only_integer: true }
 end
