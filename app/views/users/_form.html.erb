@@ -1,0 +1,43 @@
+
+<%= form_with(model: user, remote: true) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group mb-3">
+    <%= form.text_field :email, class:"form-control",placeholder:"Email", required: true%>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= form.text_field :username, class:"form-control", placeholder:"Username", required: true %>
+  </div>
+
+
+  <div class="form-group mb-3">
+    <%= form.select(:role_id ,Role.all.collect{|u| [u.name_role, u.slug]},{prompt: "Role", disabled: true}, id: '', class:"form-control select2", 'data-toggle': "select", 'title': "Simple select", 'data-live-search': "true", 'data-live-search-placeholder': "Search ...", required: true) %>
+  </div>
+
+  <div class="form-group mb-3">
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= form.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"Password", required: true%>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= form.password_field :password_confirmation, autocomplete: "new-password", class:"form-control",placeholder:"Password Confirmation", required: true %>
+  </div>
+
+  <div class="text-center">
+    <%= form.submit 'CREATE USER', class:"btn btn-primary my-3" %>
+  </div>
+<% end %>
+
