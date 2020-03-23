@@ -3,7 +3,9 @@ class CovDied < ApplicationRecord
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
 
-  Paperclip.interpolates :slug do |attachment, style|
-      attachment.instance.slug
-  end
+  acts_as_paranoid
+
+  # Paperclip.interpolates :slug do |attachment, style|
+  #     attachment.instance.slug
+  # end
 end
