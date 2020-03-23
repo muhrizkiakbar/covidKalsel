@@ -14,5 +14,10 @@ Rails.application.routes.draw do
     resources :role_permissions
   end
   devise_for :users
+
+  root 'public#home'
+  get 'new' => 'public#news', :as => 'public_news'    
+  get 'faq' => 'public#faq', :as => 'public_faq'    
+  get 'contact' => 'public#new', :as => 'public_contact'    
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
