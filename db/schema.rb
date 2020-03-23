@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_074318) do
+ActiveRecord::Schema.define(version: 2020_03_23_115212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,6 +135,23 @@ ActiveRecord::Schema.define(version: 2020_03_23_074318) do
     t.index ["slug"], name: "index_hospitals_on_slug", unique: true
   end
 
+  create_table "information", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "tittle"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_content_file_name"
+    t.string "image_content_content_type"
+    t.bigint "image_content_file_size"
+    t.datetime "image_content_updated_at"
+    t.datetime "deleted_at"
+    t.string "slug"
+    t.index ["deleted_at"], name: "index_information_on_deleted_at"
+    t.index ["slug"], name: "index_information_on_slug", unique: true
+    t.index ["user_id"], name: "index_information_on_user_id"
+  end
+
   create_table "news", force: :cascade do |t|
     t.bigint "user_id"
     t.string "tittle"
@@ -143,6 +160,10 @@ ActiveRecord::Schema.define(version: 2020_03_23_074318) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.datetime "deleted_at"
+    t.string "image_content_file_name"
+    t.string "image_content_content_type"
+    t.bigint "image_content_file_size"
+    t.datetime "image_content_updated_at"
     t.index ["deleted_at"], name: "index_news_on_deleted_at"
     t.index ["slug"], name: "index_news_on_slug", unique: true
     t.index ["user_id"], name: "index_news_on_user_id"
@@ -194,6 +215,7 @@ ActiveRecord::Schema.define(version: 2020_03_23_074318) do
     t.bigint "role_id"
     t.string "slug"
     t.datetime "deleted_at"
+    t.string "name"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -209,6 +231,7 @@ ActiveRecord::Schema.define(version: 2020_03_23_074318) do
   add_foreign_key "cov_positives", "cities"
   add_foreign_key "cov_recovereds", "cities"
   add_foreign_key "hospitals", "cities"
+  add_foreign_key "information", "users"
   add_foreign_key "news", "users"
   add_foreign_key "role_permissions", "permissions"
   add_foreign_key "role_permissions", "roles"

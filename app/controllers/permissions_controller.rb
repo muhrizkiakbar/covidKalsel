@@ -5,20 +5,26 @@ class PermissionsController < ApplicationController
   # GET /permissions.json
   def index
     @permissions = Permission.all
+
+    authorize @permissions
   end
 
   # GET /permissions/1
   # GET /permissions/1.json
   def show
+    authorize @permission
   end
 
   # GET /permissions/new
   def new
     @permission = Permission.new
+
+    authorize @permission
   end
 
   # GET /permissions/1/edit
   def edit
+    authorize @permission
   end
 
   # POST /permissions
@@ -54,6 +60,7 @@ class PermissionsController < ApplicationController
   # DELETE /permissions/1
   # DELETE /permissions/1.json
   def destroy
+    authorize @permission
     @permission.destroy
     respond_to do |format|
       format.html { redirect_to permissions_url, notice: 'Permission was successfully destroyed.' }
