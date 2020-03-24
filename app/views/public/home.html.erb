@@ -19,7 +19,7 @@
             <div class="row align-item-center">
               <div class="col-lg-auto text-center">
                 <div class="icon icon-md icon-shape bg-white text-dark rounded-circle shadow">
-                  <i class="fa fa-phone-volume"></i>
+                  <%= fa_icon "phone-volume" %>
                 </div>
               </div>
               <div class="col-lg-auto mt-4 mt-lg-0">
@@ -67,7 +67,7 @@
               </div>
               <div class="col-auto">
                 <div class="icon icon-shape bg-white rounded-circle shadow">
-                  <i class="fa fa-user-plus"></i>
+                  <%= fa_icon "user-plus" %>
                 </div>
               </div>
             </div>
@@ -85,7 +85,7 @@
               </div>
               <div class="col-auto">
                 <div class="icon icon-shape bg-white rounded-circle shadow">
-                  <i class="fa fa-user-tag"></i>
+                  <%= fa_icon "user-tag" %>
                 </div>
               </div>
             </div>
@@ -103,7 +103,7 @@
               </div>
               <div class="col-auto">
                 <div class="icon icon-shape bg-white rounded-circle shadow">
-                  <i class="fa fa-user-check"></i>
+                  <%= fa_icon "user-check" %>
                 </div>
               </div>
             </div>
@@ -114,6 +114,9 @@
     <div class="row justify-content-center">
       <div class="col">
         <div class="card">
+          <div class="card-header">
+            <h2 class="mb-0">Peta Kejadian di Kalimantan Selatan</h2>
+          </div>
           <div class="card-body">
             <div id="kalsel_mp_cont" class="vector-map" data-toggle="vectormap" data-map="kalsel_mp"></div>
           </div>
@@ -282,7 +285,7 @@
         </div>
       </div>
     </div>
-  </footer> 
+  </footer>
 
 <% end %>
 <%= render partial: 'layouts/body' %>

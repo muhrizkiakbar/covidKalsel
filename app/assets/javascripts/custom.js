@@ -196,6 +196,7 @@ positif = {
     "POS": 0,
   },
 }
+
 map = new jvm.Map({
       map: 'kalsel_mp',
       container: $('#kalsel_mp_cont'),
@@ -324,13 +325,13 @@ map = new jvm.Map({
       )}
     });
 
-    $('#kalsel_mp_cont').find(".jvectormap-zoomin").addClass("btn btn-sm btn-info")
-    $('#kalsel_mp_cont').find(".jvectormap-zoomout").addClass("btn btn-sm btn-info mt-2")
+$('#kalsel_mp_cont').find(".jvectormap-zoomin").addClass("btn btn-sm btn-icon btn-info ml-2")
+$('#kalsel_mp_cont').find(".jvectormap-zoomout").addClass("btn btn-sm btn-info ml-2 mt-2")
 
-    map.container.click(function(e){
-        	 var latLng = map.pointToLatLng(
-                  e.pageX - map.container.offset().left,
-                  e.pageY - map.container.offset().top
-              );
-           console.log(latLng);
-        });
+// map.container.click(function(e){
+//     	 var latLng = map.pointToLatLng(
+//               e.pageX - map.container.offset().left,
+//               e.pageY - map.container.offset().top
+//           );
+//        console.log(latLng);
+//     });

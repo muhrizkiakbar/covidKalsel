@@ -44,4 +44,5 @@
 //= require slick/slick
 
 //= require argon/argon
+//= require argon/demo
 //= require_tree .
