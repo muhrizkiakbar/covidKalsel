@@ -1,35 +1,62 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Cov Recovereds</h1>
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>City</th>
-      <th>Amount</th>
-      <th>Datetime</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="card">
+      <div class="card-header">
+        <h3>CoV Recovereds</h3>
+      </div>
+      <div class="table-responsive py-3">
+        <table class="table table-flush" id="datatable-kota">
+          <thead class="thead-light">
+            <tr>
+              <th>City</th>
+              <th>Amount</th>
+              <th>Datetime</th>
+              <th>Tool</th>
+            </tr>
+          </thead>
 
-  <tbody>
-    <% @cov_recovereds.each do |cov_recovered| %>
-      <tr>
-        <td><%= cov_recovered.city %></td>
-        <td><%= cov_recovered.amount %></td>
-        <td><%= cov_recovered.dateTime %></td>
-        <td><%= link_to 'Show', cov_recovered %></td>
-        <td><%= link_to 'Edit', edit_cov_recovered_path(cov_recovered) %></td>
-        <td><%= link_to 'Destroy', cov_recovered, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <tbody>
+            <% @cov_recovereds.each do |cov_recovered| %>
+              <tr>
+                <td><%= cov_recovered.city.name %></td>
+                <td><%= cov_recovered.amount %></td>
+                <td><%= cov_recovered.dateTime %></td>
+                <td>
+                  <%= link_to cov_recovered, class: "btn btn-icon btn-sm btn-info" do %>
+                    <%= fa_icon "eye", class: "text-white"%>
+                  <% end %>
+                  <%= link_to edit_cov_recovered_path(cov_recovered), class: "btn btn-icon btn-sm btn-warning" do %>
+                    <%= fa_icon "edit", class: "text-white"%>
+                  <% end %>
+                  <%= link_to cov_recovered, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-icon btn-sm btn-danger" do %>
+                    <%= fa_icon "trash", class: "text-white"%>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 
-<br>
+    </div>
 
-<%= paginate @cov_recovereds %>
+    
+    <br>
+    <%# paginate @cities %>
 
-<%= link_to 'New Cov Recovered', new_cov_recovered_path %>
 
-<%= link_to "Log out", destroy_user_session_path, method: "delete" %>
+
+    <%= render partial: 'layouts/footer_back' %>
+  </div>
+<% end %>
+
+<% content_for :button_header do %>
+  <div class="col-lg-6 col-5 text-right">
+    <%= link_to 'New Cov Recovered', new_cov_recovered_path, class: "btn btn-sm btn-neutral" %>
+  </div>
+<% end %>
+      
+<%= render partial: 'layouts/body' %>

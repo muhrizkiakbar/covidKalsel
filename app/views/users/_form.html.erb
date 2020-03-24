@@ -1,47 +1,88 @@
 
-<%= form_with(model: user, remote: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group mb-3">
-    <%= form.text_field :email, class:"form-control",placeholder:"Email", required: true%>
-  </div>
-
-  <div class="form-group mb-3">
-    <%= form.text_field :username, class:"form-control", placeholder:"Username", required: true %>
-  </div>
 
 
-  <div class="form-group mb-3">
-    <%= form.text_field :name, class:"form-control", placeholder:"Name", required: true %>
-  </div>
 
-  <div class="form-group mb-3">
-    <%= form.select(:role_id ,Role.all.collect{|u| [u.name, u.slug]},{prompt: "Role", disabled: true}, id: '', class:"form-control select2", 'data-toggle': "select", 'title': "Simple select", 'data-live-search': "true", 'data-live-search-placeholder': "Search ...", required: true) %>
-  </div>
 
-  <div class="form-group mb-3">
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <% if notice!=nil %>
+      <div class="alert alert-success" role="alert">
+          <%= notice %>
+      </div>
     <% end %>
-    <%= form.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"Password", required: true%>
-  </div>
+    
+    <% if user.errors.any? %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <span class="alert-icon"><h3 class="text-white"><%= fa_icon "exclamation-triangle 3x", class: "text-white"%></h3></span>
+          <span class="alert-text">
+            <h3 class="text-white"><strong><%= pluralize(user.errors.count, "error") %></strong> prohibited this city from being saved:</h3>
+            <ul>
+              <% user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </span>
+          
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+    <% end %>
 
-  <div class="form-group mb-3">
-    <%= form.password_field :password_confirmation, autocomplete: "new-password", class:"form-control",placeholder:"Password Confirmation", required: true %>
-  </div>
+    <div class="card">
+      <div class="card-header">
+        <h3><%= @header_card %></h3>
+      </div>
+      <div class="card-body">
+        <%= form_with(model: user, local: true) do |form| %>
 
-  <div class="text-center">
-    <%= form.submit 'CREATE USER', class:"btn btn-primary my-3" %>
+          <div class="form-group">
+            <%= form.text_field :email, class:"form-control",placeholder:"Email", required: true%>
+          </div>
+
+          <div class="form-group">
+            <%= form.text_field :username, class:"form-control", placeholder:"Username", required: true %>
+          </div>
+
+
+          <div class="form-group">
+            <%= form.text_field :name, class:"form-control", placeholder:"Name", required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.select(:role_id ,Role.all.collect{|u| [u.name, u.slug]},{prompt: "Choose", disabled: true}, id: '', class:"form-control select2", 'data-toggle': "select", 'title': "Simple select", 'data-live-search': "true", 'data-live-search-placeholder': "Search ...", required: true) %>
+          </div>
+
+          <div class="form-group">
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %>
+            <%= form.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"Password", required: true%>
+          </div>
+
+          <div class="form-group">
+            <%= form.password_field :password_confirmation, autocomplete: "new-password", class:"form-control",placeholder:"Password Confirmation", required: true %>
+          </div>
+
+
+          <div class="actions">
+            <%= form.submit 'Submit', :class => 'btn btn-primary' %>
+            <%= link_to 'Back', users_path, :class => 'btn btn-secondary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    
+
+
+    <%= render partial: 'layouts/footer_back' %>
   </div>
 <% end %>
 
+<% content_for :button_header do %>
+  <div class="col-lg-6 col-5 text-right">
+    <%= link_to 'New Hospital', new_hospital_path, class: "btn btn-sm btn-neutral" %>
+  </div>
+<% end %>
+      
+<%= render partial: 'layouts/body' %>

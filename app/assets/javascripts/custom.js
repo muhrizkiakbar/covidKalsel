@@ -1,3 +1,4 @@
+
 var DatatableBasic = function() {
   var e = $("#datatable-kota");
   e.length && e.on("init.dt", function() {
@@ -16,6 +17,7 @@ var DatatableBasic = function() {
   })
 }();
 
+// $("#datatable-kota").DataTable();
 // $('#carouselExampleControls').on('slide.bs.carousel', function (e) {
 //     /*
 //         CC 2.0 License Iatek LLC 2018 - Attribution required

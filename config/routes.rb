@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
     resources :hospitals
     resources :cities
-    resources :permissions
+    # resources :permissions
     
     resources :info_practices
 
@@ -31,13 +31,13 @@ Rails.application.routes.draw do
   devise_for :users
 
   devise_scope :user do
-    # authenticated :user do
-    #   root 'dashboard#index'
-    # end
+    authenticated :user do
+      root 'dashboard#index'
+    end
   
-    # unauthenticated do
+    unauthenticated do
       root 'public#home'
-    # end
+    end
     # root to: "devise/sessions#new"
   end
   get 'news' => 'public#news', :as => 'public_news'    

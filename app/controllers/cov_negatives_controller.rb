@@ -33,6 +33,7 @@ class CovNegativesController < ApplicationController
   # POST /cov_negatives.json
   def create
     @cov_negative = CovNegative.new(cov_negative_params)
+
     @cov_negative.city = City.friendly.find(params[:cov_negative][:city_id])
 
     @city = City.friendly.find(params[:cov_negative][:city_id])
@@ -96,6 +97,7 @@ class CovNegativesController < ApplicationController
     def set_cov_negative
       @cov_negative = CovNegative.friendly.find(params[:id])
     end
+
 
     # Only allow a list of trusted parameters through.
     def cov_negative_params

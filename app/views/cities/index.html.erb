@@ -2,57 +2,84 @@
   <div class="container-fluid mt--6">
     <p id="notice"><%= notice %></p>
 
-    <h1>Cities</h1>
+    <div class="card">
+      <div class="card-header">
+        <h3>Cities</h3>
+      </div>
+      <div class="table-responsive py-3">
+        <table class="table table-flush" id="datatable-kota">
+          <thead class="thead-light">
+            <tr>
+              <th>Name</th>
+              <th>Positive</th>
+              <th>Negative</th>
+              <th>Recovered</th>
+              <th>Died</th>
+              <th>ODP Process</th>
+              <th>ODP Processed</th>
+              <th>Amount ODP</th>
+              <th>PDP Process</th>
+              <th>PDP Processed</th>
+              <th>Amount PDP</th>
+              <th>Hotline</th>
+              <th>Call center</th>
+              <th >Tool</th>
+              <th>Created_at</th>
+              <th>Updated_at</th>
+            </tr>
+          </thead>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Positif</th>
-          <th>Negatif</th>
-          <th>Sembuh</th>
-          <th>Meninggal</th>
-          <th>ODP Proses</th>
-          <th>ODP Selesai</th>
-          <th>Total ODP</th>
-          <th>PDP Proses</th>
-          <th>PDP Selesai</th>
-          <th>Total PDP</th>
-          <th>Call center</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+          <tbody>
+            <% @cities.each do |city| %>
+              <tr>
+                <td><%= city.name %></td>
+                <td><%= city.cov_positive_count %></td>
+                <td><%= city.cov_negative_count %></td>
+                <td><%= city.cov_recovered_count %></td>
+                <td><%= city.cov_died_count %></td>
+                <td><%= city.cov_odp_count %></td>
+                <td><%= city.cov_odp_processed_count %></td>
+                <td><%= city.cov_odp_processed_count %></td>
+                <td><%= city.cov_pdp_count %></td>
+                <td><%= city.cov_pdp_processed_count %></td>
+                <td><%= city.cov_pdp_processed_count %></td>
+                <td><%= city.hotline %></td>
+                <td><%= city.call_center %>
+                <td>
+                  <%= link_to city, class: "btn btn-icon btn-sm btn-info" do %>
+                    <%= fa_icon "eye", class: "text-white"%>
+                  <% end %>
+                  <%= link_to edit_city_path(city), class: "btn btn-icon btn-sm btn-warning" do %>
+                    <%= fa_icon "edit", class: "text-white"%>
+                  <% end %>
+                  <%= link_to city, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-icon btn-sm btn-danger" do %>
+                    <%= fa_icon "trash", class: "text-white"%>
+                  <% end %>
+                </td>
+                <td><%= city.created_at %></td>
+                <td><%= city.updated_at %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 
-      <tbody>
-        <% @cities.each do |city| %>
-          <tr>
-            <td><%= city.name %></td>
-            <td><%= city.cov_positive_count %></td>
-            <td><%= city.cov_negative_count %></td>
-            <td><%= city.cov_recovered_count %></td>
-            <td><%= city.cov_died_count %></td>
-            <td><%= city.cov_odp_count %></td>
-            <td><%= city.cov_odp_processed_count %></td>
-            <td><%= city.cov_odp_processed_count %></td>
-            <td><%= city.cov_pdp_count %></td>
-            <td><%= city.cov_pdp_processed_count %></td>
-            <td><%= city.cov_pdp_processed_count %></td>
-            <td><%= city.call_center %></td>
-            <td><%= link_to 'Show', city %></td>
-            <td><%= link_to 'Edit', edit_city_path(city) %></td>
-            <td><%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    </div>
 
+    
     <br>
-    <%= paginate @cities %>
+    <%# paginate @cities %>
 
-    <%= link_to 'New City', new_city_path %>
 
 
     <%= render partial: 'layouts/footer_back' %>
   </div>
 <% end %>
+
+<% content_for :button_header do %>
+  <div class="col-lg-6 col-5 text-right">
+    <%= link_to 'New City', new_city_path, class: "btn btn-sm btn-neutral" %>
+  </div>
+<% end %>
+      
 <%= render partial: 'layouts/body' %>
