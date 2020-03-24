@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+  <%= form.label :image_content, for: "image_content", class: "form-control-label" %>
+
+  <%= form.file_field :image_content, class: "custom-file-input", "data-multiple-caption": "{count} files selected", autocomplete: "off", lang: "en" %>
+
+
+
   <div class="actions">
     <%= form.submit %>
   </div>

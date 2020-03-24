@@ -458,6 +458,47 @@ permissions =[
         page: false, #ini akan bisa di akses di menu atau tidak
         path: 'information_path' #path di rails route
     },
+    # =========================================================================
+    {
+        name: 'Info Practice', #Penamaan gasan permission nya
+        resource: 'info_practice', #nama file di model harus sama
+        action: 'index', #nama function di controller
+        description: 'Management Info Practice', #gasan penjelasan aja
+        page: true, #ini akan bisa di akses di menu atau tidak
+        path: 'info_practices_path' #path di rails route
+    },
+    {
+        name: 'New Info Practice', #Penamaan gasan permission nya
+        resource: 'info_practice', #nama file di model harus sama
+        action: 'new', #nama function di controller
+        description: 'Add Info Practice', #gasan penjelasan aja
+        page: false, #ini akan bisa di akses di menu atau tidak
+        path: 'new_info_practice_path' #path di rails route
+    },
+    {
+        name: 'Update Info Practice', #Penamaan gasan permission nya
+        resource: 'info_practice', #nama file di model harus sama
+        action: 'edit', #nama function di controller
+        description: 'Change Info Practice', #gasan penjelasan aja
+        page: false, #ini akan bisa di akses di menu atau tidak
+        path: 'edit_info_practice_path' #path di rails route
+    },
+    {
+        name: 'Show Info Practice', #Penamaan gasan permission nya
+        resource: 'info_practice', #nama file di model harus sama
+        action: 'show', #nama function di controller
+        description: 'Show Info Practice', #gasan penjelasan aja
+        page: false, #ini akan bisa di akses di menu atau tidak
+        path: 'info_practice_path' #path di rails route
+    },
+    {
+        name: 'Remove Info Practice', #Penamaan gasan permission nya
+        resource: 'info_practice', #nama file di model harus sama
+        action: 'destroy', #nama function di controller
+        description: 'Remove Info Practice', #gasan penjelasan aja
+        page: false, #ini akan bisa di akses di menu atau tidak
+        path: 'info_practice_path' #path di rails route
+    },
     # ==================================================================
     {
         name: 'Role', #Penamaan gasan permission nya
