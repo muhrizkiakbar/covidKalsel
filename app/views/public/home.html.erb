@@ -417,24 +417,28 @@
             &copy; 2020 <a href="http://diskominfo.kalselprov.go.id" class="text-gray font-weight-bold ml-1" target="_blank">Diskominfo Prov. Kalsel</a>
           </div>
         </div>
-        <!-- <div class="col-xl-6">
+        <div class="col-xl-6">
           <ul class="nav nav-footer justify-content-center justify-content-xl-end">
             <li class="nav-item">
-              <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+              <%= link_to 'Home', root_path, class: 'nav-link', target: '_blank' %>
             </li>
             <li class="nav-item">
-              <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
+              <%= link_to 'News', public_news_path, class: 'nav-link', target: '_blank' %>
             </li>
             <li class="nav-item">
-              <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+              <%= link_to 'Contact', public_contact_path, class: 'nav-link', target: '_blank' %>
             </li>
             <li class="nav-item">
-              <a href="https://www.creative-tim.com/license" class="nav-link" target="_blank">License</a>
+              <%= link_to 'FAQ', public_faq_path, class: 'nav-link', target: '_blank' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Login', new_user_session_path, class: 'nav-link', target: '_blank' %>
             </li>
           </ul>
-        </div> -->
+        </div>
       </div>
     </div>
-  </footer>
+  </footer> 
+
 <% end %>
 <%= render partial: 'layouts/body' %>

@@ -28,7 +28,16 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root 'public#home'
+  devise_scope :user do
+    authenticated :user do
+      root 'dashboard/cities#index'
+    end
+  
+    unauthenticated do
+      root 'public#home'
+    end
+    # root to: "devise/sessions#new"
+  end
   get 'new' => 'public#news', :as => 'public_news'    
   get 'faq' => 'public#faq', :as => 'public_faq'    
   get 'contact' => 'public#new', :as => 'public_contact'    
