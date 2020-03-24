@@ -17,6 +17,14 @@
  *= require select2/dist/css/select2.min
  *= require sweetalert2/dist/sweetalert2.min
  *= require animate.css/animate.min
+
+ /* Datatables
+ *= require datatables.net-bs4/css/dataTables.bootstrap4.min
+ *= require datatables.net-buttons-bs4/css/buttons.bootstrap4.min
+ *= require datatables.net-select-bs4/css/select.bootstrap4.min
+
+ /* JVectorMap
+ /*= require jvectormap-next/jquery-jvectormap-2.0.5.css
  *= require argon/argon
  *Argon Theme
 

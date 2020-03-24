@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     protect_from_forgery
 
     attr_writer :login
-    
+
 
     def login
         @login || self.username || self.email
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
     # rescue_from Pundit::NotAuthorizedError do |exception|
     #     render_error_page(status: 403, render: 'public/403')
-    # end    
+    # end
 
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 

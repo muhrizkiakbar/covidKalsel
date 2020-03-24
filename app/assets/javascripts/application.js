@@ -26,5 +26,19 @@
 //= require sweetalert2/dist/sweetalert2.min
 //= require bootstrap-notify/bootstrap-notify.min
 
+// Datatables
+//= require datatables.net/js/jquery.dataTables.min
+//= require datatables.net-bs4/js/dataTables.bootstrap4.min
+//= require datatables.net-buttons/js/dataTables.buttons.min
+//= require datatables.net-buttons-bs4/js/buttons.bootstrap4.min
+//= require datatables.net-buttons/js/buttons.html5.min
+//= require datatables.net-buttons/js/buttons.flash.min
+//= require datatables.net-buttons/js/buttons.print.min
+//= require datatables.net-select/js/dataTables.select.min
+
+//= JVectorMap
+//= require jvectormap-next/jquery-jvectormap-2.0.1.min
+//= require jvectormap-next/kalsel_map
+
 //= require argon/argon
 //= require_tree .

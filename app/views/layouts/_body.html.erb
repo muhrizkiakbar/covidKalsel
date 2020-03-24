@@ -1,0 +1,10 @@
+<body class="bg-secondary">
+  <%= render partial: 'layouts/navbar_public'%>
+  <div class="main-content">
+    <%= render partial: 'layouts/header_public'%>
+    <%= yield :isi %>
+  </div>
+
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</body>
