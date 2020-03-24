@@ -1,0 +1,5 @@
+class AddHotlineToHospital < ActiveRecord::Migration[5.2]
+  def change
+    add_column :hospitals, :hotline, :string
+  end
+end

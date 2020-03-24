@@ -1,19 +1,52 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>City:</strong>
-  <%= @cov_negative.city %>
-</p>
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @cov_negative.amount %>
-</p>
+    <div class="card">
+      <div class="card-header">
+        <h3>Show CoV Negative</h3>
+      </div>
+      <div class="card-body">
+        <p>
+          <strong>City :</strong>
+          <%= @cov_negative.city.name %>
+        </p>
 
-<p>
-  <strong>Datetime:</strong>
-  <%= @cov_negative.dateTime %>
-</p>
+        <p>
+          <strong>Amount :</strong>
+          <%= @cov_negative.amount %>
+        </p>
 
-<%= link_to 'Edit', edit_cov_negative_path(@cov_negative) %> |
-<%= link_to 'Back', cov_negatives_path %>
+        <p>
+          <strong>Datetime :</strong>
+          <%= @cov_negative.dateTime %>
+        </p>
+      </div>
+      <div class="card-footer">
+
+        <%= link_to 'Edit', edit_cov_negative_path(@cov_negative), class: "btn btn-primary" %>
+
+        <%= link_to 'Back', cov_negatives_path, class: "btn btn-secondary" %>
+
+      </div>
+
+    </div>
+
+    
+    <br>
+    <%# paginate @cities %>
+
+
+
+    <%= render partial: 'layouts/footer_back' %>
+  </div>
+<% end %>
+
+<% content_for :button_header do %>
+  <div class="col-lg-6 col-5 text-right">
+    <%= link_to 'New Cov Negative', new_cov_negative_path, class: "btn btn-sm btn-neutral" %>
+  </div>
+<% end %>
+      
+<%= render partial: 'layouts/body' %>

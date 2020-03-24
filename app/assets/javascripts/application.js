@@ -36,9 +36,13 @@
 //= require datatables.net-buttons/js/buttons.print.min
 //= require datatables.net-select/js/dataTables.select.min
 
-//= JVectorMap
+// JVectorMap
 //= require jvectormap-next/jquery-jvectormap-2.0.1.min
 //= require jvectormap-next/kalsel_map
 
+// Slick
+//= require slick/slick
+
 //= require argon/argon
+//= require argon/demo
 //= require_tree .

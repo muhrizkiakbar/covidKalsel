@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Info Practices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Info Practice</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @info_practices.each do |info_practice| %>
+      <tr>
+        <td><%= info_practice.image_conten.url(:thumb) %></td>
+        <td><%= link_to 'Show', info_practice %></td>
+        <td><%= link_to 'Edit', edit_info_practice_path(info_practice) %></td>
+        <td><%= link_to 'Destroy', info_practice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Info Practice', new_info_practice_path %>

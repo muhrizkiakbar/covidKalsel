@@ -35,8 +35,9 @@ class User < ApplicationRecord
 
   belongs_to :role
   has_many :informations
-
-  validates :username, presence: :true, uniqueness: { case_sensitive: false }
+  
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
+  validates :username,:name, presence: :true, uniqueness: { case_sensitive: false }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validate :validate_username
 

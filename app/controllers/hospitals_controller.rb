@@ -33,6 +33,7 @@ class HospitalsController < ApplicationController
   def create
     @hospital = Hospital.new(hospital_params)
 
+    @hospital.city = City.friendly.find(params[:hospital][:city_id])
     respond_to do |format|
       if @hospital.save
         format.html { redirect_to @hospital, notice: 'Hospital was successfully created.' }
@@ -47,6 +48,7 @@ class HospitalsController < ApplicationController
   # PATCH/PUT /hospitals/1
   # PATCH/PUT /hospitals/1.json
   def update
+    @hospital.city = City.friendly.find(params[:hospital][:city_id])
     respond_to do |format|
       if @hospital.update(hospital_params)
         format.html { redirect_to @hospital, notice: 'Hospital was successfully updated.' }
@@ -78,6 +80,6 @@ class HospitalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hospital_params
-      params.require(:hospital).permit(:city_id, :name_hospital, :address, :phone_number)
+      params.require(:hospital).permit(:name_hospital, :address, :hotline, :phone_number)
     end
 end

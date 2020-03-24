@@ -1,19 +1,51 @@
-<p id="notice"><%= notice %></p>
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>City:</strong>
-  <%= @cov_odp.city %>
-</p>
+    <div class="card">
+      <div class="card-header">
+        <h3>Show CoV Odp</h3>
+      </div>
+      <div class="card-body">
+        <p>
+          <strong>City :</strong>
+          <%= @cov_odp.city.name %>
+        </p>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @cov_odp.amount %>
-</p>
+        <p>
+          <strong>Amount :</strong>
+          <%= @cov_odp.amount %>
+        </p>
 
-<p>
-  <strong>Datetime:</strong>
-  <%= @cov_odp.dateTime %>
-</p>
+        <p>
+          <strong>Datetime :</strong>
+          <%= @cov_odp.dateTime %>
+        </p>
+      </div>
+      <div class="card-footer">
 
-<%= link_to 'Edit', edit_cov_odp_path(@cov_odp) %> |
-<%= link_to 'Back', cov_odps_path %>
+        <%= link_to 'Edit', edit_cov_odp_path(@cov_odp), class: "btn btn-primary" %>
+
+        <%= link_to 'Back', cov_odps_path, class: "btn btn-secondary" %>
+
+      </div>
+
+    </div>
+
+    
+    <br>
+    <%# paginate @cities %>
+
+
+
+    <%= render partial: 'layouts/footer_back' %>
+  </div>
+<% end %>
+
+<% content_for :button_header do %>
+  <div class="col-lg-6 col-5 text-right">
+    <%= link_to 'New Cov Odp', new_cov_odp_path, class: "btn btn-sm btn-neutral" %>
+  </div>
+<% end %>
+      
+<%= render partial: 'layouts/body' %>

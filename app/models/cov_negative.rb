@@ -21,4 +21,5 @@ class CovNegative < ApplicationRecord
 
   validates :amount,:dateTime, presence: true
   validates :amount, numericality: { only_integer: true }
+ 
 end

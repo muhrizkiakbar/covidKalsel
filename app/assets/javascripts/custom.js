@@ -1,3 +1,4 @@
+
 var DatatableBasic = function() {
   var e = $("#datatable-kota");
   e.length && e.on("init.dt", function() {
@@ -16,6 +17,7 @@ var DatatableBasic = function() {
   })
 }();
 
+// $("#datatable-kota").DataTable();
 // $('#carouselExampleControls').on('slide.bs.carousel', function (e) {
 //     /*
 //         CC 2.0 License Iatek LLC 2018 - Attribution required
@@ -38,6 +40,97 @@ var DatatableBasic = function() {
 //         }
 //     }
 // });
+
+$('.slider').each(function() {
+  var $this = $(this);
+  var $group = $this.find('.slide_group');
+  var $slides = $this.find('.slide');
+  var bulletArray = [];
+  var currentIndex = 0;
+  var timeout;
+
+  function move(newIndex) {
+    var animateLeft, slideLeft;
+
+    advance();
+
+    if ($group.is(':animated') || currentIndex === newIndex) {
+      return;
+    }
+
+    bulletArray[currentIndex].removeClass('active');
+    bulletArray[newIndex].addClass('active');
+
+    if (newIndex > currentIndex) {
+      slideLeft = '100%';
+      animateLeft = '-100%';
+    } else {
+      slideLeft = '-100%';
+      animateLeft = '100%';
+    }
+
+    $slides.eq(newIndex).css({
+      display: 'block',
+      left: slideLeft
+    });
+    $group.animate({
+      left: animateLeft
+    }, function() {
+      $slides.eq(currentIndex).css({
+        display: 'none'
+      });
+      $slides.eq(newIndex).css({
+        left: 0
+      });
+      $group.css({
+        left: 0
+      });
+      currentIndex = newIndex;
+    });
+  }
+
+  function advance() {
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+      if (currentIndex < ($slides.length - 1)) {
+        move(currentIndex + 1);
+      } else {
+        move(0);
+      }
+    }, 4000);
+  }
+
+  $('.next_btn').on('click', function() {
+    if (currentIndex < ($slides.length - 1)) {
+      move(currentIndex + 1);
+    } else {
+      move(0);
+    }
+  });
+
+  $('.previous_btn').on('click', function() {
+    if (currentIndex !== 0) {
+      move(currentIndex - 1);
+    } else {
+      move(3);
+    }
+  });
+
+  $.each($slides, function(index) {
+    var $button = $('<a class="slide_btn">&bull;</a>');
+
+    if (index === currentIndex) {
+      $button.addClass('active');
+    }
+    $button.on('click', function() {
+      move(index);
+    }).appendTo('.slide_buttons');
+    bulletArray.push($button);
+  });
+
+  advance();
+});
+
 positif = {
   "HST": {
     "ODP": 58,
@@ -105,6 +198,7 @@ positif = {
     "POS": 0,
   },
 }
+
 map = new jvm.Map({
       map: 'kalsel_mp',
       container: $('#kalsel_mp_cont'),
@@ -233,13 +327,13 @@ map = new jvm.Map({
       )}
     });
 
-    $('#kalsel_mp_cont').find(".jvectormap-zoomin").addClass("btn btn-sm btn-info")
-    $('#kalsel_mp_cont').find(".jvectormap-zoomout").addClass("btn btn-sm btn-info mt-2")
+$('#kalsel_mp_cont').find(".jvectormap-zoomin").addClass("btn btn-sm btn-icon btn-info ml-2")
+$('#kalsel_mp_cont').find(".jvectormap-zoomout").addClass("btn btn-sm btn-info ml-2 mt-2")
 
-    map.container.click(function(e){
-        	 var latLng = map.pointToLatLng(
-                  e.pageX - map.container.offset().left,
-                  e.pageY - map.container.offset().top
-              );
-           console.log(latLng);
-        });
+// map.container.click(function(e){
+//     	 var latLng = map.pointToLatLng(
+//               e.pageX - map.container.offset().left,
+//               e.pageY - map.container.offset().top
+//           );
+//        console.log(latLng);
+//     });

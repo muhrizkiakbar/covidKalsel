@@ -1,33 +1,62 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Cov Dieds</h1>
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>City</th>
-      <th>Amount</th>
-      <th>Datetime</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="card">
+      <div class="card-header">
+        <h3>CoV Died</h3>
+      </div>
+      <div class="table-responsive py-3">
+        <table class="table table-flush" id="datatable-kota">
+          <thead class="thead-light">
+            <tr>
+              <th>City</th>
+              <th>Amount</th>
+              <th>Datetime</th>
+              <th>Tool</th>
+            </tr>
+          </thead>
 
-  <tbody>
-    <% @cov_dieds.each do |cov_died| %>
-      <tr>
-        <td><%= cov_died.city %></td>
-        <td><%= cov_died.amount %></td>
-        <td><%= cov_died.dateTime %></td>
-        <td><%= link_to 'Show', cov_died %></td>
-        <td><%= link_to 'Edit', edit_cov_died_path(cov_died) %></td>
-        <td><%= link_to 'Destroy', cov_died, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <tbody>
+            <% @cov_dieds.each do |cov_died| %>
+              <tr>
+                <td><%= cov_died.city.name %></td>
+                <td><%= cov_died.amount %></td>
+                <td><%= cov_died.dateTime %></td>
+                <td>
+                  <%= link_to cov_died, class: "btn btn-icon btn-sm btn-info" do %>
+                    <%= fa_icon "eye", class: "text-white"%>
+                  <% end %>
+                  <%= link_to edit_cov_died_path(cov_died), class: "btn btn-icon btn-sm btn-warning" do %>
+                    <%= fa_icon "edit", class: "text-white"%>
+                  <% end %>
+                  <%= link_to cov_died, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-icon btn-sm btn-danger" do %>
+                    <%= fa_icon "trash", class: "text-white"%>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 
-<br>
+    </div>
 
-<%= paginate @cov_dieds %>
+    
+    <br>
+    <%# paginate @cities %>
 
-<%= link_to 'New Cov Died', new_cov_died_path %>
+
+
+    <%= render partial: 'layouts/footer_back' %>
+  </div>
+<% end %>
+
+<% content_for :button_header do %>
+  <div class="col-lg-6 col-5 text-right">
+    <%= link_to 'New Cov Died', new_cov_died_path, class: "btn btn-sm btn-neutral" %>
+  </div>
+<% end %>
+      
+<%= render partial: 'layouts/body' %>

@@ -1,22 +1,61 @@
-<%= form_with(model: role, local: true) do |form| %>
-  <% if role.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(role.errors.count, "error") %> prohibited this role from being saved:</h2>
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <% if notice!=nil %>
+      <div class="alert alert-success" role="alert">
+          <%= notice %>
+      </div>
+    <% end %>
+    
+    <% if role.errors.any? %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <span class="alert-icon"><h3 class="text-white"><%= fa_icon "exclamation-triangle 3x", class: "text-white"%></h3></span>
+          <span class="alert-text">
+            <h3 class="text-white"><strong><%= pluralize(role.errors.count, "error") %></strong> prohibited this city from being saved:</h3>
+            <ul>
+              <% role.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </span>
+          
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+    <% end %>
 
-      <ul>
-      <% role.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="card">
+      <div class="card-header">
+        <h3><%= @header_card %></h3>
+      </div>
+      <div class="card-body">
+        <%= form_with(model: role, local: true) do |form| %>
+
+
+          <div class="form-group">
+            <label class="form-control-label">Name Role</label>
+            <%= form.text_field :name , class: "form-control", placeholder: "Name Role" %>
+          </div>
+
+
+          <div class="actions">
+            <%= form.submit 'Submit', :class => 'btn btn-primary' %>
+            <%= link_to 'Back', roles_path, :class => 'btn btn-secondary' %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+    
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <%= render partial: 'layouts/footer_back' %>
   </div>
 <% end %>
+
+<% content_for :button_header do %>
+  <div class="col-lg-6 col-5 text-right">
+    <%= link_to 'New Role', new_role_path, class: "btn btn-sm btn-neutral" %>
+  </div>
+<% end %>
+      
+<%= render partial: 'layouts/body' %>

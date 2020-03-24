@@ -18,6 +18,6 @@ class CovDied < ApplicationRecord
 
   acts_as_paranoid
 
-  validates :amount,:dateTime, presence: true
+  validates :amount,:dateTime, :city_id, presence: true
   validates :amount, numericality: { only_integer: true }
 end

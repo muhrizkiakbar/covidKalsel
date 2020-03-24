@@ -21,5 +21,5 @@ class Hospital < ApplicationRecord
   
   acts_as_paranoid
 
-  validates :name_hospital,:address, :phone_number, presence: true
+  validates :name_hospital,:address, presence: true
 end
