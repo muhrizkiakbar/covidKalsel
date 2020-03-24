@@ -1,6 +1,9 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.12.1"
 
+
+set :passenger_restart_with_touch, true
+
 set :application, "covidKalsel"
 set :repo_url, "git@github.com:muhrizkiakbar/covidKalsel.git"
 
