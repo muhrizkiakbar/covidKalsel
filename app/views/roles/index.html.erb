@@ -1,32 +1,61 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Roles</h1>
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="card">
+      <div class="card-header">
+        <h3>Roles</h3>
+      </div>
+      <div class="table-responsive py-3">
+        <table class="table table-flush" id="datatable-kota">
+          <thead class="thead-light">
+            <tr>
+              <th>Role</th>
+              <th colspan="4"></th>
+            </tr>
+          </thead>
 
-  <tbody>
-    <% @roles.each do |role| %>
-      <tr>
-        <td><%= role.name %></td>
-        <td><%= link_to 'Add Access', role_role_permissions_path(role) %></td>
-        <td><%= link_to 'Edit', edit_role_path(role) %></td>
-        <td><%= link_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <tbody>
+            <% @roles.each do |role| %>
+              <tr>
+                <td><%= role.name %></td>
+                <td>
+                  <%= link_to role_role_permissions_path(role), class: "btn btn-icon btn-sm btn-success" do %>
+                    <%= fa_icon "universal-access", class: "text-white"%>
+                  <% end %>
+                  <%= link_to role, class: "btn btn-icon btn-sm btn-info" do %>
+                    <%= fa_icon "eye", class: "text-white"%>
+                  <% end %>
+                  <%= link_to edit_role_path(role), class: "btn btn-icon btn-sm btn-warning" do %>
+                    <%= fa_icon "edit", class: "text-white"%>
+                  <% end %>
+                  <%= link_to role, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-icon btn-sm btn-danger" do %>
+                    <%= fa_icon "trash", class: "text-white"%>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 
-<br>
+    </div>
 
-<%= paginate @roles %>
+    
+    <br>
+    <%# paginate @cities %>
 
-<%= link_to 'New Role', new_role_path %>
 
 
-<%= link_to "Log out", destroy_user_session_path, method: "delete" %>
+    <%= render partial: 'layouts/footer_back' %>
+  </div>
+<% end %>
+
+<% content_for :button_header do %>
+  <div class="col-lg-6 col-5 text-right">
+    <%= link_to 'New Role', new_role_path, class: "btn btn-sm btn-neutral" %>
+  </div>
+<% end %>
+      
+<%= render partial: 'layouts/body' %>

@@ -31,6 +31,14 @@ class CitiesController < ApplicationController
   # POST /cities.json
   def create
     @city = City.new(city_params)
+    @city.cov_positive_count = 0
+    @city.cov_negative_count = 0
+    @city.cov_recovered_count = 0
+    @city.cov_died_count = 0
+    @city.cov_odp_count = 0
+    @city.cov_pdp_count = 0
+    @city.cov_odp_processed_count = 0
+    @city.cov_pdp_processed_count = 0
 
     respond_to do |format|
       if @city.save
@@ -78,6 +86,6 @@ class CitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def city_params
-      params.require(:city).permit(:name, :call_center)
+      params.require(:city).permit(:name, :call_center, :hotline)
     end
 end

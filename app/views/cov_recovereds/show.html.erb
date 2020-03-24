@@ -1,19 +1,52 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>City:</strong>
-  <%= @cov_recovered.city %>
-</p>
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @cov_recovered.amount %>
-</p>
+    <div class="card">
+      <div class="card-header">
+        <h3>Show CoV Recovered</h3>
+      </div>
+      <div class="card-body">
+        <p>
+          <strong>City :</strong>
+          <%= @cov_recovered.city.name %>
+        </p>
 
-<p>
-  <strong>Datetime:</strong>
-  <%= @cov_recovered.dateTime %>
-</p>
+        <p>
+          <strong>Amount :</strong>
+          <%= @cov_recovered.amount %>
+        </p>
 
-<%= link_to 'Edit', edit_cov_recovered_path(@cov_recovered) %> |
-<%= link_to 'Back', cov_recovereds_path %>
+        <p>
+          <strong>Datetime :</strong>
+          <%= @cov_recovered.dateTime %>
+        </p>
+      </div>
+      <div class="card-footer">
+
+        <%= link_to 'Edit', edit_cov_recovered_path(@cov_recovered), class: "btn btn-primary" %>
+
+        <%= link_to 'Back', cov_recovereds_path, class: "btn btn-secondary" %>
+
+      </div>
+
+    </div>
+
+    
+    <br>
+    <%# paginate @cities %>
+
+
+
+    <%= render partial: 'layouts/footer_back' %>
+  </div>
+<% end %>
+
+<% content_for :button_header do %>
+  <div class="col-lg-6 col-5 text-right">
+    <%= link_to 'New Cov Recovered', new_cov_recovered_path, class: "btn btn-sm btn-neutral" %>
+  </div>
+<% end %>
+      
+<%= render partial: 'layouts/body' %>

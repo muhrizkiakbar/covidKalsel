@@ -16,8 +16,10 @@ Rails.application.routes.draw do
 
     resources :hospitals
     resources :cities
-    resources :permissions
+    # resources :permissions
     
+    resources :info_practices
+
     resources :roles do
       resources :role_permissions
     end
@@ -29,16 +31,17 @@ Rails.application.routes.draw do
   devise_for :users
 
   devise_scope :user do
-    # authenticated :user do
-    #   root 'dashboard#index'
-    # end
+    authenticated :user do
+      root 'dashboard#index'
+    end
   
-    # unauthenticated do
+    unauthenticated do
       root 'public#home'
-    # end
+    end
     # root to: "devise/sessions#new"
   end
-  get 'new' => 'public#news', :as => 'public_news'    
+  get 'news' => 'public#news', :as => 'public_news'    
+  get 'new/:new_id' => 'public#shownew', :as => 'public_new'
   get 'faq' => 'public#faq', :as => 'public_faq'    
   get 'contact' => 'public#new', :as => 'public_contact'    
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

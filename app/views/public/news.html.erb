@@ -1,0 +1,7 @@
+
+<% @informations.each do |information| %>
+    <%= link_to information.tittle, public_new_path(information) %>
+    <%= image_tag information.image_content.url %>
+    <%= information.content%>
+
+<% end %>

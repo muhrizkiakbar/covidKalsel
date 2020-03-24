@@ -1,27 +1,70 @@
-<%= form_with(model: city, local: true) do |form| %>
-  <% if city.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(city.errors.count, "error") %> prohibited this city from being saved:</h2>
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <% if notice!=nil %>
+      <div class="alert alert-success" role="alert">
+          <%= notice %>
+      </div>
+    <% end %>
+    
+    <% if city.errors.any? %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <span class="alert-icon"><h3 class="text-white"><%= fa_icon "exclamation-triangle 3x", class: "text-white"%></h3></span>
+          <span class="alert-text">
+            <h3 class="text-white"><strong><%= pluralize(city.errors.count, "error") %></strong> prohibited this city from being saved:</h3>
+            <ul>
+              <% city.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </span>
+          
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+    <% end %>
 
-      <ul>
-      <% city.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="card">
+      <div class="card-header">
+        <h3><%= @header_card %></h3>
+      </div>
+      <div class="card-body">
+        <%= form_with(model: city, local: true) do |form| %>
+
+          <div class="form-group">
+            <label class="form-control-label">Name</label>
+            <%= form.text_field :name,  class: "form-control", placeholder: "Name City" %>
+          </div>
+
+
+          <div class="form-group">
+            <label class="form-control-label">Hotline</label>
+            <%= form.text_field :hotline, class: "form-control", placeholder: "Hotline"  %>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label">Call Center</label>
+            <%= form.text_field :call_center, class: "form-control", placeholder: "Call Center" %>
+          </div>
+
+          <div class="actions">
+            <%= form.submit 'Submit', :class => 'btn btn-primary' %>
+            <%= link_to 'Back', cities_path, :class => 'btn btn-secondary' %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+    
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :call_center %>
-    <%= form.text_field :call_center %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <%= render partial: 'layouts/footer_back' %>
   </div>
 <% end %>
+
+<% content_for :button_header do %>
+  <div class="col-lg-6 col-5 text-right">
+    <%= link_to 'New City', new_city_path, class: "btn btn-sm btn-neutral" %>
+  </div>
+<% end %>
+      
+<%= render partial: 'layouts/body' %>

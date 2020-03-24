@@ -17,3 +17,56 @@
 
 <%= link_to 'Edit', edit_cov_pdp_path(@cov_pdp) %> |
 <%= link_to 'Back', cov_pdps_path %>
+
+
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <p id="notice"><%= notice %></p>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Show CoV Pdp</h3>
+      </div>
+      <div class="card-body">
+        <p>
+          <strong>City :</strong>
+          <%= @cov_pdp.city.name %>
+        </p>
+
+        <p>
+          <strong>Amount :</strong>
+          <%= @cov_pdp.amount %>
+        </p>
+
+        <p>
+          <strong>Datetime :</strong>
+          <%= @cov_pdp.dateTime %>
+        </p>
+      </div>
+      <div class="card-footer">
+
+        <%= link_to 'Edit', edit_cov_pdp_path(@cov_pdp), class: "btn btn-primary" %>
+
+        <%= link_to 'Back', cov_pdps_path, class: "btn btn-secondary" %>
+
+      </div>
+
+    </div>
+
+    
+    <br>
+    <%# paginate @cities %>
+
+
+
+    <%= render partial: 'layouts/footer_back' %>
+  </div>
+<% end %>
+
+<% content_for :button_header do %>
+  <div class="col-lg-6 col-5 text-right">
+    <%= link_to 'New Cov Pdp Processed', new_cov_pdp_path, class: "btn btn-sm btn-neutral" %>
+  </div>
+<% end %>
+      
+<%= render partial: 'layouts/body' %>
