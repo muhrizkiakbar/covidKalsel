@@ -1,10 +1,18 @@
 <body class="bg-secondary">
-  <%= render partial: 'layouts/navbar_public'%>
-  <div class="main-content">
-    <%= render partial: 'layouts/header_public'%>
-    <%= yield :isi %>
-  </div>
-
-
+  <%= controller_name %>
+  <% if controller_name == 'public' %>
+    <%= render partial: 'layouts/navbar_public'%>
+    <div class="main-content">
+      <%= render partial: 'layouts/header_public'%>
+      <%= yield :isi %>
+    </div>
+  <% else %>
+    <%= render partial: 'layouts/navbar_back'%>
+    <div class="main-content" id="panel">
+      <%= render partial: 'layouts/topnav_back'%>
+      <%= render partial: 'layouts/header_back'%>
+      <%= yield :isi %>
+    </div>
+  <% end %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </body>
