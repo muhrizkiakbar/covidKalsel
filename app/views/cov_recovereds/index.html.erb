@@ -31,3 +31,5 @@
 <%= paginate @cov_recovereds %>
 
 <%= link_to 'New Cov Recovered', new_cov_recovered_path %>
+
+<%= link_to "Log out", destroy_user_session_path, method: "delete" %>

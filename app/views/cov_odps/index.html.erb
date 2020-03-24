@@ -31,3 +31,5 @@
 <%= paginate @cov_odps %>
 
 <%= link_to 'New Cov Odp', new_cov_odp_path %>
+
+<%= link_to "Log out", destroy_user_session_path, method: "delete" %>
