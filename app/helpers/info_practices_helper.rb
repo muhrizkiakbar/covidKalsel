@@ -1,0 +1,2 @@
+module InfoPracticesHelper
+end

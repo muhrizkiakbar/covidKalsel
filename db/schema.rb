@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_162921) do
+ActiveRecord::Schema.define(version: 2020_03_24_152237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_03_23_162921) do
     t.datetime "deleted_at"
     t.integer "cov_odp_processed_count"
     t.integer "cov_pdp_processed_count"
+    t.string "hotline"
     t.index ["deleted_at"], name: "index_cities_on_deleted_at"
     t.index ["slug"], name: "index_cities_on_slug", unique: true
   end
@@ -161,6 +162,19 @@ ActiveRecord::Schema.define(version: 2020_03_23_162921) do
     t.index ["city_id"], name: "index_hospitals_on_city_id"
     t.index ["deleted_at"], name: "index_hospitals_on_deleted_at"
     t.index ["slug"], name: "index_hospitals_on_slug", unique: true
+  end
+
+  create_table "info_practices", force: :cascade do |t|
+    t.string "image_content_file_name"
+    t.string "image_content_content_type"
+    t.bigint "image_content_file_size"
+    t.datetime "image_content_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_info_practices_on_deleted_at"
+    t.index ["slug"], name: "index_info_practices_on_slug", unique: true
   end
 
   create_table "information", force: :cascade do |t|
