@@ -40,8 +40,9 @@
 //= require jvectormap-next/jquery-jvectormap-2.0.1.min
 //= require jvectormap-next/kalsel_map
 
-// Slick
-//= require slick/slick
+// Flickity
+//= require flickity/flickity.pkgd
+//= require flickity/fullscreen
 
 //= require argon/argon
 //= require argon/demo

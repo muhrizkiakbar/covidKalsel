@@ -16,6 +16,8 @@ var DatatableBasic = function() {
   })
 }();
 
+
+
 // $('#carouselExampleControls').on('slide.bs.carousel', function (e) {
 //     /*
 //         CC 2.0 License Iatek LLC 2018 - Attribution required
@@ -39,105 +41,26 @@ var DatatableBasic = function() {
 //     }
 // });
 
-$('.slider').each(function() {
-  var $this = $(this);
-  var $group = $this.find('.slide_group');
-  var $slides = $this.find('.slide');
-  var bulletArray = [];
-  var currentIndex = 0;
-  var timeout;
-
-  function move(newIndex) {
-    var animateLeft, slideLeft;
-
-    advance();
-
-    if ($group.is(':animated') || currentIndex === newIndex) {
-      return;
-    }
-
-    bulletArray[currentIndex].removeClass('active');
-    bulletArray[newIndex].addClass('active');
-
-    if (newIndex > currentIndex) {
-      slideLeft = '100%';
-      animateLeft = '-100%';
-    } else {
-      slideLeft = '-100%';
-      animateLeft = '100%';
-    }
-
-    $slides.eq(newIndex).css({
-      display: 'block',
-      left: slideLeft
-    });
-    $group.animate({
-      left: animateLeft
-    }, function() {
-      $slides.eq(currentIndex).css({
-        display: 'none'
-      });
-      $slides.eq(newIndex).css({
-        left: 0
-      });
-      $group.css({
-        left: 0
-      });
-      currentIndex = newIndex;
-    });
-  }
-
-  function advance() {
-    clearTimeout(timeout);
-    timeout = setTimeout(function() {
-      if (currentIndex < ($slides.length - 1)) {
-        move(currentIndex + 1);
-      } else {
-        move(0);
-      }
-    }, 4000);
-  }
-
-  $('.next_btn').on('click', function() {
-    if (currentIndex < ($slides.length - 1)) {
-      move(currentIndex + 1);
-    } else {
-      move(0);
-    }
-  });
-
-  $('.previous_btn').on('click', function() {
-    if (currentIndex !== 0) {
-      move(currentIndex - 1);
-    } else {
-      move(3);
-    }
-  });
-
-  $.each($slides, function(index) {
-    var $button = $('<a class="slide_btn">&bull;</a>');
-
-    if (index === currentIndex) {
-      $button.addClass('active');
-    }
-    $button.on('click', function() {
-      move(index);
-    }).appendTo('.slide_buttons');
-    bulletArray.push($button);
-  });
-
-  advance();
+$('.main-carousel').flickity({
+  // options
+  freeScroll: true,
+  wrapAround: true,
+  fullscreen: true,
+  adaptiveHeight: true,
 });
 
+
+
+var map, positif, markers_coor;
 positif = {
   "HST": {
-    "ODP": 58,
+    "ODP": 89,
     "PDP": 0,
     "POS": 0,
   },
   "BJM": {
-    "ODP": 44,
-    "PDP": 2,
+    "ODP": 54,
+    "PDP": 4,
     "POS": 1,
   },
   "BTL": {
@@ -146,8 +69,8 @@ positif = {
     "POS": 0,
   },
   "TBL": {
-    "ODP": 36,
-    "PDP": 0,
+    "ODP": 141,
+    "PDP": 1,
     "POS": 0,
   },
   "TLA": {
@@ -156,37 +79,37 @@ positif = {
     "POS": 0,
   },
   "KTB": {
-    "ODP": 31,
+    "ODP": 54,
     "PDP": 0,
     "POS": 0,
   },
   "HSS": {
-    "ODP": 51,
+    "ODP": 70,
     "PDP": 0,
     "POS": 0,
   },
   "HSU": {
-    "ODP": 4,
+    "ODP": 10,
     "PDP": 0,
     "POS": 0,
   },
   "BLG": {
-    "ODP": 16,
+    "ODP": 29,
     "PDP": 0,
     "POS": 0,
   },
   "BJR": {
-    "ODP": 5,
-    "PDP": 0,
+    "ODP": 72,
+    "PDP": 2,
     "POS": 0,
   },
   "BJB": {
-    "ODP": 72,
+    "ODP": 97,
     "PDP": 0,
     "POS": 0,
   },
   "TPN": {
-    "ODP": 2,
+    "ODP": 4,
     "PDP": 0,
     "POS": 0,
   },
@@ -196,137 +119,144 @@ positif = {
     "POS": 0,
   },
 }
-
+markers_coor = [
+  {
+    latLng: [-2.61, 115.5],
+    name: 'HST',
+    status: 'odp'
+  },
+  {
+    latLng: [-3.4, 115.6],
+    name: 'TBU',
+    status: 'odp'
+  },
+  {
+    latLng: [-3.6, 116.16],
+    name: 'KTB',
+    status: 'odp'
+  },
+  {
+    latLng: [-3.86, 114.83],
+    name: 'TLA',
+    status: 'odp'
+  },
+  {
+    latLng: [-3.45, 114.77],
+    name: 'BJB',
+    status: 'odp'
+  },
+  {
+    latLng: [-3.35, 115.08],
+    name: 'BJR',
+    status: 'pdp'
+  },
+  {
+    latLng: [-3, 114.6],
+    name: 'BTL',
+    status: 'odp'
+  },
+  {
+    latLng: [-2.94, 115.02],
+    name: 'TPN',
+    status: 'odp'
+  },
+  {
+    latLng: [-2.7, 115.13],
+    name: 'HSS',
+    status: 'odp'
+  },
+  {
+    latLng: [-2.42, 115.146],
+    name: 'HSU',
+    status: 'odp'
+  },
+  {
+    latLng: [-2.33, 115.62],
+    name: 'BLG',
+    status: 'odp'
+  },
+  {
+    latLng: [-1.9, 115.5],
+    name: 'TBL',
+    status: 'pdp'
+  },
+  {
+    latLng: [-3.33, 114.58],
+    name: 'BJM',
+    status: 'positif'
+  },
+]
 map = new jvm.Map({
-      map: 'kalsel_mp',
-      container: $('#kalsel_mp_cont'),
-      regionSelectAble: false,
-      zoomOnScroll: !1,
-      normalizeFunction: "polynomial",
-      scaleColors: ["#f00", "#0071A4"],
-      backgroundColor: 'transparent',
-      regionStyle: {
-          initial: {
-              fill: '#212529',
-              "fill-opacity": .8,
-              stroke: "none",
-              "stroke-width": 0,
-              "stroke-opacity": 1
-          },
-          hover: {
-              fill: '#8898aa',
-              "fill-opacity": .8,
-              cursor: "pointer"
-          },
-          selected: {
-              fill: "yellow"
-          },
-          selectedHover: {}
+  map: 'kalsel_mp',
+  container: $('#kalsel_mp_cont'),
+  regionSelectAble: false,
+  zoomOnScroll: !1,
+  normalizeFunction: "polynomial",
+  scaleColors: ["#f00", "#0071A4"],
+  backgroundColor: 'transparent',
+  markerStyle: {
+    initial: {
+      r: 7,
+    },
+  },
+  markerLabelStyle:{
+    initial: {
+      'font-size': '0',
+    }
+  },
+  markers: markers_coor,
+  series: {
+    markers: [{
+      attribute: 'fill',
+      scale: {
+        positif: '#f5365c',
+        pdp: '#00bcd4',
+        odp: '#2dce89'
       },
-      markers: [
-        {
-          latLng: [-2.61, 115.5],
-          name: 'Hulu Sungai Tengah',
-          style:{
-            fill: '#2dce89'
-          }
-        },
-        {
-          latLng: [-3.4, 115.6],
-          name: 'Tanah Bumbu',
-          style:{
-            fill: '#2dce89'
-          }
-        },
-        {
-          latLng: [-3.6, 116.16],
-          name: 'Kotabaru',
-          style:{
-            fill: '#2dce89'
-          }
-        },
-        {
-          latLng: [-3.86, 114.83],
-          name: 'Tanah Laut',
-          style:{
-            fill: '#2dce89'
-          }
-        },
-        {
-          latLng: [-3.45, 114.77],
-          name: 'Banjarbaru',
-          style:{
-            fill: '#2dce89'
-          }
-        },
-        {
-          latLng: [-3.35, 115.08],
-          name: 'Banjar',
-          style:{
-            fill: '#2dce89'
-          }
-        },
-        {
-          latLng: [-3, 114.6],
-          name: 'Barito Kuala',
-          style:{
-            fill: '#2dce89'
-          }
-        },
-        {
-          latLng: [-2.94, 115.02],
-          name: 'Tapin',
-          style:{
-            fill: '#2dce89'
-          }
-        },
-        {
-          latLng: [-2.7, 115.13],
-          name: 'Hulu Sungai Selatan',
-          style:{
-            fill: '#2dce89'
-          }
-        },
-        {
-          latLng: [-2.42, 115.146],
-          name: 'Hulu Sungai Utara',
-          style:{
-            fill: '#2dce89'
-          }
-        },
-        {
-          latLng: [-2.33, 115.62],
-          name: 'Balangan',
-          style:{
-            fill: '#2dce89'
-          }
-        },
-        {
-          latLng: [-1.9, 115.5],
-          name: 'Tabalong',
-          style:{
-            fill: '#2dce89'
-          }
-        },
-        {
-          latLng: [-3.33, 114.58],
-          name: 'Banjarmasin',
-          style:{
-            fill: '#f5365c'
-          }
-        },
-      ],
-      onRegionTipShow	: function(event, label, code){
-        label.html(
-        '<b>'+label.html()+'</b></br>'+
-        '<b>ODP : </b>'+positif[code].ODP+'</br>'+
-        '<b>PDP : </b>'+positif[code].PDP+'</br>'+
-        '<b>Positif : </b>'+positif[code].POS
-      )}
-    });
+      normalizeFunction: 'polynomial',
+      values: markers_coor.reduce(function(p, c, i){ p[i] = c.status; return p }, {}),
+      legend: {
+        cssClass: 'tes',
+        vertical: true,
+        title: 'Keterangan'
+      }
+    }]
+  },
+  regionStyle: {
+      initial: {
+          fill: '#212529',
+          "fill-opacity": .8,
+          stroke: "none",
+          "stroke-width": 0,
+          "stroke-opacity": 1
+      },
+      hover: {
+          fill: '#8898aa',
+          "fill-opacity": .8,
+          cursor: "pointer"
+      },
+      selected: {
+          fill: "yellow"
+      },
+      selectedHover: {}
+  },
+  onRegionTipShow	: function(event, label, code){
+    label.html(
+    '<b>'+label.html()+'</b></br>'+
+    '<b>ODP : </b>'+positif[code].ODP+'</br>'+
+    '<b>PDP : </b>'+positif[code].PDP+'</br>'+
+    '<b>Positif : </b>'+positif[code].POS
+  )},
+  // onMarkerTipShow: function(e, label, code){
+  //   console.log(markers_coor[code].name);
+  // }
+});
 
-$('#kalsel_mp_cont').find(".jvectormap-zoomin").addClass("btn btn-sm btn-icon btn-info ml-2")
-$('#kalsel_mp_cont').find(".jvectormap-zoomout").addClass("btn btn-sm btn-info ml-2 mt-2")
+
+
+
+// $('#kalsel_mp_cont').find(".jvectormap-zoomin").addClass("btn btn-sm btn-icon btn-info ml-2")
+// $('#kalsel_mp_cont').find(".jvectormap-zoomout").addClass("btn btn-sm btn-info ml-2 mt-2")
 
 // map.container.click(function(e){
 //     	 var latLng = map.pointToLatLng(
