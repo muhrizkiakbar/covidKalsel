@@ -34,6 +34,10 @@ gem 'friendly_id', '~> 5.2.4'
 gem "pundit"
 gem 'rest-client'
 
+gem 'capistrano', '~> 3.11'
+gem 'capistrano-rails', '~> 1.4'
+gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
