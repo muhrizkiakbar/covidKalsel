@@ -109,6 +109,28 @@ map = new jvm.Map({
       map: 'kalsel_mp',
       container: $('#kalsel_mp_cont'),
       regionSelectAble: false,
+      zoomOnScroll: !1,
+      normalizeFunction: "polynomial",
+      scaleColors: ["#f00", "#0071A4"],
+      backgroundColor: 'transparent',
+      regionStyle: {
+          initial: {
+              fill: '#212529',
+              "fill-opacity": .8,
+              stroke: "none",
+              "stroke-width": 0,
+              "stroke-opacity": 1
+          },
+          hover: {
+              fill: '#8898aa',
+              "fill-opacity": .8,
+              cursor: "pointer"
+          },
+          selected: {
+              fill: "yellow"
+          },
+          selectedHover: {}
+      },
       markers: [
         {
           latLng: [-2.61, 115.5],
@@ -203,7 +225,6 @@ map = new jvm.Map({
         },
       ],
       onRegionTipShow	: function(event, label, code){
-        console.log(label);
         label.html(
         '<b>'+label.html()+'</b></br>'+
         '<b>ODP : </b>'+positif[code].ODP+'</br>'+
@@ -211,6 +232,9 @@ map = new jvm.Map({
         '<b>Positif : </b>'+positif[code].POS
       )}
     });
+
+    $('#kalsel_mp_cont').find(".jvectormap-zoomin").addClass("btn btn-sm btn-info")
+    $('#kalsel_mp_cont').find(".jvectormap-zoomout").addClass("btn btn-sm btn-info mt-2")
 
     map.container.click(function(e){
         	 var latLng = map.pointToLatLng(
