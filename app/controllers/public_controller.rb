@@ -31,8 +31,7 @@ class PublicController < ApplicationController
 
     def cov_map
         @city_map = City.all
-        render json:
-          @city_map.as_json({:code => {:only => [:cov_positive_count] }})
+        render json: @city_map
         # respond_to do |format|
         #   format.html
         #   format.json do

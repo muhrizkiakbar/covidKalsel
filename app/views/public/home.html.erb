@@ -11,7 +11,7 @@
 <% end %>
 
 <% content_for :isi do %>
-  
+
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -31,7 +31,7 @@
         <div class="card bg-transparent no-shadow mb-0">
           <div class="card-body bg-transparent px-0">
             <h2 class="h2 card-title mb-0">Call Center Dinas Kesehatan</h2>
-            
+
             <div class="card bg-info">
               <div class="card-body">
                 <div class="row">
@@ -79,7 +79,7 @@
           </div>
         </div>
       </div>
-      
+
     </div>
     <div class="row justify-content-center">
       <div class="col">
@@ -97,17 +97,13 @@
           <div class="card-body">
             <div class="row">
               <div class="col">
-                <h4 class="card-title text-uppercase text-muted mb-0 text-white">Positif</h4>
-<<<<<<< HEAD
-                <span class="h1 font-weight-bolder mb-0 text-white"><%= @positive %></span>
-=======
-                <span class="h1 font-weight-bolder mb-0 text-white"><%= @cov_positive_count %></span>
->>>>>>> 0d491dafac01bda74e59a44e4429a8e7374916b0
-                <span class="h3 font-weight-normal mb-0 text-white">Orang</span>
+                <h4 class="card-title text-uppercase mb-0 text-dark">Positif</h4>
+                <span class="h1 font-weight-bolder mb-0 text-dark"><%= @cov_positive_count %></span>
+                <span class="h3 font-weight-normal mb-0 text-dark">Orang</span>
               </div>
               <div class="col-auto">
                 <div class="icon icon-shape bg-white rounded-circle shadow">
-                  <%= fa_icon "user-plus" %>
+                  <%= fa_icon "plus" %>
                 </div>
               </div>
             </div>
@@ -119,17 +115,13 @@
           <div class="card-body">
             <div class="row">
               <div class="col">
-                <h4 class="card-title text-uppercase text-muted mb-0 text-white">PDP</h4>
-<<<<<<< HEAD
-                <span class="h1 font-weight-bolder mb-0 text-white"><%= @pdp %></span>
-=======
-                <span class="h1 font-weight-bolder mb-0 text-white"><%= @cov_pdp_count %></span>
->>>>>>> 0d491dafac01bda74e59a44e4429a8e7374916b0
-                <span class="h3 font-weight-normal mb-0 text-white">Orang</span>
+                <h4 class="card-title text-uppercase mb-0 text-dark">PDP</h4>
+                <span class="h1 font-weight-bolder mb-0 text-dark"><%= @cov_pdp_count %></span>
+                <span class="h3 font-weight-normal mb-0 text-dark">Orang</span>
               </div>
               <div class="col-auto">
                 <div class="icon icon-shape bg-white rounded-circle shadow">
-                  <%= fa_icon "user-tag" %>
+                  <%= fa_icon "tag" %>
                 </div>
               </div>
             </div>
@@ -141,17 +133,13 @@
           <div class="card-body">
             <div class="row">
               <div class="col">
-                <h4 class="card-title text-uppercase text-muted mb-0 text-white">ODP</h4>
-<<<<<<< HEAD
-                <span class="h1 font-weight-bolder mb-0 text-white"><%= @odp %></span>
-=======
-                <span class="h1 font-weight-bolder mb-0 text-white"><%= @cov_odp_count %></span>
->>>>>>> 0d491dafac01bda74e59a44e4429a8e7374916b0
-                <span class="h3 font-weight-normal mb-0 text-white">Orang</span>
+                <h4 class="card-title text-uppercase mb-0 text-dark">ODP</h4>
+                <span class="h1 font-weight-bolder mb-0 text-dark"><%= @cov_odp_count %></span>
+                <span class="h3 font-weight-normal mb-0 text-dark">Orang</span>
               </div>
               <div class="col-auto">
                 <div class="icon icon-shape bg-white rounded-circle shadow">
-                  <%= fa_icon "user-check" %>
+                  <%= fa_icon "check" %>
                 </div>
               </div>
             </div>
@@ -165,7 +153,7 @@
           <div class="card-header">
             <h2 class="mb-0">Peta Sebaran di Kalimantan Selatan</h2>
           </div>
-          <div class="card-body">
+          <div class="card-body p-0">
             <div id="kalsel_mp_cont" class="vector-map" data-toggle="vectormap" data-map="kalsel_mp"></div>
           </div>
         </div>
@@ -202,7 +190,7 @@
                       </div>
                     </div>
                   </li>
-                  
+
                 </ul>
               </div>
               <div class="col-md-4">
@@ -325,35 +313,7 @@
                 </tr>
               </thead>
               <tbody>
-<<<<<<< HEAD
-
-                <tr>
-                  <td>1</td>
-                  <td>Banjarmasin</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Banjarbaru</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Banjar</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Tanah Laut</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-=======
                 <% @cities.each_with_index do |city,index|%>
->>>>>>> 0d491dafac01bda74e59a44e4429a8e7374916b0
                 <tr>
                   <td><%= index+1 %></td>
                   <td>Pemerintah <%= city.name %></td>

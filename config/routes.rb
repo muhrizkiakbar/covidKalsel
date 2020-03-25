@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     authenticated :user do
       root 'dashboard#index'
     end
-  
+
     unauthenticated do
       root 'public#home'
     end
@@ -39,27 +39,10 @@ Rails.application.routes.draw do
     end
   end
 
-<<<<<<< HEAD
-  devise_for :users
-
-  devise_scope :user do
-    authenticated :user do
-      root 'dashboard#index'
-    end
-
-    unauthenticated do
-      root 'public#home'
-    end
-    # root to: "devise/sessions#new"
-  end
   get 'news' => 'public#news', :as => 'public_news'
-=======
-  
-  get 'news' => 'public#news', :as => 'public_news'    
->>>>>>> 0d491dafac01bda74e59a44e4429a8e7374916b0
   get 'new/:new_id' => 'public#shownew', :as => 'public_new'
   get 'faq' => 'public#faq', :as => 'public_faq'
   get 'contact' => 'public#new', :as => 'public_contact'
-  get 'cov_map' => 'public#cov_map', :as => 'public_cov_map' 
+  get 'cov_map' => 'public#cov_map', :as => 'public_cov_map'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

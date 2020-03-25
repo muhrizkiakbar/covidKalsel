@@ -61,6 +61,12 @@
   max-height: 100%;
 }
 
+.icon-map-label{
+  height: .8rem;
+  width: .8rem;
+  display: inline-flex;
+  vertical-align: middle;
+}
 /* for error input */
 /* .field_with_errors {
   @extend .control-group;
