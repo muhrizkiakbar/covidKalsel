@@ -11,34 +11,15 @@
 <% end %>
 
 <% content_for :isi do %>
+  
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <div class="card bg-yellow">
           <div class="card-body">
             <div class="row align-item-center">
-              <div class="col-lg-auto text-center">
-                <div class="icon icon-md icon-shape bg-white text-dark rounded-circle shadow">
-                  <%= fa_icon "phone-volume" %>
-                </div>
-              </div>
-              <div class="col-lg-auto mt-4 mt-lg-0">
-                <h4 class="font-weight-bold mb-0 text-dark text-center">Dinkes Kalsel</h4>
-                <div class="row">
-                  <div class="col">
-                    <h2 class="font-weight-bolder mb-0 text-dark"><a href="tel:082157718672">0821 5771 8672</a></h2>
-                  </div>
-                  <div class="col">
-                    <h2 class="font-weight-bolder mb-0 text-dark"><a href="tel:082157718673">0821 5771 8673</a></h2>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-auto text-center mt-4 mt-lg-0">
-                <h4 class="font-weight-bold mb-0 text-dark">Hotline</h4>
-                <h2 class="font-weight-bolder mb-0 text-dark"><a href="tel:119">119</a></h2>
-              </div>
-              <div class="col text-center mt-4 mt-lg-0">
-                <h4 class="font-weight-bold mb-0 text-dark">"Mari Kita Seberataan Bergerak Untuk Mencegah Penyebaran Covid-19 Di Banua Kita"</h4>
+              <div class="col text-center mt-12 mt-lg-0">
+                <h3 class="font-weight-bold mb-0 text-dark">"Mari Bergerak Mencegah Penyebaran Covid-19 Di Banua Kita"</h4>
               </div>
             </div>
           </div>
@@ -46,11 +27,66 @@
       </div>
     </div>
     <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card bg-transparent no-shadow mb-0">
+          <div class="card-body bg-transparent px-0">
+            <h2 class="h2 card-title mb-0">Call Center Dinas Kesehatan</h2>
+            
+            <div class="card bg-info">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h4 class="card-title text-uppercase text-muted mb-0 text-white">Telpon</h4>
+                    <span class="h1 font-weight-bolder mb-0 text-white"><a href="tel:082157718672" class="text-white">0821 5771 8672</a></span> <br>
+                    <span class="h1 font-weight-bolder mb-0 text-white"><a href="tel:082157718673" class="text-white">0821 5771 8673</a></span>
+                    <h4 class="font-weight-bold mb-0 text-white">Hotline</h4>
+                    <span class="h1 font-weight-bolder mb-0 text-white"><a class="text-white" href="tel:119">119</a></span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-white rounded-circle shadow">
+                      <%= fa_icon "phone" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card bg-transparent no-shadow mb-0">
+          <div class="card-body bg-transparent px-0">
+            <h2 class="h2 card-title mb-0">Call Center BNPB</h2>
+
+            <div class="card bg-orange">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h4 class="card-title text-uppercase text-muted mb-0 text-white">Telpon</h4>
+                    <span class="h1 font-weight-bolder mb-0 text-white"><a href="tel:082157718672" class="text-white">0511 5911 968</a></span> <br>
+                    <span class="h1 font-weight-bolder mb-0 text-white"><a href="tel:082157718673" class="text-white">0811 5004 474</a></span> <br>
+                    <h4 class="font-weight-bold mb-0 text-white">Hotline</h4>
+                    <span class="h1 font-weight-bolder mb-0 text-white"><a class="text-white" href="#">-</a></span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-white rounded-circle shadow">
+                      <%= fa_icon "phone" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="row justify-content-center">
       <div class="col">
         <div class="card bg-transparent no-shadow mb-0">
           <div class="card-body bg-transparent px-0">
             <h2 class="h2 card-title mb-0">Angka Sebaran di Kalimantan Selatan</h2>
-            <small class="h4 text-muted"><%= @city_last_updated.updated_at.strftime("%B %d, %Y %H:%i:%s") %></small>
+            <small class="h4 text-muted"><%= @city_last_updated.updated_at.strftime("%B %d, %Y %H:%M:%S") %></small>
           </div>
         </div>
       </div>
@@ -75,7 +111,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="card bg-blue">
+        <div class="card bg-yellow">
           <div class="card-body">
             <div class="row">
               <div class="col">
