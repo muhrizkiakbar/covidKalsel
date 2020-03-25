@@ -26,16 +26,16 @@
                 <h4 class="font-weight-bold mb-0 text-dark text-center">Dinkes Kalsel</h4>
                 <div class="row">
                   <div class="col">
-                    <h2 class="font-weight-bolder mb-0 text-dark">0821 5771 8672</h2>
+                    <h2 class="font-weight-bolder mb-0 text-dark"><a href="tel:082157718672">0821 5771 8672</a></h2>
                   </div>
                   <div class="col">
-                    <h2 class="font-weight-bolder mb-0 text-dark">0821 5771 8673</h2>
+                    <h2 class="font-weight-bolder mb-0 text-dark"><a href="tel:082157718673">0821 5771 8673</a></h2>
                   </div>
                 </div>
               </div>
               <div class="col-lg-auto text-center mt-4 mt-lg-0">
                 <h4 class="font-weight-bold mb-0 text-dark">Hotline</h4>
-                <h2 class="font-weight-bolder mb-0 text-dark">119</h2>
+                <h2 class="font-weight-bolder mb-0 text-dark"><a href="tel:119">119</a></h2>
               </div>
               <div class="col text-center mt-4 mt-lg-0">
                 <h4 class="font-weight-bold mb-0 text-dark">"Mari Kita Bergerak Mencegah Penyebaran Covid-19 Di Banua Kita"</h4>
@@ -142,27 +142,7 @@
                     <div class="checklist-item checklist-item-success">
                       <div class="checklist-info">
                         <h4 class="checklist-title mb-0">Rumah Sakit Umum Ulin</h4>
-                        <span class="badge badge-md bg-yellow">Kota Banjarmasin</span>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4 border-0">
-                    <div class="checklist-item checklist-item-success">
-                      <div class="checklist-info">
-                        <h4 class="checklist-title mb-0">Rumah Sakit dr. H. M. Ansari Saleh</h4>
-                        <span class="badge badge-md bg-yellow">Kota Banjarmasin</span>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-md-4">
-                <ul class="list-group list-group-flush">
-                  <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4 border-0">
-                    <div class="checklist-item checklist-item-success">
-                      <div class="checklist-info">
-                        <h4 class="checklist-title mb-0">Rumah Sakit Idaman</h4>
-                        <span class="badge badge-md bg-yellow">Kota Banjarbaru</span>
+                        <span class="badge badge-md bg-green">Kota Banjarmasin</span>
                       </div>
                     </div>
                   </li>
@@ -170,7 +150,28 @@
                     <div class="checklist-item checklist-item-success">
                       <div class="checklist-info">
                         <h4 class="checklist-title mb-0">Rumah Sakit H. Boejasin</h4>
-                        <span class="badge badge-md bg-yellow">Kabupaten Tanah Laut</span>
+                        <span class="badge badge-md bg-green">Kabupaten Tanah Laut</span>
+                      </div>
+                    </div>
+                  </li>
+                  
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <ul class="list-group list-group-flush">
+                  <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4 border-0">
+                    <div class="checklist-item checklist-item-success">
+                      <div class="checklist-info">
+                        <h4 class="checklist-title mb-0">Rumah Sakit Idaman (Cadangan)</h4>
+                        <span class="badge badge-md bg-yellow">Kota Banjarbaru</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4 border-0">
+                    <div class="checklist-item checklist-item-success">
+                      <div class="checklist-info">
+                        <h4 class="checklist-title mb-0">Rumah Sakit dr. H. M. Ansari Saleh (Cadangan)</h4>
+                        <span class="badge badge-md bg-yellow">Kota Banjarmasin</span>
                       </div>
                     </div>
                   </li>
@@ -181,7 +182,7 @@
                   <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4 border-0">
                     <div class="checklist-item checklist-item-success">
                       <div class="checklist-info">
-                        <h4 class="checklist-title mb-0">Rumah Sakit Hasan Basri</h4>
+                        <h4 class="checklist-title mb-0">Rumah Sakit Hasan Basri (Cadangan)</h4>
                         <span class="badge badge-md bg-yellow">Kabupaten Hulu Sungai</span>
                       </div>
                     </div>
@@ -276,37 +277,14 @@
                 </tr>
               </thead>
               <tbody>
-                
+                <% @cities.each_with_index do |city,index|%>
                 <tr>
-                  <td>1</td>
-                  <td>Banjarmasin</td>
-                  <td></td>
-                  <td></td>
+                  <td><%= index+1 %></td>
+                  <td><%= city.name %></td>
+                  <td><%= city.call_center %></td>
+                  <td><%= city.hotline %></td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Banjarbaru</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Banjar</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Tanah Laut</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Rantau</td>
-                  <td></td>
-                  <td></td>
-                </tr>
+                <% end %>
               </tbody>
             </table>
           </div>
