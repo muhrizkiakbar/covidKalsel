@@ -50,7 +50,7 @@
         <div class="card bg-transparent no-shadow mb-0">
           <div class="card-body bg-transparent px-0">
             <h2 class="h2 card-title mb-0">Angka Sebaran di Kalimantan Selatan</h2>
-            <small class="h4 text-muted">Update terakhir Senin, 23 Maret 2020 16:00</small>
+            <small class="h4 text-muted"><%= @city_last_updated.updated_at.strftime("%B %d, %Y %H:%i:%s") %></small>
           </div>
         </div>
       </div>
@@ -280,7 +280,7 @@
                 <% @cities.each_with_index do |city,index|%>
                 <tr>
                   <td><%= index+1 %></td>
-                  <td><%= city.name %></td>
+                  <td>Pemerintah <%= city.name %></td>
                   <td><%= city.call_center %></td>
                   <td><%= city.hotline %></td>
                 </tr>
