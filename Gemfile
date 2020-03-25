@@ -39,6 +39,7 @@ gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
 gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 gem 'capistrano-rails-db'
+gem 'capistrano-locally', require: false
 
 # eval "$(ssh-agent -s)"
 # ssh-add /root/.ssh/id_rsa_github
