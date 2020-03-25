@@ -66,10 +66,10 @@ jQuery.fn.vectorMap('addMap', 'kalsel_mp', {
       "name": "Tabalong"
     }
   },
-  "height": 1102.368550525887,
+  "height": 900.368550525887,
   "projection": {
     "type": "merc",
     "centralMeridian": 0.0
   },
-  "width": 900.0
+  "width": 650.0
 });

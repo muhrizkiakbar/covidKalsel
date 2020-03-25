@@ -38,7 +38,7 @@
                 <h2 class="font-weight-bolder mb-0 text-dark">119</h2>
               </div>
               <div class="col text-center mt-4 mt-lg-0">
-                <h4 class="font-weight-bold mb-0 text-dark">"Mari Kita Seberataan Bergerak Untuk Mencegah Penyebaran Corona Di Banua Kita"</h4>
+                <h4 class="font-weight-bold mb-0 text-dark">"Mari Kita Seberataan Bergerak Untuk Mencegah Penyebaran Covid-19 Di Banua Kita"</h4>
               </div>
             </div>
           </div>
@@ -47,10 +47,10 @@
     </div>
     <div class="row justify-content-center">
       <div class="col">
-        <div class="card bg-transparent no-shadow">
+        <div class="card bg-transparent no-shadow mb-0">
           <div class="card-body bg-transparent px-0">
-            <h5 class="h2 card-title mb-0">Angka Kejadian di Kalimantan Selatan</h5>
-            <small class="text-muted">Update terakhir Senin, 23 Maret 2020 16:00</small>
+            <h2 class="h2 card-title mb-0">Angka Kejadian di Kalimantan Selatan</h2>
+            <small class="h4 text-muted">Update terakhir Senin, 23 Maret 2020 16:00</small>
           </div>
         </div>
       </div>
@@ -119,6 +119,77 @@
           </div>
           <div class="card-body">
             <div id="kalsel_mp_cont" class="vector-map" data-toggle="vectormap" data-map="kalsel_mp"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row row justify-content-center">
+      <div class="col-12">
+
+        <div class="card">
+          <!-- Card header -->
+          <div class="card-header">
+            <!-- Title -->
+            <h5 class="h3 mb-0">Daftar Rumah Sakit Rujukan</h5>
+          </div>
+          <!-- Card body -->
+          <div class="card-body p-0">
+            <!-- List group -->
+            <div class="row">
+              <div class="col-md-4">
+                <ul class="list-group list-group-flush">
+                  <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4 border-0">
+                    <div class="checklist-item checklist-item-success">
+                      <div class="checklist-info">
+                        <h4 class="checklist-title mb-0">Rumah Sakit Umum Ulin</h4>
+                        <span class="badge badge-md bg-yellow">Kota Banjarmasin</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4 border-0">
+                    <div class="checklist-item checklist-item-success">
+                      <div class="checklist-info">
+                        <h4 class="checklist-title mb-0">Rumah Sakit dr. H. M. Ansari Saleh</h4>
+                        <span class="badge badge-md bg-yellow">Kota Banjarmasin</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <ul class="list-group list-group-flush">
+                  <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4 border-0">
+                    <div class="checklist-item checklist-item-success">
+                      <div class="checklist-info">
+                        <h4 class="checklist-title mb-0">Rumah Sakit Idaman</h4>
+                        <span class="badge badge-md bg-yellow">Kota Banjarbaru</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4 border-0">
+                    <div class="checklist-item checklist-item-success">
+                      <div class="checklist-info">
+                        <h4 class="checklist-title mb-0">Rumah Sakit H. Boejasin</h4>
+                        <span class="badge badge-md bg-yellow">Kabupaten Tanah Laut</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <ul class="list-group list-group-flush">
+                  <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4 border-0">
+                    <div class="checklist-item checklist-item-success">
+                      <div class="checklist-info">
+                        <h4 class="checklist-title mb-0">Rumah Sakit Hasan Basri</h4>
+                        <span class="badge badge-md bg-yellow">Kabupaten Hulu Sungai</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -244,16 +315,54 @@
     </div>
     <div class="row justify-content-center">
       <div class="col">
-        <div class="card bg-transparent no-shadow">
+        <div class="card bg-transparent no-shadow mb-0">
           <div class="card-body bg-transparent px-0 text-center">
             <h5 class="h2 card-title mb-0">Infografik</h5>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-
+    <div class="main-carousel">
+      <%= image_tag asset_path('img/infografik/gejala-covid-19.jpg'), class: "carousel-image"%>
+      <%= image_tag asset_path('img/infografik/cara-memakai-masker.jpg'), class: "carousel-image"%>
+      <%= image_tag asset_path('img/infografik/covid-19-petugas-kesehatan.jpg'), class: "carousel-image"%>
+      <%= image_tag asset_path('img/infografik/fase-1-1.jpg'), class: "carousel-image"%>
+      <%= image_tag asset_path('img/infografik/fase-1-2.jpg'), class: "carousel-image"%>
+      <%= image_tag asset_path('img/infografik/fase-1-3.jpg'), class: "carousel-image"%>
+      <%= image_tag asset_path('img/infografik/fase-1-4.jpg'), class: "carousel-image"%>
+      <%= image_tag asset_path('img/infografik/germas.jpg'), class: "carousel-image"%>
+      <%= image_tag asset_path('img/infografik/hotline-kalsel-corona.png'), class: "carousel-image"%>
+      <%= image_tag asset_path('img/infografik/Info-corona-kalsel.png'), class: "carousel-image"%>
+      <%= image_tag asset_path('img/infografik/jaga-kebersihan-masjid.jpg'), class: "carousel-image"%>
+      <%= image_tag asset_path('img/infografik/PDP-kalsel.png'), class: "carousel-image"%>
+      <%= image_tag asset_path('img/infografik/tunda-bepergian.png'), class: "carousel-image"%>
     </div>
+    <div class="row justify-content-center mt-6">
+      <div class="col">
+        <div class="card bg-transparent no-shadow mb-0">
+          <div class="card-body bg-transparent px-0 text-center">
+            <h5 class="h2 card-title mb-0">Peraturan/Edaran Gubernur</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card bg-dark">
+
+      <div class="main-carousel card-body">
+        <%= image_tag asset_path('img/pergub-edaran/Pergub-1.jpg'), class: "carousel-image"%>
+        <%= image_tag asset_path('img/pergub-edaran/Pergub-2.jpg'), class: "carousel-image"%>
+        <%= image_tag asset_path('img/pergub-edaran/SE No.900_518-1.jpg'), class: "carousel-image"%>
+        <%= image_tag asset_path('img/pergub-edaran/SE No.900_518-2.jpg'), class: "carousel-image"%>
+        <%= image_tag asset_path('img/pergub-edaran/SE No.900_518-3.jpg'), class: "carousel-image"%>
+        <%= image_tag asset_path('img/pergub-edaran/SE No.900_518-4.jpg'), class: "carousel-image"%>
+        <%= image_tag asset_path('img/pergub-edaran/SE-Sistem-Kerja-1.jpg'), class: "carousel-image"%>
+        <%= image_tag asset_path('img/pergub-edaran/SE-Sistem-Kerja-2.jpg'), class: "carousel-image"%>
+        <%= image_tag asset_path('img/pergub-edaran/SE-Tanggap-Darurat-Covid-1.jpg'), class: "carousel-image"%>
+        <%= image_tag asset_path('img/pergub-edaran/SE-Tanggap-Darurat-Covid-2.jpg'), class: "carousel-image"%>
+        <%= image_tag asset_path('img/pergub-edaran/SE-Absen-Apel.jpg'), class: "carousel-image"%>
+      </div>
+    </div>
+
   </div>
 
   <footer class="py-5" id="footer-main">

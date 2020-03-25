@@ -802,97 +802,97 @@ var FormControl = (function() {
 // Google maps
 //
 
-var $map = $('#map-default'),
-    map,
-    lat,
-    lng,
-    color = "#5e72e4";
-
-function initMap() {
-
-    map = document.getElementById('map-default');
-    lat = map.getAttribute('data-lat');
-    lng = map.getAttribute('data-lng');
-
-    var myLatlng = new google.maps.LatLng(lat, lng);
-    var mapOptions = {
-        zoom: 12,
-        scrollwheel: false,
-        center: myLatlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-    }
-
-    map = new google.maps.Map(map, mapOptions);
-
-    var marker = new google.maps.Marker({
-        position: myLatlng,
-        map: map,
-        animation: google.maps.Animation.DROP,
-        title: 'Hello World!'
-    });
-
-    var contentString = '<div class="info-window-content"><h2>Argon Dashboard PRO</h2>' +
-        '<p>A beautiful premium dashboard for Bootstrap 4.</p></div>';
-
-    var infowindow = new google.maps.InfoWindow({
-        content: contentString
-    });
-
-    google.maps.event.addListener(marker, 'click', function() {
-        infowindow.open(map, marker);
-    });
-}
-
-if($map.length) {
-    google.maps.event.addDomListener(window, 'load', initMap);
-}
-
+// var $map = $('#map-default'),
+//     map,
+//     lat,
+//     lng,
+//     color = "#5e72e4";
 //
-// Google maps
+// function initMap() {
 //
-
-var $map = $('#map-custom'),
-    map,
-    lat,
-    lng,
-    color = "#5e72e4";
-
-function initMap() {
-
-    map = document.getElementById('map-custom');
-    lat = map.getAttribute('data-lat');
-    lng = map.getAttribute('data-lng');
-
-    var myLatlng = new google.maps.LatLng(lat, lng);
-    var mapOptions = {
-        zoom: 12,
-        scrollwheel: false,
-        center: myLatlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":color},{"visibility":"on"}]}]
-    }
-
-    map = new google.maps.Map(map, mapOptions);
-
-    var marker = new google.maps.Marker({
-        position: myLatlng,
-        map: map,
-        animation: google.maps.Animation.DROP,
-        title: 'Hello World!'
-    });
-
-    var contentString = '<div class="info-window-content"><h2>Argon Dashboard PRO</h2>' +
-        '<p>A beautiful premium dashboard for Bootstrap 4.</p></div>';
-
-    var infowindow = new google.maps.InfoWindow({
-        content: contentString
-    });
-
-    google.maps.event.addListener(marker, 'click', function() {
-        infowindow.open(map, marker);
-    });
-}
-
+//     map = document.getElementById('map-default');
+//     lat = map.getAttribute('data-lat');
+//     lng = map.getAttribute('data-lng');
+//
+//     var myLatlng = new google.maps.LatLng(lat, lng);
+//     var mapOptions = {
+//         zoom: 12,
+//         scrollwheel: false,
+//         center: myLatlng,
+//         mapTypeId: google.maps.MapTypeId.ROADMAP,
+//     }
+//
+//     map = new google.maps.Map(map, mapOptions);
+//
+//     var marker = new google.maps.Marker({
+//         position: myLatlng,
+//         map: map,
+//         animation: google.maps.Animation.DROP,
+//         title: 'Hello World!'
+//     });
+//
+//     var contentString = '<div class="info-window-content"><h2>Argon Dashboard PRO</h2>' +
+//         '<p>A beautiful premium dashboard for Bootstrap 4.</p></div>';
+//
+//     var infowindow = new google.maps.InfoWindow({
+//         content: contentString
+//     });
+//
+//     google.maps.event.addListener(marker, 'click', function() {
+//         infowindow.open(map, marker);
+//     });
+// }
+//
+// if($map.length) {
+//     google.maps.event.addDomListener(window, 'load', initMap);
+// }
+//
+// //
+// // Google maps
+// //
+//
+// var $map = $('#map-custom'),
+//     map,
+//     lat,
+//     lng,
+//     color = "#5e72e4";
+//
+// function initMap() {
+//
+//     map = document.getElementById('map-custom');
+//     lat = map.getAttribute('data-lat');
+//     lng = map.getAttribute('data-lng');
+//
+//     var myLatlng = new google.maps.LatLng(lat, lng);
+//     var mapOptions = {
+//         zoom: 12,
+//         scrollwheel: false,
+//         center: myLatlng,
+//         mapTypeId: google.maps.MapTypeId.ROADMAP,
+//         styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":color},{"visibility":"on"}]}]
+//     }
+//
+//     map = new google.maps.Map(map, mapOptions);
+//
+//     var marker = new google.maps.Marker({
+//         position: myLatlng,
+//         map: map,
+//         animation: google.maps.Animation.DROP,
+//         title: 'Hello World!'
+//     });
+//
+//     var contentString = '<div class="info-window-content"><h2>Argon Dashboard PRO</h2>' +
+//         '<p>A beautiful premium dashboard for Bootstrap 4.</p></div>';
+//
+//     var infowindow = new google.maps.InfoWindow({
+//         content: contentString
+//     });
+//
+//     google.maps.event.addListener(marker, 'click', function() {
+//         infowindow.open(map, marker);
+//     });
+// }
+//
 //
 // Charts
 //
@@ -1469,77 +1469,77 @@ if($('[data-toggle="widget-calendar"]')[0]) {
         defaultDate: '2018-12-01',
         editable: true,
         events: [
-            
+
             {
                 title: 'Call with Dave',
                 start: '2018-11-18',
                 end: '2018-11-18',
                 className: 'bg-red'
             },
-            
+
             {
                 title: 'Lunch meeting',
                 start: '2018-11-21',
                 end: '2018-11-22',
                 className: 'bg-orange'
             },
-            
+
             {
                 title: 'All day conference',
                 start: '2018-11-29',
                 end: '2018-11-29',
                 className: 'bg-green'
             },
-            
+
             {
                 title: 'Meeting with Mary',
                 start: '2018-12-01',
                 end: '2018-12-01',
                 className: 'bg-blue'
             },
-            
+
             {
                 title: 'Winter Hackaton',
                 start: '2018-12-03',
                 end: '2018-12-03',
                 className: 'bg-red'
             },
-            
+
             {
                 title: 'Digital event',
                 start: '2018-12-07',
                 end: '2018-12-09',
                 className: 'bg-warning'
             },
-            
+
             {
                 title: 'Marketing event',
                 start: '2018-12-10',
                 end: '2018-12-10',
                 className: 'bg-purple'
             },
-            
+
             {
                 title: 'Dinner with Family',
                 start: '2018-12-19',
                 end: '2018-12-19',
                 className: 'bg-red'
             },
-            
+
             {
                 title: 'Black Friday',
                 start: '2018-12-23',
                 end: '2018-12-23',
                 className: 'bg-blue'
             },
-            
+
             {
                 title: 'Cyber Week',
                 start: '2018-12-02',
                 end: '2018-12-02',
                 className: 'bg-yellow'
             },
-            
+
         ]
     });
 
@@ -1899,7 +1899,7 @@ var Fullcalendar = (function() {
 		// Calendar events
 
 		var events = [
-			
+
             {
 				id: 1,
 				title: 'Call with Dave',
@@ -1908,7 +1908,7 @@ var Fullcalendar = (function() {
 				className: 'bg-red',
 				description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
             },
-            
+
             {
 				id: 2,
 				title: 'Lunch meeting',
@@ -1917,7 +1917,7 @@ var Fullcalendar = (function() {
 				className: 'bg-orange',
 				description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
             },
-            
+
             {
 				id: 3,
 				title: 'All day conference',
@@ -1926,7 +1926,7 @@ var Fullcalendar = (function() {
 				className: 'bg-green',
 				description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
             },
-            
+
             {
 				id: 4,
 				title: 'Meeting with Mary',
@@ -1935,7 +1935,7 @@ var Fullcalendar = (function() {
 				className: 'bg-blue',
 				description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
             },
-            
+
             {
 				id: 5,
 				title: 'Winter Hackaton',
@@ -1944,7 +1944,7 @@ var Fullcalendar = (function() {
 				className: 'bg-red',
 				description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
             },
-            
+
             {
 				id: 6,
 				title: 'Digital event',
@@ -1953,7 +1953,7 @@ var Fullcalendar = (function() {
 				className: 'bg-warning',
 				description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
             },
-            
+
             {
 				id: 7,
 				title: 'Marketing event',
@@ -1962,7 +1962,7 @@ var Fullcalendar = (function() {
 				className: 'bg-purple',
 				description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
             },
-            
+
             {
 				id: 8,
 				title: 'Dinner with Family',
@@ -1971,7 +1971,7 @@ var Fullcalendar = (function() {
 				className: 'bg-red',
 				description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
             },
-            
+
             {
 				id: 9,
 				title: 'Black Friday',
@@ -1980,7 +1980,7 @@ var Fullcalendar = (function() {
 				className: 'bg-blue',
 				description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
             },
-            
+
             {
 				id: 10,
 				title: 'Cyber Week',
@@ -1989,7 +1989,7 @@ var Fullcalendar = (function() {
 				className: 'bg-yellow',
 				description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
             },
-            
+
 		],
 
 
@@ -2200,160 +2200,160 @@ var Fullcalendar = (function() {
 
 'use strict';
 
-var VectorMap = (function() {
-
-	// Variables
-
-	var $vectormap = $('[data-toggle="vectormap"]'),
-		colors = {
-			gray: {
-				100: '#f6f9fc',
-				200: '#e9ecef',
-				300: '#dee2e6',
-				400: '#ced4da',
-				500: '#adb5bd',
-				600: '#8898aa',
-				700: '#525f7f',
-				800: '#32325d',
-				900: '#212529'
-			},
-			theme: {
-				'default': '#172b4d',
-				'primary': '#5e72e4',
-				'secondary': '#f4f5f7',
-				'info': '#11cdef',
-				'success': '#2dce89',
-				'danger': '#f5365c',
-				'warning': '#fb6340'
-			},
-			black: '#12263F',
-			white: '#FFFFFF',
-			transparent: 'transparent',
-		};
-
-	// Methods
-
-	function init($this) {
-
-		// Get placeholder
-		var map = $this.data('map'),
-
-            series = {
-                "AU": 760,
-                "BR": 550,
-                "CA": 120,
-                "DE": 1300,
-                "FR": 540,
-                "GB": 690,
-                "GE": 200,
-                "IN": 200,
-                "RO": 600,
-                "RU": 300,
-                "US": 2920,
-            },
-
-			options = {
-				map: map,
-                zoomOnScroll: false,
-				scaleColors: ['#f00', '#0071A4'],
-				normalizeFunction: 'polynomial',
-				hoverOpacity: 0.7,
-				hoverColor: false,
-                backgroundColor: colors.transparent,
-                regionStyle: {
-                    initial: {
-                        fill: colors.gray[200],
-                        "fill-opacity": .8,
-                        stroke: 'none',
-                        "stroke-width": 0,
-                        "stroke-opacity": 1
-                    },
-                    hover: {
-                        fill: colors.gray[300],
-                        "fill-opacity": .8,
-                        cursor: 'pointer'
-                    },
-                    selected: {
-                        fill: 'yellow'
-                    },
-                        selectedHover: {
-                    }
-                },
-                markerStyle: {
-					initial: {
-						fill: colors.theme.warning,
-                        "stroke-width": 0
-					},
-					hover: {
-						fill: colors.theme.info,
-                        "stroke-width": 0
-					},
-				},
-				markers: [
-                    {
-						latLng: [41.90, 12.45],
-						name: 'Vatican City'
-					},
-					{
-						latLng: [43.73, 7.41],
-						name: 'Monaco'
-					},
-					{
-						latLng: [35.88, 14.5],
-						name: 'Malta'
-					},
-					{
-						latLng: [1.3, 103.8],
-						name: 'Singapore'
-					},
-					{
-						latLng: [1.46, 173.03],
-						name: 'Kiribati'
-					},
-					{
-						latLng: [-21.13, -175.2],
-						name: 'Tonga'
-					},
-					{
-						latLng: [15.3, -61.38],
-						name: 'Dominica'
-					},
-					{
-						latLng: [-20.2, 57.5],
-						name: 'Mauritius'
-					},
-					{
-						latLng: [26.02, 50.55],
-						name: 'Bahrain'
-					}
-				],
-                series: {
-                    regions: [{
-                        values: series,
-                        scale: [colors.gray[400], colors.gray[500]],
-                        normalizeFunction: 'polynomial'
-                    }]
-                },
-			};
-
-		// Init map
-		$this.vectorMap(options);
-
-		// Customize controls
-		$this.find('.jvectormap-zoomin').addClass('btn btn-sm btn-primary');
-		$this.find('.jvectormap-zoomout').addClass('btn btn-sm btn-primary');
-
-	}
-
-	// Events
-
-	if ($vectormap.length) {
-		$vectormap.each(function() {
-			init($(this));
-		});
-	}
-
-})();
+// var VectorMap = (function() {
+//
+// 	// Variables
+//
+// 	var $vectormap = $('[data-toggle="vectormap"]'),
+// 		colors = {
+// 			gray: {
+// 				100: '#f6f9fc',
+// 				200: '#e9ecef',
+// 				300: '#dee2e6',
+// 				400: '#ced4da',
+// 				500: '#adb5bd',
+// 				600: '#8898aa',
+// 				700: '#525f7f',
+// 				800: '#32325d',
+// 				900: '#212529'
+// 			},
+// 			theme: {
+// 				'default': '#172b4d',
+// 				'primary': '#5e72e4',
+// 				'secondary': '#f4f5f7',
+// 				'info': '#11cdef',
+// 				'success': '#2dce89',
+// 				'danger': '#f5365c',
+// 				'warning': '#fb6340'
+// 			},
+// 			black: '#12263F',
+// 			white: '#FFFFFF',
+// 			transparent: 'transparent',
+// 		};
+//
+// 	// Methods
+//
+// 	function init($this) {
+//
+// 		// Get placeholder
+// 		var map = $this.data('map'),
+//
+//             series = {
+//                 "AU": 760,
+//                 "BR": 550,
+//                 "CA": 120,
+//                 "DE": 1300,
+//                 "FR": 540,
+//                 "GB": 690,
+//                 "GE": 200,
+//                 "IN": 200,
+//                 "RO": 600,
+//                 "RU": 300,
+//                 "US": 2920,
+//             },
+//
+// 			options = {
+// 				map: map,
+//                 zoomOnScroll: false,
+// 				scaleColors: ['#f00', '#0071A4'],
+// 				normalizeFunction: 'polynomial',
+// 				hoverOpacity: 0.7,
+// 				hoverColor: false,
+//                 backgroundColor: colors.transparent,
+//                 regionStyle: {
+//                     initial: {
+//                         fill: colors.gray[200],
+//                         "fill-opacity": .8,
+//                         stroke: 'none',
+//                         "stroke-width": 0,
+//                         "stroke-opacity": 1
+//                     },
+//                     hover: {
+//                         fill: colors.gray[300],
+//                         "fill-opacity": .8,
+//                         cursor: 'pointer'
+//                     },
+//                     selected: {
+//                         fill: 'yellow'
+//                     },
+//                         selectedHover: {
+//                     }
+//                 },
+//                 markerStyle: {
+// 					initial: {
+// 						fill: colors.theme.warning,
+//                         "stroke-width": 0
+// 					},
+// 					hover: {
+// 						fill: colors.theme.info,
+//                         "stroke-width": 0
+// 					},
+// 				},
+// 				markers: [
+//                     {
+// 						latLng: [41.90, 12.45],
+// 						name: 'Vatican City'
+// 					},
+// 					{
+// 						latLng: [43.73, 7.41],
+// 						name: 'Monaco'
+// 					},
+// 					{
+// 						latLng: [35.88, 14.5],
+// 						name: 'Malta'
+// 					},
+// 					{
+// 						latLng: [1.3, 103.8],
+// 						name: 'Singapore'
+// 					},
+// 					{
+// 						latLng: [1.46, 173.03],
+// 						name: 'Kiribati'
+// 					},
+// 					{
+// 						latLng: [-21.13, -175.2],
+// 						name: 'Tonga'
+// 					},
+// 					{
+// 						latLng: [15.3, -61.38],
+// 						name: 'Dominica'
+// 					},
+// 					{
+// 						latLng: [-20.2, 57.5],
+// 						name: 'Mauritius'
+// 					},
+// 					{
+// 						latLng: [26.02, 50.55],
+// 						name: 'Bahrain'
+// 					}
+// 				],
+//                 series: {
+//                     regions: [{
+//                         values: series,
+//                         scale: [colors.gray[400], colors.gray[500]],
+//                         normalizeFunction: 'polynomial'
+//                     }]
+//                 },
+// 			};
+//
+// 		// Init map
+// 		$this.vectorMap(options);
+//
+// 		// Customize controls
+// 		$this.find('.jvectormap-zoomin').addClass('btn btn-sm btn-primary');
+// 		$this.find('.jvectormap-zoomout').addClass('btn btn-sm btn-primary');
+//
+// 	}
+//
+// 	// Events
+//
+// 	if ($vectormap.length) {
+// 		$vectormap.each(function() {
+// 			init($(this));
+// 		});
+// 	}
+//
+// })();
 
 //
 // Lavalamp
