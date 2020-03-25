@@ -6,7 +6,9 @@ class PublicController < ApplicationController
         @cities = City.all
         @hospitals = Hospital.all 
         @informations = Information.take(5)
-
+        @cov_positive_count = City.sum('cov_positive_count')
+        @cov_odp_count = City.sum('cov_odp_count')
+        @cov_pdp_count = City.sum('cov_pdp_count')
     end
 
     def news
