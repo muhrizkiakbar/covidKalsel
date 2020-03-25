@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
+  devise_for :users
 
+  devise_scope :user do
+    authenticated :user do
+      root 'dashboard#index'
+    end
+  
+    unauthenticated do
+      root 'public#home'
+    end
+    # root to: "devise/sessions#new"
+  end
   scope "/backoffice" do
 
     resources :information
@@ -28,6 +39,7 @@ Rails.application.routes.draw do
     end
   end
 
+<<<<<<< HEAD
   devise_for :users
 
   devise_scope :user do
@@ -41,6 +53,10 @@ Rails.application.routes.draw do
     # root to: "devise/sessions#new"
   end
   get 'news' => 'public#news', :as => 'public_news'
+=======
+  
+  get 'news' => 'public#news', :as => 'public_news'    
+>>>>>>> 0d491dafac01bda74e59a44e4429a8e7374916b0
   get 'new/:new_id' => 'public#shownew', :as => 'public_new'
   get 'faq' => 'public#faq', :as => 'public_faq'
   get 'contact' => 'public#new', :as => 'public_contact'
