@@ -5,10 +5,10 @@
           <%= notice %>
       </div>
     <% end %>
-    
+
     <% if city.errors.any? %>
       <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <span class="alert-icon"><h3 class="text-white"><%= fa_icon "exclamation-triangle 3x", class: "text-white"%></h3></span>
+          <span class="alert-icon"><h3 class="text-white"><%= icon("fas", "exclamation-triangle 3x", class: "text-white")%></h3></span>
           <span class="alert-text">
             <h3 class="text-white"><strong><%= pluralize(city.errors.count, "error") %></strong> prohibited this city from being saved:</h3>
             <ul>
@@ -17,7 +17,7 @@
               <% end %>
             </ul>
           </span>
-          
+
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
           </button>
@@ -54,7 +54,7 @@
         <% end %>
       </div>
     </div>
-    
+
 
 
     <%= render partial: 'layouts/footer_back' %>
@@ -66,5 +66,5 @@
     <%= link_to 'New City', new_city_path, class: "btn btn-sm btn-neutral" %>
   </div>
 <% end %>
-      
+
 <%= render partial: 'layouts/body' %>
