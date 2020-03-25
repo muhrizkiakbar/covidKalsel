@@ -9,6 +9,8 @@ class PublicController < ApplicationController
         @cov_positive_count = City.sum('cov_positive_count')
         @cov_odp_count = City.sum('cov_odp_count')
         @cov_pdp_count = City.sum('cov_pdp_count')
+
+        @city_last_updated = @cities.order(:updated_at).first
     end
 
     def news
