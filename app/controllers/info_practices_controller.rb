@@ -4,7 +4,7 @@ class InfoPracticesController < ApplicationController
   # GET /info_practices
   # GET /info_practices.json
   def index
-    @info_practices = InfoPractice.all
+    @info_practices = InfoPractice.page(params[:page])
   end
 
   # GET /info_practices/1
@@ -42,7 +42,7 @@ class InfoPracticesController < ApplicationController
   def update
     respond_to do |format|
       if @info_practice.update(info_practice_params)
-        format.html { redirect_to @info_practice, notice: 'Info practice was successfully updated.' }
+        format.html { redirect_to info_practices_url, notice: 'Info practice was successfully updated.' }
         format.json { render :show, status: :ok, location: @info_practice }
       else
         format.html { render :edit }

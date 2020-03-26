@@ -6,8 +6,8 @@
   <div class="card-header">
     <h3>Gambar</h3>
   </div>
-  <div class="table-responsive py-3">
-    <table class="table table-flush" id="datatable-kota">
+  <div class="table-responsive">
+    <table class="table table-flush">
       <thead class="thead-light">
         <tr>
           <th>Gambar</th>
@@ -15,11 +15,11 @@
         </tr>
       </thead>
 
-      <tbody>
-        <% @info_practices.each_with_index do |info_practice, index| %>
+      <tbody class="autopagerize_page_element">
+        <% @info_practices.each do |info_practice| %>
           <tr>
             <td>
-              <%= link_to info_practice.image_content.url(:original), class:"avatar", "data-lightbox": "image-#{index}" do %>
+              <%= link_to info_practice.image_content.url(:original), class:"avatar", "data-lightbox": "image-#{info_practice.id}" do %>
                 <%= image_tag info_practice.image_content.url(:thumb) %>
               <% end %>
             </td>
@@ -39,7 +39,9 @@
       </tbody>
     </table>
   </div>
-
+  <div class="card-footer">
+    <%= paginate @info_practices %>
+  </div>
 </div>
 
 <% content_for :button_header do %>
