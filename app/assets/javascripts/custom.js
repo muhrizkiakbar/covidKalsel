@@ -129,7 +129,7 @@ $.getJSON('/cov_map', function(data){
          Banjarmasin: '#ED5A5A',
          Banjar: '#96C79A',
          Banjarbaru: '#71EBF2',
-         TanahLaut: '#0E626A',
+         TanahLaut: '#C67EEA',
          TanahBumbu: '#F18787',
          Kotabaru: '#F5C3A5'
         },
