@@ -1,24 +1,66 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @information.user %>
-</p>
-
-<p>
-  Image
-  <%= image_tag @information.image_content.url(:medium) %>
-</p>
-
-<p>
-  <strong>Tittle:</strong>
-  <%= @information.tittle %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @information.content %>
-</p>
 
 <%= link_to 'Edit', edit_information_path(@information) %> |
 <%= link_to 'Back', information_index_path %>
+
+
+
+
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <p id="notice"><%= notice %></p>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Show Information</h3>
+      </div>
+      <div class="card-body">
+                
+        <p>
+          <strong>User:</strong>
+          <%= @information.user.username %>
+        </p>
+
+        <p>
+          Image
+          <%= image_tag @information.image_content.url(:medium) %>
+        </p>
+
+        <p>
+          <strong>Tittle:</strong>
+          <%= @information.tittle %>
+        </p>
+
+        <p>
+          <strong>Content:</strong>
+          <%= @information.content %>
+        </p>
+      </div>
+      <div class="card-footer">
+
+        <%= link_to 'Edit', edit_information_path(@information), class: "btn btn-primary" %>
+
+        <%= link_to 'Back', information_index_path, class: "btn btn-secondary" %>
+
+      </div>
+
+    </div>
+
+    
+    <br>
+    <%# paginate @cities %>
+
+
+
+    <%= render partial: 'layouts/footer_back' %>
+  </div>
+<% end %>
+
+<% content_for :button_header do %>
+  <div class="col-lg-6 col-5 text-right">
+    <%= link_to 'New Information', new_information_path, class: "btn btn-sm btn-neutral" %>
+  </div>
+<% end %>
+      
+<%= render partial: 'layouts/body' %>

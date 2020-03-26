@@ -33,6 +33,8 @@ gem 'paperclip'
 gem 'friendly_id', '~> 5.2.4'
 gem "pundit"
 gem 'rest-client'
+gem 'wkhtmltopdf-binary-edge', '~> 0.12.5.1'
+gem 'ckeditor'
 
 gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
