@@ -142,7 +142,7 @@
                 <% end %>
                 <% if policy(:information).index? %>
                   <li class="nav-item">
-                    <%= link_to hospitals_path, class: "nav-link" do %>
+                    <%= link_to information_index_path, class: "nav-link" do %>
                       <span class="sidenav-mini-icon"> I </span>
                       <span class="sidenav-normal"> Information </span>
                     <% end %>
@@ -151,8 +151,8 @@
                 <% if policy(:info_practice).index? %>
                   <li class="nav-item">
                     <%= link_to info_practices_path, class: "nav-link" do %>
-                      <span class="sidenav-mini-icon"> I </span>
-                      <span class="sidenav-normal"> Information </span>
+                      <span class="sidenav-mini-icon"> IP </span>
+                      <span class="sidenav-normal"> Info Practice </span>
                     <% end %>
                   </li>
                 <% end %>
