@@ -58,16 +58,53 @@ $.getJSON('/cov_map', function(data){
       "pdp": item.cov_pdp_count,
       "odp": item.cov_odp_count,
     };
-    regColors[item.code] = function(){
-      if (item.cov_positive_count != 0) {
-        return 'positif'
-      }else if(item.cov_positive_count == 0 && item.cov_pdp_count != 0){
-        return 'pdp'
-      }else if(item.cov_positive_count == 0 && item.cov_pdp_count == 0 && item.cov_odp_count != 0){
-        return 'odp'
+    regColors[item.code] = function(code){
+      var color;
+      switch(code){
+        case "TBL":
+          color = "Tabalong";
+          break;
+        case "BLG":
+          color = "Balangan";
+          break;
+        case "HSU":
+          color = "HuluSungaiUtara";
+          break;
+        case "HST":
+          color = "HuluSungaiTengah";
+          break;
+        case "HSS":
+          color = "HuluSungaiSelatan";
+          break;
+        case "TPN":
+          color = "Tapin";
+          break;
+        case "BTL":
+          color = "BaritoKuala";
+          break;
+        case "BJM":
+          color = "Banjarmasin";
+          break;
+        case "BJR":
+          color = "Banjar";
+          break;
+        case "BJB":
+          color = "Banjarbaru";
+          break;
+        case "TLA":
+          color = "TanahLaut";
+          break;
+        case "TBU":
+          color = "TanahBumbu";
+          break;
+        case "KTB":
+          color = "Kotabaru";
+          break;
       }
-    }();
+      return color
+    }(item.code);
   });
+  console.log(regColors);
 
   // Intializing Vector Map
   map = new jvm.Map({
@@ -82,9 +119,19 @@ $.getJSON('/cov_map', function(data){
       regions: [{
         attribute: 'fill',
         scale: {
-         positif: '#f5365c',
-         pdp: '#ffd600',
-         odp: '#2dce89'
+         Tabalong: '#ED925A',
+         Balangan: '#19B3C1',
+         HuluSungaiUtara: '#13838D',
+         HuluSungaiTengah: '#3A6B3E',
+         HuluSungaiSelatan: '#5AA861',
+         Tapin: '#F4F1BB',
+         BaritoKuala: '#D4A8EA',
+         Banjarmasin: '#ED5A5A',
+         Banjar: '#96C79A',
+         Banjarbaru: '#71EBF2',
+         TanahLaut: '#0E626A',
+         TanahBumbu: '#F18787',
+         Kotabaru: '#F5C3A5'
         },
         normalizeFunction: 'polynomial',
         values: regColors,//markers_coor.reduce(function(p, c, i){ p[i] = c.status; return p }, {}),
