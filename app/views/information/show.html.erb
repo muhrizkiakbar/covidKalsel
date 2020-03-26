@@ -19,7 +19,7 @@
                 
         <p>
           <strong>User:</strong>
-          <%= @information.user %>
+          <%= @information.user.username %>
         </p>
 
         <p>
@@ -39,7 +39,7 @@
       </div>
       <div class="card-footer">
 
-        <%= link_to 'Edit', edit_information_path(@hospital), class: "btn btn-primary" %>
+        <%= link_to 'Edit', edit_information_path(@information), class: "btn btn-primary" %>
 
         <%= link_to 'Back', information_index_path, class: "btn btn-secondary" %>
 
