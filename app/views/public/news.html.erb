@@ -1,10 +1,11 @@
 
 <% content_for :isi do %>
-<% @informations.each do |information| %>
-    <%= link_to information.tittle, public_new_path(information) %>
-    <%= image_tag information.image_content.url %>
-    <%= information.content%>
-
-<% end %>
+  <div class="row">
+    <% @informations.each do |information| %>
+      <%= link_to information.tittle, public_new_path(information) %>
+      <%= image_tag information.image_content.url %>
+      <%= information.content%>
+    <% end %>
+  </div>
 <% end %>
 <%= render partial: 'layouts/body' %>
