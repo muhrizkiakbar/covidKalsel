@@ -1,14 +1,38 @@
+<% @icon = [
+  {
+    "type": "fas",
+    "icon": "tachometer-alt",
+    "class": ""
+  },
+  {
+    "type": "far",
+    "icon": "clone",
+    "class": "text-orange"
+  },
+  {
+    "type": "far",
+    "icon": "hospital",
+    "class": "text-info"
+  },
+  {
+    "type": "fas",
+    "icon": "users",
+    "class": "text-pink"
+  },
+] %>
+<% @icon_controller %>
+<% controller_name == 'dashboard' ? @icon_controller = 0 : @cov.include?(controller_name) ? @icon_controller=1 : @informasi.include?(controller_name) ? @icon_controller=2 : @pengguna.include?(controller_name) ? @icon_controller=3 : "" %>
 <div class="header pb-6">
   <div class="container-fluid">
     <div class="header-body">
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
-          <h6 class="h2 d-inline-block mb-0">Alternative</h6>
+          <h6 class="h2 d-inline-block mb-0"><%= controller_name.capitalize %></h6>
           <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
             <ol class="breadcrumb breadcrumb-links">
-              <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-              <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Alternative</li>
+              <li class="breadcrumb-item"><a href="/"><%= icon(@icon[@icon_controller][:type], @icon[@icon_controller][:icon], class: @icon[@icon_controller][:class]) %></a></li>
+              <li class="breadcrumb-item"><a href="#"><%= controller_name.capitalize %></a></li>
+              <li class="breadcrumb-item active" aria-current="page"><%= controller.action_name %></li>
             </ol>
           </nav>
         </div>
