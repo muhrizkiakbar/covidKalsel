@@ -48,127 +48,131 @@ $('.main-carousel').flickity({
   fullscreen: true,
   adaptiveHeight: true,
 });
-var map;
-$.getJSON('/cov_map', function(data){
-  var regLabels = {};
-  var regColors = {};
-  $.each(data, function(i, item){
-    regLabels[item.code] = {
-      "pos": item.cov_positive_count,
-      "pdp": item.cov_pdp_count,
-      "odp": item.cov_odp_count,
-    };
-    regColors[item.code] = function(code){
-      var color;
-      switch(code){
-        case "TBL":
-          color = "Tabalong";
-          break;
-        case "BLG":
-          color = "Balangan";
-          break;
-        case "HSU":
-          color = "HuluSungaiUtara";
-          break;
-        case "HST":
-          color = "HuluSungaiTengah";
-          break;
-        case "HSS":
-          color = "HuluSungaiSelatan";
-          break;
-        case "TPN":
-          color = "Tapin";
-          break;
-        case "BTL":
-          color = "BaritoKuala";
-          break;
-        case "BJM":
-          color = "Banjarmasin";
-          break;
-        case "BJR":
-          color = "Banjar";
-          break;
-        case "BJB":
-          color = "Banjarbaru";
-          break;
-        case "TLA":
-          color = "TanahLaut";
-          break;
-        case "TBU":
-          color = "TanahBumbu";
-          break;
-        case "KTB":
-          color = "Kotabaru";
-          break;
-      }
-      return color
-    }(item.code);
-  });
-  // console.log(regColors);
-
-  // Intializing Vector Map
-  map = new jvm.Map({
-    map: 'kalsel_mp',
-    container: $('#kalsel_mp_cont'),
-    regionSelectAble: false,
-    zoomOnScroll: !1,
-    normalizeFunction: "polynomial",
-    // scaleColors: ["#f00", "#0071A4"],
-    // backgroundColor: 'transparent',
-    series: {
-      regions: [{
-        attribute: 'fill',
-        scale: {
-         Tabalong: '#ED925A',
-         Balangan: '#19B3C1',
-         HuluSungaiUtara: '#13838D',
-         HuluSungaiTengah: '#3A6B3E',
-         HuluSungaiSelatan: '#5AA861',
-         Tapin: '#F4F1BB',
-         BaritoKuala: '#D4A8EA',
-         Banjarmasin: '#ED5A5A',
-         Banjar: '#96C79A',
-         Banjarbaru: '#71EBF2',
-         TanahLaut: '#C67EEA',
-         TanahBumbu: '#F18787',
-         Kotabaru: '#F5C3A5'
-        },
-        normalizeFunction: 'polynomial',
-        values: regColors,//markers_coor.reduce(function(p, c, i){ p[i] = c.status; return p }, {}),
-        legend: {
-          cssClass: 'tes',
-          vertical: true,
-          title: 'Keterangan'
+var map, mapContainer;
+mapContainer = $('#kalsel_mp_cont');
+if (mapContainer.length){
+  $.getJSON('/cov_map', function(data){
+    var regLabels = {};
+    var regColors = {};
+    $.each(data, function(i, item){
+      regLabels[item.code] = {
+        "pos": item.cov_positive_count,
+        "pdp": item.cov_pdp_count,
+        "odp": item.cov_odp_count,
+      };
+      regColors[item.code] = function(code){
+        var color;
+        switch(code){
+          case "TBL":
+            color = "Tabalong";
+            break;
+          case "BLG":
+            color = "Balangan";
+            break;
+          case "HSU":
+            color = "HuluSungaiUtara";
+            break;
+          case "HST":
+            color = "HuluSungaiTengah";
+            break;
+          case "HSS":
+            color = "HuluSungaiSelatan";
+            break;
+          case "TPN":
+            color = "Tapin";
+            break;
+          case "BTL":
+            color = "BaritoKuala";
+            break;
+          case "BJM":
+            color = "Banjarmasin";
+            break;
+          case "BJR":
+            color = "Banjar";
+            break;
+          case "BJB":
+            color = "Banjarbaru";
+            break;
+          case "TLA":
+            color = "TanahLaut";
+            break;
+          case "TBU":
+            color = "TanahBumbu";
+            break;
+          case "KTB":
+            color = "Kotabaru";
+            break;
         }
-      }]
-    },
-    regionStyle: {
-      // initial: {
-      //   fill: '#212529',
-      //   "fill-opacity": .8,
-      //   stroke: "none",
-      //   "stroke-width": 0,
-      //   "stroke-opacity": 1
-      // },
-      hover: {
-        fill: '#fff',
-        "fill-opacity": .8,
-        cursor: "pointer"
-      }
-    },
-    onRegionTipShow	: function(event, label, code){
-      label.html(
-        '<b>'+label.html()+'</b></br>'+
-        '<span class="icon-map-label bg-red"> </span> <b>Positif : </b>'+regLabels[code].pos+'</br>'+
-        '<span class="icon-map-label bg-yellow"> </span> <b>PDP : </b>'+regLabels[code].pdp+'</br>'+
-        '<span class="icon-map-label bg-green"> </span> <b>ODP : </b>'+regLabels[code].odp)
-    },
+        return color
+      }(item.code);
+    });
+    // console.log(regColors);
+
+    // Intializing Vector Map
+    map = new jvm.Map({
+      map: 'kalsel_mp',
+      container: $('#kalsel_mp_cont'),
+      regionSelectAble: false,
+      zoomOnScroll: !1,
+      normalizeFunction: "polynomial",
+      // scaleColors: ["#f00", "#0071A4"],
+      // backgroundColor: 'transparent',
+      series: {
+        regions: [{
+          attribute: 'fill',
+          scale: {
+           Tabalong: '#ED925A',
+           Balangan: '#19B3C1',
+           HuluSungaiUtara: '#13838D',
+           HuluSungaiTengah: '#3A6B3E',
+           HuluSungaiSelatan: '#5AA861',
+           Tapin: '#F4F1BB',
+           BaritoKuala: '#D4A8EA',
+           Banjarmasin: '#ED5A5A',
+           Banjar: '#96C79A',
+           Banjarbaru: '#71EBF2',
+           TanahLaut: '#C67EEA',
+           TanahBumbu: '#F18787',
+           Kotabaru: '#F5C3A5'
+          },
+          normalizeFunction: 'polynomial',
+          values: regColors,//markers_coor.reduce(function(p, c, i){ p[i] = c.status; return p }, {}),
+          legend: {
+            cssClass: 'tes',
+            vertical: true,
+            title: 'Keterangan'
+          }
+        }]
+      },
+      regionStyle: {
+        // initial: {
+        //   fill: '#212529',
+        //   "fill-opacity": .8,
+        //   stroke: "none",
+        //   "stroke-width": 0,
+        //   "stroke-opacity": 1
+        // },
+        hover: {
+          fill: '#fff',
+          "fill-opacity": .8,
+          cursor: "pointer"
+        }
+      },
+      onRegionTipShow	: function(event, label, code){
+        label.html(
+          '<b>'+label.html()+'</b></br>'+
+          '<span class="icon-map-label bg-red"> </span> <b>Positif : </b>'+regLabels[code].pos+'</br>'+
+          '<span class="icon-map-label bg-yellow"> </span> <b>PDP : </b>'+regLabels[code].pdp+'</br>'+
+          '<span class="icon-map-label bg-green"> </span> <b>ODP : </b>'+regLabels[code].odp)
+      },
+    });
+
+
+    $('#kalsel_mp_cont').find(".jvectormap-zoomin").addClass("ml-2");
+    $('#kalsel_mp_cont').find(".jvectormap-zoomout").addClass("ml-2 mt-2");
   });
+}
 
-
-  $('#kalsel_mp_cont').find(".jvectormap-zoomin").addClass("ml-2");
-  $('#kalsel_mp_cont').find(".jvectormap-zoomout").addClass("ml-2 mt-2");
-});
 //
 // var map, positif, markers_coor, data;
 // var regionLabels= [];
