@@ -16,9 +16,13 @@
       </thead>
 
       <tbody>
-        <% @info_practices.each do |info_practice| %>
+        <% @info_practices.each_with_index do |info_practice, index| %>
           <tr>
-            <td><%= image_tag info_practice.image_content.url(:thumb) %></td>
+            <td>
+              <%= link_to info_practice.image_content.url(:original), class:"avatar", "data-lightbox": "image-#{index}" do %>
+                <%= image_tag info_practice.image_content.url(:thumb) %>
+              <% end %>
+            </td>
             <td class="text-right">
               <%= link_to info_practice, class: "btn btn-icon btn-sm btn-info" do %>
                 <%= icon("fas","eye", class: "text-white")%>
