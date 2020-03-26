@@ -32,3 +32,6 @@
 /config/deploy/production
 
 /db/*.sql
+
+# Ignore info_practice image development
+/public

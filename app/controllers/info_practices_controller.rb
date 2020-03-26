@@ -28,7 +28,7 @@ class InfoPracticesController < ApplicationController
 
     respond_to do |format|
       if @info_practice.save
-        format.html { redirect_to @info_practice, notice: 'Info practice was successfully created.' }
+        format.html { redirect_to info_practices_url, notice: 'Info practice was successfully created.' }
         format.json { render :show, status: :created, location: @info_practice }
       else
         format.html { render :new }
