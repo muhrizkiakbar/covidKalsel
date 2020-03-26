@@ -612,7 +612,7 @@ puts "Create Permissions"
     # p permission[:page]
     # p permission[:path]
     # p add_permissions.errors.full_messages
-    
+
  end
 
  roles=[{name: "Superadmin"},{name: "User"}]
@@ -642,6 +642,47 @@ cityurl = 'http://dev.farizdotid.com/api/daerahindonesia/provinsi/63/kabupaten'
 responsecity = RestClient.get(cityurl)
 
 jsonresponsecity = JSON.parse(responsecity)["kabupatens"]
+citycode = {
+  "6301": {
+    "code": "TLA"
+  },
+  "6302": {
+    "code": "KTB"
+  },
+  "6303": {
+    "code": "BJR"
+  },
+  "6304": {
+    "code": "BTL"
+  },
+  "6305": {
+    "code": "TPN"
+  },
+  "6306": {
+    "code": "HSS"
+  },
+  "6307": {
+    "code": "HST"
+  },
+  "6308": {
+    "code": "HSU"
+  },
+  "6309": {
+    "code": "TBL"
+  },
+  "6310": {
+    "code": "TBU"
+  },
+  "6311": {
+    "code": "BLG"
+  },
+  "6371": {
+    "code": "BJM"
+  },
+  "6372": {
+    "code": "BJB"
+  },
+}
 
 jsonresponsecity.each do |city|
     addcity = City.new
@@ -655,6 +696,7 @@ jsonresponsecity.each do |city|
     addcity.cov_pdp_count = 0
     addcity.cov_odp_processed_count = 0
     addcity.cov_pdp_processed_count = 0
+    addcity.code = JSON.parse(citycode.to_json)[city["id"]]["code"]
     addcity.save
     idcityapi = city["id"]
 
@@ -671,4 +713,3 @@ add_user = User.create(
         name: "diskominfo",
         password: "@diskominfo123"
     )
-

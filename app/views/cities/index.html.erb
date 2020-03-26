@@ -23,6 +23,7 @@
               <th>Amount PDP</th>
               <th>Hotline</th>
               <th>Call center</th>
+              <th>Code</th>
               <th >Tool</th>
               <th>Created_at</th>
               <th>Updated_at</th>
@@ -44,16 +45,17 @@
                 <td><%= city.cov_pdp_processed_count %></td>
                 <td><%= city.cov_pdp_processed_count %></td>
                 <td><%= city.hotline %></td>
-                <td><%= city.call_center %>
+                <td><%= city.call_center %></td>
+                <td><%= city.code %></td>
                 <td>
                   <%= link_to city, class: "btn btn-icon btn-sm btn-info" do %>
-                    <%= fa_icon "eye", class: "text-white"%>
+                    <%= icon("fas","eye", class: "text-white")%>
                   <% end %>
                   <%= link_to edit_city_path(city), class: "btn btn-icon btn-sm btn-warning" do %>
-                    <%= fa_icon "edit", class: "text-white"%>
+                    <%= icon("fas", "edit", class: "text-white")%>
                   <% end %>
                   <%= link_to city, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-icon btn-sm btn-danger" do %>
-                    <%= fa_icon "trash", class: "text-white"%>
+                    <%= icon("fas","trash", class: "text-white")%>
                   <% end %>
                 </td>
                 <td><%= city.created_at %></td>
@@ -66,7 +68,7 @@
 
     </div>
 
-    
+
     <br>
     <%# paginate @cities %>
 
@@ -81,5 +83,5 @@
     <%= link_to 'New City', new_city_path, class: "btn btn-sm btn-neutral" %>
   </div>
 <% end %>
-      
+
 <%= render partial: 'layouts/body' %>

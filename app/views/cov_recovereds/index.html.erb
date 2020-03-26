@@ -26,13 +26,13 @@
                 <td><%= cov_recovered.dateTime %></td>
                 <td>
                   <%= link_to cov_recovered, class: "btn btn-icon btn-sm btn-info" do %>
-                    <%= fa_icon "eye", class: "text-white"%>
+                    <%= icon("fas","eye", class: "text-white")%>
                   <% end %>
                   <%= link_to edit_cov_recovered_path(cov_recovered), class: "btn btn-icon btn-sm btn-warning" do %>
-                    <%= fa_icon "edit", class: "text-white"%>
+                    <%= icon("fas", "edit", class: "text-white")%>
                   <% end %>
                   <%= link_to cov_recovered, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-icon btn-sm btn-danger" do %>
-                    <%= fa_icon "trash", class: "text-white"%>
+                    <%= icon("fas", "trash", class: "text-white")%>
                   <% end %>
                 </td>
               </tr>

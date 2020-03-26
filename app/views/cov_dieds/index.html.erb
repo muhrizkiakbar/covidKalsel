@@ -26,13 +26,13 @@
                 <td><%= cov_died.dateTime %></td>
                 <td>
                   <%= link_to cov_died, class: "btn btn-icon btn-sm btn-info" do %>
-                    <%= fa_icon "eye", class: "text-white"%>
+                    <%= icon("fas","eye", class: "text-white")%>
                   <% end %>
                   <%= link_to edit_cov_died_path(cov_died), class: "btn btn-icon btn-sm btn-warning" do %>
-                    <%= fa_icon "edit", class: "text-white"%>
+                    <%= icon("fas", "edit", class: "text-white")%>
                   <% end %>
                   <%= link_to cov_died, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-icon btn-sm btn-danger" do %>
-                    <%= fa_icon "trash", class: "text-white"%>
+                    <%= icon("fas", "trash", class: "text-white")%>
                   <% end %>
                 </td>
               </tr>
@@ -43,7 +43,7 @@
 
     </div>
 
-    
+
     <br>
     <%# paginate @cities %>
 
@@ -58,5 +58,5 @@
     <%= link_to 'New Cov Died', new_cov_died_path, class: "btn btn-sm btn-neutral" %>
   </div>
 <% end %>
-      
+
 <%= render partial: 'layouts/body' %>

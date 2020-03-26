@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     authenticated :user do
       root 'dashboard#index'
     end
-  
+
     unauthenticated do
       root 'public#home'
     end
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   scope "/backoffice" do
 
     resources :information
-    
+
     resources :cov_dieds
     resources :cov_pdps
     resources :cov_odps
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     resources :hospitals
     resources :cities
     # resources :permissions
-    
+
     resources :info_practices
 
     resources :roles do
@@ -39,10 +39,10 @@ Rails.application.routes.draw do
     end
   end
 
-  
-  get 'news' => 'public#news', :as => 'public_news'    
+  get 'news' => 'public#news', :as => 'public_news'
   get 'new/:new_id' => 'public#shownew', :as => 'public_new'
-  get 'faq' => 'public#faq', :as => 'public_faq'    
-  get 'contact' => 'public#new', :as => 'public_contact'    
+  get 'faq' => 'public#faq', :as => 'public_faq'
+  get 'contact' => 'public#new', :as => 'public_contact'
+  get 'cov_map' => 'public#cov_map', :as => 'public_cov_map'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
