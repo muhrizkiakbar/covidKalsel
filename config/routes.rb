@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   get 'news' => 'public#news', :as => 'public_news'
   get 'new/:new_id' => 'public#shownew', :as => 'public_new'
   get 'faq' => 'public#faq', :as => 'public_faq'
-  get 'contact' => 'public#new', :as => 'public_contact'
+  get 'contact' => 'public#contact', :as => 'public_contact'
   get 'cov_map' => 'public#cov_map', :as => 'public_cov_map'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
