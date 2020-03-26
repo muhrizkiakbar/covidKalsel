@@ -28,3 +28,7 @@
 
 /data/*
 /docker-data/*
+
+/config/deploy/production
+
+/db/*.sql
