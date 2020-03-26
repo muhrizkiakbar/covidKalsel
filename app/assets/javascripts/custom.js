@@ -104,7 +104,7 @@ $.getJSON('/cov_map', function(data){
       return color
     }(item.code);
   });
-  console.log(regColors);
+  // console.log(regColors);
 
   // Intializing Vector Map
   map = new jvm.Map({
@@ -142,20 +142,20 @@ $.getJSON('/cov_map', function(data){
         }
       }]
     },
-    // regionStyle: {
-    //   initial: {
-    //     fill: '#212529',
-    //     "fill-opacity": .8,
-    //     stroke: "none",
-    //     "stroke-width": 0,
-    //     "stroke-opacity": 1
-    //   },
-    //   hover: {
-    //     fill: '#8898aa',
-    //     "fill-opacity": .8,
-    //     cursor: "pointer"
-    //   }
-    // },
+    regionStyle: {
+      // initial: {
+      //   fill: '#212529',
+      //   "fill-opacity": .8,
+      //   stroke: "none",
+      //   "stroke-width": 0,
+      //   "stroke-opacity": 1
+      // },
+      hover: {
+        fill: '#fff',
+        "fill-opacity": .8,
+        cursor: "pointer"
+      }
+    },
     onRegionTipShow	: function(event, label, code){
       label.html(
         '<b>'+label.html()+'</b></br>'+
