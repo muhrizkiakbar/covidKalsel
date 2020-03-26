@@ -4,7 +4,7 @@ class PublicController < ApplicationController
 
     def home
         @cities = City.all
-        @hospitals = Hospital.all
+        @hospitals = Hospital.order("is_primary DESC NULLS LAST")
         @informations = Information.take(5)
         @cov_positive_count = City.sum('cov_positive_count')
         @cov_odp_count = City.sum('cov_odp_count')
