@@ -1,17 +1,17 @@
 <nav id="navbar-main" class="navbar navbar-horizontal navbar-main navbar-expand-lg navbar-light bg-secondary border-bottom">
   <div class="container">
-    <a class="navbar-brand" href="dashboard.html">
-      <img src="../assets/img/brand/white.png">
+    <a class="navbar-brand" href="/">
+      <%=image_tag asset_path('img/brand/white.png')%>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-collapse navbar-custom-collapse collapse" id="navbar-collapse">
+    <div class="navbar-collapse navbar-custom-collapse collapse bg-secondary" id="navbar-collapse">
       <div class="navbar-collapse-header">
         <div class="row">
           <div class="col-6 collapse-brand">
             <a href="/">
-              <img src="../assets/img/brand/blue.png">
+              <%=image_tag asset_path('img/brand/white.png')%>
             </a>
           </div>
           <div class="col-6 collapse-close">
@@ -22,9 +22,6 @@
           </div>
         </div>
       </div>
-      <ul class="navbar-nav mr-auto">
-      </ul>
-      <hr class="d-lg-none" />
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
           <li class="nav-item">
             <a href="/" class="nav-link  btn btn-outline-secondary">
