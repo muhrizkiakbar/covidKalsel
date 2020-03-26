@@ -1,4 +1,6 @@
-
+<% content_for :active_menu do %>
+  active
+<% end %>
 
 <% content_for :isi do %>
   <div class="container-fluid mt--6">
@@ -44,7 +46,7 @@
 
     </div>
 
-    
+
     <br>
     <%# paginate @cities %>
 
@@ -59,5 +61,5 @@
     <%= link_to 'New Cov Odp', new_cov_odp_path, class: "btn btn-sm btn-neutral" %>
   </div>
 <% end %>
-      
+
 <%= render partial: 'layouts/body' %>
