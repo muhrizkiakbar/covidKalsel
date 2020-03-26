@@ -45,7 +45,7 @@
           
           <div class="form-group">
             <label class="form-control-label">Content</label>
-            <%= form.text_area :content, class: "form-control", placeholder: "Address" %>
+            <%= form.cktext_area :content, class: "form-control", ckeditor: { toolbar: 'mini' } %>
           </div>
 
           <div class="actions">
@@ -56,7 +56,6 @@
       </div>
     </div>
     
-
 
     <%= render partial: 'layouts/footer_back' %>
   </div>
