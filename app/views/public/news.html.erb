@@ -1,11 +1,36 @@
 
 <% content_for :isi do %>
-  <div class="row">
-    <% @informations.each do |information| %>
-      <%= link_to information.tittle, public_new_path(information) %>
-      <%= image_tag information.image_content.url %>
-      <%= information.content%>
-    <% end %>
+  <div class="row justify-content-left px-5 mt--5">
+    <div class="col">
+      <div class="card bg-transparent no-shadow mb-0">
+        <div class="card-body bg-transparent px-0">
+          <h5 class="h2 card-title mb-0">Berita Covid-19</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center px-5">
+    <div class="col-lg-12">
+      <% @informations.each do |information| %>
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-4">
+                <%= image_tag information.image_content.url, class: "card-img-top" %>
+              </div>
+              <div class="col-lg-8">
+                <h5 class="h2 card-title mb-0"><%=information.tittle%></h5>
+                <small class="text-muted">by <%=information.user.username%> on <%=information.created_at%></small>
+                <p class="card-text mt-4 text-justify">
+                  <%=h truncate(information.content, :length => 700) %>
+                </p>
+                <%= link_to "Baca Selengkapnya", public_new_path(information), class: "btn btn-link px-0" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>
 <%= render partial: 'layouts/body' %>
