@@ -2,8 +2,8 @@
   <div class="scrollbar-inner">
     <!-- Brand -->
     <div class="sidenav-header  d-flex  align-items-center">
-      <a class="navbar-brand" href="../../pages/dashboards/dashboard.html">
-        <img src="../../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+      <a class="navbar-brand" href="/">
+        <%=image_tag asset_path('img/brand/white.png'), class:"navbar-brand-img", alt:"..."%>
       </a>
       <div class=" ml-auto ">
         <!-- Sidenav toggler -->
@@ -22,11 +22,11 @@
         <!-- Nav items -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" href="#navbar-dashboards" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
-              <i class="ni ni-shop text-primary"></i>
+            <a class="nav-link <%= controller_name == 'dashboard' ? 'active' : '' %>" href="#navbar-dashboards" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
+              <%= icon("fas", "tachometer-alt", class:"text-primary") %>
               <span class="nav-link-text">Dashboards</span>
             </a>
-            <div class="collapse show" id="navbar-dashboards">
+            <div class="collapse <%= controller_name == 'dashboard' ? 'show' : '' %>" id="navbar-dashboards">
               <ul class="nav nav-sm flex-column">
 
                   <li class="nav-item">
@@ -40,33 +40,34 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
-              <i class="ni ni-ungroup text-orange"></i>
+            <% @cov = ["cov_dieds", "cov_pdps", "cov_odps", "cov_recovereds", "cov_negatives", "cov_positives", "cov_pdp_processeds", "cov_odp_processeds"] %>
+            <a class="nav-link <%= @cov.include?(controller_name) ? 'active' : '' %>" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
+              <%= icon("far", "clone", class: "text-orange") %>
               <span class="nav-link-text">CoV</span>
             </a>
-            <div class="collapse" id="navbar-examples">
+            <div class="collapse <%= @cov.include?(controller_name) ? 'show' : '' %>" id="navbar-examples">
               <ul class="nav nav-sm flex-column">
                 <% if policy(:cov_positive).index? %>
                   <li class="nav-item">
                     <%= link_to cov_positives_path, class: "nav-link" do %>
                       <span class="sidenav-mini-icon"> P </span>
-                      <span class="sidenav-normal"> CoV Positive </span>
+                      <span class="sidenav-normal"> Positif </span>
                     <% end %>
                   </li>
                 <% end %>
                 <% if policy(:cov_recovered).index? %>
                   <li class="nav-item">
                     <%= link_to cov_recovereds_path, class: "nav-link" do %>
-                      <span class="sidenav-mini-icon"> R </span>
-                      <span class="sidenav-normal"> CoV Recovered </span>
+                      <span class="sidenav-mini-icon"> S </span>
+                      <span class="sidenav-normal"> Sembuh </span>
                     <% end %>
                   </li>
                 <% end %>
                 <% if policy(:cov_died).index? %>
                   <li class="nav-item">
                     <%= link_to cov_dieds_path, class: "nav-link" do %>
-                      <span class="sidenav-mini-icon"> D </span>
-                      <span class="sidenav-normal"> CoV Died </span>
+                      <span class="sidenav-mini-icon"> M </span>
+                      <span class="sidenav-normal"> Meninggal </span>
                     <% end %>
                   </li>
                 <% end %>
@@ -74,57 +75,70 @@
                   <li class="nav-item">
                     <%= link_to cov_negatives_path, class: "nav-link" do %>
                       <span class="sidenav-mini-icon"> N </span>
-                      <span class="sidenav-normal"> CoV Negative </span>
+                      <span class="sidenav-normal"> Negatif </span>
                     <% end %>
                   </li>
                 <% end %>
-                <% if policy(:cov_odp).index? %>
-                  <li class="nav-item">
-                    <%= link_to cov_odps_path, class: "nav-link" do %>
-                      <span class="sidenav-mini-icon"> O </span>
-                      <span class="sidenav-normal"> CoV Odp </span>
+                <a href="#navbar-multilevel-odp" class="nav-link" data-toggle="collapse" role="button" aria-expanded="<%= ["cov_odps", "cov_odp_processeds"].include?(controller_name) ? 'true' : 'false' %>" aria-controls="navbar-multilevel-odp">
+                  <span class="sidenav-mini-icon"> O </span>
+                  <span class="sidenav-normal"> ODP </span>
+                </a>
+                <div class="collapse <%= ["cov_odps", "cov_odp_processeds"].include?(controller_name) ? 'show' : '' %>" id="navbar-multilevel-odp" style="">
+                  <ul class="nav nav-sm flex-column">
+                    <% if policy(:cov_odp).index? %>
+                      <li class="nav-item">
+                        <%= link_to cov_odps_path, class: "nav-link" do %>
+                          <span class="sidenav-normal"> Tambah </span>
+                        <% end %>
+                      </li>
                     <% end %>
-                  </li>
-                <% end %>
-                <% if policy(:cov_odp_processed).index? %>
-                  <li class="nav-item">
-                    <%= link_to cov_odp_processeds_path, class: "nav-link" do %>
-                      <span class="sidenav-mini-icon"> OP </span>
-                      <span class="sidenav-normal"> CoV Odp Processed </span>
+                    <% if policy(:cov_odp_processed).index? %>
+                      <li class="nav-item">
+                        <%= link_to cov_odp_processeds_path, class: "nav-link" do %>
+                          <span class="sidenav-normal"> Kurang </span>
+                        <% end %>
+                      </li>
                     <% end %>
-                  </li>
-                <% end %>
-                <% if policy(:cov_pdp).index? %>
-                  <li class="nav-item">
-                    <%= link_to cov_pdps_path, class: "nav-link" do %>
-                      <span class="sidenav-mini-icon"> P </span>
-                      <span class="sidenav-normal"> CoV Pdp </span>
+                  </ul>
+                </div>
+                <a href="#navbar-multilevel-pdp" class="nav-link" data-toggle="collapse" role="button" aria-expanded="<%= ["cov_pdps", "cov_pdp_processeds"].include?(controller_name) ? 'true' : 'false' %>" aria-controls="navbar-multilevel-pdp">
+                  <span class="sidenav-mini-icon"> P </span>
+                  <span class="sidenav-normal">PDP </span>
+                </a>
+                <div class="collapse <%= ["cov_pdps", "cov_pdp_processeds"].include?(controller_name) ? 'show' : '' %>" id="navbar-multilevel-pdp" style="">
+                  <ul class="nav nav-sm flex-column">
+                    <% if policy(:cov_pdp).index? %>
+                      <li class="nav-item">
+                        <%= link_to cov_pdps_path, class: "nav-link" do %>
+                          <span class="sidenav-normal"> Tambah </span>
+                        <% end %>
+                      </li>
                     <% end %>
-                  </li>
-                <% end %>
-                <% if policy(:cov_pdp_processed).index? %>
-                  <li class="nav-item">
-                    <%= link_to cov_pdp_processeds_path, class: "nav-link" do %>
-                      <span class="sidenav-mini-icon"> PP </span>
-                      <span class="sidenav-normal"> CoV Pdp Processed </span>
+                    <% if policy(:cov_pdp_processed).index? %>
+                      <li class="nav-item">
+                        <%= link_to cov_pdp_processeds_path, class: "nav-link" do %>
+                          <span class="sidenav-normal"> Kurang </span>
+                        <% end %>
+                      </li>
                     <% end %>
-                  </li>
-                <% end %>
+                  </ul>
+                </div>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#navbar-components" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
-              <i class="ni ni-ui-04 text-info"></i>
-              <span class="nav-link-text">General</span>
+            <% @informasi = ["hospitals", "information", "cities"] %>
+            <a class="nav-link <%= @informasi.include?(controller_name) ? 'active' : '' %>" href="#navbar-components" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
+              <%= icon("far", "hospital", class:"text-info") %>
+              <span class="nav-link-text">Informasi Umum</span>
             </a>
-            <div class="collapse" id="navbar-components">
+            <div class="collapse <%= @informasi.include?(controller_name) ? 'show' : '' %>" id="navbar-components">
               <ul class="nav nav-sm flex-column">
                 <% if policy(:hospital).index? %>
                   <li class="nav-item">
                     <%= link_to hospitals_path, class: "nav-link" do %>
-                      <span class="sidenav-mini-icon"> H </span>
-                      <span class="sidenav-normal"> Hospital </span>
+                      <span class="sidenav-mini-icon"> RS </span>
+                      <span class="sidenav-normal"> Rumah Sakit </span>
                     <% end %>
                   </li>
                 <% end %>
@@ -132,23 +146,23 @@
                   <li class="nav-item">
                     <%= link_to information_index_path, class: "nav-link" do %>
                       <span class="sidenav-mini-icon"> I </span>
-                      <span class="sidenav-normal"> Information </span>
+                      <span class="sidenav-normal"> Informasi </span>
                     <% end %>
                   </li>
                 <% end %>
                 <% if policy(:info_practice).index? %>
                   <li class="nav-item">
                     <%= link_to info_practices_path, class: "nav-link" do %>
-                      <span class="sidenav-mini-icon"> IP </span>
-                      <span class="sidenav-normal"> Info Practice </span>
+                      <span class="sidenav-mini-icon"> G </span>
+                      <span class="sidenav-normal"> Gambar </span>
                     <% end %>
                   </li>
                 <% end %>
                 <% if policy(:city).index? %>
                   <li class="nav-item">
                     <%= link_to cities_path, class: "nav-link" do %>
-                      <span class="sidenav-mini-icon"> C </span>
-                      <span class="sidenav-normal"> City </span>
+                      <span class="sidenav-mini-icon"> K </span>
+                      <span class="sidenav-normal"> Kabupaten/Kota </span>
                     <% end %>
                   </li>
                 <% end %>
@@ -156,11 +170,12 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#navbar-forms" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-forms">
-              <i class="ni ni-single-copy-04 text-pink"></i>
+            <% @pengguna = ["users", "roles"] %>
+            <a class="nav-link <%= @pengguna.include?(controller_name) ? 'active' : '' %>" href="#navbar-forms" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-forms">
+              <%= icon("fas", "users", class:"text-pink") %>
               <span class="nav-link-text">Users</span>
             </a>
-            <div class="collapse" id="navbar-forms">
+            <div class="collapse <%= @pengguna.include?(controller_name) ? 'show' : '' %>" id="navbar-forms">
               <ul class="nav nav-sm flex-column">
                 <% if policy(:user).index? %>
                   <li class="nav-item">
@@ -180,12 +195,6 @@
                 <% end %>
               </ul>
             </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../pages/calendar.html">
-              <i class="ni ni-calendar-grid-58 text-red"></i>
-              <span class="nav-link-text">Calendar</span>
-            </a>
           </li>
         </ul>
       </div>
