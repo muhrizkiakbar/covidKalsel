@@ -44,6 +44,8 @@
 //= require flickity/flickity.pkgd
 //= require flickity/fullscreen
 
+//ckeditor
+
 //= require argon/argon
 //= require argon/demo
 //= require_tree .
