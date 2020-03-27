@@ -31,7 +31,7 @@ class CovOdpProcessedsController < ApplicationController
   def create
     @cov_odp_processed = CovOdpProcessed.new(cov_odp_processed_params)
     
-    @cov_odp_processed.city = City.friendly.find(params[:cov_odp_processed][:city_id])
+    # @cov_odp_processed.city = City.friendly.find(params[:cov_odp_processed][:city_id])
 
 
 
@@ -67,7 +67,7 @@ class CovOdpProcessedsController < ApplicationController
 
     @city.save
 
-    @cov_odp_processed.city = City.friendly.find(params[:cov_odp_processed][:city_id])
+    # @cov_odp_processed.city = City.find(@cov_odp_processed.city.id)
     respond_to do |format|
       if @cov_odp_processed.update(cov_odp_processed_params)
 

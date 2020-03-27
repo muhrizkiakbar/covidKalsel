@@ -33,7 +33,7 @@ class CovRecoveredsController < ApplicationController
   # POST /cov_recovereds.json
   def create
     @cov_recovered = CovRecovered.new(cov_recovered_params)
-    @cov_recovered.city = City.friendly.find(params[:cov_recovered][:city_id])
+    # @cov_recovered.city = City.friendly.find(params[:cov_recovered][:city_id])
 
 
     @city = City.find(@cov_recovered.city.id)
@@ -56,7 +56,7 @@ class CovRecoveredsController < ApplicationController
   # PATCH/PUT /cov_recovereds/1.json
   def update
 
-    @cov_recovered.city = City.friendly.find(params[:cov_recovered][:city_id])
+    # @cov_recovered.city = City.friendly.find(params[:cov_recovered][:city_id])
     
     respond_to do |format|
 

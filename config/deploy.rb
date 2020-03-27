@@ -5,7 +5,7 @@ lock "~> 3.12.1"
 set :passenger_restart_with_touch, true
 
 set :application, "covidKalsel"
-set :repo_url, "git@github.com:muhrizkiakbar/covidKalsel.git"
+set :repo_url, "https://github.com/muhrizkiakbar/covidKalsel.git"
 
 # Deploy to the user's home directory
 set :deploy_to, "/home/deploy/#{fetch :application}"
@@ -53,3 +53,5 @@ set :branch, "deploy"
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+
