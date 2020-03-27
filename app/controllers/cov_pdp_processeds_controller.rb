@@ -29,7 +29,7 @@ class CovPdpProcessedsController < ApplicationController
   # POST /cov_pdp_processeds.json
   def create
     @cov_pdp_processed = CovPdpProcessed.new(cov_pdp_processed_params)
-    @cov_pdp_processed.city = City.friendly.find(params[:cov_pdp_processed][:city_id])
+    # @cov_pdp_processed.city = City.friendly.find(params[:cov_pdp_processed][:city_id])
 
     @city = City.find(@cov_pdp_processed.city.id)
     @city.cov_pdp_processed_count += @cov_pdp_processed.amount
@@ -56,7 +56,7 @@ class CovPdpProcessedsController < ApplicationController
     @city.cov_pdp_count += @cov_pdp_processed.amount
     @city.save
 
-    @cov_pdp_processed.city = City.friendly.find(params[:cov_pdp_processed][:city_id])
+    # @cov_pdp_processed.city = City.friendly.find(params[:cov_pdp_processed][:city_id])
     
     respond_to do |format|
       if @cov_pdp_processed.update(cov_pdp_processed_params)

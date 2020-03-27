@@ -33,7 +33,7 @@ class CovPdpsController < ApplicationController
   # POST /cov_pdps.json
   def create
     @cov_pdp = CovPdp.new(cov_pdp_params)
-    @cov_pdp.city = City.friendly.find(params[:cov_pdp][:city_id])
+    # @cov_pdp.city = City.friendly.find(params[:cov_pdp][:city_id])
 
     @city = City.find(@cov_pdp.city.id)
     @city.cov_pdp_count += @cov_pdp.amount
@@ -59,7 +59,7 @@ class CovPdpsController < ApplicationController
     @city.save
 
 
-    @cov_pdp.city = City.friendly.find(params[:cov_pdp][:city_id])
+    # @cov_pdp.city = City.friendly.find(params[:cov_pdp][:city_id])
     
     respond_to do |format|
       if @cov_pdp.update(cov_pdp_params)

@@ -30,7 +30,7 @@ class CovOdpsController < ApplicationController
   # POST /cov_odps.json
   def create
     @cov_odp = CovOdp.new(cov_odp_params)
-    @cov_odp.city = City.friendly.find(params[:cov_odp][:city_id])
+    # @cov_odp.city = City.friendly.find(params[:cov_odp][:city_id])
 
 
     @city = City.find(@cov_odp.city.id)

@@ -32,7 +32,7 @@ class CovDiedsController < ApplicationController
 
 
     @cov_died = CovDied.new(cov_died_params)
-    @cov_died.city = City.friendly.find(params[:cov_died][:city_id])
+    # @cov_died.city = City.friendly.find(params[:cov_died][:city_id])
 
     
 
@@ -61,7 +61,7 @@ class CovDiedsController < ApplicationController
     @city.save
 
 
-    @cov_died.city = City.friendly.find(params[:cov_died][:city_id])
+    # @cov_died.city = City.friendly.find(params[:cov_died][:city_id])
 
     respond_to do |format|
       if @cov_died.update(cov_died_params)
@@ -106,6 +106,6 @@ class CovDiedsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cov_died_params
-      params.require(:cov_died).permit(:amount, :dateTime)
+      params.require(:cov_died).permit(:amount,:city_id, :dateTime)
     end
 end

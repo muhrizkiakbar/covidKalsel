@@ -34,9 +34,9 @@ class CovNegativesController < ApplicationController
   def create
     @cov_negative = CovNegative.new(cov_negative_params)
 
-    @cov_negative.city = City.friendly.find(params[:cov_negative][:city_id])
+    # @cov_negative.city = City.friendly.find(params[:cov_negative][:city_id])
 
-    @city = City.friendly.find(params[:cov_negative][:city_id])
+    @city = City.find(@cov_negative.city.id)
     @city.cov_negative_count += @cov_negative.amount
     @city.save
 

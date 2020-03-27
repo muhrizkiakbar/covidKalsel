@@ -32,8 +32,9 @@ class HospitalsController < ApplicationController
   # POST /hospitals.json
   def create
     @hospital = Hospital.new(hospital_params)
-
-    @hospital.city = City.friendly.find(params[:hospital][:city_id])
+    p "*" * 100
+    p params[:city_id]
+    # @hospital.city = City.friendly.find(params[:hospital][:city_id])
     respond_to do |format|
       if @hospital.save
         format.html { redirect_to @hospital, notice: 'Hospital was successfully created.' }
@@ -80,6 +81,6 @@ class HospitalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hospital_params
-      params.require(:hospital).permit(:name_hospital, :address, :hotline, :phone_number,:is_primary)
+      params.require(:hospital).permit(:name_hospital, :city_id, :address, :hotline, :phone_number,:is_primary)
     end
 end
