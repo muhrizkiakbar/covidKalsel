@@ -1,23 +1,55 @@
-<%= form_with(model: info_practice, local: true) do |form| %>
-  <% if info_practice.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(info_practice.errors.count, "error") %> prohibited this info_practice from being saved:</h2>
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <% if notice!=nil %>
+      <div class="alert alert-success" role="alert">
+          <%= notice %>
+      </div>
+    <% end %>
 
-      <ul>
-      <% info_practice.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if info_practice.errors.any? %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <span class="alert-icon"><h3 class="text-white"><%= icon("fas", "exclamation-triangle", class: "fa-3x text-white")%></h3></span>
+          <span class="alert-text">
+            <h3 class="text-white"><strong><%= pluralize(info_practice.errors.count, "error") %></strong> prohibited this city from being saved:</h3>
+            <ul>
+              <% info_practice.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </span>
+
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+    <% end %>
+
+    <div class="card">
+      <div class="card-header">
+        <h3><%= @header_card %></h3>
+      </div>
+      <div class="card-body">
+        <%= form_with(model: info_practice, local: true) do |form| %>
+          <div class="custom-file mb-3">
+            <%= form.file_field :image_content, class: "custom-file-input", "data-multiple-caption": "{count} files selected", autocomplete: "off", lang: "en" %>
+            <label class="custom-file-label" for="info_practice_image_content"></label>
+          </div>
+
+          <div class="actions">
+            <%= form.submit 'Submit', :class => 'btn btn-primary' %>
+            <%= link_to 'Back', info_practices_path, :class => 'btn btn-secondary' %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <%= form.label :image_content, for: "image_content", class: "form-control-label" %>
-
-  <%= form.file_field :image_content, class: "custom-file-input", "data-multiple-caption": "{count} files selected", autocomplete: "off", lang: "en" %>
-
-
-
-  <div class="actions">
-    <%= form.submit %>
+    <%= render partial: 'layouts/footer_back' %>
   </div>
 <% end %>
+
+<% content_for :button_header do %>
+  <div class="col-lg-6 col-5 text-right">
+    <%= link_to 'New Info Practice', new_info_practice_path, class: "btn btn-sm btn-neutral" %>
+  </div>
+<% end %>
+
+<%= render partial: 'layouts/body' %>

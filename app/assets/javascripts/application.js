@@ -44,6 +44,8 @@
 //= require flickity/flickity.pkgd
 //= require flickity/fullscreen
 
+//Lightbox
+//= require lightbox/lightbox
 
 //= require argon/argon
 //= require argon/demo
