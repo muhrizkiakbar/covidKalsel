@@ -24,9 +24,9 @@
       </div>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
           <li class="nav-item">
-            <a href="/" class="nav-link  btn btn-outline-secondary">
+            <%= link_to root_path, class: "nav-link btn btn-outline-secondary" do %>
               <span class="nav-link-inner--text font-weight-bold">Home</span>
-            </a>
+            <% end %>
           </li>
           <li class="nav-item">
             <%= link_to public_news_path, class: "nav-link btn btn-outline-secondary" do %>

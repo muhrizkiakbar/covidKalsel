@@ -17,6 +17,22 @@ var DatatableBasic = function() {
   })
 }();
 
+$(".card-expand").click(function () {
+
+  $header = $(this).children();
+  //getting the next element
+  $content = $header.next();
+  // console.log($content);
+  //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+  $content.slideToggle(500, function () {
+      //execute this after slideToggle is done
+      //change text of header based on visibility of content div
+      // $('.card-body', $header).attr('hidden', 'false');
+      $(this).attr('hidden', false);
+
+  });
+
+});
 // $("#datatable-kota").DataTable();
 // $('#carouselExampleControls').on('slide.bs.carousel', function (e) {
 //     /*
