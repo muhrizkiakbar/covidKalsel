@@ -75,6 +75,7 @@ if (mapContainer.length){
         "pos": item.cov_positive_count,
         "pdp": item.cov_pdp_count,
         "odp": item.cov_odp_count,
+        "die": item.cov_died_count,
       };
       regColors[item.code] = function(code){
         var color;
@@ -179,7 +180,9 @@ if (mapContainer.length){
           '<b>'+label.html()+'</b></br>'+
           '<span class="icon-map-label bg-red"> </span> <b>Positif : </b>'+regLabels[code].pos+'</br>'+
           '<span class="icon-map-label bg-yellow"> </span> <b>PDP : </b>'+regLabels[code].pdp+'</br>'+
-          '<span class="icon-map-label bg-green"> </span> <b>ODP : </b>'+regLabels[code].odp)
+          '<span class="icon-map-label bg-green"> </span> <b>ODP : </b>'+regLabels[code].odp+'</br>'+
+          '<span class="icon-map-label bg-orange"> </span> <b>Meninggal : </b>'+regLabels[code].die
+        )
       },
     });
 
