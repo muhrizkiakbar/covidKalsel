@@ -484,7 +484,6 @@
     <div class="card bg-dark">
 
       <div class="main-carousel card-body">
-        <%= image_tag asset_path('img/pergub-edaran/hal-1-edaran-1.jpeg'), class: "carousel-image"%>
         <%= image_tag asset_path('img/pergub-edaran/hal-1-ed-2.jpeg'), class: "carousel-image"%>
         <%= image_tag asset_path('img/pergub-edaran/hal-2-ed-2.jpeg'), class: "carousel-image"%>
         <%= image_tag asset_path('img/pergub-edaran/Pergub-1.jpg'), class: "carousel-image"%>
@@ -502,16 +501,23 @@
     </div>
 
   </div>
+  
 
   <footer class="py-5" id="footer-main">
     <div class="container">
       <div class="row align-items-center justify-content-xl-between">
-        <div class="col-xl-6">
+        <div class="col-xl-4">
           <div class="copyright text-center text-xl-left text-muted">
             &copy; 2020 <a href="http://diskominfo.kalselprov.go.id" class="text-gray font-weight-bold ml-1" target="_blank">Diskominfo Prov. Kalsel</a>
+            <br>Telah dikunjungi <a class="hitCounter" href="https://visitorshitcounter.com/" target="_blank" title="Hit counter" data-name="6e2a12ebc889c1dc9754ce3d32a44ab1|5|ip|1|#ea5050|#ffffff|small|s-hit">Hit Counter</a> .<script>document.write("<script type='text/javascript' src='https://visitorshitcounter.com/js/hitCounter.js?v="+Date.now()+"'><\/script>");</script>
           </div>
         </div>
-        <div class="col-xl-6">
+        <div class="col-xl-3">
+          <div class="copyright text-right text-xl-left text-muted">
+            
+          </div>
+        </div>
+        <div class="col-xl-5">
           <ul class="nav nav-footer justify-content-center justify-content-xl-end">
             <li class="nav-item">
               <%= link_to 'Home', root_path, class: 'nav-link', target: '_blank' %>
@@ -533,6 +539,19 @@
       </div>
     </div>
   </footer>
+  <style>
+    .hitCounter.badge-done0{
+      background-color: #0000 !important;
+      background-image: none !important;
+      display: inline !important;
+      background-repeat: none !important;
+      text-indent: 0 !important;
+      font-size: 14px !important;
+      color: #525f7f !important;
+      padding: 0px 0px !important;
+      background-position: none !important;
+    }
+  </style>
 
 <% end %>
 <%= render partial: 'layouts/body' %>
