@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    @user.role=Role.friendly.find(params[:user][:role_id])
+    # @user.role=Role.find(params[:user][:role_id])
     respond_to do |format|
       if @user.save
         format.html { redirect_to users_path(), notice: 'User was successfully created.' }
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
 
-    @user.role=Role.friendly.find(params[:role_id])
+    # @user.role=Role.find(params[:role_id])
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to users_path(), notice: 'User was successfully updated.' }
@@ -79,6 +79,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :username, :password,:password_confirmation, :name)
+      params.require(:user).permit(:email, :role_id, :username, :password,:password_confirmation, :name)
     end
 end
