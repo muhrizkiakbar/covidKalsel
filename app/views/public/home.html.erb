@@ -448,8 +448,23 @@
                 <tr>
                   <td><%= index+1 %></td>
                   <td>Pemerintah <%= city.name %></td>
-                  <td><%= city.call_center %></td>
-                  <td><%= city.hotline %></td>
+                  <td>
+                  <%
+                      telpons = city.call_center.split(" ")
+                      telpons.each_with_index do |telpon,index| %>
+                          <a href="tel:<%= telpon %>"><span class="badge badge-md bg-green text-white">
+                            <%= telpon %>
+                          </span></a>
+                      <% end %></td>
+                  <td>
+                  
+                   <%
+                      telpons = city.hotline.split(" ")
+                      telpons.each_with_index do |telpon,index| %>
+                          <a href="tel:<%= telpon %>"><span class="badge badge-md bg-green text-white">
+                            <%= telpon %>
+                          </span></a>
+                      <% end %></td>
                 </tr>
                 <% end %>
               </tbody>
