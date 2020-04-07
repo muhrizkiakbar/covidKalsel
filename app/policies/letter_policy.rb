@@ -1,4 +1,4 @@
-class InfoPracticePolicy < ApplicationPolicy
+class LetterPolicy < ApplicationPolicy
     def index?
         check_access("letter","index")
     end
