@@ -6,5 +6,5 @@ class Letter < ApplicationRecord
 
     has_attached_file :letter, styles: { medium: "595x842>", thumb: "193x281>" }
     validates_attachment_content_type :letter, content_type: /\Aimage\/.*\z/
-    paginates_per 5
+    paginates_per 20
 end
