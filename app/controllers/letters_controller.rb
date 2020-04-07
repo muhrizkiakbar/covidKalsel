@@ -5,20 +5,24 @@ class LettersController < ApplicationController
   # GET /letters.json
   def index
     @letters = Letter.all.page(params[:page])
+    authorize @letters
   end
 
   # GET /letters/1
   # GET /letters/1.json
   def show
+    authorize @letter
   end
 
   # GET /letters/new
   def new
     @letter = Letter.new
+    authorize @letter
   end
 
   # GET /letters/1/edit
   def edit
+    authorize @letter
   end
 
   # POST /letters
@@ -54,6 +58,7 @@ class LettersController < ApplicationController
   # DELETE /letters/1
   # DELETE /letters/1.json
   def destroy
+    authorize @letter
     @letter.destroy
     respond_to do |format|
       format.html { redirect_to letters_url, notice: 'Letter was successfully destroyed.' }

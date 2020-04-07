@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :letters
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
 
@@ -32,6 +31,8 @@ Rails.application.routes.draw do
     # resources :permissions
 
     resources :info_practices
+    
+    resources :letters
 
     resources :roles do
       resources :role_permissions
