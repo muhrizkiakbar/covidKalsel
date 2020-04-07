@@ -4,7 +4,7 @@ class LettersController < ApplicationController
   # GET /letters
   # GET /letters.json
   def index
-    @letters = Letter.all
+    @letters = Letter.all.page(params[:page])
   end
 
   # GET /letters/1
