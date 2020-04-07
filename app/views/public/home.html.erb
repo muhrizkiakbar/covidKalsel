@@ -521,23 +521,26 @@
     <div class="card bg-dark">
 
       <div class="main-carousel card-body">
-        <%= image_tag asset_path('img/pergub-edaran/07april/0001.jpg'), class: "carousel-image"%>
-        <%= image_tag asset_path('img/pergub-edaran/07april/0002.jpg'), class: "carousel-image"%>
-        <%= image_tag asset_path('img/pergub-edaran/07april/0003.jpg'), class: "carousel-image"%>
-        <%= image_tag asset_path('img/pergub-edaran/07april/0004.jpg'), class: "carousel-image"%>
-        <%= image_tag asset_path('img/pergub-edaran/hal-1-ed-2.jpeg'), class: "carousel-image"%>
-        <%= image_tag asset_path('img/pergub-edaran/hal-2-ed-2.jpeg'), class: "carousel-image"%>
-        <%= image_tag asset_path('img/pergub-edaran/Pergub-1.jpg'), class: "carousel-image"%>
-        <%= image_tag asset_path('img/pergub-edaran/Pergub-2.jpg'), class: "carousel-image"%>
-        <%= image_tag asset_path('img/pergub-edaran/SE No.900_518-1.jpg'), class: "carousel-image"%>
-        <%= image_tag asset_path('img/pergub-edaran/SE No.900_518-2.jpg'), class: "carousel-image"%>
-        <%= image_tag asset_path('img/pergub-edaran/SE No.900_518-3.jpg'), class: "carousel-image"%>
-        <%= image_tag asset_path('img/pergub-edaran/SE No.900_518-4.jpg'), class: "carousel-image"%>
-        <%= image_tag asset_path('img/pergub-edaran/SE-Sistem-Kerja-1.jpg'), class: "carousel-image"%>
-        <%= image_tag asset_path('img/pergub-edaran/SE-Sistem-Kerja-2.jpg'), class: "carousel-image"%>
-        <%= image_tag asset_path('img/pergub-edaran/SE-Tanggap-Darurat-Covid-1.jpg'), class: "carousel-image"%>
-        <%= image_tag asset_path('img/pergub-edaran/SE-Tanggap-Darurat-Covid-2.jpg'), class: "carousel-image"%>
-        <%= image_tag asset_path('img/pergub-edaran/SE-Absen-Apel.jpg'), class: "carousel-image"%>
+        <% @letters.each_with_index do |letter, index| %>
+        <%= image_tag letter.letter.url(:original), class: "carousel-image" %>
+        <% end %>
+          <%= image_tag asset_path('img/pergub-edaran/07april/0001.jpg'), class: "carousel-image"%>
+          <%= image_tag asset_path('img/pergub-edaran/07april/0002.jpg'), class: "carousel-image"%>
+          <%= image_tag asset_path('img/pergub-edaran/07april/0003.jpg'), class: "carousel-image"%>
+          <%= image_tag asset_path('img/pergub-edaran/07april/0004.jpg'), class: "carousel-image"%>
+          <%= image_tag asset_path('img/pergub-edaran/hal-1-ed-2.jpeg'), class: "carousel-image"%>
+          <%= image_tag asset_path('img/pergub-edaran/hal-2-ed-2.jpeg'), class: "carousel-image"%>
+          <%= image_tag asset_path('img/pergub-edaran/Pergub-1.jpg'), class: "carousel-image"%>
+          <%= image_tag asset_path('img/pergub-edaran/Pergub-2.jpg'), class: "carousel-image"%>
+          <%= image_tag asset_path('img/pergub-edaran/SE No.900_518-1.jpg'), class: "carousel-image"%>
+          <%= image_tag asset_path('img/pergub-edaran/SE No.900_518-2.jpg'), class: "carousel-image"%>
+          <%= image_tag asset_path('img/pergub-edaran/SE No.900_518-3.jpg'), class: "carousel-image"%>
+          <%= image_tag asset_path('img/pergub-edaran/SE No.900_518-4.jpg'), class: "carousel-image"%>
+          <%= image_tag asset_path('img/pergub-edaran/SE-Sistem-Kerja-1.jpg'), class: "carousel-image"%>
+          <%= image_tag asset_path('img/pergub-edaran/SE-Sistem-Kerja-2.jpg'), class: "carousel-image"%>
+          <%= image_tag asset_path('img/pergub-edaran/SE-Tanggap-Darurat-Covid-1.jpg'), class: "carousel-image"%>
+          <%= image_tag asset_path('img/pergub-edaran/SE-Tanggap-Darurat-Covid-2.jpg'), class: "carousel-image"%>
+          <%= image_tag asset_path('img/pergub-edaran/SE-Absen-Apel.jpg'), class: "carousel-image"%>
       </div>
     </div>
 

@@ -6,7 +6,8 @@ class PublicController < ApplicationController
         @cities = City.all
         @hospitals = Hospital.order("is_primary DESC NULLS LAST")
         @informations = Information.take(5)
-        @info_practices = InfoPractice.all
+        @info_practices = InfoPractice.order("created_at DESC")
+        @letters = Letter.order("created_at DESC")
         @cov_positive_count = City.sum('cov_positive_count')
         @cov_odp_count = City.sum('cov_odp_count')
         @cov_pdp_count = City.sum('cov_pdp_count')
