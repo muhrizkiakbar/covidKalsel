@@ -5,7 +5,7 @@
 
 <div class="card">
   <div class="card-header">
-    <h3>Gambar</h3>
+    <h3>Surat</h3>
   </div>
   <div class="table-responsive">
     <table class="table table-flush">
@@ -20,7 +20,7 @@
         <% @letters.each do |letter| %>
           <tr>
             <td>
-              <%= link_to letter.letter.url(:original), class:"avatar", "data-lightbox": "image-#{info_practice.id}" do %>
+              <%= link_to letter.letter.url(:original), class:"avatar", "data-lightbox": "image-#{letter.id}" do %>
                 <%= image_tag letter.letter.url(:thumb) %>
               <% end %>
             </td>
