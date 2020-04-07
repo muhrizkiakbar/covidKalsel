@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_071422) do
+ActiveRecord::Schema.define(version: 2020_04_07_090146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -217,6 +217,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_071422) do
     t.datetime "letter_updated_at"
     t.string "slug"
     t.datetime "deleted_at"
+    t.string "name_file"
     t.index ["deleted_at"], name: "index_letters_on_deleted_at"
     t.index ["slug"], name: "index_letters_on_slug", unique: true
   end

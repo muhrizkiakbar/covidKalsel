@@ -12,6 +12,7 @@
       <thead class="thead-light">
         <tr>
           <th>Surat</th>
+          <th>Name File</th>
           <th colspan="3" class="text-right">Action</th>
         </tr>
       </thead>
@@ -24,6 +25,7 @@
                 <%= image_tag letter.letter.url(:thumb) %>
               <% end %>
             </td>
+            <td><%= letter.name_file %></td>
             <td class="text-right">
               <%= link_to letter, class: "btn btn-icon btn-sm btn-info" do %>
                 <%= icon("fas","eye", class: "text-white")%>
