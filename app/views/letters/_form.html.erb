@@ -35,6 +35,11 @@
             <label class="custom-file-label" for="info_practice_image_content"></label>
           </div>
 
+          <div class="form-group">
+            <label class="form-control-label">Name File</label>
+            <%= form.text_field :name_file, class: "form-control", placeholder: "Name File" %>
+          </div>
+
           <div class="actions">
             <%= form.submit 'Submit', :class => 'btn btn-primary' %>
             <%= link_to 'Back', info_practices_path, :class => 'btn btn-secondary' %>
