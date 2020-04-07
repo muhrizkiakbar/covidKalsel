@@ -6,13 +6,13 @@
       </div>
     <% end %>
 
-    <% if info_practice.errors.any? %>
+    <% if letter.errors.any? %>
       <div class="alert alert-danger alert-dismissible fade show" role="alert">
           <span class="alert-icon"><h3 class="text-white"><%= icon("fas", "exclamation-triangle", class: "fa-3x text-white")%></h3></span>
           <span class="alert-text">
-            <h3 class="text-white"><strong><%= pluralize(info_practice.errors.count, "error") %></strong> prohibited this city from being saved:</h3>
+            <h3 class="text-white"><strong><%= pluralize(letter.errors.count, "error") %></strong> prohibited this city from being saved:</h3>
             <ul>
-              <% info_practice.errors.full_messages.each do |message| %>
+              <% letter.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
               <% end %>
             </ul>
