@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_063448) do
+ActiveRecord::Schema.define(version: 2020_04_07_071422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -206,6 +206,19 @@ ActiveRecord::Schema.define(version: 2020_03_26_063448) do
     t.index ["deleted_at"], name: "index_information_on_deleted_at"
     t.index ["slug"], name: "index_information_on_slug", unique: true
     t.index ["user_id"], name: "index_information_on_user_id"
+  end
+
+  create_table "letters", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "letter_file_name"
+    t.string "letter_content_type"
+    t.bigint "letter_file_size"
+    t.datetime "letter_updated_at"
+    t.string "slug"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_letters_on_deleted_at"
+    t.index ["slug"], name: "index_letters_on_slug", unique: true
   end
 
   create_table "news", force: :cascade do |t|

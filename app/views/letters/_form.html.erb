@@ -1,0 +1,55 @@
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <% if notice!=nil %>
+      <div class="alert alert-success" role="alert">
+          <%= notice %>
+      </div>
+    <% end %>
+
+    <% if info_practice.errors.any? %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <span class="alert-icon"><h3 class="text-white"><%= icon("fas", "exclamation-triangle", class: "fa-3x text-white")%></h3></span>
+          <span class="alert-text">
+            <h3 class="text-white"><strong><%= pluralize(info_practice.errors.count, "error") %></strong> prohibited this city from being saved:</h3>
+            <ul>
+              <% info_practice.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </span>
+
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+    <% end %>
+
+    <div class="card">
+      <div class="card-header">
+        <h3><%= @header_card %></h3>
+      </div>
+      <div class="card-body">
+        <%= form_with(model: letter, local: true) do |form| %>
+          <div class="custom-file mb-3">
+            <%= form.file_field :letter, class: "custom-file-input", "data-multiple-caption": "{count} files selected", autocomplete: "off", lang: "en" %>
+            <label class="custom-file-label" for="info_practice_image_content"></label>
+          </div>
+
+          <div class="actions">
+            <%= form.submit 'Submit', :class => 'btn btn-primary' %>
+            <%= link_to 'Back', info_practices_path, :class => 'btn btn-secondary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <%= render partial: 'layouts/footer_back' %>
+  </div>
+<% end %>
+
+<% content_for :button_header do %>
+  <div class="col-lg-6 col-5 text-right">
+    <%= link_to 'New Letter', new_letter_path, class: "btn btn-sm btn-neutral" %>
+  </div>
+<% end %>
+
+<%= render partial: 'layouts/body' %>
