@@ -158,6 +158,14 @@
                     <% end %>
                   </li>
                 <% end %>
+                <% if policy(:letter).index? %>
+                  <li class="nav-item">
+                    <%= link_to letter_path, class: "nav-link" do %>
+                      <span class="sidenav-mini-icon"> S </span>
+                      <span class="sidenav-normal"> Surat </span>
+                    <% end %>
+                  </li>
+                <% end %>
                 <% if policy(:city).index? %>
                   <li class="nav-item">
                     <%= link_to cities_path, class: "nav-link" do %>
