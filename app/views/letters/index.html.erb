@@ -17,7 +17,7 @@
       </thead>
 
       <tbody class="autopagerize_page_element">
-        <% @info_practices.each do |info_practice| %>
+        <% @letters.each do |letter| %>
           <tr>
             <td>
               <%= link_to letter.letter.url(:original), class:"avatar", "data-lightbox": "image-#{info_practice.id}" do %>
