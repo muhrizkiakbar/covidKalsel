@@ -40,6 +40,10 @@
 //= require jvectormap-next/jquery-jvectormap-2.0.1.min
 //= require jvectormap-next/kalsel_map
 
+// chart kick
+//= require chartkick
+//= require Chart.bundle
+
 // Flickity
 //= require flickity/flickity.pkgd
 //= require flickity/fullscreen
