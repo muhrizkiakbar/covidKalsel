@@ -13,6 +13,8 @@ class PublicController < ApplicationController
         @cov_pdp_count = City.sum('cov_pdp_count')
         @cov_died_count = City.sum('cov_died_count')
 
+        @visitor_count = Visit.count
+
         @city_last_updated = @cities.order("updated_at DESC").first
     end
 
