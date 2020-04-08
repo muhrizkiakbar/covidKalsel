@@ -36,6 +36,7 @@ gem 'rest-client'
 gem 'wkhtmltopdf-binary-edge', '~> 0.12.5.1'
 gem 'ckeditor'
 gem 'ahoy_matey'
+gem 'chart-js-rails'
 
 gem 'capistrano', '3.12.1'
 gem 'capistrano-rails', '~> 1.4'

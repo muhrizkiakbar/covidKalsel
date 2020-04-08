@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
     def index
-       @visitors = Ahoy::Visit.all.page(params[:page]) 
+       @visitors = Ahoy::Visit.order("started_at DESC").page(params[:page]) 
     end
 end
