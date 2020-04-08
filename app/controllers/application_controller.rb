@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
     before_action :authenticate_user!
 
+    after_action :track_action
+
     include Pundit
     protect_from_forgery
 
@@ -33,5 +35,9 @@ class ApplicationController < ActionController::Base
         added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]
         devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
         devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+    end
+
+    def track_action
+        ahoy.track "Action Name", title: 'Some awesome information'
     end
 end

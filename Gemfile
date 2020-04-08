@@ -35,6 +35,7 @@ gem "pundit"
 gem 'rest-client'
 gem 'wkhtmltopdf-binary-edge', '~> 0.12.5.1'
 gem 'ckeditor'
+gem 'ahoy_matey'
 
 gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
@@ -69,7 +70,11 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
   gem 'brakeman'
+
 end
+
+  # gem 'solargraph', '0.38.5', group: :development
+
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
