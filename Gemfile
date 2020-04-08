@@ -39,7 +39,7 @@ gem 'ahoy_matey'
 
 gem 'chartkick', '~> 3.3', '>= 3.3.1'
 gem 'groupdate'
-# gem 'chart-js-rails'
+gem "recaptcha"
 
 gem 'capistrano', '3.12.1'
 gem 'capistrano-rails', '~> 1.4'
