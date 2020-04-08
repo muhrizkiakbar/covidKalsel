@@ -13,25 +13,29 @@ class PublicController < ApplicationController
         @cov_pdp_count = City.sum('cov_pdp_count')
         @cov_died_count = City.sum('cov_died_count')
 
-        @visitor_count = Visit.count
+        @visitor_count = Ahoy::Visit.count
 
         @city_last_updated = @cities.order("updated_at DESC").first
     end
 
     def news
         @informations = Information.all.page(params[:page])
+        @visitor_count = Ahoy::Visit.count
     end
 
     def shownew
 
+        @visitor_count = Ahoy::Visit.count
     end
 
     def faq
+        @visitor_count = Ahoy::Visit.count
     end
 
     def contact
         @cities = City.all
         @hospitals = Hospital.all
+        @visitor_count = Ahoy::Visit.count
     end
 
     def cov_map
