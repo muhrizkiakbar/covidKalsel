@@ -37,7 +37,7 @@ gem 'wkhtmltopdf-binary-edge', '~> 0.12.5.1'
 gem 'ckeditor'
 gem 'ahoy_matey'
 
-gem 'capistrano', '~> 3.11'
+gem 'capistrano', '3.12.1'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
 gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
