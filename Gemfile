@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
@@ -36,8 +36,10 @@ gem 'rest-client'
 gem 'wkhtmltopdf-binary-edge', '~> 0.12.5.1'
 gem 'ckeditor'
 gem 'ahoy_matey'
+
+gem 'chartkick', '~> 3.3', '>= 3.3.1'
+gem 'groupdate'
 # gem 'chart-js-rails'
-gem "chartkick"
 
 gem 'capistrano', '3.12.1'
 gem 'capistrano-rails', '~> 1.4'

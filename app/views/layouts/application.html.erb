@@ -11,7 +11,8 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag Ckeditor.cdn_url %>
-
+    <%= javascript_include_tag 'chartkick', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'Chart.bundle', 'data-turbolinks-track': 'reload' %>
   </head>
   <%= yield %>
 </html>
