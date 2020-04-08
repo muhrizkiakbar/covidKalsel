@@ -6,13 +6,13 @@
       </div>
     <% end %>
 
-    <% if info_practice.errors.any? %>
+    <% if letter.errors.any? %>
       <div class="alert alert-danger alert-dismissible fade show" role="alert">
           <span class="alert-icon"><h3 class="text-white"><%= icon("fas", "exclamation-triangle", class: "fa-3x text-white")%></h3></span>
           <span class="alert-text">
-            <h3 class="text-white"><strong><%= pluralize(info_practice.errors.count, "error") %></strong> prohibited this city from being saved:</h3>
+            <h3 class="text-white"><strong><%= pluralize(letter.errors.count, "error") %></strong> prohibited this city from being saved:</h3>
             <ul>
-              <% info_practice.errors.full_messages.each do |message| %>
+              <% letter.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
               <% end %>
             </ul>
@@ -33,6 +33,11 @@
           <div class="custom-file mb-3">
             <%= form.file_field :letter, class: "custom-file-input", "data-multiple-caption": "{count} files selected", autocomplete: "off", lang: "en" %>
             <label class="custom-file-label" for="info_practice_image_content"></label>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label">Name File</label>
+            <%= form.text_field :name_file, class: "form-control", placeholder: "Name File" %>
           </div>
 
           <div class="actions">
