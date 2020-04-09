@@ -1,4 +1,4 @@
-# Web Site Corona Kalsel
+# Web Site Corona Kalsel (Ruby On Rails & PgSql)
 
 dideploy ke corona.kalselprov.go.id
 
