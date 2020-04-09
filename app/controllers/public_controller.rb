@@ -12,6 +12,8 @@ class PublicController < ApplicationController
         @cov_odp_count = City.sum('cov_odp_count')
         @cov_pdp_count = City.sum('cov_pdp_count')
         @cov_died_count = City.sum('cov_died_count')
+        @cov_recovered_count = City.sum('cov_recovered_count')
+        @cov_treated_count = @cov_positive_count - @cov_recovered_count
 
         @visitor_count = Ahoy::Visit.count
 

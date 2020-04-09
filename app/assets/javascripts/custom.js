@@ -76,6 +76,8 @@ if (mapContainer.length){
         "pdp": item.cov_pdp_count,
         "odp": item.cov_odp_count,
         "die": item.cov_died_count,
+        "rec": item.cov_recovered_count,
+        "trt": item.cov_positive_count - item.cov_recovered_count
       };
       regColors[item.code] = function(code){
         var color;
@@ -154,11 +156,12 @@ if (mapContainer.length){
           },
           normalizeFunction: 'polynomial',
           values: regColors,//markers_coor.reduce(function(p, c, i){ p[i] = c.status; return p }, {}),
-          legend: {
-            cssClass: 'tes',
-            vertical: true,
-            title: 'Keterangan'
-          }
+          legend : false
+          // legend: {
+          //   cssClass: 'tes',
+          //   vertical: true,
+          //   title: 'Keterangan'
+          // }
         }]
       },
       regionStyle: {
@@ -178,10 +181,12 @@ if (mapContainer.length){
       onRegionTipShow	: function(event, label, code){
         label.html(
           '<b>'+label.html()+'</b></br>'+
-          '<span class="icon-map-label bg-red"> </span> <b>Positif : </b>'+regLabels[code].pos+'</br>'+
-          '<span class="icon-map-label bg-yellow"> </span> <b>PDP : </b>'+regLabels[code].pdp+'</br>'+
           '<span class="icon-map-label bg-green"> </span> <b>ODP : </b>'+regLabels[code].odp+'</br>'+
-          '<span class="icon-map-label bg-orange"> </span> <b>Meninggal : </b>'+regLabels[code].die
+          '<span class="icon-map-label bg-yellow"> </span> <b>PDP : </b>'+regLabels[code].pdp+'</br>'+
+          '<span class="icon-map-label bg-red"> </span> <b>Positif : </b>'+regLabels[code].pos+'</br>'+
+          '<span class="icon-map-label bg-primary"> </span> <b>Dirawat : </b>'+regLabels[code].trt+'</br>'+
+          '<span class="icon-map-label bg-orange"> </span> <b>Meninggal : </b>'+regLabels[code].die+'</br>'+
+          '<span class="icon-map-label bg-blue"> </span> <b>Sembuh : </b>'+regLabels[code].rec
         )
       },
     });
