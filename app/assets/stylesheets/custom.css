@@ -77,7 +77,16 @@
 .jvectormap-tip{
   border: 0;
   background: unset !important;
-  color: #212529 !important;
+}
+
+.jvectormap-zoomin, .jvectormap-zoomout{
+  width: 25px;
+  height:25px;
+  line-height: 1.5;
+}
+
+.jvectormap-zoomout{
+  top: 40px;
 }
 /* for error input */
 /* .field_with_errors {

@@ -76,11 +76,11 @@ var map, mapContainer, labelTip;
 
 labelTip = function(odp, pdp, pos, die, rec, tot, label){
   return(
-    '<div class="card" style="border-radius:0;">'+
-      '<div class="card-header p-1">'+
-        '<h5 class="text-dark mb-0">'+label+'</h5>'+
+    '<div class="card" style="border-radius:0; background: #292929;">'+
+      '<div class="card-header bg-transparent px-2 pt-2 pb-0 border-0 mb-0">'+
+        '<h5 class="text-white mb-0">'+label+'</h5>'+
       '</div>'+
-      '<div class="card-body p-1">'+
+      '<div class="card-body p-2">'+
         '<span class="icon-map-label bg-green"> </span> <b>ODP : </b>'+odp+'</br>'+
         '<span class="icon-map-label bg-yellow"> </span> <b>PDP : </b>'+pdp+'</br>'+
         '<span class="icon-map-label bg-red"> </span> <b>Positif : </b>'+tot+'</br>'+
@@ -162,7 +162,7 @@ if (mapContainer.length){
       zoomOnScroll: !1,
       normalizeFunction: "polynomial",
       // scaleColors: ["#f00", "#0071A4"],
-      // backgroundColor: 'transparent',
+      backgroundColor: 'transparent',
       series: {
         regions: [{
           attribute: 'fill',
@@ -200,7 +200,7 @@ if (mapContainer.length){
         //   "stroke-opacity": 1
         // },
         hover: {
-          fill: '#fff',
+          fill: '#292929',
           "fill-opacity": .8,
           cursor: "pointer"
         }
