@@ -1,24 +1,37 @@
-# README
+# Web Site Corona Kalsel (Ruby On Rails & PgSql)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+dideploy ke corona.kalselprov.go.id
 
-Things you may want to cover:
+# Dev Tools
 
-* Ruby version
+Saya menggunakan docker dan docker compose
 
-* System dependencies
+* Docker
 
-* Configuration
+* docker-compose
 
-* Database creation
+* VS Code -> plugin Solargraph (optional)
 
-* Database initialization
+# Get Started
 
-* How to run the test suite
+Jalankan perintah ini
 
-* Services (job queues, cache servers, search engines, etc.)
+```docker-compose build```
 
-* Deployment instructions
+```docker-compose up -d```
 
-* ...
+Masuk ke container web
+
+```docker-compose exec web bash```
+
+Jalankan perintah untuk menjalankan perintah buat database, migrasi dan seeder
+
+```rake db:create db:migrate db:seed```
+
+Akses url nya ke
+
+```localhost:3000```
+
+Enjoy it !!
+
+Bantu kembangkan sanak !!

@@ -12,8 +12,10 @@
 //
 //= require jquery3
 //= require rails-ujs
+
 //= require turbolinks
 //= require activestorage
+
 
 // Argon Theme
 //= require bootstrap/dist/js/bootstrap.bundle.min
@@ -40,12 +42,16 @@
 //= require jvectormap-next/jquery-jvectormap-2.0.1.min
 //= require jvectormap-next/kalsel_map
 
+
 // Flickity
 //= require flickity/flickity.pkgd
 //= require flickity/fullscreen
 
 //Lightbox
 //= require lightbox/lightbox
+
+//= require Chart.bundle
+//= require chartkick
 
 //= require argon/argon
 //= require argon/demo

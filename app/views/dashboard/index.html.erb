@@ -1,5 +1,66 @@
 <% content_for :isi do %>
-    <center>Dashboard Dalam Proses.</center>
+<div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">Visitors</h2>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                            <th>No</th>
+                            <th>IP</th>
+                            <th>Browser</th>
+                            <th>OS</th>
+                            <th>Device Type</th>
+                            <th>Country</th>
+                            <th>City</th>
+                            <th>Started At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @visitors.each_with_index do |visitor,index|%>
+                            <tr>
+                            <td><%= index+1 %></td>
+                            <td><%= visitor.ip %></td>
+                            <td><%= visitor.browser %></td>
+                            <td><%= visitor.os %></td>
+                            <td><%= visitor.device_type %></td>
+                            <td><%= visitor.country %></td>
+                            <td><%= visitor.city %></td>
+                            <td><%= visitor.started_at %></td>
+                            </tr>
+                            <% end %>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <%= paginate @visitors %>
+                </div>
+            </div>
+        </div>
+        
+      </div>
+      <div class="col-md-6">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">Visitor Graph</h2>
+                </div>
+                <div class="card-body">
+                    <%= line_chart Ahoy::Visit.group_by_day(:started_at).count %>
+                </div>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+</div>
 <% end %>
 
 
