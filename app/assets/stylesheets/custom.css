@@ -73,6 +73,12 @@
   display: inline-flex;
   vertical-align: middle;
 }
+
+.jvectormap-tip{
+  border: 0;
+  background: unset !important;
+  color: #212529 !important;
+}
 /* for error input */
 /* .field_with_errors {
   @extend .control-group;

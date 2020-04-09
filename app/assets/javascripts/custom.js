@@ -64,7 +64,34 @@ $('.main-carousel').flickity({
   fullscreen: true,
   adaptiveHeight: true,
 });
-var map, mapContainer;
+var map, mapContainer, labelTip;
+
+// '<b>'+label.html()+'</b></br>'+
+// '<span class="icon-map-label bg-green"> </span> <b>ODP : </b>'+regLabels[code].odp+'</br>'+
+// '<span class="icon-map-label bg-yellow"> </span> <b>PDP : </b>'+regLabels[code].pdp+'</br>'+
+// '<span class="icon-map-label bg-red"> </span> <b>Positif : </b>'+regLabels[code].tot+'</br>'+
+// '<span class="icon-map-label bg-primary"> </span> <b>Dirawat : </b>'+regLabels[code].pos+'</br>'+
+// '<span class="icon-map-label bg-orange"> </span> <b>Meninggal : </b>'+regLabels[code].die+'</br>'+
+// '<span class="icon-map-label bg-blue"> </span> <b>Sembuh : </b>'+regLabels[code].rec
+
+labelTip = function(odp, pdp, pos, die, rec, tot, label){
+  return(
+    '<div class="card" style="border-radius:0;">'+
+      '<div class="card-header p-1">'+
+        '<h5 class="text-dark mb-0">'+label+'</h5>'+
+      '</div>'+
+      '<div class="card-body p-1">'+
+        '<span class="icon-map-label bg-green"> </span> <b>ODP : </b>'+odp+'</br>'+
+        '<span class="icon-map-label bg-yellow"> </span> <b>PDP : </b>'+pdp+'</br>'+
+        '<span class="icon-map-label bg-red"> </span> <b>Positif : </b>'+tot+'</br>'+
+        '<span class="icon-map-label bg-primary"> </span> <b>Dirawat : </b>'+pos+'</br>'+
+        '<span class="icon-map-label bg-orange"> </span> <b>Meninggal : </b>'+die+'</br>'+
+        '<span class="icon-map-label bg-blue"> </span> <b>Sembuh : </b>'+rec+
+      '</div>'+
+    '</div>'
+  )
+}
+
 mapContainer = $('#kalsel_mp_cont');
 if (mapContainer.length){
   $.getJSON('/cov_map', function(data){
@@ -77,7 +104,7 @@ if (mapContainer.length){
         "odp": item.cov_odp_count,
         "die": item.cov_died_count,
         "rec": item.cov_recovered_count,
-        "trt": item.cov_positive_count - item.cov_recovered_count
+        "tot": item.cov_positive_count + item.cov_died_count + item.cov_recovered_count
       };
       regColors[item.code] = function(code){
         var color;
@@ -180,13 +207,15 @@ if (mapContainer.length){
       },
       onRegionTipShow	: function(event, label, code){
         label.html(
-          '<b>'+label.html()+'</b></br>'+
-          '<span class="icon-map-label bg-green"> </span> <b>ODP : </b>'+regLabels[code].odp+'</br>'+
-          '<span class="icon-map-label bg-yellow"> </span> <b>PDP : </b>'+regLabels[code].pdp+'</br>'+
-          '<span class="icon-map-label bg-red"> </span> <b>Positif : </b>'+regLabels[code].pos+'</br>'+
-          '<span class="icon-map-label bg-primary"> </span> <b>Dirawat : </b>'+regLabels[code].trt+'</br>'+
-          '<span class="icon-map-label bg-orange"> </span> <b>Meninggal : </b>'+regLabels[code].die+'</br>'+
-          '<span class="icon-map-label bg-blue"> </span> <b>Sembuh : </b>'+regLabels[code].rec
+          labelTip(
+            regLabels[code].odp,
+            regLabels[code].pdp,
+            regLabels[code].pos,
+            regLabels[code].die,
+            regLabels[code].rec,
+            regLabels[code].tot,
+            label.html()
+          )
         )
       },
     });
