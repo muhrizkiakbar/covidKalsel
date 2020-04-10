@@ -19,7 +19,9 @@
           <div class="card-body">
             <div class="row align-item-center">
               <div class="col text-center mt-12 mt-lg-0">
-                <h3 class="font-weight-bold mb-0 text-dark">"Mari Bergerak Mencegah Penyebaran Covid-19 Di Banua Kita"</h4>
+                <marquee behavior="" direction="">
+                  <h3 class="font-weight-bold mb-0 text-dark">"Mari Bergerak Mencegah Penyebaran Covid-19 Di Banua Kita"</h3>
+                </marquee>
               </div>
             </div>
           </div>
@@ -32,8 +34,8 @@
           <div class="card-body bg-transparent px-0">
             <h2 class="h2 card-title mb-1">Call Center Dinas Kesehatan</h2>
 
-            <div class="card bg-info mb-0">
-              <div class="card-body">
+            <div class="card bg-info mb-0" style="overflow: hidden;">
+              <div class="card-body pulse">
                 <div class="row">
                   <div class="col">
                     <h4 class="card-title text-uppercase text-muted mb-0 text-white">Telpon</h4>
@@ -58,8 +60,8 @@
           <div class="card-body bg-transparent px-0">
             <h2 class="h2 card-title mb-1">Call Center Badan Penanggulangan Bencana Daerah</h2>
 
-            <div class="card bg-orange mb-0">
-              <div class="card-body">
+            <div class="card bg-orange mb-0" style="overflow: hidden;">
+              <div class="card-body pulse">
                 <div class="row">
                   <div class="col">
                     <h4 class="card-title text-uppercase text-muted mb-0 text-white">Telpon</h4>
@@ -134,7 +136,7 @@
             <div class="row">
               <div class="col">
                 <h3 class="card-title text-uppercase mb-0 text-white">Positif</h3>
-                <span class="h1 font-weight-bolder mb-0 text-white"><%= @cov_positive_count %></span>
+                <span class="h1 font-weight-bolder mb-0 text-white"><%= @cov_positive_total %></span>
                 <span class="h3 font-weight-normal mb-0 text-white">Orang</span>
               </div>
               <div class="col-auto">
@@ -152,7 +154,7 @@
             <div class="row">
               <div class="col">
                 <h3 class="card-title text-uppercase mb-0 text-white">Dirawat</h3>
-                <span class="h1 font-weight-bolder mb-0 text-white"><%= @cov_treated_count %></span>
+                <span class="h1 font-weight-bolder mb-0 text-white"><%= @cov_positive_count %></span>
                 <span class="h3 font-weight-normal mb-0 text-white">Orang</span>
               </div>
               <div class="col-auto">
