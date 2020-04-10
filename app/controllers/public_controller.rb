@@ -41,7 +41,7 @@ class PublicController < ApplicationController
     end
 
     def cov_map
-        @city_map = City.all
+        @city_map = City.select('code, name, cov_positive_count, cov_died_count, cov_recovered_count, cov_odp_count, cov_pdp_count, concat(cov_positive_count+cov_died_count+cov_recovered_count)')
         render json: @city_map
         # respond_to do |format|
         #   format.html
