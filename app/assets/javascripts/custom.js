@@ -83,8 +83,11 @@ labelTip = function(odp, pdp, pos, die, rec, tot, label){
       '<div class="card-body p-2">'+
         '<span class="icon-map-label bg-blue"> </span> <b>ODP : </b>'+odp+'</br>'+
         '<span class="icon-map-label bg-yellow"> </span> <b>PDP : </b>'+pdp+'</br>'+
-        '<span class="icon-map-label bg-primary"> </span> <b>Positif : </b>'+pos+'</br>'+
-        '<span class="icon-map-label bg-orange"> </span> <b>Positif Meninggal : </b>'+die+'</br>'+
+        ''+'</br>'+
+        '<span class="icon-map-label bg-red"> </span> <b>Jumlah Positif : </b>'+tot+'</br><small>(Dirawat, Sembuh & Meninggal)</small>'+'</br>'+
+
+        '<span class="icon-map-label bg-primary"> </span> <b>Dirawat : </b>'+pos+'</br>'+
+        '<span class="icon-map-label bg-orange"> </span> <b>Meninggal : </b>'+die+'</br>'+
         '<span class="icon-map-label bg-green"> </span> <b>Sembuh : </b>'+rec+'</br>'+
       '</div>'+
     '</div>'
