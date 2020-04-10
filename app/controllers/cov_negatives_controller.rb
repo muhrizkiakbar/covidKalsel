@@ -37,6 +37,7 @@ class CovNegativesController < ApplicationController
     # @cov_negative.city = City.friendly.find(params[:cov_negative][:city_id])
 
     @city = City.find(@cov_negative.city.id)
+    @city.cov_positive_count -= @cov_recovered.amount
     @city.cov_negative_count += @cov_negative.amount
     @city.save
 
@@ -56,6 +57,8 @@ class CovNegativesController < ApplicationController
   def update
 
     @city = City.find(@cov_negative.city.id)
+  
+    @city.cov_positive_count += @cov_recovered.amount
     @city.cov_negative_count -= @cov_negative.amount
     @city.save
 
@@ -63,6 +66,7 @@ class CovNegativesController < ApplicationController
       if @cov_negative.update(cov_negative_params)
 
         @city = City.find(@cov_negative.city.id)
+        @city.cov_positive_count -= @cov_recovered.amount
         @city.cov_negative_count += @cov_negative.amount
         @city.save
         
@@ -82,6 +86,7 @@ class CovNegativesController < ApplicationController
     authorize @cov_negative
     
     @city = City.find(@cov_negative.city.id)
+    @city.cov_positive_count += @cov_recovered.amount
     @city.cov_negative_count -= @cov_negative.amount
     @city.save
 
