@@ -27,6 +27,9 @@ class City < ApplicationRecord
     has_many :cov_odps
     has_many :cov_pdps
 
+    has_many :cov_odp_processeds
+    has_many :cov_pdp_processeds
+
     has_many :hospitals
 
     acts_as_paranoid
