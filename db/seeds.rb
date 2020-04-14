@@ -8358,7 +8358,7 @@ pdps = [
         {
             city_id: "10",
             added_at: "2020-04-12 15:59:00",
-            amount: "0"
+            amount: "2"
         },
         {
             city_id: "11",
