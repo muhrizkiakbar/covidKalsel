@@ -100,7 +100,7 @@
             <div class="row">
               <div class="col">
                 <h3 class="card-title text-uppercase mb-0 text-white">ODP</h3>
-                <span class="h1 font-weight-bolder mb-0 text-white">1227<%# @cov_odp_count %></span>
+                <span class="h1 font-weight-bolder mb-0 text-white"><%= @cov_odp_count %></span>
                 <span class="h3 font-weight-normal mb-0 text-white">Orang</span>
               </div>
               <div class="col-auto">
@@ -118,7 +118,7 @@
             <div class="row">
               <div class="col">
                 <h3 class="card-title text-uppercase mb-0 text-white">PDP</h3>
-                <span class="h1 font-weight-bolder mb-0 text-white">18<%# @cov_pdp_count %></span>
+                <span class="h1 font-weight-bolder mb-0 text-white"><%= @cov_pdp_count %></span>
                 <span class="h3 font-weight-normal mb-0 text-white">Orang</span>
               </div>
               <div class="col-auto">
@@ -136,7 +136,7 @@
             <div class="row">
               <div class="col">
                 <h3 class="card-title text-uppercase mb-0 text-white">Positif <small>(Dirawat, Meninggal & Sembuh)</small></h3>
-                <span class="h1 font-weight-bolder mb-0 text-white">37<%# @cov_positive_count + @cov_died_count + @cov_recovered_count %></span>
+                <span class="h1 font-weight-bolder mb-0 text-white"><%= @cov_positive_count + @cov_died_count + @cov_recovered_count %></span>
                 <span class="h3 font-weight-normal mb-0 text-white">Orang</span>
               </div>
               <div class="col-auto">
@@ -154,7 +154,7 @@
             <div class="row">
               <div class="col">
                 <h3 class="card-title text-uppercase mb-0 text-white">Dirawat</h3>
-                <span class="h1 font-weight-bolder mb-0 text-white">29<%# @cov_positive_count %></span>
+                <span class="h1 font-weight-bolder mb-0 text-white"><%= @cov_positive_count %></span>
                 <span class="h3 font-weight-normal mb-0 text-white">Orang</span>
               </div>
               <div class="col-auto">
@@ -172,7 +172,7 @@
             <div class="row">
               <div class="col">
                 <h3 class="card-title text-uppercase mb-0 text-white">Meninggal</h3>
-                <span class="h1 font-weight-bolder mb-0 text-white">5<%# @cov_died_count %></span>
+                <span class="h1 font-weight-bolder mb-0 text-white"><%= @cov_died_count %></span>
                 <span class="h3 font-weight-normal mb-0 text-white">Orang</span>
               </div>
               <div class="col-auto">
@@ -190,7 +190,7 @@
             <div class="row">
               <div class="col">
                 <h3 class="card-title text-uppercase mb-0 text-white">Sembuh</h3>
-                <span class="h1 font-weight-bolder mb-0 text-white">3<%# @cov_recovered_count %></span>
+                <span class="h1 font-weight-bolder mb-0 text-white"><%= @cov_recovered_count %></span>
                 <span class="h3 font-weight-normal mb-0 text-white">Orang</span>
               </div>
               <div class="col-auto">
