@@ -12,11 +12,12 @@
     </div>
 
     <div class="row justify-content-center">
-      <% if @city.hospitals.any? %>
-        <div class="col-md-3">
-      <% else %>
+      <%# if @city.hospitals.any? %>
+        <!-- <div class="col-md-3">
+      <%# else %>
         <div class="col-md-6">
-      <% end %>
+      <%# end %>
+      <!--
         <div class="card bg-green">
           <div class="card-body">
             <div class="row">
@@ -40,8 +41,66 @@
               </div>
             </div>
           </div>
+        </div> 
+      </div> -->
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card bg-red" style="overflow:hidden;">
+              <div class="card-body pulse">
+                <div class="row">
+                  <div class="col">
+                    <h3 class="card-title text-uppercase mb-0 text-white">Hotline</h3>
+                      
+                    <span class="h1 font-weight-bolder mb-0 text-white">
+                      <% if (@city.call_center != nil)
+                          telpons = @city.call_center.split(" ")
+                          telpons.each_with_index do |telpon,index| %>
+                              <a href="tel:<%= telpon %>" class="text-white">
+                                <%= telpon %></a>
+                          <% end %></td>
+                      <% end %>
+                    </span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-white rounded-circle shadow">
+                      <%= icon("fas", "phone") %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> 
+          </div>
+          <div class="col-md-12">
+            <div class="card bg-green">
+              <div class="card-header bg-transparent pb-0 border-0">
+                <h3 class="card-title text-uppercase mb-0 text-white">Rumah Sakit Rujukan</h3>
+              </div>
+              <div class="card-body py-3">
+                <div class="row">
+                  <div class="col">
+                    <ul class="list-group list-group-flush">
+                      <%# each %>
+                      <li class="bg-transparent checklist-entry list-group-item flex-column align-items-start px-0 py-2 border-0">
+                        <div class="checklist-item checklist-item-danger">
+                          <div class="checklist-info">
+                            <h4 class="checklist-title mb-0 text-white">Rumah Sakit Umum Ulin</h4>
+                            <a href="tel:05113252229"><span class="badge badge-md bg-secondary text-dark">
+                              05113252229
+                            </span></a> 
+                          </div>
+                        </div>
+                      </li>
+                      <%# end each %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div> 
+          </div>
         </div>
       </div>
+      
       <% if @city.hospitals.any? %>
       <div class="col-md-3">
         <div class="card bg-yellow">
