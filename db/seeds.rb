@@ -4335,7 +4335,7 @@ sembuhs = [
         {
             city_id: "11",
             added_at: "2020-04-13 15:59:00",
-            amount: "10"
+            amount: "0"
         },
         {
             city_id: "12",
@@ -5750,7 +5750,7 @@ meninggals = [
 
 meninggals.each do | meninggal |
 
-  cov_died = CovRecovered.new
+  cov_died = CovDied.new
   cov_died.city_id = meninggal[:city_id]
   cov_died.amount = meninggal[:amount]
   cov_died.added_at = meninggal[:added_at]
@@ -8358,7 +8358,7 @@ pdps = [
         {
             city_id: "10",
             added_at: "2020-04-12 15:59:00",
-            amount: "0"
+            amount: "2"
         },
         {
             city_id: "11",
@@ -11535,7 +11535,7 @@ odps = [
 
 odps.each do | odp |
 
-  cov_odp = CovPdp.new
+  cov_odp = CovOdp.new
   cov_odp.city_id = odp[:city_id]
   cov_odp.amount = odp[:amount]
   cov_odp.added_at = odp[:added_at]
