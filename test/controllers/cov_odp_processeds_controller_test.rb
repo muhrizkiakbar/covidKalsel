@@ -17,7 +17,7 @@ class CovOdpProcessedsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create cov_odp_processed" do
     assert_difference('CovOdpProcessed.count') do
-      post cov_odp_processeds_url, params: { cov_odp_processed: { amount: @cov_odp_processed.amount, city_id: @cov_odp_processed.city_id, dateTime: @cov_odp_processed.dateTime } }
+      post cov_odp_processeds_url, params: { cov_odp_processed: { amount: @cov_odp_processed.amount, city_id: @cov_odp_processed.city_id, added_at: @cov_odp_processed.added_at } }
     end
 
     assert_redirected_to cov_odp_processed_url(CovOdpProcessed.last)
@@ -34,7 +34,7 @@ class CovOdpProcessedsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update cov_odp_processed" do
-    patch cov_odp_processed_url(@cov_odp_processed), params: { cov_odp_processed: { amount: @cov_odp_processed.amount, city_id: @cov_odp_processed.city_id, dateTime: @cov_odp_processed.dateTime } }
+    patch cov_odp_processed_url(@cov_odp_processed), params: { cov_odp_processed: { amount: @cov_odp_processed.amount, city_id: @cov_odp_processed.city_id, added_at: @cov_odp_processed.added_at } }
     assert_redirected_to cov_odp_processed_url(@cov_odp_processed)
   end
 

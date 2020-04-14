@@ -16,7 +16,7 @@ class CovDiedsTest < ApplicationSystemTestCase
 
     fill_in "Amount", with: @cov_died.amount
     fill_in "City", with: @cov_died.city_id
-    fill_in "Datetime", with: @cov_died.dateTime
+    fill_in "Datetime", with: @cov_died.added_at
     click_on "Create Cov died"
 
     assert_text "Cov died was successfully created"
@@ -29,7 +29,7 @@ class CovDiedsTest < ApplicationSystemTestCase
 
     fill_in "Amount", with: @cov_died.amount
     fill_in "City", with: @cov_died.city_id
-    fill_in "Datetime", with: @cov_died.dateTime
+    fill_in "Datetime", with: @cov_died.added_at
     click_on "Update Cov died"
 
     assert_text "Cov died was successfully updated"

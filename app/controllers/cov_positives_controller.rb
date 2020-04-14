@@ -103,6 +103,6 @@ class CovPositivesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cov_positive_params
-      params.require(:cov_positive).permit(:city_id,:amount, :dateTime)
+      params.require(:cov_positive).permit(:city_id,:amount, :added_at)
     end
 end

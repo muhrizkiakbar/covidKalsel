@@ -17,7 +17,7 @@ class CovDiedsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create cov_died" do
     assert_difference('CovDied.count') do
-      post cov_dieds_url, params: { cov_died: { amount: @cov_died.amount, city_id: @cov_died.city_id, dateTime: @cov_died.dateTime } }
+      post cov_dieds_url, params: { cov_died: { amount: @cov_died.amount, city_id: @cov_died.city_id, added_at: @cov_died.added_at } }
     end
 
     assert_redirected_to cov_died_url(CovDied.last)
@@ -34,7 +34,7 @@ class CovDiedsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update cov_died" do
-    patch cov_died_url(@cov_died), params: { cov_died: { amount: @cov_died.amount, city_id: @cov_died.city_id, dateTime: @cov_died.dateTime } }
+    patch cov_died_url(@cov_died), params: { cov_died: { amount: @cov_died.amount, city_id: @cov_died.city_id, added_at: @cov_died.added_at } }
     assert_redirected_to cov_died_url(@cov_died)
   end
 

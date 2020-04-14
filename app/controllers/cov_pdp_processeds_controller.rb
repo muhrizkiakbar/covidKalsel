@@ -100,6 +100,6 @@ class CovPdpProcessedsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cov_pdp_processed_params
-      params.require(:cov_pdp_processed).permit(:city_id, :amount, :dateTime)
+      params.require(:cov_pdp_processed).permit(:city_id, :amount, :added_at)
     end
 end

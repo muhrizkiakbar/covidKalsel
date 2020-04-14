@@ -17,7 +17,7 @@ class CovPositivesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create cov_positive" do
     assert_difference('CovPositive.count') do
-      post cov_positives_url, params: { cov_positive: { amount: @cov_positive.amount, city_id: @cov_positive.city_id, dateTime: @cov_positive.dateTime } }
+      post cov_positives_url, params: { cov_positive: { amount: @cov_positive.amount, city_id: @cov_positive.city_id, added_at: @cov_positive.added_at } }
     end
 
     assert_redirected_to cov_positive_url(CovPositive.last)
@@ -34,7 +34,7 @@ class CovPositivesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update cov_positive" do
-    patch cov_positive_url(@cov_positive), params: { cov_positive: { amount: @cov_positive.amount, city_id: @cov_positive.city_id, dateTime: @cov_positive.dateTime } }
+    patch cov_positive_url(@cov_positive), params: { cov_positive: { amount: @cov_positive.amount, city_id: @cov_positive.city_id, added_at: @cov_positive.added_at } }
     assert_redirected_to cov_positive_url(@cov_positive)
   end
 

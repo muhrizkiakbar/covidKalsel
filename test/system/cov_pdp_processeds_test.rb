@@ -16,7 +16,7 @@ class CovPdpProcessedsTest < ApplicationSystemTestCase
 
     fill_in "Amount", with: @cov_pdp_processed.amount
     fill_in "City", with: @cov_pdp_processed.city_id
-    fill_in "Datetime", with: @cov_pdp_processed.dateTime
+    fill_in "Datetime", with: @cov_pdp_processed.added_at
     click_on "Create Cov pdp processed"
 
     assert_text "Cov pdp processed was successfully created"
@@ -29,7 +29,7 @@ class CovPdpProcessedsTest < ApplicationSystemTestCase
 
     fill_in "Amount", with: @cov_pdp_processed.amount
     fill_in "City", with: @cov_pdp_processed.city_id
-    fill_in "Datetime", with: @cov_pdp_processed.dateTime
+    fill_in "Datetime", with: @cov_pdp_processed.added_at
     click_on "Update Cov pdp processed"
 
     assert_text "Cov pdp processed was successfully updated"

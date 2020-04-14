@@ -16,7 +16,7 @@ class CovOdpsTest < ApplicationSystemTestCase
 
     fill_in "Amount", with: @cov_odp.amount
     fill_in "City", with: @cov_odp.city_id
-    fill_in "Datetime", with: @cov_odp.dateTime
+    fill_in "Datetime", with: @cov_odp.added_at
     click_on "Create Cov odp"
 
     assert_text "Cov odp was successfully created"
@@ -29,7 +29,7 @@ class CovOdpsTest < ApplicationSystemTestCase
 
     fill_in "Amount", with: @cov_odp.amount
     fill_in "City", with: @cov_odp.city_id
-    fill_in "Datetime", with: @cov_odp.dateTime
+    fill_in "Datetime", with: @cov_odp.added_at
     click_on "Update Cov odp"
 
     assert_text "Cov odp was successfully updated"

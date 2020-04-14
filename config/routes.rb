@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     end
     # root to: "devise/sessions#new"
   end
+
+  get "chart_result" => 'dashboard#chart_result', :as => 'chart_result'
+
   scope "/backoffice" do
 
     resources :information
