@@ -50,14 +50,14 @@ class CovRecoveredsController < ApplicationController
     @cov_recovered.amount = @diff_amount
     @cov_recovered.save
 
-    @cov_positive = CovPositive.new
-    @cov_positive.city = @city
-    @cov_positive.amount = @cov_recovered.amount * -1
-    @cov_positive.added_at = @cov_recovered.added_at
-    @cov_positive.save
+    # @cov_positive = CovPositive.new
+    # @cov_positive.city = @city
+    # @cov_positive.amount = @cov_recovered.amount * -1
+    # @cov_positive.added_at = @cov_recovered.added_at
+    # @cov_positive.save
 
     @city.cov_recovered_count += @cov_recovered.amount
-    @city.cov_positive_count -= @cov_recovered.amount
+    # @city.cov_positive_count -= @cov_recovered.amount
     @city.save
 
     respond_to do |format|
@@ -81,14 +81,14 @@ class CovRecoveredsController < ApplicationController
 
       @city = City.find(@cov_recovered.city.id)
       @city.cov_recovered_count -= @cov_recovered.amount
-      @city.cov_positive_count += @cov_recovered.amount
+      # @city.cov_positive_count += @cov_recovered.amount
       @city.save
 
-      @cov_positive = CovPositive.new
-      @cov_positive.city = @city
-      @cov_positive.amount = @cov_recovered.amount * 1
-      @cov_positive.added_at = @cov_recovered.added_at
-      @cov_positive.save
+      # @cov_positive = CovPositive.new
+      # @cov_positive.city = @city
+      # @cov_positive.amount = @cov_recovered.amount * 1
+      # @cov_positive.added_at = @cov_recovered.added_at
+      # @cov_positive.save
 
       if @cov_recovered.update(cov_recovered_params)
 
@@ -107,14 +107,14 @@ class CovRecoveredsController < ApplicationController
         @cov_recovered.save
 
 
-        @cov_positive = CovPositive.new
-        @cov_positive.city = @city
-        @cov_positive.amount = @cov_recovered.amount * -1
-        @cov_positive.added_at = @cov_recovered.added_at
-        @cov_positive.save
+        # @cov_positive = CovPositive.new
+        # @cov_positive.city = @city
+        # @cov_positive.amount = @cov_recovered.amount * -1
+        # @cov_positive.added_at = @cov_recovered.added_at
+        # @cov_positive.save
 
         @city.cov_recovered_count += @cov_recovered.amount
-        @city.cov_positive_count -= @cov_recovered.amount
+        # @city.cov_positive_count -= @cov_recovered.amount
         @city.save
 
 
@@ -136,15 +136,15 @@ class CovRecoveredsController < ApplicationController
     
     @city = City.find(@cov_recovered.city.id)
     @city.cov_recovered_count -= @cov_recovered.amount
-    @city.cov_positive_count += @cov_recovered.amount
+    # @city.cov_positive_count += @cov_recovered.amount
     @city.save
 
 
-    @cov_positive = CovPositive.new
-    @cov_positive.city = @city
-    @cov_positive.amount = @cov_recovered.amount * 1
-    @cov_positive.added_at = @cov_recovered.added_at
-    @cov_positive.save
+    # @cov_positive = CovPositive.new
+    # @cov_positive.city = @city
+    # @cov_positive.amount = @cov_recovered.amount * 1
+    # @cov_positive.added_at = @cov_recovered.added_at
+    # @cov_positive.save
 
     @cov_recovered.destroy
     respond_to do |format|

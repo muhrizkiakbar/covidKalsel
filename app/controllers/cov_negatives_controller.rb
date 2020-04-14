@@ -48,7 +48,7 @@ class CovNegativesController < ApplicationController
     @cov_negative.amount = @diff_amount
     @cov_negative.save
 
-    @city.cov_positive_count -= @diff_amount
+    # @city.cov_positive_count -= @diff_amount
     @city.cov_negative_count += @diff_amount
     @city.save
 
@@ -69,7 +69,7 @@ class CovNegativesController < ApplicationController
 
     @city = City.find(@cov_negative.city.id)
   
-    @city.cov_positive_count += @cov_negative.amount
+    # @city.cov_positive_count += @cov_negative.amount
     @city.cov_negative_count -= @cov_negative.amount
     @city.save
 
@@ -84,7 +84,7 @@ class CovNegativesController < ApplicationController
           @diff_amount =  @cov_negative.amount - @city.cov_negative_count
         end
 
-        @city.cov_positive_count -= @cov_negative.amount
+        # @city.cov_positive_count -= @cov_negative.amount
         @city.cov_negative_count += @cov_negative.amount
         @city.save
         
@@ -104,7 +104,7 @@ class CovNegativesController < ApplicationController
     authorize @cov_negative
     
     @city = City.find(@cov_negative.city.id)
-    @city.cov_positive_count += @cov_negative.amount
+    # @city.cov_positive_count += @cov_negative.amount
     @city.cov_negative_count -= @cov_negative.amount
     @city.save
 
