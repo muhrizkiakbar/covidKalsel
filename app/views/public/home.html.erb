@@ -499,6 +499,7 @@
                   <th>Kabupaten/Kota</th>
                   <th>Call Center</th>
                   <th>Hotline</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -525,6 +526,11 @@
                           </span></a>
                       <% end %></td>
                   <% end %>
+                  <td>
+                    <%= link_to public_city_path(city) do%>
+                      <span class="badge badge-md bg-green text-white">Detail</span>
+                    <% end %>
+                  </td>
                 </tr>
                 <% end %>
               </tbody>

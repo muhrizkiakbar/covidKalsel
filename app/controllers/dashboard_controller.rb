@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
 
     def chart_result
         start_date = Date.today
-        end_date = start_date - 20
+        end_date = start_date - 7
         diff_date = start_date - end_date
       
         $i = 0
@@ -43,7 +43,7 @@ class DashboardController < ApplicationController
           #get total amount before current date of loop
           # tambah data positif
 
-          @sum_positive = CovPositive.where('DATE(added_at) < ?',current_date_of_loop.to_s).sum(:amount)
+          @sum_positive = CovPositive.where('DATE(added_at) <= ?',current_date_of_loop.to_s).sum(:amount)
           p "*" * 100
           p @sum_positive
           @sum_recovered = CovRecovered.where('DATE(added_at) <= ?',current_date_of_loop).sum(:amount) 
