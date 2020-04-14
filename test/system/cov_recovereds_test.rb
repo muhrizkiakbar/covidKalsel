@@ -16,7 +16,7 @@ class CovRecoveredsTest < ApplicationSystemTestCase
 
     fill_in "Amount", with: @cov_recovered.amount
     fill_in "City", with: @cov_recovered.city_id
-    fill_in "Datetime", with: @cov_recovered.dateTime
+    fill_in "Datetime", with: @cov_recovered.added_at
     click_on "Create Cov recovered"
 
     assert_text "Cov recovered was successfully created"
@@ -29,7 +29,7 @@ class CovRecoveredsTest < ApplicationSystemTestCase
 
     fill_in "Amount", with: @cov_recovered.amount
     fill_in "City", with: @cov_recovered.city_id
-    fill_in "Datetime", with: @cov_recovered.dateTime
+    fill_in "Datetime", with: @cov_recovered.added_at
     click_on "Update Cov recovered"
 
     assert_text "Cov recovered was successfully updated"

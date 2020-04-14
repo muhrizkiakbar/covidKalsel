@@ -97,6 +97,6 @@ class CovOdpsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cov_odp_params
-      params.require(:cov_odp).permit(:city_id, :amount, :dateTime)
+      params.require(:cov_odp).permit(:city_id, :amount, :added_at)
     end
 end

@@ -16,7 +16,7 @@ class CovNegativesTest < ApplicationSystemTestCase
 
     fill_in "Amount", with: @cov_negative.amount
     fill_in "City", with: @cov_negative.city_id
-    fill_in "Datetime", with: @cov_negative.dateTime
+    fill_in "Datetime", with: @cov_negative.added_at
     click_on "Create Cov negative"
 
     assert_text "Cov negative was successfully created"
@@ -29,7 +29,7 @@ class CovNegativesTest < ApplicationSystemTestCase
 
     fill_in "Amount", with: @cov_negative.amount
     fill_in "City", with: @cov_negative.city_id
-    fill_in "Datetime", with: @cov_negative.dateTime
+    fill_in "Datetime", with: @cov_negative.added_at
     click_on "Update Cov negative"
 
     assert_text "Cov negative was successfully updated"

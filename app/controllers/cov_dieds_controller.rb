@@ -106,6 +106,6 @@ class CovDiedsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cov_died_params
-      params.require(:cov_died).permit(:amount,:city_id, :dateTime)
+      params.require(:cov_died).permit(:amount,:city_id, :added_at)
     end
 end

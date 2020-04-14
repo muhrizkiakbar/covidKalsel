@@ -17,7 +17,7 @@ class CovRecoveredsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create cov_recovered" do
     assert_difference('CovRecovered.count') do
-      post cov_recovereds_url, params: { cov_recovered: { amount: @cov_recovered.amount, city_id: @cov_recovered.city_id, dateTime: @cov_recovered.dateTime } }
+      post cov_recovereds_url, params: { cov_recovered: { amount: @cov_recovered.amount, city_id: @cov_recovered.city_id, added_at: @cov_recovered.added_at } }
     end
 
     assert_redirected_to cov_recovered_url(CovRecovered.last)
@@ -34,7 +34,7 @@ class CovRecoveredsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update cov_recovered" do
-    patch cov_recovered_url(@cov_recovered), params: { cov_recovered: { amount: @cov_recovered.amount, city_id: @cov_recovered.city_id, dateTime: @cov_recovered.dateTime } }
+    patch cov_recovered_url(@cov_recovered), params: { cov_recovered: { amount: @cov_recovered.amount, city_id: @cov_recovered.city_id, added_at: @cov_recovered.added_at } }
     assert_redirected_to cov_recovered_url(@cov_recovered)
   end
 

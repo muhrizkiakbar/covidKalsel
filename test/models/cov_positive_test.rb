@@ -5,7 +5,7 @@
 #  id         :bigint           not null, primary key
 #  city_id    :bigint
 #  amount     :integer
-#  dateTime   :datetime
+#  added_at   :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  slug       :string

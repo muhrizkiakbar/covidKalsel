@@ -17,7 +17,7 @@ class CovPdpsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create cov_pdp" do
     assert_difference('CovPdp.count') do
-      post cov_pdps_url, params: { cov_pdp: { amount: @cov_pdp.amount, city_id: @cov_pdp.city_id, dateTime: @cov_pdp.dateTime } }
+      post cov_pdps_url, params: { cov_pdp: { amount: @cov_pdp.amount, city_id: @cov_pdp.city_id, added_at: @cov_pdp.added_at } }
     end
 
     assert_redirected_to cov_pdp_url(CovPdp.last)
@@ -34,7 +34,7 @@ class CovPdpsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update cov_pdp" do
-    patch cov_pdp_url(@cov_pdp), params: { cov_pdp: { amount: @cov_pdp.amount, city_id: @cov_pdp.city_id, dateTime: @cov_pdp.dateTime } }
+    patch cov_pdp_url(@cov_pdp), params: { cov_pdp: { amount: @cov_pdp.amount, city_id: @cov_pdp.city_id, added_at: @cov_pdp.added_at } }
     assert_redirected_to cov_pdp_url(@cov_pdp)
   end
 

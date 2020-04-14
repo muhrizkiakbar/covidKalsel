@@ -5,7 +5,7 @@
 #  id         :bigint           not null, primary key
 #  city_id    :bigint
 #  amount     :integer
-#  dateTime   :datetime
+#  added_at   :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  slug       :string
@@ -19,6 +19,6 @@ class CovOdp < ApplicationRecord
 
   acts_as_paranoid
 
-  validates :amount,:dateTime, presence: true
+  validates :amount,:added_at, presence: true
   validates :amount, numericality: { only_integer: true }
 end

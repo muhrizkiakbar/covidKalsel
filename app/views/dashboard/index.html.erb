@@ -10,14 +10,8 @@
                         <h2 class="mb-0">Covid Graph</h2>
                     </div>
                     <div class="card-body">
-                        <%= line_chart [
-                            {name: "Dirawat/Positif", data: CovPositive.group_by_day('dateTime').sum(:amount).map{|t| [t[0], t[1]] }},
-                            {name: "Sembuh", data: CovRecovered.group_by_day('dateTime').sum(:amount).map{|t| [t[0], t[1]] }},
-                            {name: "Meninggal", data: CovDied.group_by_day('dateTime').sum(:amount).map{|t| [t[0], t[1]] }},
-                            {name: "ODP", data: CovOdp.group_by_day('dateTime').sum(:amount).map{|t| [t[0], t[1]] }},
-                            {name: "PDP", data: CovPdp.group_by_day('dateTime').sum(:amount).map{|t| [t[0], t[1]] }},
-                            ] %>
-                        <%# <%= line_chart CovPositive.group_by_day('dateTime').count %> 
+                        <%= line_chart chart_result_path %>
+                        <%# <%= line_chart CovPositive.group_by_day('added_at').count %> 
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@
 #  id         :bigint           not null, primary key
 #  city_id    :bigint
 #  amount     :integer
-#  dateTime   :datetime
+#  added_at   :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  slug       :string
@@ -18,6 +18,6 @@ class CovDied < ApplicationRecord
 
   acts_as_paranoid
 
-  validates :amount,:dateTime, :city_id, presence: true
+  validates :amount,:added_at, :city_id, presence: true
   validates :amount, numericality: { only_integer: true }
 end
