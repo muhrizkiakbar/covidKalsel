@@ -82,8 +82,6 @@ class CovPdpsController < ApplicationController
   def destroy
 
     authorize @cov_pdp
-    p "*" * 100
-    p @cov_positive.city 
     @city = City.find(@cov_pdp.city.id)
     @city.cov_pdp_count -= @cov_pdp.amount
     @city.save
