@@ -4,7 +4,9 @@ class LettersController < ApplicationController
   # GET /letters
   # GET /letters.json
   def index
-    @letters = Letter.all.page(params[:page])
+    # @letters = Letter.all.page(params[:page])
+    @q = Letter.ransack(params[:q])
+    @letters = @q.result(distinct: true).page(params[:page])
     authorize @letters
   end
 

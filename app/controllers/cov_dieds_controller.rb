@@ -4,7 +4,9 @@ class CovDiedsController < ApplicationController
   # GET /cov_dieds
   # GET /cov_dieds.json
   def index
-    @cov_dieds = CovDied.all.page(params[:page])
+    # @cov_dieds = CovDied.all.page(params[:page])
+    @q = CovDied.ransack(params[:q])
+    @cov_dieds = @q.result(distinct: true).page(params[:page])
 
     authorize @cov_dieds
   end
@@ -37,8 +39,21 @@ class CovDiedsController < ApplicationController
     
 
     @city = City.find(@cov_died.city.id)
-    @city.cov_died_count += @cov_died.amount
-    @city.cov_positive_count -= @cov_died.amount
+
+
+    if (@city.cov_died_count == 0)
+
+      @diff_amount = @city.cov_died_count + @cov_died.amount
+    else
+      @diff_amount =  @cov_died.amount - @city.cov_died_count
+    end
+    
+
+    @cov_died.amount = @diff_amount
+    @cov_died.save
+
+    @city.cov_died_count += @diff_amount
+    @city.cov_positive_count -= @diff_amount
     @city.save
 
     respond_to do |format|
@@ -67,6 +82,19 @@ class CovDiedsController < ApplicationController
       if @cov_died.update(cov_died_params)
 
         @city = City.find(@cov_died.city)
+
+        
+
+        if (@city.cov_died_count == 0)
+          @diff_amount = @city.cov_died_count + @cov_died.amount
+        else
+          @diff_amount =  @cov_died.amount - @city.cov_died_count
+        end
+        
+
+        @cov_died.amount = @diff_amount
+        @cov_died.save
+
         @city.cov_died_count += @cov_died.amount
         @city.cov_positive_count -= @cov_died.amount
         @city.save

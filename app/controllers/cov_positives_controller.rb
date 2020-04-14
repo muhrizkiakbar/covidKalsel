@@ -4,7 +4,9 @@ class CovPositivesController < ApplicationController
   # GET /cov_positives
   # GET /cov_positives.json
   def index
-    @cov_positives = CovPositive.all.page(params[:page])
+    # @cov_positives = CovPositive.all.page(params[:page])
+    @q = CovPositive.ransack(params[:q])
+    @cov_positives = @q.result(distinct: true).page(params[:page])
 
     authorize @cov_positives
   end
@@ -32,12 +34,19 @@ class CovPositivesController < ApplicationController
   def create
     @cov_positive = CovPositive.new(cov_positive_params)
 
-    # p "=" * 100
-
-    # @cov_positive.city = City.friendly.find(params[:cov_positive][:city_id])
-
 
     @city = City.find(@cov_positive.city.id)
+
+    if (@city.cov_positive_count == 0)
+
+      @diff_amount = @city.cov_positive_count + @cov_positive.amount
+    else
+      @diff_amount = @cov_positive.amount - @city.cov_positive_count 
+    end
+
+    @cov_positive.amount = @diff_amount
+    @cov_positive.save
+
     @city.cov_positive_count += @cov_positive.amount
     @city.save
 
@@ -67,6 +76,18 @@ class CovPositivesController < ApplicationController
       if @cov_positive.update(cov_positive_params)
 
         @city = City.find(@cov_positive.city.id)
+        
+
+        if (@city.cov_positive_count == 0)
+
+          @diff_amount = @city.cov_positive_count + @cov_positive.amount
+        else
+          @diff_amount = @cov_positive.amount - @city.cov_positive_count 
+        end
+      
+        @cov_positive.amount = @diff_amount
+        @cov_positive.save
+        
         @city.cov_positive_count += @cov_positive.amount
         @city.save
         format.html { redirect_to @cov_positive, notice: 'Cov positive was successfully updated.' }

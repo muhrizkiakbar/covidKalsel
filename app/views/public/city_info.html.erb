@@ -1,0 +1,143 @@
+
+<% content_for :isi do %>
+<div class="container">
+    <div class="row justify-content-left">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0"><%= @city.name %></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <% if @city.hospitals.any? %>
+        <div class="col-md-3">
+      <% else %>
+        <div class="col-md-6">
+      <% end %>
+        <div class="card bg-green">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <h3 class="card-title text-uppercase mb-0 text-white">Hotline</h3>
+                  
+                <span class="h1 font-weight-bolder mb-0 text-white">
+                  <% if (@city.call_center != nil)
+                      telpons = @city.call_center.split(" ")
+                      telpons.each_with_index do |telpon,index| %>
+                          <a href="tel:<%= telpon %>" class="text-white">
+                            <%= telpon %></a>
+                      <% end %></td>
+                  <% end %>
+                </span>
+              </div>
+              <div class="col-auto">
+                <div class="icon icon-shape bg-white rounded-circle shadow">
+                  <%= icon("fas", "user-check") %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% if @city.hospitals.any? %>
+      <div class="col-md-3">
+        <div class="card bg-yellow">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <h3 class="card-title text-uppercase mb-0 text-white">Rumah Sakit</h3>
+                <% @city.hospitals.each do |hospital| %>
+                  <%= hospital.name_hospital %>
+                  <br/>
+                  <%= hospital.phone_number %>
+                <% end %>
+              </div>
+              <div class="col-auto">
+                <div class="icon icon-shape bg-white rounded-circle shadow">
+                  <%= icon("fas", "user-tag") %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <%= pie_chart public_city_chart_pie_of_city_path(@city) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <%= line_chart public_city_chart_line_of_city_path(@city) %>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+  
+
+  <footer class="py-5" id="footer-main">
+    <div class="container">
+      <div class="row align-items-center justify-content-xl-between">
+        <div class="col-xl-4">
+          <div class="copyright text-center text-xl-left text-muted">
+            &copy; 2020 <a href="http://diskominfo.kalselprov.go.id" class="text-gray font-weight-bold ml-1" target="_blank">Diskominfo Prov. Kalsel</a>
+            <br>Telah dikunjungi <%= @visitor_count %> kali.
+          </div>
+        </div>
+        <div class="col-xl-3">
+          <div class="copyright text-right text-xl-left text-muted">
+            
+          </div>
+        </div>
+        <div class="col-xl-5">
+          <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+            <li class="nav-item">
+              <%= link_to 'Home', root_path, class: 'nav-link', target: '_blank' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'News', public_news_path, class: 'nav-link', target: '_blank' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Contact', public_contact_path, class: 'nav-link', target: '_blank' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'FAQ', public_faq_path, class: 'nav-link', target: '_blank' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Login', new_user_session_path, class: 'nav-link', target: '_blank' %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <style>
+    .hitCounter.badge-done0{
+      background-color: #0000 !important;
+      background-image: none !important;
+      display: inline !important;
+      background-repeat: none !important;
+      text-indent: 0 !important;
+      font-size: 14px !important;
+      color: #525f7f !important;
+      padding: 0px 0px !important;
+      background-position: none !important;
+    }
+  </style>
+
+<% end %>
+<%= render partial: 'layouts/body' %>
+

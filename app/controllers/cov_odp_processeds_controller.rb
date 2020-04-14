@@ -4,7 +4,9 @@ class CovOdpProcessedsController < ApplicationController
   # GET /cov_odp_processeds
   # GET /cov_odp_processeds.json
   def index
-    @cov_odp_processeds = CovOdpProcessed.all.page(params[:page])
+    # @cov_odp_processeds = CovOdpProcessed.all.page(params[:page])
+    @q = CovOdpProcessed.ransack(params[:q])
+    @cov_odp_processeds = @q.result(distinct: true).page(params[:page])
     authorize @cov_odp_processeds
   end
 
@@ -36,6 +38,17 @@ class CovOdpProcessedsController < ApplicationController
 
 
     @city = City.find(@cov_odp_processed.city.id)
+
+
+    if (@city.cov_odp_processed_count == 0)
+      @diff_amount = @city.cov_odp_processed_count + @cov_odp_processed.amount
+    else
+      @diff_amount = @cov_odp_processed.amount - @city.cov_odp_processed_count 
+    end
+
+    @cov_odp_processed.amount = @diff_amount
+    @cov_odp_processed.save
+
     @city.cov_odp_processed_count += @cov_odp_processed.amount
     @city.cov_odp_count -= @cov_odp_processed.amount
 
@@ -72,6 +85,18 @@ class CovOdpProcessedsController < ApplicationController
       if @cov_odp_processed.update(cov_odp_processed_params)
 
         @city = City.find(@cov_odp_processed.city.id)
+
+
+        if (@city.cov_odp_processed_count == 0)
+          @diff_amount = @city.cov_odp_processed_count + @cov_odp_processed.amount
+        else
+          @diff_amount = @cov_odp_processed.amount - @city.cov_odp_processed_count 
+        end
+        # @diff_amount = @city.cov_odp_processed_count - @cov_odp_processed.amount
+
+        @cov_odp_processed.amount = @diff_amount
+        @cov_odp_processed.save
+
         @city.cov_odp_processed_count += @cov_odp_processed.amount
         @city.cov_odp_count -= @cov_odp_processed.amount
         @city.save

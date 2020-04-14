@@ -4,7 +4,9 @@ class CovOdpsController < ApplicationController
   # GET /cov_odps
   # GET /cov_odps.json
   def index
-    @cov_odps = CovOdp.all.page(params[:page])
+    # @cov_odps = CovOdp.all.page(params[:page])
+    @q = CovOdp.ransack(params[:q])
+    @cov_odps = @q.result(distinct: true).page(params[:page])
 
     authorize @cov_odps
   end
@@ -34,6 +36,17 @@ class CovOdpsController < ApplicationController
 
 
     @city = City.find(@cov_odp.city.id)
+
+
+    if (@city.cov_odp_count == 0)
+      @diff_amount = @city.cov_odp_count + @cov_odp.amount
+    else
+      @diff_amount = @cov_odp.amount - @city.cov_odp_count 
+    end
+
+    @cov_odp.amount = @diff_amount
+    @cov_odp.save
+
     @city.cov_odp_count += @cov_odp.amount
     @city.save
 
@@ -60,6 +73,17 @@ class CovOdpsController < ApplicationController
       if @cov_odp.update(cov_odp_params)
 
         @city = City.find(@cov_odp.city.id)
+
+
+        if (@city.cov_odp_count == 0)
+          @diff_amount = @city.cov_odp_count + @cov_odp.amount
+        else
+          @diff_amount = @cov_odp.amount - @city.cov_odp_count 
+        end
+
+        @cov_odp.amount = @diff_amount
+        @cov_odp.save
+
         @city.cov_odp_count += @cov_odp.amount
         @city.save
         

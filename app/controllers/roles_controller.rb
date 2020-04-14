@@ -4,7 +4,9 @@ class RolesController < ApplicationController
   # GET /roles
   # GET /roles.json
   def index
-    @roles = Role.all.page(params[:page])
+    # @roles = Role.all.page(params[:page])
+    @q = Role.ransack(params[:q])
+    @roles = @q.result(distinct: true).page(params[:page])
 
     authorize @roles
   end

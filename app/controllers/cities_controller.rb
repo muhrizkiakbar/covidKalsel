@@ -4,7 +4,9 @@ class CitiesController < ApplicationController
   # GET /cities
   # GET /cities.json
   def index
-    @cities = City.all.page(params[:page])
+    # @cities = City.all.page(params[:page])
+    @q = City.ransack(params[:q])
+    @cities = @q.result(distinct: true).page(params[:page])
     authorize @cities
   end
 

@@ -4,7 +4,9 @@ class CovNegativesController < ApplicationController
   # GET /cov_negatives
   # GET /cov_negatives.json
   def index
-    @cov_negatives = CovNegative.all.page(params[:page])
+    # @cov_negatives = CovNegative.all.page(params[:page])
+    @q = CovNegative.ransack(params[:q])
+    @cov_negatives = @q.result(distinct: true).page(params[:page])
 
     authorize @cov_negatives
   end
@@ -34,11 +36,20 @@ class CovNegativesController < ApplicationController
   def create
     @cov_negative = CovNegative.new(cov_negative_params)
 
-    # @cov_negative.city = City.friendly.find(params[:cov_negative][:city_id])
-
     @city = City.find(@cov_negative.city.id)
-    @city.cov_positive_count -= @cov_negative.amount
-    @city.cov_negative_count += @cov_negative.amount
+
+
+    if (@city.cov_negative_count == 0)
+      @diff_amount = @city.cov_negative_count + @cov_negative.amount
+    else
+      @diff_amount =  @cov_negative.amount - @city.cov_negative_count
+    end
+
+    @cov_negative.amount = @diff_amount
+    @cov_negative.save
+
+    @city.cov_positive_count -= @diff_amount
+    @city.cov_negative_count += @diff_amount
     @city.save
 
     respond_to do |format|
@@ -66,6 +77,13 @@ class CovNegativesController < ApplicationController
       if @cov_negative.update(cov_negative_params)
 
         @city = City.find(@cov_negative.city.id)
+
+        if (@city.cov_negative_count == 0)
+          @diff_amount = @city.cov_negative_count + @cov_negative.amount
+        else
+          @diff_amount =  @cov_negative.amount - @city.cov_negative_count
+        end
+
         @city.cov_positive_count -= @cov_negative.amount
         @city.cov_negative_count += @cov_negative.amount
         @city.save
