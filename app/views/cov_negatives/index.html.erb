@@ -6,38 +6,44 @@
       <div class="card-header">
         <h3>CoV Negatives</h3>
       </div>
-      <div class="table-responsive py-3">
-        <table class="table table-flush" id="datatable-kota">
-          <thead class="thead-light">
-            <tr>
-              <th>City</th>
-              <th>Amount</th>
-              <th>Datetime</th>
-              <th>Tool</th>
-            </tr>
-          </thead>
+      <div class="card-body">
 
-          <tbody>
-            <% @cov_negatives.each do |cov_negative| %>
+        <div class="table-responsive py-3">
+          <table class="table table-flush">
+            <thead class="thead-light">
               <tr>
-                <td><%= cov_negative.city.name %></td>
-                <td><%= cov_negative.amount %></td>
-                <td><%= cov_negative.dateTime %></td>
-                <td>
-                  <%= link_to cov_negative, class: "btn btn-icon btn-sm btn-info" do %>
-                    <%= icon("fas","eye", class: "text-white")%>
-                  <% end %>
-                  <%= link_to edit_cov_negative_path(cov_negative), class: "btn btn-icon btn-sm btn-warning" do %>
-                    <%= icon("fas", "edit", class: "text-white")%>
-                  <% end %>
-                  <%= link_to cov_negative, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-icon btn-sm btn-danger" do %>
-                    <%= icon("fas", "trash", class: "text-white")%>
-                  <% end %>
-                </td>
+                <th>City</th>
+                <th>Amount</th>
+                <th>Datetime</th>
+                <th>Tool</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              <% @cov_negatives.each do |cov_negative| %>
+                <tr>
+                  <td><%= cov_negative.city.name %></td>
+                  <td><%= cov_negative.amount %></td>
+                  <td><%= cov_negative.dateTime %></td>
+                  <td>
+                    <%= link_to cov_negative, class: "btn btn-icon btn-sm btn-info" do %>
+                      <%= icon("fas","eye", class: "text-white")%>
+                    <% end %>
+                    <%= link_to edit_cov_negative_path(cov_negative), class: "btn btn-icon btn-sm btn-warning" do %>
+                      <%= icon("fas", "edit", class: "text-white")%>
+                    <% end %>
+                    <%= link_to cov_negative, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-icon btn-sm btn-danger" do %>
+                      <%= icon("fas", "trash", class: "text-white")%>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer">
+        <%= paginate @cov_negatives %>
       </div>
 
     </div>

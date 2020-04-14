@@ -7,38 +7,44 @@
       <div class="card-header">
         <h3>CoV Pdp Processeds</h3>
       </div>
-      <div class="table-responsive py-3">
-        <table class="table table-flush" id="datatable-kota">
-          <thead class="thead-light">
-            <tr>
-              <th>City</th>
-              <th>Amount</th>
-              <th>Datetime</th>
-              <th>Tool</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @cov_pdp_processeds.each do |cov_pdp_processed| %>
+      <div class="card-body">
+        <div class="table-responsive py-3">
+          <table class="table table-flush" >
+            <thead class="thead-light">
               <tr>
-                <td><%= cov_pdp_processed.city.name %></td>
-                <td><%= cov_pdp_processed.amount %></td>
-                <td><%= cov_pdp_processed.dateTime %></td>
-                <td>
-                  <%= link_to cov_pdp_processed, class: "btn btn-icon btn-sm btn-info" do %>
-                    <%= icon("fas","eye", class: "text-white")%>
-                  <% end %>
-                  <%= link_to edit_cov_pdp_processed_path(cov_pdp_processed), class: "btn btn-icon btn-sm btn-warning" do %>
-                    <%= icon("fas", "edit", class: "text-white")%>
-                  <% end %>
-                  <%= link_to cov_pdp_processed, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-icon btn-sm btn-danger" do %>
-                    <%= icon("fas", "trash", class: "text-white")%>
-                  <% end %>
-                </td>
+                <th>City</th>
+                <th>Amount</th>
+                <th>Datetime</th>
+                <th>Tool</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              <% @cov_pdp_processeds.each do |cov_pdp_processed| %>
+                <tr>
+                  <td><%= cov_pdp_processed.city.name %></td>
+                  <td><%= cov_pdp_processed.amount %></td>
+                  <td><%= cov_pdp_processed.dateTime %></td>
+                  <td>
+                    <%= link_to cov_pdp_processed, class: "btn btn-icon btn-sm btn-info" do %>
+                      <%= icon("fas","eye", class: "text-white")%>
+                    <% end %>
+                    <%= link_to edit_cov_pdp_processed_path(cov_pdp_processed), class: "btn btn-icon btn-sm btn-warning" do %>
+                      <%= icon("fas", "edit", class: "text-white")%>
+                    <% end %>
+                    <%= link_to cov_pdp_processed, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-icon btn-sm btn-danger" do %>
+                      <%= icon("fas", "trash", class: "text-white")%>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <%= paginate @cov_pdp_processeds %>
       </div>
 
     </div>
