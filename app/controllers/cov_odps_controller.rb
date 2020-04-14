@@ -79,7 +79,7 @@ class CovOdpsController < ApplicationController
     authorize @cov_odp
     
     @city = City.find(@cov_odp.city.id)
-    # @city.cov_odp_count -= @cov_odp.amount
+    @city.cov_odp_count -= @cov_odp.amount
     @city.save
 
     @cov_odp.destroy
