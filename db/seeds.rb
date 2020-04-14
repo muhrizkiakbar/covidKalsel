@@ -738,3 +738,73 @@ add_user = User.create(
         name: "diskominfo",
         password: "@diskominfo123"
     )
+
+
+cov_positive = [
+    {
+        city_id: 1, # tanah lauh
+        added_at: "2012-02-01 14:00:00",
+        amount: 12
+    },
+    {
+        city_id: 2, # KTB
+        added_at: "2012-02-01 14:00:00",
+        amount: 12
+    },
+    {
+        city_id: 3, # BJR
+        added_at: "2012-02-01 14:00:00",
+        amount: 12
+    },
+    {
+        city_id: 4, # BTL
+        added_at: "2012-02-01 14:00:00",
+        amount: 12
+    },
+    {
+        city_id: 5, # TPN
+        added_at: "2012-02-01 14:00:00",
+        amount: 12
+    },
+    {
+        city_id: 6, # HSS
+        added_at: "2012-02-01 14:00:00",
+        amount: 12
+    },
+    {
+        city_id: 7, # HST
+        added_at: "2012-02-01 14:00:00",
+        amount: 12
+    },
+    {
+        city_id: 8, # HSU
+        added_at: "2012-02-01 14:00:00",
+        amount: 12
+    },
+    {
+        city_id: 9, # TBL
+        added_at: "2012-02-01 14:00:00",
+        amount: 12
+    },
+    {
+        city_id: 10, # TBU
+        added_at: "2012-02-01 14:00:00",
+        amount: 12
+    },
+    {
+        city_id: 11, # BLG
+        added_at: "2012-02-01 14:00:00",
+        amount: 12
+    },
+    {
+        city_id: 12, # BJM
+        added_at: "2012-02-01 14:00:00",
+        amount: 12
+    },
+    {
+        city_id: 13, # BJB
+        added_at: "2012-02-01 14:00:00",
+        amount: 12
+    },
+
+]

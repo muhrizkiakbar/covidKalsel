@@ -4,7 +4,7 @@ class InformationController < ApplicationController
   # GET /information
   # GET /information.json
   def index
-    @informations = Information.all
+    @informations = Information.all.page(params[:page])
     authorize @informations
   end
 
