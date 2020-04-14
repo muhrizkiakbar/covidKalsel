@@ -4,7 +4,9 @@ class CovOdpProcessedsController < ApplicationController
   # GET /cov_odp_processeds
   # GET /cov_odp_processeds.json
   def index
-    @cov_odp_processeds = CovOdpProcessed.all.page(params[:page])
+    # @cov_odp_processeds = CovOdpProcessed.all.page(params[:page])
+    @q = CovOdpProcessed.ransack(params[:q])
+    @cov_odp_processeds = @q.result(distinct: true).page(params[:page])
     authorize @cov_odp_processeds
   end
 

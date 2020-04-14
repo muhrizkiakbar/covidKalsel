@@ -4,7 +4,9 @@ class CovOdpsController < ApplicationController
   # GET /cov_odps
   # GET /cov_odps.json
   def index
-    @cov_odps = CovOdp.all.page(params[:page])
+    # @cov_odps = CovOdp.all.page(params[:page])
+    @q = CovOdp.ransack(params[:q])
+    @cov_odps = @q.result(distinct: true).page(params[:page])
 
     authorize @cov_odps
   end

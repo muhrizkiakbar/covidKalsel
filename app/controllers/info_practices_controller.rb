@@ -4,21 +4,28 @@ class InfoPracticesController < ApplicationController
   # GET /info_practices
   # GET /info_practices.json
   def index
-    @info_practices = InfoPractice.page(params[:page])
+    # @info_practices = InfoPractice.page(params[:page])
+
+    @q = InfoPractice.ransack(params[:q])
+    @info_practices = @q.result(distinct: true).page(params[:page])
+    authorize @info_practices
   end
 
   # GET /info_practices/1
   # GET /info_practices/1.json
   def show
+    authorize @info_practice
   end
 
   # GET /info_practices/new
   def new
     @info_practice = InfoPractice.new
+    authorize @info_practice
   end
 
   # GET /info_practices/1/edit
   def edit
+    authorize @info_practice
   end
 
   # POST /info_practices
@@ -54,6 +61,7 @@ class InfoPracticesController < ApplicationController
   # DELETE /info_practices/1
   # DELETE /info_practices/1.json
   def destroy
+    authorize @info_practice
     @info_practice.destroy
     respond_to do |format|
       format.html { redirect_to info_practices_url, notice: 'Info practice was successfully destroyed.' }

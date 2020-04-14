@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all.page(params[:page])
+    # @users = User.all.page(params[:page])
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).page(params[:page])
     authorize @users
   end
 

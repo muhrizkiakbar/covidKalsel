@@ -4,7 +4,9 @@ class CovPositivesController < ApplicationController
   # GET /cov_positives
   # GET /cov_positives.json
   def index
-    @cov_positives = CovPositive.all.page(params[:page])
+    # @cov_positives = CovPositive.all.page(params[:page])
+    @q = CovPositive.ransack(params[:q])
+    @cov_positives = @q.result(distinct: true).page(params[:page])
 
     authorize @cov_positives
   end

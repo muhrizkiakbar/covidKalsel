@@ -4,7 +4,9 @@ class CovRecoveredsController < ApplicationController
   # GET /cov_recovereds
   # GET /cov_recovereds.json
   def index
-    @cov_recovereds = CovRecovered.all.page(params[:page])
+    # @cov_recovereds = CovRecovered.all.page(params[:page])
+    @q = CovRecovered.ransack(params[:q])
+    @cov_recovereds = @q.result(distinct: true).page(params[:page])
 
     authorize @cov_recovereds
   end
