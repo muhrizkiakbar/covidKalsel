@@ -759,6 +759,26 @@ puts 'Reset count of city'
     edit_city.save
 end
 
+puts "TruncateCov Positive"
+
+truncate = CovPositive.destroy_all
+
+puts "Truncate Cov Died"
+
+truncate = CovDied.destroy_all
+
+puts "Truncate Cov Recovered"
+
+truncate = CovRecovered.destroy_all
+
+puts "Truncate Cov PDP"
+
+truncate = CovPdp.destroy_all
+
+puts "Truncate Cov ODP"
+
+truncate = CovOdp.destroy_all
+
 
 puts "Add Dirawat"
 dirawats= [
