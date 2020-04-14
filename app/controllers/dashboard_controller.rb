@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
 
     def chart_result
         start_date = Date.today
-        end_date = start_date - 10
+        end_date = start_date - 20
         diff_date = start_date - end_date
       
         $i = 0
