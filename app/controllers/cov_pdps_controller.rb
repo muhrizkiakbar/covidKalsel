@@ -36,6 +36,17 @@ class CovPdpsController < ApplicationController
     # @cov_pdp.city = City.friendly.find(params[:cov_pdp][:city_id])
 
     @city = City.find(@cov_pdp.city.id)
+
+
+    if (@city.cov_pdp_count == 0)
+      @diff_amount = @city.cov_pdp_count + @cov_pdp.amount
+    else
+      @diff_amount = @cov_pdp.amount - @city.cov_pdp_count 
+    end
+
+    @cov_pdp.amount = @diff_amount
+    @cov_pdp.save
+
     @city.cov_pdp_count += @cov_pdp.amount
     @city.save
 
@@ -65,6 +76,17 @@ class CovPdpsController < ApplicationController
       if @cov_pdp.update(cov_pdp_params)
 
         @city = City.find(@cov_pdp.city.id)
+        
+
+        if (@city.cov_pdp_count == 0)
+          @diff_amount = @city.cov_pdp_count + @cov_pdp.amount
+        else
+          @diff_amount = @cov_pdp.amount - @city.cov_pdp_count 
+        end
+
+        @cov_pdp.amount = @diff_amount
+        @cov_pdp.save
+
         @city.cov_pdp_count += @cov_pdp.amount
         @city.save
 

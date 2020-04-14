@@ -37,6 +37,17 @@ class CovRecoveredsController < ApplicationController
 
 
     @city = City.find(@cov_recovered.city.id)
+
+    
+    if (@city.cov_recovered_count == 0)
+      @diff_amount = @city.cov_recovered_count + @cov_recovered.amount
+    else
+      @diff_amount = @cov_recovered.amount - @city.cov_recovered_count
+    end
+
+    @cov_recovered.amount = @diff_amount
+    @cov_recovered.save
+
     @city.cov_recovered_count += @cov_recovered.amount
     @city.cov_positive_count -= @cov_recovered.amount
     @city.save
@@ -68,6 +79,16 @@ class CovRecoveredsController < ApplicationController
       if @cov_recovered.update(cov_recovered_params)
 
         @city = City.find(@cov_recovered.city.id)
+        
+        if (@city.cov_recovered_count == 0)
+          @diff_amount = @city.cov_recovered_count + @cov_recovered.amount
+        else
+          @diff_amount = @cov_recovered.amount - @city.cov_recovered_count
+        end
+
+        @cov_recovered.amount = @diff_amount
+        @cov_recovered.save
+
         @city.cov_recovered_count += @cov_recovered.amount
         @city.cov_positive_count -= @cov_recovered.amount
         @city.save
