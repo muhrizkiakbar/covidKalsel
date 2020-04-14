@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
+  # use_doorkeeper
+  use_doorkeeper do
+    # No need to register client application
+    skip_controllers :applications, :authorized_applications
+  end
   mount Ckeditor::Engine => '/ckeditor'
+
   devise_for :users
+  devise_for :developpers
+
+
 
   devise_scope :user do
     authenticated :user do
