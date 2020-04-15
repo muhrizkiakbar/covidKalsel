@@ -50,11 +50,11 @@ class CovRecoveredsController < ApplicationController
     @cov_recovered.amount = @diff_amount
     @cov_recovered.save
 
-    # @cov_positive = CovPositive.new
-    # @cov_positive.city = @city
-    # @cov_positive.amount = @diff_amount * -1
-    # @cov_positive.added_at = @cov_recovered.added_at
-    # @cov_positive.save
+    @cov_positive = CovPositive.new
+    @cov_positive.city = @city
+    @cov_positive.amount = @diff_amount * -1
+    @cov_positive.added_at = @cov_recovered.added_at
+    @cov_positive.save
 
     @city.cov_recovered_count += @cov_recovered.amount
     @city.cov_positive_count -= @cov_recovered.amount
@@ -107,11 +107,11 @@ class CovRecoveredsController < ApplicationController
         @cov_recovered.save
 
 
-        # @cov_positive = CovPositive.new
-        # @cov_positive.city = @city
-        # @cov_positive.amount = @diff_amount * -1
-        # @cov_positive.added_at = @cov_recovered.added_at
-        # @cov_positive.save
+        @cov_positive = CovPositive.new
+        @cov_positive.city = @city
+        @cov_positive.amount = @diff_amount * -1
+        @cov_positive.added_at = @cov_recovered.added_at
+        @cov_positive.save
 
         @city.cov_recovered_count += @cov_recovered.amount
         @city.cov_positive_count -= @cov_recovered.amount
@@ -140,11 +140,11 @@ class CovRecoveredsController < ApplicationController
     @city.save
 
 
-    # @cov_positive = CovPositive.new
-    # @cov_positive.city = @city
-    # @cov_positive.amount = @diff_amount * 1
-    # @cov_positive.added_at = @cov_recovered.added_at
-    # @cov_positive.save
+    @cov_positive = CovPositive.new
+    @cov_positive.city = @city
+    @cov_positive.amount = @diff_amount * 1
+    @cov_positive.added_at = @cov_recovered.added_at
+    @cov_positive.save
 
     @cov_recovered.destroy
     respond_to do |format|
