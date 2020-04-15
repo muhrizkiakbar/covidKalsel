@@ -6,7 +6,7 @@ class CovPdpProcessedsController < ApplicationController
   def index
     # @cov_pdp_processeds = CovPdpProcessed.all.page(params[:page])
     @q = CovPdpProcessed.ransack(params[:q])
-    @cov_pdp_processeds = @q.result(distinct: true).page(params[:page])
+    @cov_pdp_processeds = @q.result(distinct: true).order('added_at DESC').page(params[:page])
     authorize @cov_pdp_processeds
   end
 

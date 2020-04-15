@@ -6,7 +6,7 @@ class CovPdpsController < ApplicationController
   def index
     # @cov_pdps = CovPdp.all.page(params[:page])
     @q = CovPdp.ransack(params[:q])
-    @cov_pdps = @q.result(distinct: true).page(params[:page])
+    @cov_pdps = @q.result(distinct: true).order('added_at DESC').page(params[:page])
 
     authorize @cov_pdps
   end

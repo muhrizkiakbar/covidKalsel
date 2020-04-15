@@ -6,7 +6,7 @@ class CovNegativesController < ApplicationController
   def index
     # @cov_negatives = CovNegative.all.page(params[:page])
     @q = CovNegative.ransack(params[:q])
-    @cov_negatives = @q.result(distinct: true).page(params[:page])
+    @cov_negatives = @q.result(distinct: true).order('added_at DESC').page(params[:page])
 
     authorize @cov_negatives
   end

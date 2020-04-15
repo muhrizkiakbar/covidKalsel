@@ -6,7 +6,7 @@ class CovRecoveredsController < ApplicationController
   def index
     # @cov_recovereds = CovRecovered.all.page(params[:page])
     @q = CovRecovered.ransack(params[:q])
-    @cov_recovereds = @q.result(distinct: true).page(params[:page])
+    @cov_recovereds = @q.result(distinct: true).order('added_at DESC').page(params[:page])
 
     authorize @cov_recovereds
   end

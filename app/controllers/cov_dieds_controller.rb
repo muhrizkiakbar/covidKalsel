@@ -6,7 +6,7 @@ class CovDiedsController < ApplicationController
   def index
     # @cov_dieds = CovDied.all.page(params[:page])
     @q = CovDied.ransack(params[:q])
-    @cov_dieds = @q.result(distinct: true).page(params[:page])
+    @cov_dieds = @q.result(distinct: true).order('added_at DESC').page(params[:page])
 
     authorize @cov_dieds
   end
