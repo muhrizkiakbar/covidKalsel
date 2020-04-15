@@ -56,6 +56,13 @@ class CovDiedsController < ApplicationController
     @city.cov_positive_count -= @diff_amount
     @city.save
 
+
+    @cov_positive = CovPositive.new
+    @cov_positive.city = @city
+    @cov_positive.amount = @diff_amount * -1
+    @cov_positive.added_at = @cov_recovered.added_at
+    @cov_positive.save
+
     respond_to do |format|
       if @cov_died.save
         format.html { redirect_to @cov_died, notice: 'Cov died was successfully created.' }
@@ -84,6 +91,11 @@ class CovDiedsController < ApplicationController
         @city = City.find(@cov_died.city)
 
         
+        @cov_positive = CovPositive.new
+        @cov_positive.city = @city
+        @cov_positive.amount = @diff_amount * 1
+        @cov_positive.added_at = @cov_recovered.added_at
+        @cov_positive.save
 
         if (@city.cov_died_count == 0)
           @diff_amount = @city.cov_died_count + @cov_died.amount
@@ -98,6 +110,13 @@ class CovDiedsController < ApplicationController
         @city.cov_died_count += @cov_died.amount
         @city.cov_positive_count -= @cov_died.amount
         @city.save
+
+
+        @cov_positive = CovPositive.new
+        @cov_positive.city = @city
+        @cov_positive.amount = @diff_amount * -1
+        @cov_positive.added_at = @cov_recovered.added_at
+        @cov_positive.save
         
         format.html { redirect_to @cov_died, notice: 'Cov died was successfully updated.' }
         format.json { render :show, status: :ok, location: @cov_died }
@@ -118,6 +137,13 @@ class CovDiedsController < ApplicationController
     @city.cov_died_count -= @cov_died.amount
     @city.cov_positive_count += @cov_died.amount
     @city.save
+
+
+    @cov_positive = CovPositive.new
+    @cov_positive.city = @city
+    @cov_positive.amount = @diff_amount * 1
+    @cov_positive.added_at = @cov_recovered.added_at
+    @cov_positive.save
 
     @cov_died.destroy
     respond_to do |format|

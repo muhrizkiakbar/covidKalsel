@@ -50,6 +50,12 @@ class CovRecoveredsController < ApplicationController
     @cov_recovered.amount = @diff_amount
     @cov_recovered.save
 
+    @cov_positive = CovPositive.new
+    @cov_positive.city = @city
+    @cov_positive.amount = @diff_amount * -1
+    @cov_positive.added_at = @cov_recovered.added_at
+    @cov_positive.save
+
     @city.cov_recovered_count += @cov_recovered.amount
     @city.cov_positive_count -= @cov_recovered.amount
     @city.save
@@ -80,6 +86,13 @@ class CovRecoveredsController < ApplicationController
 
       if @cov_recovered.update(cov_recovered_params)
 
+
+        @cov_positive = CovPositive.new
+        @cov_positive.city = @city
+        @cov_positive.amount = @diff_amount * 1
+        @cov_positive.added_at = @cov_recovered.added_at
+        @cov_positive.save
+
         @city = City.find(@cov_recovered.city.id)
         
         if (@city.cov_recovered_count == 0)
@@ -91,9 +104,18 @@ class CovRecoveredsController < ApplicationController
         @cov_recovered.amount = @diff_amount
         @cov_recovered.save
 
+
+        @cov_positive = CovPositive.new
+        @cov_positive.city = @city
+        @cov_positive.amount = @diff_amount * -1
+        @cov_positive.added_at = @cov_recovered.added_at
+        @cov_positive.save
+
         @city.cov_recovered_count += @cov_recovered.amount
         @city.cov_positive_count -= @cov_recovered.amount
         @city.save
+
+
 
         format.html { redirect_to @cov_recovered, notice: 'Cov recovered was successfully updated.' }
         format.json { render :show, status: :ok, location: @cov_recovered }
@@ -114,6 +136,13 @@ class CovRecoveredsController < ApplicationController
     @city.cov_recovered_count -= @cov_recovered.amount
     @city.cov_positive_count += @cov_recovered.amount
     @city.save
+
+
+    @cov_positive = CovPositive.new
+    @cov_positive.city = @city
+    @cov_positive.amount = @diff_amount * 1
+    @cov_positive.added_at = @cov_recovered.added_at
+    @cov_positive.save
 
     @cov_recovered.destroy
     respond_to do |format|
