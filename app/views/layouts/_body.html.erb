@@ -13,9 +13,11 @@
       <%= yield :isi %>
     </div>
   <% end %>
+
+
+  <%= javascript_include_tag 'highcharts', 'data-turbolinks-track': 'reload' %>
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   
-  <%= javascript_include_tag 'chartkick', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'highcharts', 'data-turbolinks-track': 'reload' %>
   <%= yield :charts_js %>
 </body>
