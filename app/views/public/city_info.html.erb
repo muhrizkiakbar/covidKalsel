@@ -80,7 +80,7 @@
                 <div class="row">
                   <div class="col">
                     <ul class="list-group list-group-flush">
-                      <% if (@city.hospitals.any?) %>
+                      <% if (@city.hospitals.nil?) %>
                       <li class="bg-transparent checklist-entry list-group-item flex-column align-items-start px-0 py-2 border-0">
                         <div class="checklist-item checklist-item-danger">
                           <div class="checklist-info">
@@ -137,7 +137,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <%= line_chart public_city_chart_line_of_city_path(@city) %>
+                    <%= column_chart public_city_chart_line_of_city_path(@city) %>
                 </div>
             </div>
         </div>
