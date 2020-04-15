@@ -742,6 +742,8 @@
 
 # ====== RESET COUNT OF CITY =========
 
+puts 'Reset count of city'
+
 @cities = City.all
 
 @cities.each do |city|
