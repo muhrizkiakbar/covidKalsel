@@ -8,7 +8,7 @@ class DashboardController < ApplicationController
         end_date = start_date - 7
         diff_date = start_date - end_date
 
-        $i = 0
+        $i = 1
 
         result_data=[
           {
@@ -36,7 +36,7 @@ class DashboardController < ApplicationController
           }
         ]
 
-        until $i >= diff_date.to_i  do
+        until $i > diff_date.to_i  do
 
           #get date
           current_date_of_loop = end_date + $i
