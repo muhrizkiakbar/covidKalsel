@@ -225,7 +225,7 @@ class PublicController < ApplicationController
           @sum_died = CovDied.where('DATE(added_at) <= ?',current_date_of_loop.to_s).sum(:amount)
           result_data[2]["data"].push(Array.new([current_date_of_loop.to_s, @sum_died]))
 
-          result_data[0]["data"].push(Array.new([current_date_of_loop.to_s, @sum_positive-@sum_died-@sum_recovered]))
+          result_data[0]["data"].push(Array.new([current_date_of_loop.to_s, @sum_positive]))
 
           @sum_odp = CovOdp.where('DATE(added_at) <= ?',current_date_of_loop).sum(:amount)
           @sum_odp_processed = CovOdpProcessed.where('DATE(added_at) <= ?',current_date_of_loop).sum(:amount)
