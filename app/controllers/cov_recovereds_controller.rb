@@ -142,7 +142,7 @@ class CovRecoveredsController < ApplicationController
 
     @cov_positive = CovPositive.new
     @cov_positive.city = @city
-    @cov_positive.amount = @diff_amount * 1
+    @cov_positive.amount = @cov_recovered.amount * 1
     @cov_positive.added_at = @cov_recovered.added_at
     @cov_positive.save
 
