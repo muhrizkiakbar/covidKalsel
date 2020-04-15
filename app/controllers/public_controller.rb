@@ -105,7 +105,7 @@ class PublicController < ApplicationController
           #get total amount before current date of loop
           # tambah data positif
 
-          @sum_positive = CovPositive.where('DATE(added_at) < ?',current_date_of_loop.to_s).where('city_id = ?',city.id).sum(:amount)
+          @sum_positive = CovPositive.where('DATE(added_at) <= ?',current_date_of_loop.to_s).where('city_id = ?',city.id).sum(:amount)
 
           @sum_recovered = CovRecovered.where('DATE(added_at) <= ?',current_date_of_loop).where('city_id = ?',city.id).sum(:amount)
           result_data[1]["data"].push(Array.new([current_date_of_loop.to_s, @sum_recovered]))

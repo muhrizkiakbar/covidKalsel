@@ -23,7 +23,7 @@
             <div class="row">
               <div class="col">
                 <h3 class="card-title text-uppercase mb-0 text-white">Hotline</h3>
-                  
+
                 <span class="h1 font-weight-bolder mb-0 text-white">
                   <% if (@city.call_center != nil)
                       telpons = @city.call_center.split(" ")
@@ -41,7 +41,7 @@
               </div>
             </div>
           </div>
-        </div> 
+        </div>
       </div> -->
       <div class="col-md-6">
         <div class="row">
@@ -51,7 +51,7 @@
                 <div class="row">
                   <div class="col">
                     <h3 class="card-title text-uppercase mb-0 text-white">Hotline</h3>
-                      
+
                     <span class="h1 font-weight-bolder mb-0 text-white">
                       <% if (@city.call_center != nil)
                           telpons = @city.call_center.split(" ")
@@ -69,7 +69,7 @@
                   </div>
                 </div>
               </div>
-            </div> 
+            </div>
           </div>
           <div class="col-md-12">
             <div class="card bg-green">
@@ -87,7 +87,7 @@
                             <h4 class="checklist-title mb-0 text-white">Rumah Sakit Umum Ulin</h4>
                             <a href="tel:05113252229"><span class="badge badge-md bg-secondary text-dark">
                               05113252229
-                            </span></a> 
+                            </span></a>
                           </div>
                         </div>
                       </li>
@@ -96,11 +96,11 @@
                   </div>
                 </div>
               </div>
-            </div> 
+            </div>
           </div>
         </div>
       </div>
-      
+
       <% if @city.hospitals.any? %>
       <div class="col-md-3">
         <div class="card bg-yellow">
@@ -137,15 +137,15 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <%= line_chart public_city_chart_line_of_city_path(@city) %>
+                    <%= column_chart public_city_chart_line_of_city_path(@city) %>
                 </div>
             </div>
         </div>
     </div>
-    
+
 </div>
 
-  
+
 
   <footer class="py-5" id="footer-main">
     <div class="container">
@@ -158,7 +158,7 @@
         </div>
         <div class="col-xl-3">
           <div class="copyright text-right text-xl-left text-muted">
-            
+
           </div>
         </div>
         <div class="col-xl-5">
@@ -199,4 +199,3 @@
 
 <% end %>
 <%= render partial: 'layouts/body' %>
-
