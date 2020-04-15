@@ -740,6 +740,24 @@
 #     )
 
 
+# ====== RESET COUNT OF CITY =========
+
+@cities = City.all
+
+@cities.each do |city|
+    edit_city = City.find(city)
+    edit_city.cov_positive_count = 0
+    edit_city.cov_negative_count = 0
+    edit_city.cov_recovered_count = 0
+    edit_city.cov_died_count = 0
+    edit_city.cov_odp_count = 0
+    edit_city.cov_odp_processed_count = 0
+    edit_city.cov_pdp_count = 0
+    edit_city.cov_pdp_processed_count = 0
+    edit_city.save
+end
+
+
 puts "Add Dirawat"
 dirawats= [
             {
