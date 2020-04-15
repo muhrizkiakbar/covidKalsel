@@ -229,7 +229,7 @@ class PublicController < ApplicationController
 
           @sum_odp = CovOdp.where('DATE(added_at) <= ?',current_date_of_loop).sum(:amount)
           @sum_odp_processed = CovOdpProcessed.where('DATE(added_at) <= ?',current_date_of_loop).sum(:amount)
-          result_data[3]["data"].push(Array.new([current_date_of_loop.to_s, @sum_odp))
+          result_data[3]["data"].push(Array.new([current_date_of_loop.to_s, @sum_odp]))
           @sum_pdp = CovPdp.where('DATE(added_at) <= ?',current_date_of_loop).sum(:amount)
           @sum_pdp_processed = CovPdpProcessed.where('DATE(added_at) <= ?',current_date_of_loop).sum(:amount)
           result_data[4]["data"].push(Array.new([current_date_of_loop.to_s, @sum_pdp]))
