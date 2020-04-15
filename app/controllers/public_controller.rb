@@ -105,21 +105,21 @@ class PublicController < ApplicationController
           #get total amount before current date of loop
           # tambah data positif
 
-          @sum_positive = CovPositive.where('DATE(added_at) < ?',current_date_of_loop.to_s).where('city_id = ?',city.id).sum(:amount)
+          @sum_positive = CovPositive.where('DATE(added_at) <= ?',current_date_of_loop.to_s).where('city_id = ?',city.id).sum(:amount)
 
           @sum_recovered = CovRecovered.where('DATE(added_at) <= ?',current_date_of_loop).where('city_id = ?',city.id).sum(:amount)
           result_data[1]["data"].push(Array.new([current_date_of_loop.to_s, @sum_recovered]))
           @sum_died = CovDied.where('DATE(added_at) <= ?',current_date_of_loop).where('city_id = ?',city.id).sum(:amount)
           result_data[2]["data"].push(Array.new([current_date_of_loop.to_s, @sum_died]))
 
-          result_data[0]["data"].push(Array.new([current_date_of_loop.to_s, @sum_positive-@sum_died-@sum_recovered]))
+          result_data[0]["data"].push(Array.new([current_date_of_loop.to_s, @sum_positive]))
 
           @sum_odp = CovOdp.where('DATE(added_at) <= ?',current_date_of_loop).where('city_id = ?',city.id).sum(:amount)
           @sum_odp_processed = CovOdpProcessed.where('DATE(added_at) <= ?',current_date_of_loop).where('city_id = ?',city.id).sum(:amount)
-          result_data[3]["data"].push(Array.new([current_date_of_loop.to_s, @sum_odp-@sum_odp_processed]))
+          result_data[3]["data"].push(Array.new([current_date_of_loop.to_s, @sum_odp]))
           @sum_pdp = CovPdp.where('DATE(added_at) <= ?',current_date_of_loop).where('city_id = ?',city.id).sum(:amount)
           @sum_pdp_processed = CovPdpProcessed.where('DATE(added_at) <= ?',current_date_of_loop).where('city_id = ?',city.id).sum(:amount)
-          result_data[4]["data"].push(Array.new([current_date_of_loop.to_s, @sum_pdp-@sum_pdp_processed]))
+          result_data[4]["data"].push(Array.new([current_date_of_loop.to_s, @sum_pdp]))
 
           $i +=1;
           # puts "done"
