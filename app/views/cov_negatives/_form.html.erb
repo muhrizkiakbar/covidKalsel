@@ -5,7 +5,7 @@
           <%= notice %>
       </div>
     <% end %>
-    
+
     <% if cov_negative.errors.any? %>
       <div class="alert alert-danger alert-dismissible fade show" role="alert">
           <span class="alert-icon"><h3 class="text-white"><%= icon("fas", "exclamation-triangle", class: "fa-3x text-white")%></h3></span>
@@ -17,7 +17,7 @@
               <% end %>
             </ul>
           </span>
-          
+
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
           </button>
@@ -39,7 +39,7 @@
 
           <div class="form-group">
             <label class="form-control-label">Amount</label>
-            <%= form.number_field :amount, required: true,  class: "form-control", placeholder: "Amount", min: 1 %>
+            <%= form.number_field :amount, required: true,  class: "form-control", placeholder: "Amount", min: 0 %>
           </div>
 
 
@@ -55,12 +55,12 @@
         <% end %>
       </div>
     </div>
-    
+
 
 
     <%= render partial: 'layouts/footer_back' %>
   </div>
 <% end %>
 
-      
+
 <%= render partial: 'layouts/body' %>
