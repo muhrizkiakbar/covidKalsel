@@ -50,8 +50,8 @@
 //Lightbox
 //= require lightbox/lightbox
 
-//= require Chart.bundle
 //= require chartkick
+//= require highcharts
 
 //= require argon/argon
 //= require argon/demo
