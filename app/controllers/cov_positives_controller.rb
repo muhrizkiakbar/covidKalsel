@@ -32,7 +32,7 @@ class CovPositivesController < ApplicationController
   # POST /cov_positives
   # POST /cov_positives.json
   def create
-    @cov_positive = CovPositive.new(cov_positive_params)
+    @cov_positive = CovPositive.new
 
 
     @city = City.find(@cov_positive.city.id)
@@ -45,7 +45,7 @@ class CovPositivesController < ApplicationController
     end
 
     @cov_positive.amount = @diff_amount
-    @cov_positive.save
+    # @cov_positive.save
 
     @city.cov_positive_count += @cov_positive.amount
     @city.save

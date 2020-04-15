@@ -50,7 +50,7 @@ class CovDiedsController < ApplicationController
     
 
     @cov_died.amount = @diff_amount
-    @cov_died.save
+    # @cov_died.save
 
     @city.cov_died_count += @diff_amount
     # @city.cov_positive_count -= @diff_amount

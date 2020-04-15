@@ -16,6 +16,7 @@
                 <th>Amount</th>
                 <th>Datetime</th>
                 <th>Tool</th>
+                <th>Created</th>
               </tr>
             </thead>
 
@@ -36,6 +37,7 @@
                       <%= icon("fas", "trash", class: "text-white")%>
                     <% end %>
                   </td>
+                  <td><%= cov_died.created_at %></td>
                 </tr>
               <% end %>
             </tbody>
