@@ -230,7 +230,17 @@
             <h2 class="mb-0">Situasi Covid-19</h2>
           </div>
           <div class="card-body">
-            <%= line_chart chart_result_of_covid_path, legend: true, points: true, curve: false %>
+            <%= line_chart chart_result_of_covid_path, legend: true, curve: false,
+              library: {
+                plotOptions: {
+                  line: {
+                    dataLabels: {
+                      enabled: true
+                    },
+                    enableMouseTracking: false
+                  }
+                }
+              }, discrete: true %>
           </div>
         </div>
       </div>
