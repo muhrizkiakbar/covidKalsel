@@ -747,7 +747,7 @@ puts 'Reset count of city'
 @cities = City.all
 
 @cities.each do |city|
-    edit_city = City.find(city)
+    edit_city = City.find(city.id)
     edit_city.cov_positive_count = 0
     edit_city.cov_negative_count = 0
     edit_city.cov_recovered_count = 0
