@@ -80,6 +80,18 @@
                 <div class="row">
                   <div class="col">
                     <ul class="list-group list-group-flush">
+                      <% if (@city.hospitals.any?) %>
+                      <li class="bg-transparent checklist-entry list-group-item flex-column align-items-start px-0 py-2 border-0">
+                        <div class="checklist-item checklist-item-danger">
+                          <div class="checklist-info">
+                            <h4 class="checklist-title mb-0 text-white">-</h4>
+                              <a href="#"><span class="badge badge-md bg-secondary text-dark">
+                                -
+                              </span></a>
+                          </div>
+                        </div>
+                      </li>
+                      <% end %>
                       <% @city.hospitals.each do |hospital| %>
                       <li class="bg-transparent checklist-entry list-group-item flex-column align-items-start px-0 py-2 border-0">
                         <div class="checklist-item checklist-item-danger">
