@@ -80,18 +80,29 @@
                 <div class="row">
                   <div class="col">
                     <ul class="list-group list-group-flush">
-                      <%# each %>
+                      <% @city.hospitals.each do |hospital| %>
                       <li class="bg-transparent checklist-entry list-group-item flex-column align-items-start px-0 py-2 border-0">
                         <div class="checklist-item checklist-item-danger">
                           <div class="checklist-info">
-                            <h4 class="checklist-title mb-0 text-white">Rumah Sakit Umum Ulin</h4>
-                            <a href="tel:05113252229"><span class="badge badge-md bg-secondary text-dark">
-                              05113252229
-                            </span></a> 
+                            <h4 class="checklist-title mb-0 text-white"><%= hospital.name_hospital %></h4>
+                            <%
+                                telpons = hospital.phone_number.split(" ")
+                                telpons.each_with_index do |telpon,index| %>
+                                  <% if (hospital.is_primary) %>
+                                    <a href="tel:<%= telpon %>"><span class="badge badge-md bg-secondary text-dark">
+                                      <%= telpon %>
+                                    </span></a>
+                                  <% else %>
+                                    <a href="tel:<%= telpon %>"><span class="badge badge-md bg-secondary text-dark">
+                                      <%= telpon %>
+                                    </span></a>
+                                  <% end %>
+                            <%  end
+                            %>
                           </div>
                         </div>
                       </li>
-                      <%# end each %>
+                      <% end %>
                     </ul>
                   </div>
                 </div>
