@@ -6,7 +6,8 @@ class ApplicationController < ActionController::Base
     after_action :track_action
 
     include Pundit
-    protect_from_forgery
+    # protect_from_forgery # sebelumnya
+    protect_from_forgery prepend: true
 
     attr_writer :login
 
