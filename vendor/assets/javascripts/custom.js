@@ -148,3 +148,47 @@ var lineChartVisitorOptions = {
             day: (window.matchMedia('(max-width: 500px)').matches) ? 'D/M' : 'D MMM'
           }
         }
+        // display: false
+      }]
+    },
+    animation: {
+      onProgress: function() {
+        var ctx = this.chart.ctx;
+        // console.log(ctx);
+        // ctx.fillStyle = this.options.defaultColor
+        ctx.textAlign = "center";
+        ctx.textBaseline = "bottom";
+
+        this.data.datasets.forEach(function (dataset) {
+
+            // console.log(dataset._meta[1].dataset._children[0]._model.x);
+            dataset.data.forEach(function (points, index) {
+                for (var key in dataset._meta){
+                  ctx.fillStyle = dataset.borderColor
+                  ctx.fillText(points, dataset._meta[key].dataset._children[index]._model.x, dataset._meta[key].dataset._children[index]._model.y-2);
+                }
+            });
+        })
+     }
+    }
+  }
+}
+
+if ( $('#chart-line').length ){
+  var chartLine = Chartkick.charts["chart-line"]
+  chartLine.setOptions(lineChartOptions);
+}
+
+if ( $('#chart-line-visitor').length ){
+  var chartLineVisitor = Chartkick.charts["chart-line-visitor"]
+  chartLineVisitor.setOptions(lineChartVisitorOptions);
+}
+
+if ( $('#chart-pie').length ){
+  var pieChartOptions = {
+    legend: true,
+    colors: ['#f5365c', '#2dce89', '#212529', '#00bcd4', '#ffd600'],
+  }
+  var chartPie = Chartkick.charts["chart-pie"]
+  chartPie.setOptions(pieChartOptions);
+}
