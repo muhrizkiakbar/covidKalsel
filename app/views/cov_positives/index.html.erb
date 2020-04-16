@@ -66,5 +66,22 @@
     <%= link_to 'New Cov Positive', new_cov_positive_path, class: "btn btn-sm btn-neutral" %>
   </div>
 <% end %>
+
+<% content_for :search do %>
+  <%= search_form_for @q, class: "navbar-search navbar-search-dark form-inline mr-sm-3", id: "navbar-search-main" do |f| %>
+    <div class="form-group mb-0">
+      <div class="input-group input-group-alternative input-group-merge">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-search"></i></span>
+        </div>
+        <%= f.search_field :city_name_or_added_at_cont, class:"form-control", placeholder: "Search" %>
+      </div>
+    </div>
+    <button type="button" class="close" data-action="search-close" data-target="" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  <% end %>
+
+<% end %>
       
 <%= render partial: 'layouts/body' %>

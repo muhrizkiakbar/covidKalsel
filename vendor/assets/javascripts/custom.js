@@ -117,8 +117,8 @@ var lineChartOptions = {
     }
   }
 }
-var chart = Chartkick.charts["chart-line"]
-chart.setOptions(lineChartOptions);
+var chartLine = Chartkick.charts["chart-line"]
+chartLine.setOptions(lineChartOptions);
 // console.log(chart.getOptions());
 
 var pieChartOptions = {
@@ -126,5 +126,5 @@ var pieChartOptions = {
   colors: ['#f5365c', '#2dce89', '#212529', '#00bcd4', '#ffd600'],
 }
 
-var chart = Chartkick.charts["chart-pie"]
-chart.setOptions(pieChartOptions);
+var chartPie = Chartkick.charts["chart-pie"]
+chartPie.setOptions(pieChartOptions);
