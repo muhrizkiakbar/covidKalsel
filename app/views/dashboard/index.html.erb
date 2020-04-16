@@ -67,12 +67,12 @@
       </div>
       <div class="col-md-6">
         <div class="col">
-            <div class="card">
+            <div class="card bg-dark">
                 <div class="card-header">
-                    <h2 class="mb-0">Visitor Graph</h2>
+                    <h2 class="mb-0 text-white">Visitor Graph</h2>
                 </div>
                 <div class="card-body">
-                    <%= line_chart Ahoy::Visit.group_by_day(:started_at).count, adapter:"chartjs", id:"chart-line" %>
+                    <%= line_chart chart_result_path, adapter:"chartjs", id:"chart-line-visitor" %>
                 </div>
             </div>
         </div>

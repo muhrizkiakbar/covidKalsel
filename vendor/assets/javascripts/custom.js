@@ -118,7 +118,9 @@ var lineChartOptions = {
   }
 }
 var chartLine = Chartkick.charts["chart-line"]
+var chartLineVisitor = Chartkick.charts["chart-line-visitor"]
 chartLine.setOptions(lineChartOptions);
+chartLineVisitor.setOptions(lineChartOptions);
 // console.log(chart.getOptions());
 
 var pieChartOptions = {
