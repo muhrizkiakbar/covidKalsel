@@ -149,8 +149,11 @@
       <% end %>
       <div class="col-md-6">
         <div class="card">
+          <div class="card-header border-0 pb-0">
+            <h2 class="mb-0">Status Covid-19</h2>
+          </div>
           <div class="card-body">
-            <%= pie_chart public_city_chart_pie_of_city_path(@city) %>
+            <%= pie_chart public_city_chart_pie_of_city_path(@city), adapter: 'chartjs', id: 'chart-pie' %>
           </div>
         </div>
       </div>
@@ -158,9 +161,13 @@
 
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card bg-dark">
+                <div class="card-header bg-transparent">
+                  <h2 class="mb-0 text-white">Situasi Covid-19</h2>
+                </div>
                 <div class="card-body">
-                    <%= column_chart public_city_chart_line_of_city_path(@city) %>
+                    <%# column_chart public_city_chart_line_of_city_path(@city) %>
+                    <%= line_chart public_city_chart_line_of_city_path(@city), adapter:"chartjs", id:"chart-line" %>
                 </div>
             </div>
         </div>

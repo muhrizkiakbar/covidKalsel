@@ -95,7 +95,7 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <div class="card bg-green">
+        <div class="card bg-blue">
           <div class="card-body">
             <div class="row">
               <div class="col">
@@ -167,7 +167,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="card bg-orange">
+        <div class="card bg-dark">
           <div class="card-body">
             <div class="row">
               <div class="col">
@@ -185,7 +185,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="card bg-blue">
+        <div class="card bg-green">
           <div class="card-body">
             <div class="row">
               <div class="col">
@@ -225,22 +225,14 @@
     </div>
     <div class="row justify-content-center">
       <div class="col">
-        <div class="card">
-          <div class="card-header">
-            <h2 class="mb-0">Situasi Covid-19</h2>
+        <div class="card bg-dark">
+          <div class="card-header bg-transparent">
+            <h2 class="mb-0 text-white">Situasi Covid-19</h2>
           </div>
           <div class="card-body">
-            <%= line_chart chart_result_of_covid_path, legend: true, curve: false,
-              library: {
-                plotOptions: {
-                  line: {
-                    dataLabels: {
-                      enabled: true
-                    },
-                    enableMouseTracking: false
-                  }
-                }
-              }, discrete: true %>
+            <div class="chart">
+              <%= line_chart chart_result_of_covid_path, adapter:"chartjs", id:"chart-line" %>
+            </div>
           </div>
         </div>
       </div>
@@ -520,7 +512,7 @@
                   <th>Kabupaten/Kota</th>
                   <th>Call Center</th>
                   <th>Hotline</th>
-                  <th></th>
+                  <th>Info</th>
                 </tr>
               </thead>
               <tbody>
