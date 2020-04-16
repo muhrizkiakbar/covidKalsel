@@ -117,10 +117,66 @@ var lineChartOptions = {
     }
   }
 }
+
+
+
+var lineChartVisitorOptions = {
+  legend: true,
+  curve: false,
+  colors: ['#00bcd4'],
+  label: "Value",
+  dataset:{
+    pointRadius: 1,
+    borderWidth: (window.matchMedia('(max-width: 500px)').matches) ? 3 : 4
+  },
+  library: {
+    hover: false,
+    tooltips: {
+      enabled: false,
+    },
+    scales: {
+      yAxes: [{
+        gridLines:{
+          color: 'rgba(0, 0, 0, 0.0)'
+        },
+        // display: false
+      }],
+      xAxes: [{
+        type: 'time',
+        time: {
+          displayFormats: {
+            day: (window.matchMedia('(max-width: 500px)').matches) ? 'D/M' : 'D MMM'
+          }
+        }
+        // display: false
+      }]
+    },
+    animation: {
+      onProgress: function() {
+        var ctx = this.chart.ctx;
+        // console.log(ctx);
+        // ctx.fillStyle = this.options.defaultColor
+        ctx.textAlign = "center";
+        ctx.textBaseline = "bottom";
+
+        this.data.datasets.forEach(function (dataset) {
+
+            // console.log(dataset._meta[1].dataset._children[0]._model.x);
+            dataset.data.forEach(function (points, index) {
+                for (var key in dataset._meta){
+                  ctx.fillStyle = dataset.borderColor
+                  ctx.fillText(points, dataset._meta[key].dataset._children[index]._model.x, dataset._meta[key].dataset._children[index]._model.y-2);
+                }
+            });
+        })
+     }
+    }
+  }
+}
 var chartLine = Chartkick.charts["chart-line"]
 var chartLineVisitor = Chartkick.charts["chart-line-visitor"]
 chartLine.setOptions(lineChartOptions);
-chartLineVisitor.setOptions(lineChartOptions);
+chartLineVisitor.setOptions(lineChartVisitorOptions);
 // console.log(chart.getOptions());
 
 var pieChartOptions = {
