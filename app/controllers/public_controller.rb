@@ -98,7 +98,7 @@ class PublicController < ApplicationController
           }
         ]
 
-        until $i > diff_date.to_i  do
+        until $i >= diff_date.to_i  do
 
           #get date
           
@@ -211,7 +211,7 @@ class PublicController < ApplicationController
           }
         ]
 
-        until $i > diff_date.to_i  do
+        until $i >= diff_date.to_i  do
 
           #get date
           #get total amount before current date of loop
