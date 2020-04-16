@@ -105,20 +105,20 @@ class PublicController < ApplicationController
           #get total amount before current date of loop
           # tambah data positif
 
-          @sum_positive = CovPositive.where('DATE(added_at) <= ?',current_date_of_loop.to_date).where('city_id = ?',city.id).sum(:amount)
+          @sum_positive = CovPositive.where(added_at: current_date_of_loop).where('city_id = ?',city.id).sum(:amount)
 
-          @sum_recovered = CovRecovered.where('DATE(added_at) <= ?',current_date_of_loop.to_date).where('city_id = ?',city.id).sum(:amount)
+          @sum_recovered = CovRecovered.where(added_at: current_date_of_loop).where('city_id = ?',city.id).sum(:amount)
           result_data[1]["data"].push(Array.new([current_date_of_loop.to_date, @sum_recovered]))
-          @sum_died = CovDied.where('DATE(added_at) <= ?',current_date_of_loop.to_date).where('city_id = ?',city.id).sum(:amount)
+          @sum_died = CovDied.where(added_at: current_date_of_loop).where('city_id = ?',city.id).sum(:amount)
           result_data[2]["data"].push(Array.new([current_date_of_loop.to_date, @sum_died]))
 
           result_data[0]["data"].push(Array.new([current_date_of_loop.to_date, @sum_positive]))
 
-          @sum_odp = CovOdp.where('DATE(added_at) <= ?',current_date_of_loop.to_date).where('city_id = ?',city.id).sum(:amount)
-          @sum_odp_processed = CovOdpProcessed.where('DATE(added_at) <= ?',current_date_of_loop.to_date).where('city_id = ?',city.id).sum(:amount)
+          @sum_odp = CovOdp.where(added_at: current_date_of_loop).where('city_id = ?',city.id).sum(:amount)
+          @sum_odp_processed = CovOdpProcessed.where(added_at: current_date_of_loop).where('city_id = ?',city.id).sum(:amount)
           result_data[3]["data"].push(Array.new([current_date_of_loop.to_date, @sum_odp]))
-          @sum_pdp = CovPdp.where('DATE(added_at) <= ?',current_date_of_loop.to_date).where('city_id = ?',city.id).sum(:amount)
-          @sum_pdp_processed = CovPdpProcessed.where('DATE(added_at) <= ?',current_date_of_loop.to_date).where('city_id = ?',city.id).sum(:amount)
+          @sum_pdp = CovPdp.where(added_at: current_date_of_loop).where('city_id = ?',city.id).sum(:amount)
+          @sum_pdp_processed = CovPdpProcessed.where(added_at: current_date_of_loop).where('city_id = ?',city.id).sum(:amount)
           result_data[4]["data"].push(Array.new([current_date_of_loop.to_date, @sum_pdp]))
 
           $i +=1;
@@ -213,25 +213,25 @@ class PublicController < ApplicationController
         until $i > diff_date.to_i  do
 
           #get date
-          current_date_of_loop = end_date + $i.day
+          current_date_of_loop = Date.parse(end_date + $i.day)
           #get total amount before current date of loop
           # tambah data positif
 
-          @sum_positive = CovPositive.where('DATE(added_at) <= ?',current_date_of_loop.to_date).sum(:amount)
+          @sum_positive = CovPositive.where(added_at: current_date_of_loop).sum(:amount)
           p "*" * 100
           p @sum_positive
-          @sum_recovered = CovRecovered.where('DATE(added_at) <= ?',current_date_of_loop.to_date).sum(:amount)
+          @sum_recovered = CovRecovered.where(added_at: current_date_of_loop).sum(:amount)
           result_data[1]["data"].push(Array.new([current_date_of_loop.to_date, @sum_recovered]))
-          @sum_died = CovDied.where('DATE(added_at) <= ?',current_date_of_loop.to_date).sum(:amount)
+          @sum_died = CovDied.where(added_at: current_date_of_loop).sum(:amount)
           result_data[2]["data"].push(Array.new([current_date_of_loop.to_date, @sum_died]))
 
           result_data[0]["data"].push(Array.new([current_date_of_loop.to_date, @sum_positive]))
 
-          @sum_odp = CovOdp.where('DATE(added_at) <= ?',current_date_of_loop.to_date).sum(:amount)
-          @sum_odp_processed = CovOdpProcessed.where('DATE(added_at) <= ?',current_date_of_loop.to_date).sum(:amount)
+          @sum_odp = CovOdp.where(added_at: current_date_of_loop).sum(:amount)
+          @sum_odp_processed = CovOdpProcessed.where(added_at: current_date_of_loop).sum(:amount)
           result_data[3]["data"].push(Array.new([current_date_of_loop.to_date, @sum_odp]))
-          @sum_pdp = CovPdp.where('DATE(added_at) <= ?',current_date_of_loop.to_date).sum(:amount)
-          @sum_pdp_processed = CovPdpProcessed.where('DATE(added_at) <= ?',current_date_of_loop.to_date).sum(:amount)
+          @sum_pdp = CovPdp.where(added_at: current_date_of_loop).sum(:amount)
+          @sum_pdp_processed = CovPdpProcessed.where(added_at: current_date_of_loop).sum(:amount)
           result_data[4]["data"].push(Array.new([current_date_of_loop.to_date, @sum_pdp]))
 
           $i +=1;
