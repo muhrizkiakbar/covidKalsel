@@ -42,7 +42,6 @@
 //= require jvectormap-next/jquery-jvectormap-2.0.1.min
 //= require jvectormap-next/kalsel_map
 
-
 // Flickity
 //= require flickity/flickity.pkgd
 //= require flickity/fullscreen
@@ -50,8 +49,9 @@
 //Lightbox
 //= require lightbox/lightbox
 
-//= require chartkick
+//= require Chart.bundle
 //= require highcharts
+//= require chartkick
 
 //= require argon/argon
 //= require argon/demo
