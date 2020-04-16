@@ -36,7 +36,7 @@ class DashboardController < ApplicationController
           }
         ]
 
-        until $i >= diff_date.to_i  do
+        until $i > diff_date.to_i  do
 
           #get date
           
