@@ -70,7 +70,7 @@ class PublicController < ApplicationController
         diff_date = start_date - end_date
         city = @city
 
-        $i = 1
+        $i = 0
 
         result_data=[
           {
@@ -182,7 +182,7 @@ class PublicController < ApplicationController
         diff_date = start_date - end_date
 
 
-        $i = 1
+        $i = 0
 
         result_data=[
           {

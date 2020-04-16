@@ -8,7 +8,7 @@ class DashboardController < ApplicationController
         end_date = start_date - 7.days
         diff_date = start_date - end_date
 
-        $i = 1
+        $i = 0
 
         result_data=[
           {
