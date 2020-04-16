@@ -124,7 +124,7 @@ var lineChartVisitorOptions = {
   legend: true,
   curve: false,
   colors: ['#00bcd4'],
-  label: "Value",
+  label: "Pengunjung",
   dataset:{
     pointRadius: 1,
     borderWidth: (window.matchMedia('(max-width: 500px)').matches) ? 3 : 4
