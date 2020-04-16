@@ -126,5 +126,5 @@ var pieChartOptions = {
   colors: ['#f5365c', '#2dce89', '#212529', '#00bcd4', '#ffd600'],
 }
 
-var chart = Chartkick.charts["chart-pie"]
-chart.setOptions(pieChartOptions);
+// var chart = Chartkick.charts["chart-pie"]
+// chart.setOptions(pieChartOptions);

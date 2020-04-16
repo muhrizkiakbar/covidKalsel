@@ -53,6 +53,6 @@
 //= require highcharts
 //= require chartkick
 
-//= require argon/argon
+// require argon/argon
 //= require argon/demo
 //= require_tree .

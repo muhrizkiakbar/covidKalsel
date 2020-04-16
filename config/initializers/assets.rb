@@ -15,6 +15,7 @@ Rails.application.config.assets.precompile += %w( highcharts.js )
 Rails.application.config.assets.precompile += %w( chartkick.js )
 Rails.application.config.assets.precompile += %w( cov-kalsel-map.js )
 Rails.application.config.assets.precompile += %w( custom.js )
+Rails.application.config.assets.precompile += %w( argon/argon.js )
 # Rails.application.config.assets.precompile += %w( ckeditor/*)
 
 # Rails.application.config.assets.paths << Rails.root.join("app", "assets", "fonts")
