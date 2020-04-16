@@ -32,7 +32,7 @@ class CovPositivesController < ApplicationController
   # POST /cov_positives
   # POST /cov_positives.json
   def create
-    @cov_positive = CovPositive.new
+    @cov_positive = CovPositive.new(cov_positive_params)
 
 
     @city = City.find(@cov_positive.city.id)

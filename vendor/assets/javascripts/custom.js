@@ -117,14 +117,34 @@ var lineChartOptions = {
     }
   }
 }
-var chart = Chartkick.charts["chart-line"]
-chart.setOptions(lineChartOptions);
-// console.log(chart.getOptions());
 
-var pieChartOptions = {
+
+
+var lineChartVisitorOptions = {
   legend: true,
-  colors: ['#f5365c', '#2dce89', '#212529', '#00bcd4', '#ffd600'],
-}
-
-// var chart = Chartkick.charts["chart-pie"]
-// chart.setOptions(pieChartOptions);
+  curve: false,
+  colors: ['#00bcd4'],
+  label: "Pengunjung",
+  dataset:{
+    pointRadius: 1,
+    borderWidth: (window.matchMedia('(max-width: 500px)').matches) ? 3 : 4
+  },
+  library: {
+    hover: false,
+    tooltips: {
+      enabled: false,
+    },
+    scales: {
+      yAxes: [{
+        gridLines:{
+          color: 'rgba(0, 0, 0, 0.0)'
+        },
+        // display: false
+      }],
+      xAxes: [{
+        type: 'time',
+        time: {
+          displayFormats: {
+            day: (window.matchMedia('(max-width: 500px)').matches) ? 'D/M' : 'D MMM'
+          }
+        }
