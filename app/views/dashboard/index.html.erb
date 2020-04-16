@@ -72,7 +72,7 @@
                     <h2 class="mb-0">Visitor Graph</h2>
                 </div>
                 <div class="card-body">
-                    <%= line_chart Ahoy::Visit.group_by_day(:started_at).count %>
+                    <%= line_chart Ahoy::Visit.group_by_day(:started_at).count, adapter:"chartjs", id:"chart-line" %>
                 </div>
             </div>
         </div>
