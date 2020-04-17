@@ -21,5 +21,9 @@ class CovNegative < ApplicationRecord
 
   validates :amount,:added_at, presence: true
   validates :amount, numericality: { only_integer: true }
- 
+
+  ransacker :added_at do
+    Arel.sql("added_at::text")
+  end
+
 end

@@ -42,14 +42,14 @@
           </table>
         </div>
       </div>
-      
-     
+
+
       <div class="card-footer">
         <%= paginate @cov_pdps %>
-      </div> 
+      </div>
     </div>
 
-    
+
     <br>
     <%# paginate @cities %>
 
@@ -64,5 +64,29 @@
     <%= link_to 'New Cov Pdp', new_cov_pdp_path, class: "btn btn-sm btn-neutral" %>
   </div>
 <% end %>
-      
+
+<% content_for :search do %>
+  <%= search_form_for @q, class: "navbar-search navbar-search-dark form-inline mr-sm-3", id: "navbar-search-main" do |f| %>
+    <div class="form-group mb-0">
+      <div class="input-group input-group-alternative input-group-merge">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-search"></i></span>
+        </div>
+        <%= f.search_field :city_name_or_added_at_cont, id: "search", class:"form-control", placeholder: "Search", autocomplete: "off" %>
+      </div>
+    </div>
+    <button type="button" class="close" data-action="search-close" data-target="" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  <% end %>
+<% end %>
+
+<%= content_for :toggle_search do %>
+  <li class="nav-item d-sm-none">
+    <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
+      <%= icon('fas', 'search-plus') %>
+    </a>
+  </li>
+<% end %>
+
 <%= render partial: 'layouts/body' %>

@@ -20,4 +20,8 @@ class CovDied < ApplicationRecord
 
   validates :amount,:added_at, :city_id, presence: true
   validates :amount, numericality: { only_integer: true }
+
+  ransacker :added_at do
+    Arel.sql("added_at::text")
+  end
 end

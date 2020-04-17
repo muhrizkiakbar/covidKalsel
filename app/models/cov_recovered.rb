@@ -17,9 +17,13 @@ class CovRecovered < ApplicationRecord
 
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
-  
+
   acts_as_paranoid
 
   validates :amount,:added_at, presence: true
   validates :amount, numericality: { only_integer: true }
+
+  ransacker :added_at do
+    Arel.sql("added_at::text")
+  end
 end

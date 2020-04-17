@@ -4,13 +4,6 @@
       <!-- Search form -->
       <%= yield :search %>
       
-      <%= content_for :toggle_search do %>
-        <li class="nav-item d-sm-none">
-          <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
-            <%= icon('fas', 'search-plus') %>
-          </a>
-        </li>
-      <% end %>
       <!-- Navbar links -->
       <ul class="navbar-nav align-items-center  ml-md-auto ">
         <li class="nav-item d-xl-none">
