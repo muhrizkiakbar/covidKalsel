@@ -52,7 +52,7 @@ class CovDiedsController < ApplicationController
     @cov_died.amount = @diff_amount
      @cov_died.save
 
-    # @city.cov_died_count += @diff_amount
+     @city.cov_died_count += @diff_amount
     # @city.cov_positive_count -= @diff_amount
     @city.save
 
@@ -78,7 +78,7 @@ class CovDiedsController < ApplicationController
   # PATCH/PUT /cov_dieds/1.json
   def update
     @city = City.find(@cov_died.city.id)
-    # @city.cov_died_count -= @cov_died.amount
+     @city.cov_died_count -= @cov_died.amount
     # @city.cov_positive_count += @cov_died.amount
     @city.save
 
@@ -108,7 +108,7 @@ class CovDiedsController < ApplicationController
         @cov_died.amount = @diff_amount
         @cov_died.save
 
-        # @city.cov_died_count += @cov_died.amount
+         @city.cov_died_count += @cov_died.amount
         # @city.cov_positive_count -= @cov_died.amount
         @city.save
 
