@@ -100,4 +100,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.telegram_updates_controller.session_store = :file_store,
        Rails.root.join('tmp', 'session_store')
+  routes.default_url_options = {host: 'corona.kalselprov.go.id', protocol: 'https'} # https is necessary!
 end
