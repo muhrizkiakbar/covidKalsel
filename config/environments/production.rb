@@ -24,6 +24,7 @@ Rails.application.configure do
   # config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
   config.public_file_server.enabled = true
   
+  config.telegram_updates_controller.session_store = :memory_store
 
   # Compress JavaScripts and CSS.
   # config.assets.js_compressor = :uglifier
@@ -97,4 +98,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.telegram_updates_controller.session_store = :file_store,
+       Rails.root.join('tmp', 'session_store')
 end

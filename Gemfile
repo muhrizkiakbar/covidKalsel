@@ -93,3 +93,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'font-awesome-sass', '~> 5.12.0'
+gem 'geocoder'
+
+gem 'telegram-bot'

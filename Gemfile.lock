@@ -133,6 +133,7 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    httpclient (2.8.3)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     io-like (0.3.1)
@@ -279,6 +280,10 @@ GEM
     sshkit (1.21.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    telegram-bot (0.14.4)
+      actionpack (>= 4.0, < 6.1)
+      activesupport (>= 4.0, < 6.1)
+      httpclient (~> 2.7)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.0.1)
@@ -332,6 +337,7 @@ DEPENDENCIES
   devise
   font-awesome-sass (~> 5.12.0)
   friendly_id (~> 5.2.4)
+  geocoder
   groupdate
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3, >= 4.3.1)
@@ -350,6 +356,7 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
+  telegram-bot
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)

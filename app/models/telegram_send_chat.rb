@@ -1,0 +1,2 @@
+class TelegramSendChat < ApplicationRecord
+end
