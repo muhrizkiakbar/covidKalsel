@@ -96,4 +96,5 @@ gem 'font-awesome-sass', '~> 5.12.0'
 gem 'geocoder'
 #gem 'secure_credentials'
 gem 'telegram-bot'
-gem 'daemon '
+gem 'daemon'
+
