@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
-  telegram_webhook TelegramWebHooksController
+  #telegram_webhook TelegramWebHooksController
   #get 'telegram/start' => 'telegram_web_hooks#start'
 
   devise_scope :user do
