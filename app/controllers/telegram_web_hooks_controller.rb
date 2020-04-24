@@ -3,7 +3,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
   def start!(*)
     
-    text = "Selamat datang 👋👋  Mari Bergerak Mencegah Penyebaran Covid-19 Di Banua Kita. \n \nApa yang ingin anda ketahui ? \n/angka_sebaran - Jumlah angka sebaran seluruh Kabupaten/Kota.\n/lokasi_terkini - Jumlah angka sebaran sesuai dengan lokasi anda.\n/pilih_kota Pilih Kabupaten/Kota.\n/rumah_sakit_rujukan - Rumah Sakit Rujukan Penanganan Covid-19.\n/hub_dinkes - Kontak Dinas Kesehatan Prov. Kalsel.\n/hub_bpbd - Kontak Badan Penanggulangan Bencana Daerah Prov. Kalsel.\n \n \nUpdate terkini bisa anda cek di https://corona.kalselprov.go.id"
+    text = "Selamat datang 👋👋  Mari Bergerak Mencegah Penyebaran Covid-19 Di Banua Kita. \n \nApa yang ingin anda ketahui ? \n/angka_sebaran - Jumlah angka sebaran seluruh Kabupaten/Kota.\n/lokasi_terkini - Jumlah angka sebaran sesuai dengan lokasi anda.(Hanya untuk chat langsung dengan bot/tidak didalam group.)\n/pilih_kota Pilih Kabupaten/Kota.\n/rumah_sakit_rujukan - Rumah Sakit Rujukan Penanganan Covid-19.\n/hub_dinkes - Kontak Dinas Kesehatan Prov. Kalsel.\n/hub_bpbd - Kontak Badan Penanggulangan Bencana Daerah Prov. Kalsel.\n \n \nUpdate terkini bisa anda cek di https://corona.kalselprov.go.id"
 
     respond_with :message, text: text
   end
