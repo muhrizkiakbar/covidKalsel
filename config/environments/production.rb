@@ -28,9 +28,8 @@ Rails.application.configure do
   
   #config.telegram_updates_controller.session_store = :memory_store
 
-  #config.telegram_updates_controller.session_store = :file_store,
-  config.telegram_updates_controller.session_store = :memory_store,
-  #     Rails.root.join('tmp', 'session_store')
+  config.telegram_updates_controller.session_store = :file_store,
+       Rails.root.join('tmp', 'session_store')
   # Compress JavaScripts and CSS.
   # config.assets.js_compressor = :uglifier
   config.assets.js_compressor = Uglifier.new(harmony: true)
