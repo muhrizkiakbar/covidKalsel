@@ -18,7 +18,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
     @cov_positive_total = @cov_positive_count + @cov_died_count + @cov_recovered_count
     @cities = City.all
     @city_last_updated = @cities.order("updated_at DESC").first
-    text = "Angka Sebaran di Kalimantan Selatan \nTotal Positif (Dirawat, Meninggal, Sembuh) : #{@cov_positive_total} \nDirawat : #{@cov_positive_count} \nSembuh : #{@cov_recovered_count} \nMeninggal : #{@cov_died_count} \nODP : #{@cov_odp_count} \nPDP : #{@cov_pdp_count }"
+    text = "Angka Sebaran di Kalimantan Selatan \nTotal Positif (Dirawat, Meninggal, Sembuh) : #{@cov_positive_total} \nDirawat : #{@cov_positive_count} \nSembuh : #{@cov_recovered_count} \nMeninggal : #{@cov_died_count} \nODP : #{@cov_odp_count} \nPDP : #{@cov_pdp_count }\n \n/menu - Kembali ke Menu."
 
     respond_with :message, text: text
   end
@@ -213,7 +213,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
   def menu!(*)
     p from['id']
-    text = "Apa yang ingin anda ketahui ? \n/angka_sebaran - Jumlah angka sebaran seluruh Kabupaten/Kota.\n/lokasi_terkini - Jumlah angka sebaran sesuai dengan lokasi anda.\n/pilih_kota Pilih Kabupaten/Kota.\n/rumah_sakit_rujukan - Rumah Sakit Rujukan Penanganan Covid-19.\n/hub_dinkes - Kontak Dinas Kesehatan Prov. Kalsel.\n/hub_bpbd - Kontak Badan Penanggulangan Bencana Daerah Prov. Kalsel.\n \n \nUpdate terkini bisa anda cek di https://corona.kalselprov.go.id"
+    text = "Apa yang ingin anda ketahui ? \n/angka_sebaran - Jumlah angka sebaran seluruh Kabupaten/Kota.\n/lokasi_terkini - Jumlah angka sebaran sesuai dengan lokasi anda.(Hanya untuk chat langsung dengan bot/tidak didalam group.)\n/pilih_kota Pilih Kabupaten/Kota.\n/rumah_sakit_rujukan - Rumah Sakit Rujukan Penanganan Covid-19.\n/hub_dinkes - Kontak Dinas Kesehatan Prov. Kalsel.\n/hub_bpbd - Kontak Badan Penanggulangan Bencana Daerah Prov. Kalsel.\n \n \nUpdate terkini bisa anda cek di https://corona.kalselprov.go.id"
     respond_with :message, text: text
   end
 
