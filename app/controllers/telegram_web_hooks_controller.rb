@@ -352,9 +352,9 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
   def action_missing(action, *_args)
     if action_type == :command
       respond_with :message,
-        text: t('.command', command: action_options[:command])
+        text: t('action_missing.command', command: action_options[:command])
     else
-      respond_with :message, text: t('.feature', action: action)
+      respond_with :message, text: t('action_missing.feature', action: action)
     end
   end
 end
