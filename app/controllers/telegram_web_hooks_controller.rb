@@ -24,17 +24,21 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
   end
 
   def lokasi_terkini!(*)
+    if (chat["type"] == "private")
 
-    result = respond_with :message, text: "Tekan Tombol LOKASI TERKINI", reply_markup: {
-        keyboard: [
-          
-            [{text: "LOKASI TERKINI", request_location: true}],
+      respond_with :message, text: "Tekan Tombol LOKASI TERKINI", reply_markup: {
+          keyboard: [
+            
+              [{text: "LOKASI TERKINI", request_location: true}],
 
-        ],
-        selective: true,
-        one_time_keyboard: true,
-        resize_keyboard: true
+         ],
+          selective: true,
+          one_time_keyboard: true,
+          resize_keyboard: true
       } 
+    else
+      respond_with :message, text: "Fitur ini hanya dapat digunakan untuk chat langsung dengan bot/tidak didalam group. \n \n/menu - Kembali ke menu."
+    end
   end
 
   def pilih_kota!(*)
