@@ -17,6 +17,8 @@
 #  deleted_at              :datetime
 #  cov_odp_processed_count :integer
 #  cov_pdp_processed_count :integer
+#  hotline                 :string
+#  code                    :string
 #
 class City < ApplicationRecord
     

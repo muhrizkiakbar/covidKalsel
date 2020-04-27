@@ -43,8 +43,8 @@ services:
     links:
       - db
     image: redis:5.0-rc
-
-
+    volumes:
+      - ./data:/var/lib/redis/data
   web:
     build:
       context: .
@@ -56,6 +56,8 @@ services:
     environment:
       - PGHOST=db
       - PGUSER=postgres
+      - RAILS_ENV="development"
+      - REDIS_URL="redis://redis:6379/12"
       # - ELASTICSEARCH_URL= elasticsearch:9200
     depends_on:
       - db
@@ -74,6 +76,17 @@ services:
       - .:/covidKalsel
     ports:
       - "7658:7658"
+
+  sidekiq:
+    build: .
+    command: 'bundle exec sidekiq'
+    volumes: 
+      - .:/covidKalsel
+    environment:
+      - RAILS_ENV="development"
+      - REDIS_URL="redis://redis:6379/12"
+    depends_on:
+      - redis
 # Docker Windows for postgresql
 # volumes:
 #   data-postgresql:

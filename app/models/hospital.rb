@@ -11,6 +11,8 @@
 #  updated_at    :datetime         not null
 #  slug          :string
 #  deleted_at    :datetime
+#  hotline       :string
+#  is_primary    :boolean
 #
 class Hospital < ApplicationRecord
   belongs_to :city

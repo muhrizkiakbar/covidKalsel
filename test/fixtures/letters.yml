@@ -1,4 +1,18 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# == Schema Information
+#
+# Table name: letters
+#
+#  id                  :bigint           not null, primary key
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  letter_file_name    :string
+#  letter_content_type :string
+#  letter_file_size    :bigint
+#  letter_updated_at   :datetime
+#  slug                :string
+#  deleted_at          :datetime
+#  name_file           :string
+#
 
 # This model initially had no columns defined. If you add columns to the
 # model remove the '{}' from the fixture names and add the columns immediately

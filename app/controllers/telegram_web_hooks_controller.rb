@@ -5,6 +5,15 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
     
     text = "Selamat datang 👋👋  Mari Bergerak Mencegah Penyebaran Covid-19 Di Banua Kita. \n \nApa yang ingin anda ketahui ? \n/angka_sebaran - Jumlah angka sebaran seluruh Kabupaten/Kota.\n/lokasi_terkini - Jumlah angka sebaran sesuai dengan lokasi anda.(Hanya untuk chat langsung dengan bot/tidak didalam group.)\n/pilih_kota Pilih Kabupaten/Kota.\n/rumah_sakit_rujukan - Rumah Sakit Rujukan Penanganan Covid-19.\n/hub_dinkes - Kontak Dinas Kesehatan Prov. Kalsel.\n/hub_bpbd - Kontak Badan Penanggulangan Bencana Daerah Prov. Kalsel.\n \n \nUpdate terkini bisa anda cek di https://corona.kalselprov.go.id"
 
+    p chat["username"]
+
+    #telegram_chat_by_username = TelegramChatByUsername.create(
+    #                              chat_id: chat["id"],
+    #                              first_name: chat["first_name"],
+    #                              username: chat["username"],
+    #                              type: chat["type"]
+    #                            ) 
+
     respond_with :message, text: text
   end
 
@@ -196,7 +205,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
     text = "Daftar Rumah Sakit Rujukan :\n"
 
     hospitals.each_with_index do |hospital,i|
-      text = text + "- #{hospital.name_hospital} Telp. #{hospital.phone_number}\n"
+      text = text + "- #{hospital.name_hospital} di #{hospital.city.name}  (#{hospital.phone_number})\n"
     end
 
     text = text + "\n \n/menu - Kembali Ke Menu"
