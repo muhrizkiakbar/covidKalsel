@@ -26,12 +26,13 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-#/config/secrets.yml
+/config/secrets.yml
 
 /data/*
 /docker-data/*
 
 /config/deploy/production
+/config/local_env.yml
 
 /db/*.sql
 
