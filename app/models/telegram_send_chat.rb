@@ -9,4 +9,10 @@
 #  updated_at :datetime         not null
 #
 class TelegramSendChat < ApplicationRecord
+
+    acts_as_paranoid
+    
+
+    extend FriendlyId
+    friendly_id :slug_candidates, use: :slugged
 end

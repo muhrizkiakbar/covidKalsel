@@ -1,0 +1,53 @@
+
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <p id="notice"><%= notice %></p>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Integrate Bot With User</h3>
+      </div>
+      <div class="table-responsive py-3">
+        <table class="table table-flush" >
+          <thead class="thead-light">
+            <tr>
+              <th>Chat ID</th>
+              <th>First Name</th>
+              <th>Username</th>
+              <th>Type</th>
+              <th>Created_at</th>
+              <th>Updated_at</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @telegram_chat_by_usernames.each do |telegram_chat| %>
+              <tr>
+                <td><%= telegram_chat.chat_id %></td>
+                <td><%= telegram_chat.first_name %></td>
+                <td><%= telegram_chat.username %></td>
+                <td><%= telegram_chat.kind %></td>
+                <td><%= telegram_chat.created_at %></td>
+                <td><%= telegram_chat.updated_at %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+
+    <br>
+    <%= paginate @telegram_chat_by_usernames %>
+
+
+
+    <%= render partial: 'layouts/footer_back' %>
+  </div>
+<% end %>
+
+<% content_for :button_header do %>
+<% end %>
+
+<%= render partial: 'layouts/body' %>

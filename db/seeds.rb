@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# permissions =[
+ permissions =[
 #     {
 #         name: 'City', #Penamaan gasan permission nya
 #         resource: 'city', #nama file di model harus sama
@@ -624,21 +624,38 @@
 #         path: 'letter_path' #path di rails route
 #     },
 #
-# ]
+     # =========================================================================
+     {
+         name: 'telegram', #penamaan gasan permission nya
+         resource: 'telegram_chat_by_username', #nama file di model harus sama
+         action: 'index_chat', #nama function di controller
+         description: 'integrate bot telegram with user', #gasan penjelasan aja
+         page: true, #ini akan bisa di akses di menu atau tidak
+         path: 'telegram_chat_by_username_path' #path di rails route
+     },
+     {
+         name: 'telegram', #penamaan gasan permission nya
+         resource: 'telegram_chat_by_username', #nama file di model harus sama
+         action: 'index_send_chat', #nama function di controller
+         description: 'List Message Sent to User', #gasan penjelasan aja
+         page: true, #ini akan bisa di akses di menu atau tidak
+         path: 'telegram_chat_by_username_path' #path di rails route
+     },
+ ]
 #
 #
-# puts "Create Permissions"
-#  permissions.each_with_index do |permission,key|
-#       add_permissions= Permission.create(
-#         name: permission[:name], #Penamaan gasan permission nya
-#         resource: permission[:resource], #nama file di model harus sama
-#         action: permission[:action], #nama function di controller
-#         description: permission[:description], #gasan penjelasan aja
-#         page: permission[:page], #ini akan bisa di akses di menu atau tidak
-#         path: permission[:path] #path di rails route
-#       )
-#
-#  end
+ puts "Create Permissions"
+  permissions.each_with_index do |permission,key|
+       add_permissions= Permission.create(
+         name: permission[:name], #Penamaan gasan permission nya
+         resource: permission[:resource], #nama file di model harus sama
+         action: permission[:action], #nama function di controller
+         description: permission[:description], #gasan penjelasan aja
+         page: permission[:page], #ini akan bisa di akses di menu atau tidak
+         path: permission[:path] #path di rails route
+       )
+
+  end
 #
 #  roles=[{name: "Superadmin"},{name: "User"}]
 #
@@ -742,30 +759,30 @@
 #
  # ====== RESET COUNT OF CITY =========
 
-puts 'Reset count of city'
-
-@cities = City.all
-
-@cities.each do |city|
-    edit_city = City.find(city.id)
-    #edit_city.cov_positive_count = 0
-    #edit_city.cov_negative_count = 0
-    #edit_city.cov_recovered_count = 0
-    edit_city.cov_died_count = 0
-    #edit_city.cov_odp_count = 0
-    #edit_city.cov_odp_processed_count = 0
-    #edit_city.cov_pdp_count = 0
-    #edit_city.cov_pdp_processed_count = 0
-    edit_city.save
-end
+#puts 'Reset count of city'
+#
+#@cities = City.all
+#
+#@cities.each do |city|
+#    edit_city = City.find(city.id)
+#    #edit_city.cov_positive_count = 0
+#    #edit_city.cov_negative_count = 0
+#    #edit_city.cov_recovered_count = 0
+#    edit_city.cov_died_count = 0
+#    #edit_city.cov_odp_count = 0
+#    #edit_city.cov_odp_processed_count = 0
+#    #edit_city.cov_pdp_count = 0
+#    #edit_city.cov_pdp_processed_count = 0
+#    edit_city.save
+#end
 
 #puts "TruncateCov Positive"
 #
 #truncate = CovPositive.destroy_all
 #
-puts "Truncate Cov Died"
+#puts "Truncate Cov Died"
 
-truncate = CovDied.destroy_all
+#truncate = CovDied.destroy_all
 
 #puts "Truncate Cov Recovered"
 #
@@ -4554,1271 +4571,1271 @@ truncate = CovDied.destroy_all
 #
 #end
 #
-puts "Add Meninggal"
-meninggals = [
-        {
-            city_id: "1",
-            added_at: "2020-04-05 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-05 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-05 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-05 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-05 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-05 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-05 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-05 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-05 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-05 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-05 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-05 15:59:00",
-            amount: "2"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-05 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-06 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-06 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-06 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-06 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-06 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-06 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-06 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-06 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-06 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-06 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-06 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-06 09:59:00",
-            amount: "2"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-06 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-06 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-06 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-06 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-06 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-06 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-06 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-06 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-06 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-06 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-06 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-06 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-06 15:59:00",
-            amount: "2"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-06 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-07 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-07 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-07 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-07 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-07 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-07 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-07 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-07 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-07 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-07 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-07 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-07 09:59:00",
-            amount: "2"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-07 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-07 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-07 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-07 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-07 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-07 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-07 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-07 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-07 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-07 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-07 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-07 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-07 15:59:00",
-            amount: "3"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-07 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-08 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-08 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-08 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-08 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-08 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-08 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-08 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-08 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-08 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-08 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-08 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-08 09:59:00",
-            amount: "3"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-08 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-08 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-08 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-08 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-08 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-08 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-08 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-08 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-08 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-08 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-08 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-08 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-08 15:59:00",
-            amount: "3"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-08 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-09 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-09 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-09 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-09 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-09 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-09 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-09 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-09 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-09 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-09 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-09 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-09 09:59:00",
-            amount: "3"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-09 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-09 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-09 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-09 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-09 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-09 15:59:00",
-            amount: "1"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-09 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-09 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-09 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-09 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-09 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-09 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-09 15:59:00",
-            amount: "3"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-09 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-10 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-10 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-10 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-10 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-10 09:59:00",
-            amount: "1"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-10 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-10 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-10 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-10 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-10 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-10 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-10 09:59:00",
-            amount: "3"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-10 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-10 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-10 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-10 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-10 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-10 15:59:00",
-            amount: "1"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-10 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-10 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-10 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-10 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-10 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-10 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-10 15:59:00",
-            amount: "3"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-10 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-11 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-11 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-11 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-11 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-11 09:59:00",
-            amount: "1"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-11 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-11 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-11 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-11 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-11 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-11 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-11 09:59:00",
-            amount: "3"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-11 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-11 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-11 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-11 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-11 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-11 15:59:00",
-            amount: "1"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-11 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-11 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-11 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-11 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-11 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-11 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-11 15:59:00",
-            amount: "3"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-11 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-12 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-12 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-12 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-12 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-12 09:59:00",
-            amount: "1"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-12 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-12 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-12 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-12 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-12 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-12 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-12 09:59:00",
-            amount: "3"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-12 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-12 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-12 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-12 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-12 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-12 15:59:00",
-            amount: "1"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-12 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-12 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-12 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-12 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-12 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-12 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-12 15:59:00",
-            amount: "3"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-12 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-13 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-13 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-13 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-13 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-13 09:59:00",
-            amount: "1"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-13 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-13 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-13 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-13 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-13 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-13 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-13 09:59:00",
-            amount: "3"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-13 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-13 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-13 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-13 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-13 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-13 15:59:00",
-            amount: "1"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-13 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-13 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-13 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-13 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-13 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-13 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-13 15:59:00",
-            amount: "3"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-13 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-14 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-14 10:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-14 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-14 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-14 09:59:00",
-            amount: "1"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-14 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-14 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-14 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-14 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-14 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-14 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-14 09:59:00",
-            amount: "3"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-14 09:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "1",
-            added_at: "2020-04-14 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "2",
-            added_at: "2020-04-14 16:00:00",
-            amount: "0"
-        },
-        {
-            city_id: "3",
-            added_at: "2020-04-14 15:59:00",
-            amount: "1"
-        },
-        {
-            city_id: "4",
-            added_at: "2020-04-14 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "5",
-            added_at: "2020-04-14 15:59:00",
-            amount: "1"
-        },
-        {
-            city_id: "6",
-            added_at: "2020-04-14 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "7",
-            added_at: "2020-04-14 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "8",
-            added_at: "2020-04-14 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "9",
-            added_at: "2020-04-14 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "10",
-            added_at: "2020-04-14 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "11",
-            added_at: "2020-04-14 15:59:00",
-            amount: "0"
-        },
-        {
-            city_id: "12",
-            added_at: "2020-04-14 15:59:00",
-            amount: "3"
-        },
-        {
-            city_id: "13",
-            added_at: "2020-04-14 15:59:00",
-            amount: "0"
-        }
-    ]
-
-# add_meninggal = CovDied.create(meninggal)
-
-
-meninggals.each do | meninggal |
-
-  cov_died = CovDied.new
-  cov_died.city_id = meninggal[:city_id]
-  cov_died.amount = meninggal[:amount]
-  cov_died.added_at = meninggal[:added_at]
-
-
-  city = City.find(cov_died.city.id)
-
-  if (city.cov_died_count == 0)
-    diff_amount = city.cov_died_count + cov_died.amount
-  else
-    diff_amount = cov_died.amount - city.cov_died_count
-  end
-
-  cov_died.amount = diff_amount
-  cov_died.save
-
-  city.cov_died_count += cov_died.amount
-  city.save
-
-end
+#puts "Add Meninggal"
+#meninggals = [
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-05 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-05 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-05 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-05 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-05 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-05 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-05 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-05 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-05 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-05 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-05 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-05 15:59:00",
+#            amount: "2"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-05 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-06 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-06 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-06 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-06 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-06 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-06 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-06 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-06 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-06 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-06 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-06 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-06 09:59:00",
+#            amount: "2"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-06 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-06 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-06 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-06 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-06 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-06 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-06 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-06 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-06 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-06 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-06 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-06 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-06 15:59:00",
+#            amount: "2"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-06 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-07 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-07 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-07 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-07 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-07 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-07 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-07 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-07 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-07 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-07 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-07 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-07 09:59:00",
+#            amount: "2"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-07 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-07 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-07 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-07 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-07 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-07 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-07 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-07 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-07 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-07 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-07 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-07 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-07 15:59:00",
+#            amount: "3"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-07 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-08 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-08 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-08 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-08 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-08 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-08 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-08 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-08 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-08 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-08 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-08 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-08 09:59:00",
+#            amount: "3"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-08 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-08 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-08 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-08 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-08 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-08 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-08 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-08 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-08 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-08 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-08 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-08 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-08 15:59:00",
+#            amount: "3"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-08 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-09 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-09 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-09 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-09 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-09 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-09 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-09 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-09 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-09 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-09 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-09 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-09 09:59:00",
+#            amount: "3"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-09 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-09 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-09 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-09 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-09 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-09 15:59:00",
+#            amount: "1"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-09 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-09 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-09 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-09 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-09 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-09 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-09 15:59:00",
+#            amount: "3"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-09 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-10 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-10 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-10 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-10 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-10 09:59:00",
+#            amount: "1"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-10 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-10 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-10 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-10 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-10 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-10 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-10 09:59:00",
+#            amount: "3"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-10 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-10 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-10 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-10 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-10 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-10 15:59:00",
+#            amount: "1"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-10 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-10 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-10 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-10 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-10 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-10 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-10 15:59:00",
+#            amount: "3"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-10 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-11 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-11 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-11 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-11 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-11 09:59:00",
+#            amount: "1"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-11 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-11 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-11 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-11 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-11 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-11 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-11 09:59:00",
+#            amount: "3"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-11 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-11 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-11 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-11 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-11 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-11 15:59:00",
+#            amount: "1"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-11 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-11 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-11 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-11 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-11 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-11 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-11 15:59:00",
+#            amount: "3"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-11 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-12 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-12 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-12 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-12 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-12 09:59:00",
+#            amount: "1"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-12 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-12 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-12 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-12 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-12 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-12 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-12 09:59:00",
+#            amount: "3"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-12 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-12 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-12 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-12 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-12 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-12 15:59:00",
+#            amount: "1"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-12 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-12 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-12 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-12 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-12 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-12 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-12 15:59:00",
+#            amount: "3"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-12 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-13 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-13 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-13 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-13 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-13 09:59:00",
+#            amount: "1"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-13 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-13 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-13 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-13 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-13 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-13 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-13 09:59:00",
+#            amount: "3"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-13 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-13 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-13 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-13 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-13 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-13 15:59:00",
+#            amount: "1"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-13 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-13 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-13 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-13 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-13 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-13 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-13 15:59:00",
+#            amount: "3"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-13 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-14 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-14 10:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-14 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-14 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-14 09:59:00",
+#            amount: "1"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-14 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-14 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-14 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-14 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-14 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-14 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-14 09:59:00",
+#            amount: "3"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-14 09:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "1",
+#            added_at: "2020-04-14 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "2",
+#            added_at: "2020-04-14 16:00:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "3",
+#            added_at: "2020-04-14 15:59:00",
+#            amount: "1"
+#        },
+#        {
+#            city_id: "4",
+#            added_at: "2020-04-14 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "5",
+#            added_at: "2020-04-14 15:59:00",
+#            amount: "1"
+#        },
+#        {
+#            city_id: "6",
+#            added_at: "2020-04-14 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "7",
+#            added_at: "2020-04-14 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "8",
+#            added_at: "2020-04-14 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "9",
+#            added_at: "2020-04-14 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "10",
+#            added_at: "2020-04-14 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "11",
+#            added_at: "2020-04-14 15:59:00",
+#            amount: "0"
+#        },
+#        {
+#            city_id: "12",
+#            added_at: "2020-04-14 15:59:00",
+#            amount: "3"
+#        },
+#        {
+#            city_id: "13",
+#            added_at: "2020-04-14 15:59:00",
+#            amount: "0"
+#        }
+#    ]
+#
+## add_meninggal = CovDied.create(meninggal)
+#
+#
+#meninggals.each do | meninggal |
+#
+#  cov_died = CovDied.new
+#  cov_died.city_id = meninggal[:city_id]
+#  cov_died.amount = meninggal[:amount]
+#  cov_died.added_at = meninggal[:added_at]
+#
+#
+#  city = City.find(cov_died.city.id)
+#
+#  if (city.cov_died_count == 0)
+#    diff_amount = city.cov_died_count + cov_died.amount
+#  else
+#    diff_amount = cov_died.amount - city.cov_died_count
+#  end
+#
+#  cov_died.amount = diff_amount
+#  cov_died.save
+#
+#  city.cov_died_count += cov_died.amount
+#  city.save
+#
+#end
 
 #puts "Add Pdp"
 #pdps = [

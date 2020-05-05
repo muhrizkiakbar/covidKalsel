@@ -20,6 +20,11 @@ Rails.application.routes.draw do
 
     get "chart_result" => 'dashboard#chart_result', :as => 'chart_result'
 
+    get "/telegram_chat_by_username" => 'telegram_chat#index_chat', :as => 'telegram_chat_by_username' 
+    get "/telegram_messages" => 'telegram_chat#index_send_chat', :as => 'telegram_messages'
+    get "/telegram_messages/new" => 'telegram_chat#new_message', :as => 'new_telegram_message'
+    post "/telegram_message" => 'telegram_chat#send_message', :as => 'send_telegram_message'
+
     resources :information
 
     resources :cov_dieds

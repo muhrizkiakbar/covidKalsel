@@ -5,14 +5,22 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
     
     text = "Selamat datang 👋👋  Mari Bergerak Mencegah Penyebaran Covid-19 Di Banua Kita. \n \nApa yang ingin anda ketahui ? \n/angka_sebaran - Jumlah angka sebaran seluruh Kabupaten/Kota.\n/lokasi_terkini - Jumlah angka sebaran sesuai dengan lokasi anda.(Hanya untuk chat langsung dengan bot/tidak didalam group.)\n/pilih_kota Pilih Kabupaten/Kota.\n/rumah_sakit_rujukan - Rumah Sakit Rujukan Penanganan Covid-19.\n/hub_dinkes - Kontak Dinas Kesehatan Prov. Kalsel.\n/hub_bpbd - Kontak Badan Penanggulangan Bencana Daerah Prov. Kalsel.\n \n \nUpdate terkini bisa anda cek di https://corona.kalselprov.go.id"
 
+    p chat["id"]
+    p chat["first_name"]
     p chat["username"]
+    p chat["type"]
 
-    #telegram_chat_by_username = TelegramChatByUsername.create(
-    #                              chat_id: chat["id"],
-    #                              first_name: chat["first_name"],
-    #                              username: chat["username"],
-    #                              type: chat["type"]
-    #                            ) 
+    find_telegram_chat_by_username = TelegramChatByUsername.find_by(chat_id: chat["id"].to_s)
+
+    if find_telegram_chat_by_username.nil?
+
+      telegram_chat_by_username = TelegramChatByUsername.create(
+                                  chat_id: chat["id"].to_s,
+                                  first_name: chat["first_name"],
+                                  username: chat["username"],
+                                  kind: chat["type"]
+                                ) 
+    end
 
     respond_with :message, text: text
   end

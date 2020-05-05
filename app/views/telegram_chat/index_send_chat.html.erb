@@ -1,0 +1,46 @@
+
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <p id="notice"><%= notice %></p>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Integrate Bot With User</h3>
+      </div>
+      <div class="table-responsive py-3">
+        <table class="table table-flush" >
+          <thead class="thead-light">
+            <tr>
+              <th>Message</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @telegram_send_chats.group_by { |i| i[:message] }.each do |telegram_chat| %>
+              <tr>
+                <td><%= telegram_chat[0] %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+
+    <br>
+    <%= paginate @telegram_send_chats %>
+
+
+
+    <%= render partial: 'layouts/footer_back' %>
+  </div>
+<% end %>
+
+<% content_for :button_header do %>
+  <div class="col-lg-6 col-5 text-right">
+    <%= link_to 'New Message', new_telegram_message_path, class: "btn btn-sm btn-neutral" %>
+  </div>
+<% end %>
+
+<%= render partial: 'layouts/body' %>

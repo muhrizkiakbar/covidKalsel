@@ -1,0 +1,57 @@
+
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <% if notice!=nil %>
+      <div class="alert alert-success" role="alert">
+          <%= notice %>
+      </div>
+    <% end %>
+    
+    <% if telegram_send_chat.errors.any? %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <span class="alert-icon"><h3 class="text-white"><%= icon("fas", "exclamation-triangle", class: "fa-3x text-white")%></h3></span>
+          <span class="alert-text">
+            <h3 class="text-white"><strong><%= pluralize(telegram_send_chat.errors.count, "error") %></strong> prohibited this city from being saved:</h3>
+            <ul>
+              <% telegram_send_chat.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </span>
+          
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+    <% end %>
+
+    <div class="card">
+      <div class="card-header">
+        <h3><%= @header_card %></h3>
+      </div>
+      <div class="card-body">
+        <%= form_for @telegram_send_chat, url: send_telegram_message_path, method: :post do |form| %>
+
+          <div class="form-group">
+            <label class="form-control-label">Message</label>
+            <%= form.text_area :message, class: "form-control", rows: "10", placeholder: "Address" %>
+          </div>
+
+          <div class="actions">
+            <%= form.submit 'Submit', :class => 'btn btn-primary' %>
+            <%= link_to 'Back', telegram_messages_path, :class => 'btn btn-secondary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    
+
+
+    <%= render partial: 'layouts/footer_back' %>
+  </div>
+<% end %>
+
+<% content_for :button_header do %>
+<% end %>
+      
+<%= render partial: 'layouts/body' %>

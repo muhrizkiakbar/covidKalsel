@@ -97,4 +97,5 @@ gem 'geocoder'
 #gem 'secure_credentials'
 gem 'telegram-bot'
 gem 'daemon'
+gem 'sidekiq'
 
