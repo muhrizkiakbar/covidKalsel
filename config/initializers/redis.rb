@@ -1,3 +1,3 @@
-uri = "#{ENV['REDIS_URL']}/0/covidkalsel" || 'redis://localhost:6379/0/covidkalsel'
+uri = "#{ENV['REDIS_URL']}" || 'redis://localhost:6379'
 
 Rails.application.config.cache_store = :redis_store, uri
