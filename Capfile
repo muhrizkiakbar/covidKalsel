@@ -35,11 +35,11 @@ install_plugin Capistrano::SCM::Git
 # require "capistrano/passenger"
 
 require 'capistrano/bundler'
-require 'capistrano/sidekiq'
 require 'capistrano/rails'
 require 'capistrano/passenger'
 require 'capistrano/rails/db'
 require 'capistrano/rbenv'
+require 'capistrano/sidekiq'
 require 'capistrano/setup'
 
 set :rbenv_type, :user
