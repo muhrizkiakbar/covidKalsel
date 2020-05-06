@@ -40,6 +40,7 @@ require 'capistrano/passenger'
 require 'capistrano/rails/db'
 require 'capistrano/rbenv'
 require 'capistrano/setup'
+require 'capistrano/sidekiq'
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.5.1'

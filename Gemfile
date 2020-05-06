@@ -99,3 +99,5 @@ gem 'telegram-bot'
 gem 'daemon'
 gem 'sidekiq'
 
+gem 'capistrano-sidekiq'
+
