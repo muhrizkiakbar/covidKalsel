@@ -99,5 +99,5 @@ gem 'telegram-bot'
 gem 'daemon'
 gem 'sidekiq'
 
-gem 'capistrano-sidekiq'
+gem 'capistrano-sidekiq', group: :development
 
