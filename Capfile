@@ -38,8 +38,8 @@ require 'capistrano/bundler'
 require 'capistrano/rails'
 require 'capistrano/passenger'
 require 'capistrano/rails/db'
-require 'capistrano/rbenv'
 require 'capistrano/sidekiq'
+require 'capistrano/rbenv'
 require 'capistrano/setup'
 
 set :rbenv_type, :user
