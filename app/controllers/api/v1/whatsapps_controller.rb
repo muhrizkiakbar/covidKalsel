@@ -36,7 +36,7 @@ class Api::V1::WhatsappsController < ActionController::Base
         @cities = City.all
         @city_last_updated = @cities.order("updated_at DESC").first
         
-        return @text = { "message" => "Angka Sebaran di Kalimantan Selatan \nTotal Positif (Dirawat, Meninggal, Sembuh) : #{@cov_positive_total} \nDirawat : #{@cov_positive_count} \nSembuh : #{@cov_recovered_count} \nMeninggal : #{@cov_died_count} \nODP : #{@cov_odp_count} \nPDP : #{@cov_pdp_count }\n"}
+        return @text = { "message" => "Angka Sebaran di Kalimantan Selatan \nTotal Positif : #{@cov_positive_total} \nDirawat : #{@cov_positive_count} \nSembuh : #{@cov_recovered_count} \nMeninggal : #{@cov_died_count} \n \nODP : #{@cov_odp_count} \nPDP : #{@cov_pdp_count }\n"}
     end
 
     def rumah_sakit
@@ -52,11 +52,11 @@ class Api::V1::WhatsappsController < ActionController::Base
     end
 
     def contact_dinkes
-        return @text = { "message" => "Hubungi Call Center Dinas Kesehatan Prov. Kalsel di 082157718673/082157718672." }
+        return @text = { "message" => "Hubungi Call Center Dinas Kesehatan Prov. Kalsel di +6282157718673 / +6282157718672" }
     end
 
     def contact_bpbd
-        return @text = { "message" =>  "Hubungi Call Center Badan Penanggulangan Bencana Daerah Prov. Kalsel di 05115911968/08115004474."}
+        return @text = { "message" =>  "Hubungi Call Center Badan Penanggulangan Bencana Daerah Prov. Kalsel di +625115911968 / +628115004474"}
     end
 
     def kode_kota
@@ -111,7 +111,7 @@ class Api::V1::WhatsappsController < ActionController::Base
     
         total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
     
-        return @text = { "message" => "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nODP : #{city.cov_odp_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n " }
+        return @text = { "message" => "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total}\nDirawat : #{city.cov_positive_count}\nSembuh : #{city.cov_recovered_count} \nMeninggal : #{city.cov_died_count}\n \nODP : #{city.cov_odp_count}\nPDP : #{city.cov_pdp_count}\n " }
     
     end
 
