@@ -38,7 +38,7 @@ require 'capistrano/bundler'
 require 'capistrano/rails'
 require 'capistrano/passenger'
 require 'capistrano/rails/db'
-require "capistrano/rvm"
+require 'capistrano/rvm'
 require 'capistrano/sidekiq'
 require 'capistrano/rbenv'
 require 'capistrano/setup'

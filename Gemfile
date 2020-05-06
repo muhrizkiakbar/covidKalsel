@@ -98,6 +98,6 @@ gem 'geocoder'
 gem 'telegram-bot'
 gem 'daemon'
 gem 'sidekiq'
-
+gem 'capistrano-rvm'
 gem 'capistrano-sidekiq'
 
