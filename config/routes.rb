@@ -52,9 +52,10 @@ Rails.application.routes.draw do
       resources :users
     end
   end
+
   namespace :api do
     namespace :v1 do
-      post 'angkasebaran' => 'whatsapps#post_api_angka_sebaran', :as => 'api_angkasebaran'
+      get 'angkasebaran' => 'whatsapps#post_api_angka_sebaran', :as => 'api_angkasebaran'
     end
   end
 
