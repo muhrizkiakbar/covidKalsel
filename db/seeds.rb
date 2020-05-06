@@ -624,18 +624,18 @@
 #         path: 'letter_path' #path di rails route
 #     },
 #
-     # =========================================================================
+    #  # =========================================================================
      {
-         name: 'telegram', #penamaan gasan permission nya
-         resource: 'telegram_chat_by_username', #nama file di model harus sama
+         name: 'telegram_chat', #penamaan gasan permission nya
+         resource: 'telegram_chat', #nama file di model harus sama
          action: 'index_chat', #nama function di controller
          description: 'integrate bot telegram with user', #gasan penjelasan aja
          page: true, #ini akan bisa di akses di menu atau tidak
          path: 'telegram_chat_by_username_path' #path di rails route
      },
      {
-         name: 'telegram', #penamaan gasan permission nya
-         resource: 'telegram_chat_by_username', #nama file di model harus sama
+         name: 'telegram_chat', #penamaan gasan permission nya
+         resource: 'telegram_chat', #nama file di model harus sama
          action: 'index_send_chat', #nama function di controller
          description: 'List Message Sent to User', #gasan penjelasan aja
          page: true, #ini akan bisa di akses di menu atau tidak

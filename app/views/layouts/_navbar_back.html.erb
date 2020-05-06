@@ -127,7 +127,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <% @informasi = ["hospitals","telegram_chat", "information", "info_practices", "cities", "letters"] %>
+            <% @informasi = ["hospitals","telegram_chat", "information", "info_practices", "cities", "letters","telegrams"] %>
             <a class="nav-link <%= @informasi.include?(controller_name) ? 'active' : '' %>" href="#navbar-components" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
               <%= icon("far", "hospital", class:"text-info") %>
               <span class="nav-link-text">Informasi Umum</span>
@@ -179,6 +179,14 @@
                     <%= link_to telegram_chat_by_username_path, class: "nav-link" do %>
                       <span class="sidenav-mini-icon"> T </span>
                       <span class="sidenav-normal"> Telegram Chat By User </span>
+                    <% end %>
+                  </li>
+                <% end %>
+                <% if policy(:telegram_chat).index_send_chat? %>
+                  <li class="nav-item">
+                    <%= link_to telegram_messages_path, class: "nav-link" do %>
+                      <span class="sidenav-mini-icon"> T </span>
+                      <span class="sidenav-normal"> Telegram Message </span>
                     <% end %>
                   </li>
                 <% end %>
