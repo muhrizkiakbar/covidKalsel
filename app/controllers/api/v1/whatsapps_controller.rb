@@ -1,5 +1,4 @@
 class Api::V1::WhatsappsController < ActionController::Base
-    skip_before_action :verify_authenticity_token
     def post_api_angka_sebaran
         p params["appPackageName"]
         @cov_positive_count = City.sum('cov_positive_count')
