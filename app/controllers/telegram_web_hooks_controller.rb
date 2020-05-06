@@ -72,7 +72,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nODP : #{city.cov_odp_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -85,7 +85,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nODP : #{city.cov_odp_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -98,7 +98,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nODP : #{city.cov_odp_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -111,7 +111,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nODP : #{city.cov_odp_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -124,7 +124,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nODP : #{city.cov_odp_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -137,7 +137,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nODP : #{city.cov_odp_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -150,7 +150,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nODP : #{city.cov_odp_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -163,7 +163,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nODP : #{city.cov_odp_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -176,7 +176,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nODP : #{city.cov_odp_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -189,7 +189,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nODP : #{city.cov_odp_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -202,7 +202,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nODP : #{city.cov_odp_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -215,7 +215,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nODP : #{city.cov_odp_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -228,7 +228,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nODP : #{city.cov_odp_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
