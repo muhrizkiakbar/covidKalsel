@@ -17,6 +17,12 @@ module CovidKalsel
     Telegram.bot_poller_mode = true
     # config.active_job.queue_adapter = :sidekiq
 
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: %i[get post options patch delete]
+      end
+    end
 
 
     # Settings in config/environments/* take precedence over those specified here.

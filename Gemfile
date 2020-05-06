@@ -100,3 +100,6 @@ gem 'daemon'
 gem 'sidekiq'
 gem 'capistrano-sidekiq'
 
+gem 'rack-cors'
+
+
