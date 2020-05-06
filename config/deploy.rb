@@ -56,4 +56,4 @@ set :branch, "deploy"
 
 set :pty,  false
 set :init_system, :systemd
-set :service_unit_name, "sidekiq-#{fetch(:application)}-#{fetch(:stage)}.service"
+#set :service_unit_name, "sidekiq-#{fetch(:application)}-#{fetch(:stage)}.service"
