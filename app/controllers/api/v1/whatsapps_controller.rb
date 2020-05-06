@@ -48,19 +48,19 @@ class Api::V1::WhatsappsController < ActionController::Base
           text = text + "- #{hospital.name_hospital} di #{hospital.city.name}  (#{hospital.phone_number})\n"
         end
     
-        return @text = text
+        return @text = { "message" => text }
     end
 
     def contact_dinkes
-        return @text = "Hubungi Call Center Dinas Kesehatan Prov. Kalsel di 082157718673/082157718672."
+        return @text = { "message" => "Hubungi Call Center Dinas Kesehatan Prov. Kalsel di 082157718673/082157718672." }
     end
 
     def contact_bpbd
-        return @text = "Hubungi Call Center Badan Penanggulangan Bencana Daerah Prov. Kalsel di 05115911968/08115004474."
+        return @text = { "message" =>  "Hubungi Call Center Badan Penanggulangan Bencana Daerah Prov. Kalsel di 05115911968/08115004474."}
     end
 
     def kode_kota
-        return @text = "Pilih Kota/Kab. dibawah untuk mengetahui angka sebaran. \n1. Kabupaten Tabalong\n2. Kabupaten Hulu Sungai Utara\n3. Kota Banjarmasin\n4. Kabupaten Barito Kuala\n5. Kabupaten Balangan\n6. Kota Banjarbaru\n7. Kabupaten Tanah Bumbu\n8. Kabupaten Kotabaru\n9. Kabupaten Hulu Sungai Selatan\n10. Kabupaten Banjar\n11. Kabupaten Hulu Sungai\n12. Kabupaten Tapin\n13. Kabupaten Tanah Laut"
+        return @text = { "message" => "Pilih Kota/Kab. dibawah untuk mengetahui angka sebaran. \n1. Kabupaten Tabalong\n2. Kabupaten Hulu Sungai Utara\n3. Kota Banjarmasin\n4. Kabupaten Barito Kuala\n5. Kabupaten Balangan\n6. Kota Banjarbaru\n7. Kabupaten Tanah Bumbu\n8. Kabupaten Kotabaru\n9. Kabupaten Hulu Sungai Selatan\n10. Kabupaten Banjar\n11. Kabupaten Hulu Sungai\n12. Kabupaten Tapin\n13. Kabupaten Tanah Laut"}
     end
 
     def pilih_kota(param)
@@ -111,7 +111,7 @@ class Api::V1::WhatsappsController < ActionController::Base
     
         total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
     
-        return @text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n"
+        return @text = { "message" => "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n" }
     
     end
 
