@@ -55,5 +55,5 @@ set :branch, "deploy"
 # set :ssh_options, verify_host_key: :secure
 
 set :pty,  false
-set :init_system, :systemd
+#set :init_system, :systemd
 #set :service_unit_name, "sidekiq-#{fetch(:application)}-#{fetch(:stage)}.service"
