@@ -55,7 +55,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      post 'angkasebaran' => 'whatsapps#post_api_angka_sebaran', :as => 'api_angkasebaran'
+      post 'whatsapp' => 'whatsapps#post_api', :as => 'api_angkasebaran'
     end
   end
 
