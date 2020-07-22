@@ -62,16 +62,16 @@ ActiveRecord::Schema.define(version: 2020_05_05_082124) do
     t.string "call_center"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "cov_positive_count"
-    t.integer "cov_negative_count"
-    t.integer "cov_recovered_count"
-    t.integer "cov_died_count"
-    t.integer "cov_odp_count"
-    t.integer "cov_pdp_count"
+    t.integer "cov_positive_count", default: 0, null: false
+    t.integer "cov_negative_count", default: 0, null: false
+    t.integer "cov_recovered_count", default: 0, null: false
+    t.integer "cov_died_count", default: 0, null: false
+    t.integer "cov_odp_count", default: 0, null: false
+    t.integer "cov_pdp_count", default: 0, null: false
     t.string "slug"
     t.datetime "deleted_at"
-    t.integer "cov_odp_processed_count"
-    t.integer "cov_pdp_processed_count"
+    t.integer "cov_odp_processed_count", default: 0, null: false
+    t.integer "cov_pdp_processed_count", default: 0, null: false
     t.string "hotline"
     t.string "code"
     t.index ["deleted_at"], name: "index_cities_on_deleted_at"
@@ -193,27 +193,6 @@ ActiveRecord::Schema.define(version: 2020_05_05_082124) do
     t.index ["slug"], name: "index_cov_recovereds_on_slug", unique: true
   end
 
-  create_table "developpers", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "username", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "name", default: "", null: false
-    t.string "department", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_developpers_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_developpers_on_reset_password_token", unique: true
-    t.index ["username"], name: "index_developpers_on_username", unique: true
-  end
-
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -283,65 +262,6 @@ ActiveRecord::Schema.define(version: 2020_05_05_082124) do
     t.string "name_file"
     t.index ["deleted_at"], name: "index_letters_on_deleted_at"
     t.index ["slug"], name: "index_letters_on_slug", unique: true
-  end
-
-  create_table "news", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "tittle"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.datetime "deleted_at"
-    t.string "image_content_file_name"
-    t.string "image_content_content_type"
-    t.bigint "image_content_file_size"
-    t.datetime "image_content_updated_at"
-    t.index ["deleted_at"], name: "index_news_on_deleted_at"
-    t.index ["slug"], name: "index_news_on_slug", unique: true
-    t.index ["user_id"], name: "index_news_on_user_id"
-  end
-
-  create_table "oauth_access_grants", force: :cascade do |t|
-    t.bigint "resource_owner_id", null: false
-    t.bigint "application_id", null: false
-    t.string "token", null: false
-    t.integer "expires_in", null: false
-    t.text "redirect_uri", null: false
-    t.datetime "created_at", null: false
-    t.datetime "revoked_at"
-    t.string "scopes", default: "", null: false
-    t.index ["application_id"], name: "index_oauth_access_grants_on_application_id"
-    t.index ["resource_owner_id"], name: "index_oauth_access_grants_on_resource_owner_id"
-    t.index ["token"], name: "index_oauth_access_grants_on_token", unique: true
-  end
-
-  create_table "oauth_access_tokens", force: :cascade do |t|
-    t.bigint "resource_owner_id"
-    t.bigint "application_id", null: false
-    t.string "token", null: false
-    t.string "refresh_token"
-    t.integer "expires_in"
-    t.datetime "revoked_at"
-    t.datetime "created_at", null: false
-    t.string "scopes"
-    t.string "previous_refresh_token", default: "", null: false
-    t.index ["application_id"], name: "index_oauth_access_tokens_on_application_id"
-    t.index ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true
-    t.index ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id"
-    t.index ["token"], name: "index_oauth_access_tokens_on_token", unique: true
-  end
-
-  create_table "oauth_applications", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "uid", null: false
-    t.string "secret", null: false
-    t.text "redirect_uri", null: false
-    t.string "scopes", default: "", null: false
-    t.boolean "confidential", default: true, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -433,11 +353,6 @@ ActiveRecord::Schema.define(version: 2020_05_05_082124) do
   add_foreign_key "cov_recovereds", "cities"
   add_foreign_key "hospitals", "cities"
   add_foreign_key "information", "users"
-  add_foreign_key "news", "users"
-  add_foreign_key "oauth_access_grants", "developpers", column: "resource_owner_id"
-  add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
-  add_foreign_key "oauth_access_tokens", "developpers", column: "resource_owner_id"
-  add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "role_permissions", "permissions"
   add_foreign_key "role_permissions", "roles"
   add_foreign_key "users", "roles"

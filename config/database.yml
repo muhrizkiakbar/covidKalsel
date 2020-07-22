@@ -24,7 +24,7 @@ default: &default
   password:
   # Windows
   #password: postgres
-  host: db
+  host: postgresql
   port: 5432
 
 development:
