@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       root 'dashboard#index'
     end
 
-    unauthenticated do
+    unauthenticated :user do
       root 'public#home'
     end
     # root to: "devise/sessions#new"

@@ -38,6 +38,5 @@ ENV DEFAULT_URL http://localhost:3000
 
 # services ENV
 # depend on server IP
- ENV ELASTICSEARCH_URL http://localhost:9200
 # ENV ELASTICSEARCH_URL http://161.142.8.71:9200
 

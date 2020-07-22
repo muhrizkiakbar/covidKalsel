@@ -23,8 +23,8 @@ default: &default
   user: postgres
   password:
   # Windows
-  #password: postgres
-  host: postgresql
+  # password: postgres
+  host: db
   port: 5432
 
 development:

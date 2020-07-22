@@ -26,7 +26,12 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+<<<<<<< HEAD
 #/config/secrets.yml
+=======
+/config/secrets.yml
+/config/database.yml
+>>>>>>> master
 
 /data/*
 /docker-data/*
