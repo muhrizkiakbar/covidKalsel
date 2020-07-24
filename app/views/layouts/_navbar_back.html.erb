@@ -79,6 +79,14 @@
                     <% end %>
                   </li>
                 <% end %>
+                <% if policy(:cov_suspect).index? %>
+                  <li class="nav-item">
+                    <%= link_to cov_suspects_path, class: "nav-link" do %>
+                      <span class="sidenav-mini-icon"> S </span>
+                      <span class="sidenav-normal"> Suspect </span>
+                    <% end %>
+                  </li>
+                <% end %>
                 <a href="#navbar-multilevel-odp" class="nav-link" data-toggle="collapse" role="button" aria-expanded="<%= ["cov_odps", "cov_odp_processeds"].include?(controller_name) ? 'true' : 'false' %>" aria-controls="navbar-multilevel-odp">
                   <span class="sidenav-mini-icon"> O </span>
                   <span class="sidenav-normal"> ODP </span>

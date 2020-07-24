@@ -1,0 +1,32 @@
+<%= form_with(model: cov_suspect, local: true) do |form| %>
+  <% if cov_suspect.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cov_suspect.errors.count, "error") %> prohibited this cov_suspect from being saved:</h2>
+
+      <ul>
+      <% cov_suspect.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :city_id %>
+    <%= form.text_field :city_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.number_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :added_at %>
+    <%= form.datetime_select :added_at %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

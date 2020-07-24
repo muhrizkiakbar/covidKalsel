@@ -7,6 +7,8 @@
 #  message    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  slug       :string
+#  deleted_at :datetime
 #
 require 'test_helper'
 

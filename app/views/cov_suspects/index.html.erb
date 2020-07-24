@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cov Suspects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Amount</th>
+      <th>Added at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cov_suspects.each do |cov_suspect| %>
+      <tr>
+        <td><%= cov_suspect.city %></td>
+        <td><%= cov_suspect.amount %></td>
+        <td><%= cov_suspect.added_at %></td>
+        <td><%= link_to 'Show', cov_suspect %></td>
+        <td><%= link_to 'Edit', edit_cov_suspect_path(cov_suspect) %></td>
+        <td><%= link_to 'Destroy', cov_suspect, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cov Suspect', new_cov_suspect_path %>

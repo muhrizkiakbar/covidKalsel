@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# permissions =[
+ permissions =[
 #     {
 #         name: 'City', #Penamaan gasan permission nya
 #         resource: 'city', #nama file di model harus sama
@@ -641,21 +641,63 @@
 #         page: true, #ini akan bisa di akses di menu atau tidak
 #         path: 'telegram_chat_by_username_path' #path di rails route
 #     },
-# ]
+#     # ===========================================================================
+     {
+         name: 'CoV Suspect Processed', #Penamaan gasan permission nya
+         resource: 'cov_suspect', #nama file di model harus sama
+         action: 'index', #nama function di controller
+         description: 'Management CoV Suspect', #gasan penjelasan aja
+         page: true, #ini akan bisa di akses di menu atau tidak
+         path: 'cov_suspects_path' #path di rails route
+     },
+     {
+         name: 'New CoV Suspect', #Penamaan gasan permission nya
+         resource: 'cov_suspect', #nama file di model harus sama
+         action: 'new', #nama function di controller
+         description: 'Add CoV Suspect', #gasan penjelasan aja
+         page: false, #ini akan bisa di akses di menu atau tidak
+         path: 'new_cov_suspect_path' #path di rails route
+     },
+     {
+         name: 'Update CoV Suspect', #Penamaan gasan permission nya
+         resource: 'cov_suspect', #nama file di model harus sama
+         action: 'edit', #nama function di controller
+         description: 'Change CoV Suspect', #gasan penjelasan aja
+         page: false, #ini akan bisa di akses di menu atau tidak
+         path: 'edit_cov_suspect_path' #path di rails route
+     },
+     {
+         name: 'Show CoV Suspect', #Penamaan gasan permission nya
+         resource: 'cov_suspect', #nama file di model harus sama
+         action: 'show', #nama function di controller
+         description: 'Show CoV Suspect', #gasan penjelasan aja
+         page: false, #ini akan bisa di akses di menu atau tidak
+         path: 'cov_suspect_path' #path di rails route
+     },
+     {
+         name: 'Remove CoV Suspect', #Penamaan gasan permission nya
+         resource: 'cov_suspect', #nama file di model harus sama
+         action: 'destroy', #nama function di controller
+         description: 'Remove CoV Suspect', #gasan penjelasan aja
+         page: false, #ini akan bisa di akses di menu atau tidak
+         path: 'cov_suspect_path' #path di rails route
+     },
+     # ======================================================================
+ ]
 ##
 ##
-# puts "Create Permissions"
-#  permissions.each_with_index do |permission,key|
-#       add_permissions= Permission.create(
-#         name: permission[:name], #Penamaan gasan permission nya
-#         resource: permission[:resource], #nama file di model harus sama
-#         action: permission[:action], #nama function di controller
-#         description: permission[:description], #gasan penjelasan aja
-#         page: permission[:page], #ini akan bisa di akses di menu atau tidak
-#         path: permission[:path] #path di rails route
-#       )
-#
-#  end
+ puts "Create Permissions"
+  permissions.each_with_index do |permission,key|
+       add_permissions= Permission.create(
+         name: permission[:name], #Penamaan gasan permission nya
+         resource: permission[:resource], #nama file di model harus sama
+         action: permission[:action], #nama function di controller
+         description: permission[:description], #gasan penjelasan aja
+         page: permission[:page], #ini akan bisa di akses di menu atau tidak
+         path: permission[:path] #path di rails route
+       )
+
+  end
 #
 #  roles=[{name: "Superadmin"},{name: "User"}]
 #
@@ -678,86 +720,86 @@
 #     end
 # end
 #
- puts "Create City"
-
- cityurl = 'https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=63'
- responsecity = RestClient.get(cityurl)
-
- jsonresponsecity = JSON.parse(responsecity)
- citycode = {
-   "6301": {
-     "code": "TLA"
-   },
-   "6302": {
-     "code": "KTB"
-   },
-   "6303": {
-     "code": "BJR"
-   },
-   "6304": {
-     "code": "BTL"
-   },
-   "6305": {
-     "code": "TPN"
-   },
-   "6306": {
-     "code": "HSS"
-   },
-   "6307": {
-     "code": "HST"
-   },
-   "6308": {
-     "code": "HSU"
-   },
-   "6309": {
-     "code": "TBL"
-   },
-   "6310": {
-     "code": "TBU"
-   },
-   "6311": {
-     "code": "BLG"
-   },
-   "6371": {
-     "code": "BJM"
-   },
-   "6372": {
-     "code": "BJB"
-   },
- }
-
- jsonresponsecity["kota_kabupaten"].each do |city|
-     addcity = City.new
-     addcity.name= city["nama"]
-     addcity.call_center = "123"
-     addcity.cov_positive_count = 0
-     addcity.cov_negative_count = 0
-     addcity.cov_recovered_count = 0
-     addcity.cov_died_count = 0
-     addcity.cov_odp_count = 0
-     addcity.cov_pdp_count = 0
-     addcity.cov_odp_processed_count = 0
-     addcity.cov_pdp_processed_count = 0
-     addcity.code = JSON.parse(citycode.to_json)[city["id"].to_s]["code"]
-     addcity.save
-     # idcityapi = city["id"]
-
- end
-
- puts "Create User"
-
- role=Role.first
-
- add_user = User.create(
-         role_id: role.id,
-         username: "diskominfo",
-         email: "diskominfo@kalselprov.go.id",
-         name: "diskominfo",
-         password: "@diskominfo123"
-     )
-
-
- # ====== RESET COUNT OF CITY =========
+# puts "Create City"
+#
+# cityurl = 'https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=63'
+# responsecity = RestClient.get(cityurl)
+#
+# jsonresponsecity = JSON.parse(responsecity)
+# citycode = {
+#   "6301": {
+#     "code": "TLA"
+#   },
+#   "6302": {
+#     "code": "KTB"
+#   },
+#   "6303": {
+#     "code": "BJR"
+#   },
+#   "6304": {
+#     "code": "BTL"
+#   },
+#   "6305": {
+#     "code": "TPN"
+#   },
+#   "6306": {
+#     "code": "HSS"
+#   },
+#   "6307": {
+#     "code": "HST"
+#   },
+#   "6308": {
+#     "code": "HSU"
+#   },
+#   "6309": {
+#     "code": "TBL"
+#   },
+#   "6310": {
+#     "code": "TBU"
+#   },
+#   "6311": {
+#     "code": "BLG"
+#   },
+#   "6371": {
+#     "code": "BJM"
+#   },
+#   "6372": {
+#     "code": "BJB"
+#   },
+# }
+#
+# jsonresponsecity["kota_kabupaten"].each do |city|
+#     addcity = City.new
+#     addcity.name= city["nama"]
+#     addcity.call_center = "123"
+#     addcity.cov_positive_count = 0
+#     addcity.cov_negative_count = 0
+#     addcity.cov_recovered_count = 0
+#     addcity.cov_died_count = 0
+#     addcity.cov_odp_count = 0
+#     addcity.cov_pdp_count = 0
+#     addcity.cov_odp_processed_count = 0
+#     addcity.cov_pdp_processed_count = 0
+#     addcity.code = JSON.parse(citycode.to_json)[city["id"].to_s]["code"]
+#     addcity.save
+#     # idcityapi = city["id"]
+#
+# end
+#
+# puts "Create User"
+#
+# role=Role.first
+#
+# add_user = User.create(
+#         role_id: role.id,
+#         username: "diskominfo",
+#         email: "diskominfo@kalselprov.go.id",
+#         name: "diskominfo",
+#         password: "@diskominfo123"
+#     )
+#
+#
+# # ====== RESET COUNT OF CITY =========
 
 #puts 'Reset count of city'
 #

@@ -6,9 +6,11 @@
 #  chat_id    :bigint
 #  first_name :string
 #  username   :string
-#  type       :string
+#  kind       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  slug       :string
+#  deleted_at :datetime
 #
 class TelegramChatByUsername < ApplicationRecord
 

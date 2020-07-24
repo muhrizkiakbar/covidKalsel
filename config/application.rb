@@ -14,7 +14,7 @@ module CovidKalsel
     config.time_zone = 'Asia/Makassar'
     config.i18n.default_locale = :en
     Telegram.bot_poller_mode = true
-    config.active_job.queue_adapter = :sidekiq
+    #config.active_job.queue_adapter = :sidekiq
 
 
     config.assets.version = '1.0'

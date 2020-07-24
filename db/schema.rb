@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_082124) do
+ActiveRecord::Schema.define(version: 2020_07_24_080934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_082124) do
     t.integer "cov_pdp_processed_count", default: 0, null: false
     t.string "hotline"
     t.string "code"
+    t.integer "cov_suspect_count", default: 0
     t.index ["deleted_at"], name: "index_cities_on_deleted_at"
     t.index ["slug"], name: "index_cities_on_slug", unique: true
   end
@@ -191,6 +192,19 @@ ActiveRecord::Schema.define(version: 2020_05_05_082124) do
     t.index ["city_id"], name: "index_cov_recovereds_on_city_id"
     t.index ["deleted_at"], name: "index_cov_recovereds_on_deleted_at"
     t.index ["slug"], name: "index_cov_recovereds_on_slug", unique: true
+  end
+
+  create_table "cov_suspects", force: :cascade do |t|
+    t.bigint "city_id"
+    t.integer "amount"
+    t.datetime "added_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.datetime "deleted_at"
+    t.index ["city_id"], name: "index_cov_suspects_on_city_id"
+    t.index ["deleted_at"], name: "index_cov_suspects_on_deleted_at"
+    t.index ["slug"], name: "index_cov_suspects_on_slug", unique: true
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -351,6 +365,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_082124) do
   add_foreign_key "cov_pdps", "cities"
   add_foreign_key "cov_positives", "cities"
   add_foreign_key "cov_recovereds", "cities"
+  add_foreign_key "cov_suspects", "cities"
   add_foreign_key "hospitals", "cities"
   add_foreign_key "information", "users"
   add_foreign_key "role_permissions", "permissions"

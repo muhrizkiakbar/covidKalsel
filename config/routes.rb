@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
     resources :information
 
+    resources :cov_suspects
     resources :cov_dieds
     resources :cov_pdps
     resources :cov_odps

@@ -28,14 +28,15 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
   def angka_sebaran!(*)
 
     @cov_positive_count = City.sum('cov_positive_count')
-    @cov_odp_count = City.sum('cov_odp_count')
-    @cov_pdp_count = City.sum('cov_pdp_count')
+    #@cov_odp_count = City.sum('cov_odp_count')
+    #@cov_pdp_count = City.sum('cov_pdp_count')
+    @cov_suspect_count = City.sum('cov_suspect_count')
     @cov_died_count = City.sum('cov_died_count')
     @cov_recovered_count = City.sum('cov_recovered_count')
     @cov_positive_total = @cov_positive_count + @cov_died_count + @cov_recovered_count
     @cities = City.all
     @city_last_updated = @cities.order("updated_at DESC").first
-    text = "Angka Sebaran di Kalimantan Selatan \nTotal Positif (Dirawat, Meninggal, Sembuh) : #{@cov_positive_total} \nDirawat : #{@cov_positive_count} \nSembuh : #{@cov_recovered_count} \nMeninggal : #{@cov_died_count} \nODP : #{@cov_odp_count} \nPDP : #{@cov_pdp_count }\n \n/menu - Kembali ke Menu."
+    text = "Angka Sebaran di Kalimantan Selatan \nTotal Positif (Dirawat, Meninggal, Sembuh) : #{@cov_positive_total} \nDirawat : #{@cov_positive_count} \nSembuh : #{@cov_recovered_count} \nMeninggal : #{@cov_died_count} \nSuspect : #{@cov_suspect_count} \n \n/menu - Kembali ke Menu."
 
     respond_with :message, text: text
   end
@@ -70,7 +71,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     city = City.where('code = ?',kode).first
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nSuspect : #{city.cov_suspect_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -81,7 +82,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     city = City.where('code = ?',kode).first
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nSuspect : #{city.cov_suspect_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -92,7 +93,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     city = City.where('code = ?',kode).first
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nSuspect : #{city.cov_suspect_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -103,7 +104,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     city = City.where('code = ?',kode).first
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nSuspect : #{city.cov_suspect_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -114,7 +115,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     city = City.where('code = ?',kode).first
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nSuspect : #{city.cov_suspect_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -125,7 +126,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     city = City.where('code = ?',kode).first
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nSuspect : #{city.cov_suspect_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -136,7 +137,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     city = City.where('code = ?',kode).first
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nSuspect : #{city.cov_suspect_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -147,7 +148,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     city = City.where('code = ?',kode).first
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nSuspect : #{city.cov_suspect_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -158,7 +159,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     city = City.where('code = ?',kode).first
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nSuspect : #{city.cov_suspect_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -169,7 +170,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     city = City.where('code = ?',kode).first
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nSuspect : #{city.cov_suspect_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -180,7 +181,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     city = City.where('code = ?',kode).first
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nSuspect : #{city.cov_suspect_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -191,7 +192,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     city = City.where('code = ?',kode).first
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nSuspect : #{city.cov_suspect_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -202,7 +203,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     city = City.where('code = ?',kode).first
 
-    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota.\n/menu - Kembali Ke Menu"
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nSuspect : #{city.cov_suspect_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota.\n/menu - Kembali Ke Menu"
 
     respond_with :message, text: text
   end
@@ -327,7 +328,7 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
       city = City.where('name like ?',"%#{kota}%").first
 
-      text = "Angka Sebaran Covid-19 di Wilayah #{city.name} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nPDP : #{city.cov_pdp_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+      text = "Angka Sebaran Covid-19 di Wilayah #{city.name} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nSuspect : #{city.cov_suspect_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
 
       respond_with :message, text: text
       #respond_with :message, text: "#{jsonresponse[0]["properties"]["county"]}"

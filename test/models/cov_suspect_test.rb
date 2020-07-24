@@ -1,20 +1,20 @@
 # == Schema Information
 #
-# Table name: telegram_send_chats
+# Table name: cov_suspects
 #
 #  id         :bigint           not null, primary key
-#  chat_id    :bigint
-#  message    :text
+#  city_id    :bigint
+#  amount     :integer
+#  added_at   :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  slug       :string
 #  deleted_at :datetime
 #
-class TelegramSendChat < ApplicationRecord
+require 'test_helper'
 
-    acts_as_paranoid
-    
-
-    extend FriendlyId
-    friendly_id :slug_candidates, use: :slugged
+class CovSuspectTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end

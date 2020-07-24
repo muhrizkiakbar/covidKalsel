@@ -1,10 +1,11 @@
 # == Schema Information
 #
-# Table name: telegram_send_chats
+# Table name: cov_suspects
 #
 #  id         :bigint           not null, primary key
-#  chat_id    :bigint
-#  message    :text
+#  city_id    :bigint
+#  amount     :integer
+#  added_at   :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  slug       :string
@@ -12,9 +13,11 @@
 #
 
 one:
-  chat_id: 
-  message: MyText
+  city: one
+  amount: 1
+  added_at: 2020-07-24 06:49:22
 
 two:
-  chat_id: 
-  message: MyText
+  city: two
+  amount: 1
+  added_at: 2020-07-24 06:49:22
