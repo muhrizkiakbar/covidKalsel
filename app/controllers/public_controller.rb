@@ -10,6 +10,7 @@ class PublicController < ApplicationController
         @info_practices = InfoPractice.order("created_at DESC")
         @letters = Letter.order("created_at DESC")
         @cov_positive_count = City.sum('cov_positive_count')
+        @cov_suspect_count = City.sum('cov_suspect_count')
         @cov_odp_count = City.sum('cov_odp_count')
         @cov_pdp_count = City.sum('cov_pdp_count')
         @cov_died_count = City.sum('cov_died_count')
@@ -42,7 +43,7 @@ class PublicController < ApplicationController
     end
 
     def cov_map
-        @city_map = City.select('code, name, cov_positive_count, cov_died_count, cov_recovered_count, cov_odp_count, cov_pdp_count, concat(cov_positive_count+cov_died_count+cov_recovered_count)')
+        @city_map = City.select('code, name, cov_suspect_count, cov_positive_count, cov_died_count, cov_recovered_count, cov_odp_count, cov_pdp_count, concat(cov_positive_count+cov_died_count+cov_recovered_count)')
         render json: @city_map
         # respond_to do |format|
         #   format.html
@@ -89,13 +90,9 @@ class PublicController < ApplicationController
             "data" => []
           },
           {
-            "name" => "ODP",
+            "name" => "Suspect",
             "data" => []
           },
-          {
-            "name" => "PDP",
-            "data" => []
-          }
         ]
 
         until $i >= diff_date.to_i  do
@@ -115,12 +112,8 @@ class PublicController < ApplicationController
 
           result_data[0]["data"].push(Array.new([current_date_of_loop.to_date, @sum_positive]))
 
-          @sum_odp = CovOdp.where(added_at: range_date).where('city_id = ?',city.id).sum(:amount)
-          @sum_odp_processed = CovOdpProcessed.where(added_at: range_date).where('city_id = ?',city.id).sum(:amount)
-          result_data[3]["data"].push(Array.new([current_date_of_loop.to_date, @sum_odp]))
-          @sum_pdp = CovPdp.where(added_at: range_date).where('city_id = ?',city.id).sum(:amount)
-          @sum_pdp_processed = CovPdpProcessed.where(added_at: range_date).where('city_id = ?',city.id).sum(:amount)
-          result_data[4]["data"].push(Array.new([current_date_of_loop.to_date, @sum_pdp]))
+          @sum_suspect = CovSuspect.where(added_at: range_date).where('city_id = ?',city.id).sum(:amount)
+          result_data[3]["data"].push(Array.new([current_date_of_loop.to_date, @cov_suspect]))
 
           $i +=1;
           # puts "done"
@@ -142,8 +135,7 @@ class PublicController < ApplicationController
            ["Positif"],
             ["Sembuh"],
             ["Meninggal"],
-            ["ODP"],
-            ["PDP"]
+            ["Suspek"],
         ]
 
         # until $i >= diff_date.to_i  do
@@ -162,12 +154,8 @@ class PublicController < ApplicationController
 
           result_data[0].push(@sum_positive)
 
-          @sum_odp = CovOdp.where('city_id = ?',city.id).sum(:amount)
-          @sum_odp_processed = CovOdpProcessed.where('city_id = ?',city.id).sum(:amount)
-          result_data[3].push(@sum_odp-@sum_odp_processed)
-          @sum_pdp = CovPdp.where('city_id = ?',city.id).sum(:amount)
-          @sum_pdp_processed = CovPdpProcessed.where('city_id = ?',city.id).sum(:amount)
-          result_data[4].push(@sum_pdp-@sum_pdp_processed)
+          @sum_suspect = CovSuspect.where('city_id = ?',city.id).sum(:amount)
+          result_data[3].push(@sum_suspect)
 
         #   $i +=1;
           # puts "done"
@@ -202,11 +190,7 @@ class PublicController < ApplicationController
             "data" => []
           },
           {
-            "name" => "ODP",
-            "data" => []
-          },
-          {
-            "name" => "PDP",
+            "name" => "Suspek",
             "data" => []
           }
         ]
@@ -230,12 +214,8 @@ class PublicController < ApplicationController
 
           result_data[0]["data"].push(Array.new([current_date_of_loop.to_date, @sum_positive]))
 
-          @sum_odp = CovOdp.where(added_at: range_date).sum(:amount)
-          @sum_odp_processed = CovOdpProcessed.where(added_at: range_date).sum(:amount)
-          result_data[3]["data"].push(Array.new([current_date_of_loop.to_date, @sum_odp]))
-          @sum_pdp = CovPdp.where(added_at: range_date).sum(:amount)
-          @sum_pdp_processed = CovPdpProcessed.where(added_at: range_date).sum(:amount)
-          result_data[4]["data"].push(Array.new([current_date_of_loop.to_date, @sum_pdp]))
+          @sum_suspect = CovSuspect.where(added_at: range_date).sum(:amount)
+          result_data[3]["data"].push(Array.new([current_date_of_loop.to_date, @sum_suspect]))
 
           $i +=1;
           # puts "done"
