@@ -1,31 +1,84 @@
-<p id="notice"><%= notice %></p>
+<% content_for :active_menu do %>
+  active
+<% end %>
 
-<h1>Cov Suspects</h1>
+<% content_for :isi do %>
+  <div class="container-fluid mt--6">
+    <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>City</th>
-      <th>Amount</th>
-      <th>Added at</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="card">
+      <div class="card-header">
+        <h3>CoV Suspect</h3>
+      </div>
+      <div class="table-responsive py-3">
+        <table class="table table-flush">
+          <thead class="thead-light">
+            <tr>
+              <th>City</th>
+              <th>Amount</th>
+              <th>Datetime</th>
+              <th>Tool</th>
+            </tr>
+          </thead>
 
-  <tbody>
-    <% @cov_suspects.each do |cov_suspect| %>
-      <tr>
-        <td><%= cov_suspect.city %></td>
-        <td><%= cov_suspect.amount %></td>
-        <td><%= cov_suspect.added_at %></td>
-        <td><%= link_to 'Show', cov_suspect %></td>
-        <td><%= link_to 'Edit', edit_cov_suspect_path(cov_suspect) %></td>
-        <td><%= link_to 'Destroy', cov_suspect, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <tbody>
+            <% @cov_suspects.each do |cov_suspect| %>
+              <tr>
+                <td><%= cov_suspect.city.name %></td>
+                <td><%= cov_suspect.amount %></td>
+                <td><%= cov_suspect.added_at %></td>
+                <td>
+                  <%= link_to cov_suspect, class: "btn btn-icon btn-sm btn-info" do %>
+                    <%= icon("fas","eye", class: "text-white")%>
+                  <% end %>
+                  <%= link_to edit_cov_suspect_path(cov_suspect), class: "btn btn-icon btn-sm btn-warning" do %>
+                    <%= icon("fas", "edit", class: "text-white")%>
+                  <% end %>
+                  <%= link_to cov_suspect, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-icon btn-sm btn-danger" do %>
+                    <%= icon("fas", "trash", class: "text-white")%>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer">
+        <%= paginate @cov_suspects %>
+      </div>
+    </div>
+    <%= render partial: 'layouts/footer_back' %>
+  </div>
+<% end %>
 
-<br>
+<% content_for :button_header do %>
+  <div class="col-lg-6 col-5 text-right">
+    <%= link_to 'New Cov Odp', new_cov_suspect_path, class: "btn btn-sm btn-neutral" %>
+  </div>
+<% end %>
 
-<%= link_to 'New Cov Suspect', new_cov_suspect_path %>
+<% content_for :search do %>
+  <%= search_form_for @q, class: "navbar-search navbar-search-dark form-inline mr-sm-3", id: "navbar-search-main" do |f| %>
+    <div class="form-group mb-0">
+      <div class="input-group input-group-alternative input-group-merge">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-search"></i></span>
+        </div>
+        <%= f.search_field :city_name_or_added_at_cont, id: "search", class:"form-control", placeholder: "Search", autocomplete: "off" %>
+      </div>
+    </div>
+    <button type="button" class="close" data-action="search-close" data-target="" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  <% end %>
+<% end %>
+
+<%= content_for :toggle_search do %>
+  <li class="nav-item d-sm-none">
+    <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
+      <%= icon('fas', 'search-plus') %>
+    </a>
+  </li>
+<% end %>
+
+<%= render partial: 'layouts/body' %>

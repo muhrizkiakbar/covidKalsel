@@ -94,42 +94,6 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card bg-blue">
-          <div class="card-body">
-            <div class="row">
-              <div class="col">
-                <h3 class="card-title text-uppercase mb-0 text-white">ODP</h3>
-                <span class="h1 font-weight-bolder mb-0 text-white"><%= @cov_odp_count %></span>
-                <span class="h3 font-weight-normal mb-0 text-white">Orang</span>
-              </div>
-              <div class="col-auto">
-                <div class="icon icon-shape bg-white rounded-circle shadow">
-                  <%= icon("fas", "user-check") %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card bg-yellow">
-          <div class="card-body">
-            <div class="row">
-              <div class="col">
-                <h3 class="card-title text-uppercase mb-0 text-white">PDP</h3>
-                <span class="h1 font-weight-bolder mb-0 text-white"><%= @cov_pdp_count %></span>
-                <span class="h3 font-weight-normal mb-0 text-white">Orang</span>
-              </div>
-              <div class="col-auto">
-                <div class="icon icon-shape bg-white rounded-circle shadow">
-                  <%= icon("fas", "user-tag") %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="col-md-12">
         <div class="card bg-red">
           <div class="card-body">
@@ -196,6 +160,24 @@
               <div class="col-auto">
                 <div class="icon icon-shape bg-white rounded-circle shadow">
                   <%= icon("fas", "user-shield") %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card bg-blue">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <h3 class="card-title text-uppercase mb-0 text-white">SUSPECT (DIDUGA COVID-19)</h3>
+                <span class="h1 font-weight-bolder mb-0 text-white"><%= @cov_suspect_count %></span>
+                <span class="h3 font-weight-normal mb-0 text-white">Orang</span>
+              </div>
+              <div class="col-auto">
+                <div class="icon icon-shape bg-white rounded-circle shadow">
+                  <%= icon("fas", "user-tag") %>
                 </div>
               </div>
             </div>

@@ -9,21 +9,20 @@ var map, mapContainer, labelTip;
 // '<span class="icon-map-label bg-orange"> </span> <b>Meninggal : </b>'+regLabels[code].die+'</br>'+
 // '<span class="icon-map-label bg-blue"> </span> <b>Sembuh : </b>'+regLabels[code].rec
 
-labelTip = function(odp, pdp, pos, die, rec, tot, label){
+labelTip = function(sus, pos, die, rec, tot, label){
   return(
     '<div class="card" style="border-radius:0; background: #292929;">'+
       '<div class="card-header bg-transparent px-2 pt-2 pb-0 border-0 mb-0">'+
         '<h5 class="text-white mb-0">'+label+'</h5>'+
       '</div>'+
       '<div class="card-body p-2">'+
-        '<span class="icon-map-label bg-blue"> </span> <b>ODP : </b>'+odp+'</br>'+
-        '<span class="icon-map-label bg-yellow"> </span> <b>PDP : </b>'+pdp+'</br>'+
-        ''+'</br>'+
-        '<span class="icon-map-label bg-red"> </span> <b>Jumlah Positif : </b>'+tot+'</br><small>(Dirawat, Sembuh & Meninggal)</small>'+'</br>'+
-
+        '<span class="icon-map-label bg-red"> </span> <b>Jumlah Positif : </b>'+tot+'</br><small>(Dirawat, Sembuh & Meninggal)</small>'+
+        '</br>'+
         '<span class="icon-map-label bg-primary"> </span> <b>Dirawat : </b>'+pos+'</br>'+
         '<span class="icon-map-label bg-orange"> </span> <b>Meninggal : </b>'+die+'</br>'+
         '<span class="icon-map-label bg-green"> </span> <b>Sembuh : </b>'+rec+'</br>'+
+        '</br>'+
+        '<span class="icon-map-label bg-blue"> </span> <b>Suspek : </b>'+sus+'</br>'+
       '</div>'+
     '</div>'
   )
@@ -37,8 +36,7 @@ if (mapContainer.length){
     $.each(data, function(i, item){
       regLabels[item.code] = {
         "pos": item.cov_positive_count,
-        "pdp": item.cov_pdp_count,
-        "odp": item.cov_odp_count,
+        "sus": item.cov_suspect_count,
         "die": item.cov_died_count,
         "rec": item.cov_recovered_count,
         "tot": item.cov_positive_count + item.cov_died_count + item.cov_recovered_count
@@ -145,8 +143,7 @@ if (mapContainer.length){
       onRegionTipShow	: function(event, label, code){
         label.html(
           labelTip(
-            regLabels[code].odp,
-            regLabels[code].pdp,
+            regLabels[code].sus,
             regLabels[code].pos,
             regLabels[code].die,
             regLabels[code].rec,

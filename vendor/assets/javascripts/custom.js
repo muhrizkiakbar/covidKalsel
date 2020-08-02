@@ -64,10 +64,11 @@ $('.main-carousel').flickity({
   adaptiveHeight: true,
 });
 
+// yellow = , '#ffd600'
 var lineChartOptions = {
   legend: true,
   curve: false,
-  colors: ['#f5365c', '#2dce89', '#e9ecef', '#00bcd4', '#ffd600'],
+  colors: ['#f5365c', '#2dce89', '#e9ecef', '#00bcd4'],
   label: "Value",
   dataset:{
     pointRadius: 1,
@@ -187,7 +188,7 @@ if ( $('#chart-line-visitor').length ){
 if ( $('#chart-pie').length ){
   var pieChartOptions = {
     legend: true,
-    colors: ['#f5365c', '#2dce89', '#212529', '#00bcd4', '#ffd600'],
+    colors: ['#f5365c', '#2dce89', '#212529', '#00bcd4'],
   }
   var chartPie = Chartkick.charts["chart-pie"]
   chartPie.setOptions(pieChartOptions);
