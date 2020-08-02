@@ -28,7 +28,7 @@ class CovSuspectsController < ApplicationController
   # POST /cov_suspects
   # POST /cov_suspects.json
   def create
-    @cov_suspect = CovSuspect.new(cov_negative_params)
+    @cov_suspect = CovSuspect.new(cov_suspect_params)
 
     @city = City.find(@cov_suspect.city.id)
 
@@ -67,7 +67,7 @@ class CovSuspectsController < ApplicationController
     @city.save
 
     respond_to do |format|
-      if @cov_suspect.update(cov_negative_params)
+      if @cov_suspect.update(cov_suspect_params)
 
         @city = City.find(@cov_suspect.city.id)
 

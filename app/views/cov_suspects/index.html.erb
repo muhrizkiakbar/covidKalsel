@@ -4,13 +4,12 @@
 
 <% content_for :isi do %>
   <div class="container-fluid mt--6">
-    <p id="notice"><%= notice %></p>
 
     <div class="card">
       <div class="card-header">
         <h3>CoV Suspect</h3>
       </div>
-      <div class="table-responsive py-3">
+      <div class="table-responsive">
         <table class="table table-flush">
           <thead class="thead-light">
             <tr>
@@ -53,7 +52,7 @@
 
 <% content_for :button_header do %>
   <div class="col-lg-6 col-5 text-right">
-    <%= link_to 'New Cov Odp', new_cov_suspect_path, class: "btn btn-sm btn-neutral" %>
+    <%= link_to 'New Cov Suspect', new_cov_suspect_path, class: "btn btn-sm btn-neutral" %>
   </div>
 <% end %>
 

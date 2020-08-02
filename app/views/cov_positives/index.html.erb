@@ -7,42 +7,40 @@
       <div class="card-header">
         <h3>CoV Positives</h3>
       </div>
-      <div class="card-body">
-        <div class="table-responsive py-3">
-          <table class="table table-flush" >
-            <thead class="thead-light">
-              <tr>
-                <th>City</th>
-                <th>Amount</th>
-                <th>Datetime</th>
-                <th>Tool</th>
-                <th>Created</th>
-              </tr>
-            </thead>
+      <div class="table-responsive">
+        <table class="table table-flush" >
+          <thead class="thead-light">
+            <tr>
+              <th>City</th>
+              <th>Amount</th>
+              <th>Datetime</th>
+              <th>Tool</th>
+              <th>Created</th>
+            </tr>
+          </thead>
 
-            <tbody>
-              <% @cov_positives.each do |cov_positive| %>
-                <tr>
-                  <td><%= cov_positive.city.name %></td>
-                  <td><%= cov_positive.amount %></td>
-                  <td><%= cov_positive.added_at %></td>
-                  <td>
-                    <%= link_to cov_positive, class: "btn btn-icon btn-sm btn-info" do %>
-                      <%= icon("fas","eye", class: "text-white")%>
-                    <% end %>
-                    <%= link_to edit_cov_positive_path(cov_positive), class: "btn btn-icon btn-sm btn-warning" do %>
-                      <%= icon("fas", "edit", class: "text-white")%>
-                    <% end %>
-                    <%= link_to cov_positive, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-icon btn-sm btn-danger" do %>
-                      <%= icon("fas", "trash", class: "text-white")%>
-                    <% end %>
-                  </td>
-                  <td><%= cov_positive.created_at %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
+          <tbody>
+            <% @cov_positives.each do |cov_positive| %>
+              <tr>
+                <td><%= cov_positive.city.name %></td>
+                <td><%= cov_positive.amount %></td>
+                <td><%= cov_positive.added_at %></td>
+                <td>
+                  <%= link_to cov_positive, class: "btn btn-icon btn-sm btn-info" do %>
+                    <%= icon("fas","eye", class: "text-white")%>
+                  <% end %>
+                  <%= link_to edit_cov_positive_path(cov_positive), class: "btn btn-icon btn-sm btn-warning" do %>
+                    <%= icon("fas", "edit", class: "text-white")%>
+                  <% end %>
+                  <%= link_to cov_positive, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-icon btn-sm btn-danger" do %>
+                    <%= icon("fas", "trash", class: "text-white")%>
+                  <% end %>
+                </td>
+                <td><%= cov_positive.created_at %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
 
 

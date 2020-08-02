@@ -40,7 +40,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <% @cov = ["cov_dieds", "cov_pdps", "cov_odps", "cov_recovereds", "cov_negatives", "cov_positives", "cov_pdp_processeds", "cov_odp_processeds"] %>
+            <% @cov = ["cov_dieds", "cov_pdps", "cov_odps", "cov_recovereds", "cov_negatives", "cov_positives", "cov_pdp_processeds", "cov_odp_processeds", "cov_suspects"] %>
             <a class="nav-link <%= @cov.include?(controller_name) ? 'active' : '' %>" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
               <%= icon("far", "clone", class: "text-orange") %>
               <span class="nav-link-text">CoV</span>
@@ -48,7 +48,7 @@
             <div class="collapse <%= @cov.include?(controller_name) ? 'show' : '' %>" id="navbar-examples">
               <ul class="nav nav-sm flex-column">
                 <% if policy(:cov_positive).index? %>
-                  <li class="nav-item">
+                  <li class="nav-item <%= controller_name == 'cov_positives' ? 'active' : '' %>">
                     <%= link_to cov_positives_path, class: "nav-link" do %>
                       <span class="sidenav-mini-icon"> P </span>
                       <span class="sidenav-normal"> Positif </span>
@@ -56,7 +56,7 @@
                   </li>
                 <% end %>
                 <% if policy(:cov_recovered).index? %>
-                  <li class="nav-item">
+                  <li class="nav-item <%= controller_name == 'cov_recovereds' ? 'active' : '' %>">
                     <%= link_to cov_recovereds_path, class: "nav-link" do %>
                       <span class="sidenav-mini-icon"> S </span>
                       <span class="sidenav-normal"> Sembuh </span>
@@ -64,7 +64,7 @@
                   </li>
                 <% end %>
                 <% if policy(:cov_died).index? %>
-                  <li class="nav-item">
+                  <li class="nav-item <%= controller_name == 'cov_dieds' ? 'active' : '' %>">
                     <%= link_to cov_dieds_path, class: "nav-link" do %>
                       <span class="sidenav-mini-icon"> M </span>
                       <span class="sidenav-normal"> Meninggal </span>
@@ -72,7 +72,7 @@
                   </li>
                 <% end %>
                 <% if policy(:cov_negative).index? %>
-                  <li class="nav-item">
+                  <li class="nav-item <%= controller_name == 'cov_negatives' ? 'active' : '' %>">
                     <%= link_to cov_negatives_path, class: "nav-link" do %>
                       <span class="sidenav-mini-icon"> N </span>
                       <span class="sidenav-normal"> Negatif </span>
@@ -80,13 +80,14 @@
                   </li>
                 <% end %>
                 <% if policy(:cov_suspect).index? %>
-                  <li class="nav-item">
+                  <li class="nav-item <%= controller_name == 'cov_suspects' ? 'active' : '' %>">
                     <%= link_to cov_suspects_path, class: "nav-link" do %>
                       <span class="sidenav-mini-icon"> S </span>
                       <span class="sidenav-normal"> Suspect </span>
                     <% end %>
                   </li>
                 <% end %>
+                <!--
                 <a href="#navbar-multilevel-odp" class="nav-link" data-toggle="collapse" role="button" aria-expanded="<%= ["cov_odps", "cov_odp_processeds"].include?(controller_name) ? 'true' : 'false' %>" aria-controls="navbar-multilevel-odp">
                   <span class="sidenav-mini-icon"> O </span>
                   <span class="sidenav-normal"> ODP </span>
@@ -131,6 +132,7 @@
                     <% end %>
                   </ul>
                 </div>
+                -->
               </ul>
             </div>
           </li>
