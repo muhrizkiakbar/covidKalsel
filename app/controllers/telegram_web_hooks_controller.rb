@@ -148,7 +148,13 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
 
     city = City.where('code = ?',kode).first
 
+<<<<<<< HEAD
     text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{city.cov_positive_count} Orang\nDirawat : #{city.cov_positive_count} Orang\nSembuh : #{city.cov_recovered_count} Orang \nMeninggal : #{city.cov_died_count} Orang\nSuspect : #{city.cov_suspect_count} Orang\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+=======
+    total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
+
+    text = "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total}\nDirawat : #{city.cov_positive_count}\nSembuh : #{city.cov_recovered_count} \nMeninggal : #{city.cov_died_count}\n \nODP : #{city.cov_odp_count}\nPDP : #{city.cov_pdp_count}\n \n/pilih_kota - Pilih Kabupaten/Kota\n/menu - Kembali Ke Menu"
+>>>>>>> deploy
 
     respond_with :message, text: text
   end
@@ -222,13 +228,13 @@ class TelegramWebHooksController < Telegram::Bot::UpdatesController
   end
 
   def hub_dinkes!(*)
-    text = "Hubungi Call Center Dinas Kesehatan Prov. Kalsel di 082157718673/082157718672.\n \n/menu - Kembali Ke Menu"
+    text = "Hubungi Call Center Dinas Kesehatan Prov. Kalsel di +6282157718673 / +6282157718672.\n \n/menu - Kembali Ke Menu"
     
     respond_with :message, text: text
   end
 
   def hub_bpbd!(*)
-    text = "Hubungi Call Center Badan Penanggulangan Bencana Daerah Prov. Kalsel di 05115911968/08115004474.\n \n/menu - Kembali Ke Menu"
+    text = "Hubungi Call Center Badan Penanggulangan Bencana Daerah Prov. Kalsel di +625115911968 / +628115004474.\n \n/menu - Kembali Ke Menu"
     
     respond_with :message, text: text
   end

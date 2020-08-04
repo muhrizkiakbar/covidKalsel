@@ -72,8 +72,8 @@
                     <h2 class="mb-0 text-white">Visitor Graph</h2>
                 </div>
                 <div class="card-body">
-                    <%= line_chart Ahoy::Visit.group_by_day(:started_at).count, adapter:"chartjs", id:"chart-line-visitor" %>
-                </div>
+                    <%= line_chart Ahoy::Visit.group_by_day(:started_at, last: 8, current: false).count, adapter:"chartjs", id:"chart-line-visitor" %>
+                </div'
             </div>
         </div>
 

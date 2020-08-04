@@ -4,7 +4,7 @@ class TelegramChatController < ApplicationController
   end
 
   def index_send_chat
-    @telegram_send_chats = TelegramSendChat.all.page(params[:page])
+    @telegram_send_chats = TelegramSendChat.all.order('created_at DESC').page(params[:page])
   end
 
   def new_message

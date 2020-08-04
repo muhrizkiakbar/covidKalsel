@@ -32,8 +32,8 @@
 /data/*
 /docker-data/*
 
-/config/deploy/production
-/config/local_env.yml
+#/config/deploy/production
+#/config/local_env.yml
 
 /db/*.sql
 

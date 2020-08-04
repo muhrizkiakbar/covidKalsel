@@ -54,6 +54,13 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      post 'whatsapp' => 'whatsapps#post_api', :as => 'api_angkasebaran'
+    end
+  end
+
+
   get 'news' => 'public#news', :as => 'public_news'
   get 'new/:new_id' => 'public#shownew', :as => 'public_new'
   get 'faq' => 'public#faq', :as => 'public_faq'
