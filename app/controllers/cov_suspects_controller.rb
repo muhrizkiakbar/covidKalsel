@@ -33,17 +33,17 @@ class CovSuspectsController < ApplicationController
     @city = City.find(@cov_suspect.city.id)
 
 
-    if (@city.cov_negative_count == 0)
-      @diff_amount = @city.cov_negative_count + @cov_suspect.amount
+    if (@city.cov_suspect_count == 0)
+      @diff_amount = @city.cov_suspect_count + @cov_suspect.amount
     else
-      @diff_amount =  @cov_suspect.amount - @city.cov_negative_count
+      @diff_amount =  @cov_suspect.amount - @city.cov_suspect_count
     end
 
     @cov_suspect.amount = @diff_amount
     @cov_suspect.save
 
     # @city.cov_positive_count -= @diff_amount
-    @city.cov_negative_count += @diff_amount
+    @city.cov_suspect_count += @diff_amount
     @city.save
 
     respond_to do |format|
@@ -63,7 +63,7 @@ class CovSuspectsController < ApplicationController
     @city = City.find(@cov_suspect.city.id)
   
     # @city.cov_positive_count += @cov_suspect.amount
-    @city.cov_negative_count -= @cov_suspect.amount
+    @city.cov_suspect_count -= @cov_suspect.amount
     @city.save
 
     respond_to do |format|
@@ -71,14 +71,14 @@ class CovSuspectsController < ApplicationController
 
         @city = City.find(@cov_suspect.city.id)
 
-        if (@city.cov_negative_count == 0)
-          @diff_amount = @city.cov_negative_count + @cov_suspect.amount
+        if (@city.cov_suspect_count == 0)
+          @diff_amount = @city.cov_suspect_count + @cov_suspect.amount
         else
-          @diff_amount =  @cov_suspect.amount - @city.cov_negative_count
+          @diff_amount =  @cov_suspect.amount - @city.cov_suspect_count
         end
 
         # @city.cov_positive_count -= @cov_suspect.amount
-        @city.cov_negative_count += @cov_suspect.amount
+        @city.cov_suspect_count += @cov_suspect.amount
         @city.save
         
         format.html { redirect_to @cov_suspect, notice: 'Cov suspect was successfully updated.' }
@@ -97,7 +97,7 @@ class CovSuspectsController < ApplicationController
     
     @city = City.find(@cov_suspect.city.id)
     # @city.cov_positive_count += @cov_suspect.amount
-    @city.cov_negative_count -= @cov_suspect.amount
+    @city.cov_suspect_count -= @cov_suspect.amount
     @city.save
     @cov_suspect.destroy
     respond_to do |format|
