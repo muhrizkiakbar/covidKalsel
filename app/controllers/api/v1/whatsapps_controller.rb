@@ -36,7 +36,9 @@ class Api::V1::WhatsappsController < ActionController::Base
         @cities = City.all
         @city_last_updated = @cities.order("updated_at DESC").first
         
-        return @text = { "message" => "Angka Sebaran di Kalimantan Selatan \nTotal Positif : #{@cov_positive_total} \nDirawat : #{@cov_positive_count} \nSembuh : #{@cov_recovered_count} \nMeninggal : #{@cov_died_count} \n \nODP : #{@cov_odp_count} \nPDP : #{@cov_pdp_count }\n"}
+        @cov_suspect_count = City.sum('cov_suspect_count')
+
+        return @text = { "message" => "Angka Sebaran di Kalimantan Selatan \nTotal Positif : #{@cov_positive_total} \nDirawat : #{@cov_positive_count} \nSembuh : #{@cov_recovered_count} \nMeninggal : #{@cov_died_count} \n Suspect : #{@cov_suspect_count} \n"}
     end
 
     def rumah_sakit
@@ -111,7 +113,7 @@ class Api::V1::WhatsappsController < ActionController::Base
     
         total = city.cov_positive_count + city.cov_died_count + city.cov_recovered_count
     
-        return @text = { "message" => "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total}\nDirawat : #{city.cov_positive_count}\nSembuh : #{city.cov_recovered_count} \nMeninggal : #{city.cov_died_count}\n \nODP : #{city.cov_odp_count}\nPDP : #{city.cov_pdp_count}\n " }
+        return @text = { "message" => "Angka Sebaran Covid-19 di Wilayah #{kota} :\nTotal Positif : #{total}\nDirawat : #{city.cov_positive_count}\nSembuh : #{city.cov_recovered_count} \nMeninggal : #{city.cov_died_count}\n \nSuspect : #{@cov_suspect_count} \n " }
     
     end
 
