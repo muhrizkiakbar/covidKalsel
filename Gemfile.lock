@@ -59,7 +59,7 @@ GEM
     arel (9.0.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.4.8)
+    bootsnap (1.5.0)
       msgpack (~> 1.0)
     brakeman (4.10.0)
     builder (3.2.4)
@@ -94,7 +94,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
-    chartkick (3.4.0)
+    chartkick (3.4.2)
     childprocess (3.0.0)
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
@@ -113,7 +113,7 @@ GEM
     connection_pool (2.2.3)
     crass (1.0.6)
     daemon (1.2.0)
-    device_detector (1.0.4)
+    device_detector (1.0.5)
     devise (4.7.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -130,7 +130,7 @@ GEM
       sassc (>= 1.11)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
-    geocoder (1.6.3)
+    geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     groupdate (5.2.1)
@@ -242,10 +242,10 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    recaptcha (5.5.0)
+    recaptcha (5.6.0)
       json
     redis (4.2.2)
-    regexp_parser (1.8.1)
+    regexp_parser (1.8.2)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -383,4 +383,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.3
+   2.1.4
