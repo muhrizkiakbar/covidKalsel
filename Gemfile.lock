@@ -110,7 +110,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.7)
-    connection_pool (2.2.3)
+    connection_pool (2.2.5)
     crass (1.0.6)
     daemon (1.2.0)
     device_detector (1.0.4)
@@ -176,7 +176,9 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.0512)
-    mimemagic (0.3.5)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.2)
@@ -244,7 +246,7 @@ GEM
       ffi (~> 1.0)
     recaptcha (5.5.0)
       json
-    redis (4.2.2)
+    redis (4.5.1)
     regexp_parser (1.8.1)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -274,7 +276,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    sidekiq (6.1.2)
+    sidekiq (6.4.0)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
